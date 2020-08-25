@@ -253,9 +253,6 @@ start_node = "Idle"
 
 [node name="Samus" type="KinematicBody2D"]
 script = ExtResource( 2 )
-__meta__ = {
-"_edit_group_": true
-}
 
 [node name="StateMachine" type="Node" parent="."]
 script = ExtResource( 3 )
@@ -290,3 +287,13 @@ active = true
 parameters/playback = SubResource( 28 )
 parameters/Idle/blend_position = Vector2( 0, 0 )
 parameters/Run/blend_position = Vector2( 0, 0 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+margin_left = -21.2371
+margin_top = -41.0585
+margin_right = 18.7629
+margin_bottom = -1.05846
+text = "Idle"
+__meta__ = {
+"_edit_use_anchors_": false
+}
