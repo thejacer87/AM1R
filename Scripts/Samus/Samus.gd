@@ -11,10 +11,10 @@ var max_jump_velocity
 var min_jump_velocity
 var speed
 var health := 1
-var walk_speed : float = 7.0 * Globals.UNIT_SIZE
-var max_jump_height : float = 10 * Globals.UNIT_SIZE
-var min_jump_height : float = 1.25 * Globals.UNIT_SIZE
-var jump_duration := .5
+var walk_speed : float = 12 * Globals.UNIT_SIZE
+var max_jump_height : float = 5.25 * Globals.UNIT_SIZE
+var min_jump_height : float = 2.15 * Globals.UNIT_SIZE
+var jump_duration := .7
 var velocity := Vector2.ZERO
 var input := Vector2.ZERO
 
@@ -31,21 +31,16 @@ func _ready() -> void:
 
 
 func _apply_gravity(delta: float) -> void:
-	velocity.y = velocity.y + gravity * delta if not is_on_floor() else 0
-	print(velocity.y)
-	print(is_on_floor())
+	velocity.y += gravity * delta
 
 
 func _handle_move_input() -> void:
 	input.x = Input.get_action_strength("right") - Input.get_action_strength("left")
-	input.y = Input.get_action_strength("down") - Input.get_action_strength("up")
+#	input.y = Input.get_action_strength("down") - Input.get_action_strength("up")
 	input = input.normalized()
 
 	velocity.x = input.x * speed
 
 
 func _apply_movement(delta: float) -> void:
-	var snap = Vector2.ZERO
-#	move_and_collide(velocity)
-	velocity = move_and_slide_with_snap(velocity, snap, FLOOR)
-#	velocity = move_and_slide(velocity, FLOOR)
+	velocity = move_and_slide(velocity, FLOOR)

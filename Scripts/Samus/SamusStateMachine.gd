@@ -5,6 +5,7 @@ func _ready() -> void:
 	add_state("idle")
 	add_state("run")
 	add_state("shoot")
+	add_state("armed")
 	add_state("jump")
 	add_state("fall")
 	add_state("wall_cling")
@@ -21,7 +22,6 @@ func _input(event: InputEvent) -> void:
 	if [states.idle, states.run].has(state):
 		if event.is_action_pressed("jump"):
 			parent.velocity.y = parent.max_jump_velocity
-
 
 	if [states.jump].has(state):
 		if event.is_action_released("jump") && parent.velocity.y < parent.min_jump_velocity:
@@ -67,8 +67,8 @@ func _enter_state(new_state, old_state) -> void:
 			parent.animation_tree.set("parameters/Run/blend_position", parent.input)
 			parent.animation_state.travel("Run")
 		states.jump:
-			parent.animation_tree.set("parameters/Jump/blend_position", parent.input)
-			parent.animation_state.travel("Jump")
+			parent.animation_tree.set("parameters/SpinJump/blend_position", parent.input)
+			parent.animation_state.travel("SpinJump")
 		states.fall:
 			parent.animation_tree.set("parameters/Idle/blend_position", parent.input)
 			parent.animation_state.travel("Idle")

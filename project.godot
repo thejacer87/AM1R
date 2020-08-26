@@ -36,6 +36,15 @@ config/icon="res://Sprites/logo.png"
 Globals="*res://Scripts/Globals.gd"
 GameMusic="*res://Scripts/GameMusic.gd"
 
+[display]
+
+window/size/width=683
+window/size/height=384
+window/size/test_width=1280
+window/size/test_height=720
+window/stretch/mode="2d"
+window/stretch/aspect="keep"
+
 [input]
 
 left={
@@ -94,6 +103,11 @@ jump={
 2d_physics/layer_5="item"
 2d_physics/layer_6="beam"
 2d_physics/layer_7="missile"
+
+[rendering]
+
+quality/2d/use_nvidia_rect_flicker_workaround=true
+quality/2d/use_pixel_snap=true
 
 [world]
 
