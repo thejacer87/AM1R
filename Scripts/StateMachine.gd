@@ -1,45 +1,65 @@
 extends Node
+
 class_name StateMachine
 
-var state = null setget set_state
-var prev_state = null
-var states = {}
+signal state_changed(current_state)
 
-onready var parent = get_parent()
+export(NodePath) var START_STATE
 
-func _physics_process(delta: float) -> void:
-	if state != null:
-		_state_logic(delta)
-		var transition = _get_transition(delta)
-		if transition != null:
-			set_state(transition)
+var states_map = {}
+var states_stack = []
+var current_state = null
+var _active = false setget set_active
 
 
-func _state_logic(delta):
-	pass
+func _ready():
+	for child in get_children():
+		child.connect("finished", self, "_change_state")
+	initialize(START_STATE)
 
 
-func _get_transition(delta) -> String:
-	return ""
+func initialize(start_state):
+	set_active(true)
+	states_stack.push_front(get_node(start_state))
+	current_state = states_stack[0]
+	current_state.enter()
 
 
-func _enter_state(new_state, old_state) -> void:
-	pass
+func set_active(value):
+	_active = value
+	set_physics_process(value)
+	set_process_input(value)
+	if not _active:
+		states_stack = []
+		current_state = null
 
 
-func _exit_state(old_state, new_state) -> void:
-	pass
+func _input(event):
+	current_state.handle_input(event)
 
 
-func set_state(new_state) -> void:
-	prev_state = state
-	state = new_state
-
-	if prev_state != null:
-		_exit_state(prev_state, new_state)
-	if new_state != null:
-		_enter_state(new_state, prev_state)
+func _physics_process(delta):
+	current_state.update(delta)
 
 
-func add_state(state_name):
-	states[state_name] = states.size()
+func _on_animation_finished(anim_name):
+	if not _active:
+		return
+	current_state._on_animation_finished(anim_name)
+
+
+func _change_state(state_name):
+	if not _active:
+		return
+	current_state.exit()
+
+	if state_name == "previous":
+		states_stack.pop_front()
+	else:
+		states_stack[0] = states_map[state_name]
+
+	current_state = states_stack[0]
+	emit_signal("state_changed", current_state)
+
+	if state_name != "previous":
+		current_state.enter()
