@@ -44,6 +44,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Scripts/Samus/States/Motion/Motion.gd"
 }, {
+"base": "OnGroundState",
+"class": "MoveState",
+"language": "GDScript",
+"path": "res://Scripts/Samus/States/Motion/OnGround/Move.gd"
+}, {
 "base": "ModeState",
 "class": "NeutralState",
 "language": "GDScript",
@@ -53,11 +58,6 @@ _global_script_classes=[ {
 "class": "OnGroundState",
 "language": "GDScript",
 "path": "res://Scripts/Samus/States/Motion/OnGround/OnGround.gd"
-}, {
-"base": "OnGroundState",
-"class": "RunState",
-"language": "GDScript",
-"path": "res://Scripts/Samus/States/Motion/OnGround/Run.gd"
 }, {
 "base": "KinematicBody2D",
 "class": "Samus",
@@ -82,9 +82,9 @@ _global_script_class_icons={
 "ModeState": "",
 "MorphBallState": "",
 "MotionState": "",
+"MoveState": "",
 "NeutralState": "",
 "OnGroundState": "",
-"RunState": "",
 "Samus": "",
 "State": "",
 "StateMachine": ""

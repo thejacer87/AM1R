@@ -9,7 +9,7 @@
 [ext_resource path="res://Scripts/Samus/States/Mode/Crouch/Crouch.gd" type="Script" id=7]
 [ext_resource path="res://Scripts/Samus/States/Mode/Neutral/Neutral.gd" type="Script" id=8]
 [ext_resource path="res://Scripts/Samus/States/Motion/Airborne/Jump.gd" type="Script" id=9]
-[ext_resource path="res://Scripts/Samus/States/Motion/OnGround/Run.gd" type="Script" id=10]
+[ext_resource path="res://Scripts/Samus/States/Motion/OnGround/Move.gd" type="Script" id=10]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 8, 20 )
@@ -561,7 +561,7 @@ script = ExtResource( 5 )
 
 [node name="Crouch" type="Node" parent="MotionStateMachine"]
 
-[node name="Run" type="Node" parent="MotionStateMachine"]
+[node name="Move" type="Node" parent="MotionStateMachine"]
 script = ExtResource( 10 )
 
 [node name="SpinJump" type="Node" parent="MotionStateMachine"]

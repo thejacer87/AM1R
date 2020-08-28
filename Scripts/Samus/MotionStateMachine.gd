@@ -2,7 +2,7 @@ extends StateMachine
 
 onready var idle := $Idle
 onready var crouch := $Crouch
-onready var run := $Run
+onready var move := $Move
 onready var spin_jump := $SpinJump
 onready var jump := $Jump
 onready var fall := $Fall
@@ -13,7 +13,7 @@ func _ready() -> void:
 	states_map = {
 		"idle": idle,
 		"crouch": crouch,
-		"run": run,
+		"move": move,
 		"spin_jump": spin_jump,
 		"jump": jump,
 		"fall": fall,

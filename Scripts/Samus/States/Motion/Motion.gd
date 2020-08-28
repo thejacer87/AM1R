@@ -3,6 +3,7 @@ extends State
 class_name MotionState
 
 const FLOOR := Vector2.UP
+const MAX_FALL_SPEED := 2000
 
 var gravity
 var velocity := Vector2.ZERO
@@ -14,6 +15,7 @@ var jump_duration := .8
 var blend := "parameters/%s/blend_position"
 
 
+onready var mode_state_machine = owner.get_node("ModeStateMachine")
 onready var animation_tree = owner.get_node("AnimationTree")
 onready var animation_state = animation_tree.get("parameters/playback")
 
@@ -30,23 +32,17 @@ func get_input_direction() -> Vector2:
 	input.x = Input.get_action_strength("right") - Input.get_action_strength("left")
 	input.y = Input.get_action_strength("down") - Input.get_action_strength("up")
 	return input.normalized()
-	
+
 
 func update(delta: float) -> void:
 	apply_gravity(delta)
 	apply_movement()
-	
+
 
 func apply_gravity(delta: float) -> void:
-	velocity.y += gravity * delta
-	
+	if velocity.y < MAX_FALL_SPEED:
+		velocity.y += gravity * delta
+
+
 func apply_movement() -> void:
 	owner.move_and_slide(velocity, FLOOR)
-	
-
-#func update_look_direction(direction):
-#	if direction and owner.look_direction != direction:
-#		owner.look_direction = direction
-#	if not direction.x in [-1, 1]:
-#		return
-#	owner.get_node("BodyPivot").set_scale(Vector2(direction.x, 1))

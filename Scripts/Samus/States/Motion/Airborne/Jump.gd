@@ -8,7 +8,7 @@ class_name JumpState
 #	horizontal_speed = speed
 #	max_horizontal_speed = speed if speed > 0.0 else BASE_MAX_HORIZONTAL_SPEED
 #	enter_velocity = velocity
-	
+
 
 func enter():
 	animation_state.travel("SpinJump")
@@ -28,6 +28,6 @@ func update(delta: float) -> void:
 	animation_tree.set(blend % "Jump", input_direction)
 	if velocity.y >= 0 and owner.is_on_floor():
 		emit_signal("finished", "previous")
-		
+
 	.apply_gravity(delta)
 	.apply_movement()
