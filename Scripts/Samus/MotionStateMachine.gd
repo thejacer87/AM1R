@@ -25,10 +25,10 @@ func _ready() -> void:
 func _change_state(state_name):
 	if not _active:
 		return
-	if state_name in ["stagger", "jump", "attack"]:
+	if state_name in ["jump", "spin_jump"]:
 		states_stack.push_front(states_map[state_name])
-	if state_name == "jump" and current_state == run:
-		jump.initialize(run.speed, run.velocity)
+#	if state_name == "jump" and current_state == run:
+#		jump.initialize(run.speed, run.velocity)
 	._change_state(state_name)
 
 

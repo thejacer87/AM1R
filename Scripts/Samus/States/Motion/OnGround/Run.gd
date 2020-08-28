@@ -2,16 +2,14 @@ extends OnGroundState
 
 class_name RunState
 
-export(float) var MAX_WALK_SPEED = 450
-export(float) var MAX_RUN_SPEED = 700
+var run_speed : float = 10 * Globals.UNIT_SIZE
 
 func enter():
 	speed = 0.0
-	velocity = Vector2()
+	velocity = Vector2.ZERO
 
 	var input_direction = get_input_direction()
-	update_look_direction(input_direction)
-	owner.get_node("AnimationPlayer").play("walk")
+	animation_state.travel("Run")
 
 func handle_input(event):
 	return .handle_input(event)
@@ -20,18 +18,31 @@ func update(delta):
 	var input_direction = get_input_direction()
 	if not input_direction:
 		emit_signal("finished", "idle")
-	update_look_direction(input_direction)
 
-	speed = MAX_RUN_SPEED if Input.is_action_pressed("run") else MAX_WALK_SPEED
-	var collision_info = move(speed, input_direction)
-	if not collision_info:
-		return
-	if speed == MAX_RUN_SPEED and collision_info.collider.is_in_group("environment"):
-		return null
+	velocity.x = input_direction.x * run_speed
+	apply_gravity(delta)
+	apply_movement()
 
-func move(speed, direction):
-	velocity = direction.normalized() * speed
-	owner.move_and_slide(velocity, Vector2(), 5, 2)
-	if owner.get_slide_count() == 0:
-		return
-	return owner.get_slide_collision(0)
+	
+#func _handle_move_input() -> void:
+#	input.x = Input.get_action_strength("right") - Input.get_action_strength("left")
+#	input.y = Input.get_action_strength("down") - Input.get_action_strength("up")
+#	input = input.normalized()
+#
+#	if movement_sm.state.crouch:
+#		velocity.x = 0
+#	elif is_on_floor():
+#		velocity.x = input.x * run_speed
+#	elif is_on_floor():
+#		velocity.x = input.x * run_speed
+#	else:
+#		pass
+#
+#	if input.x != 0:
+#		animation_tree.set(blend % travel, input)
+#
+#	animation_state.travel(travel)
+#
+#
+func apply_movement() -> void:
+	velocity = owner.move_and_slide(velocity, FLOOR)

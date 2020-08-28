@@ -9,9 +9,7 @@ func handle_input(event):
 		emit_signal("finished", "crouch")
 
 
-func enter():
-	owner.get_node("AnimationTree").get("parameters/playback").travel("Idle")
-	owner.get_node("CrouchCollision").set_deferred("disabled", true)
-	owner.get_node("MorphBallCollision").set_deferred("disabled", true)
-	owner.get_node("NeutralCollision").set_deferred("disabled", false)
+func enter() -> void:
+	animation_state.travel("Idle")
+	._set_collision_state("Neutral")
 
