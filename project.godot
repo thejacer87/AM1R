@@ -14,11 +14,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Scripts/Samus/States/Motion/Airborne/Airborne.gd"
 }, {
-"base": "ModeState",
-"class": "CrouchState",
-"language": "GDScript",
-"path": "res://Scripts/Samus/States/Mode/Crouch/Crouch.gd"
-}, {
 "base": "OnGroundState",
 "class": "IdleState",
 "language": "GDScript",
@@ -76,7 +71,6 @@ _global_script_classes=[ {
 } ]
 _global_script_class_icons={
 "AirborneState": "",
-"CrouchState": "",
 "IdleState": "",
 "JumpState": "",
 "ModeState": "",

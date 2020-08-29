@@ -6,6 +6,7 @@ func enter():
 	if mode_state_machine.current_state:
 			if mode_state_machine.current_state == mode_state_machine.states_map["crouch"]:
 				animation_state.travel("Crouch")
+				emit_signal("finished", "crouch")
 			elif mode_state_machine.current_state == mode_state_machine.states_map["morph_ball"]:
 				animation_state.travel("MorphBall")
 			else:

@@ -1,7 +1,5 @@
 extends ModeState
 
-class_name CrouchState
-
 func handle_input(event):
 	if event.is_action_pressed("morph_ball") or event.is_action_pressed("down"):
 		emit_signal("finished", "morph_ball")

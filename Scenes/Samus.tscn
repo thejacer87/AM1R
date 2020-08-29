@@ -1,4 +1,4 @@
-[gd_scene load_steps=69 format=2]
+[gd_scene load_steps=70 format=2]
 
 [ext_resource path="res://Sprites/Samus/power_suit.png" type="Texture" id=1]
 [ext_resource path="res://Scripts/Samus/Samus.gd" type="Script" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://Scripts/Samus/States/Mode/Neutral/Neutral.gd" type="Script" id=8]
 [ext_resource path="res://Scripts/Samus/States/Motion/Airborne/Jump.gd" type="Script" id=9]
 [ext_resource path="res://Scripts/Samus/States/Motion/OnGround/Move.gd" type="Script" id=10]
+[ext_resource path="res://Scripts/Samus/States/Motion/OnGround/Crouch.gd" type="Script" id=11]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 8, 20 )
@@ -525,13 +526,13 @@ states/Idle/node = SubResource( 34 )
 states/Idle/position = Vector2( 193, 261 )
 states/MorphBall/node = SubResource( 37 )
 states/MorphBall/position = Vector2( 478, 581.639 )
-states/Run/node = SubResource( 42 )
-states/Run/position = Vector2( 768, 261 )
+states/Move/node = SubResource( 42 )
+states/Move/position = Vector2( 768, 261 )
 states/SpinJump/node = SubResource( 45 )
 states/SpinJump/position = Vector2( 478, 377.639 )
-transitions = [ "Idle", "Run", SubResource( 46 ), "Run", "Idle", SubResource( 47 ), "Run", "SpinJump", SubResource( 48 ), "SpinJump", "Idle", SubResource( 49 ), "SpinJump", "MorphBall", SubResource( 50 ), "Idle", "MorphBall", SubResource( 51 ), "Run", "MorphBall", SubResource( 52 ), "Crouch", "MorphBall", SubResource( 53 ), "MorphBall", "Crouch", SubResource( 54 ), "Crouch", "Idle", SubResource( 55 ), "Idle", "Crouch", SubResource( 56 ) ]
+transitions = [ "Idle", "Move", SubResource( 46 ), "Move", "Idle", SubResource( 47 ), "Move", "SpinJump", SubResource( 48 ), "SpinJump", "Idle", SubResource( 49 ), "SpinJump", "MorphBall", SubResource( 50 ), "Idle", "MorphBall", SubResource( 51 ), "Move", "MorphBall", SubResource( 52 ), "Crouch", "MorphBall", SubResource( 53 ), "MorphBall", "Crouch", SubResource( 54 ), "Crouch", "Idle", SubResource( 55 ), "Idle", "Crouch", SubResource( 56 ) ]
 start_node = "Idle"
-graph_offset = Vector2( -336.465, 239.047 )
+graph_offset = Vector2( 188.382, 239.047 )
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=58]
 
@@ -560,6 +561,7 @@ START_STATE = NodePath("../MotionStateMachine/Idle")
 script = ExtResource( 5 )
 
 [node name="Crouch" type="Node" parent="MotionStateMachine"]
+script = ExtResource( 11 )
 
 [node name="Move" type="Node" parent="MotionStateMachine"]
 script = ExtResource( 10 )
@@ -592,7 +594,7 @@ script = ExtResource( 6 )
 texture = ExtResource( 1 )
 vframes = 47
 hframes = 43
-frame = 191
+frame = 192
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/CrouchLeft = SubResource( 4 )
@@ -629,7 +631,7 @@ parameters/playback = SubResource( 58 )
 parameters/Crouch/blend_position = Vector2( 0, 0 )
 parameters/Idle/blend_position = Vector2( 0, 0 )
 parameters/MorphBall/blend_position = Vector2( 0, 0 )
-parameters/Run/blend_position = Vector2( 0, 0 )
+parameters/Move/blend_position = Vector2( 0, 0 )
 parameters/SpinJump/blend_position = Vector2( 0, 0 )
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
