@@ -29,14 +29,17 @@ class_name Samus
 #var blend := "parameters/%s/blend_position"
 #
 #
-#onready var label = $RichTextLabel
-#onready var mode_label = $mode
+onready var label = $RichTextLabel
+onready var mode_label = $mode
 #onready var animation_tree = $AnimationTree
 #onready var animation_state = animation_tree.get("parameters/playback")
 #onready var movement_sm = $MovementStateMachine
 #onready var modes_sm = $ModesStateMachine
 
 
+func _physics_process(delta):
+	label.text = $MotionStateMachine.current_state.get_name()
+	mode_label.text = $ModeStateMachine.current_state.get_name()
 
 
 #func set_look_direction(value):

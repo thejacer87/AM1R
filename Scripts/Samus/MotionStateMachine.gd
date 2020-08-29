@@ -16,8 +16,6 @@ func _ready() -> void:
 		"move": move,
 		"spin_jump": spin_jump,
 		"jump": jump,
-		"fall": fall,
-		"spin_fall": spin_fall,
 		"morph_ball": morph_ball,
 	}
 
@@ -27,8 +25,8 @@ func _change_state(state_name):
 		return
 	if state_name in ["jump", "spin_jump"]:
 		states_stack.push_front(states_map[state_name])
-#	if state_name == "jump" and current_state == run:
-#		jump.initialize(run.speed, run.velocity)
+		if current_state == move:
+			jump.initialize(move.velocity)
 	._change_state(state_name)
 
 
