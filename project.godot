@@ -27,12 +27,12 @@ _global_script_classes=[ {
 "base": "MorphState",
 "class": "MorphBallState",
 "language": "GDScript",
-"path": "res://Scripts/Samus/States/Mode/MorphBall/MorphBall.gd"
+"path": "res://Scripts/Samus/States/Morph/MorphBall/MorphBall.gd"
 }, {
 "base": "State",
 "class": "MorphState",
 "language": "GDScript",
-"path": "res://Scripts/Samus/States/Mode/Morph.gd"
+"path": "res://Scripts/Samus/States/Morph/Morph.gd"
 }, {
 "base": "State",
 "class": "MotionState",
@@ -47,7 +47,7 @@ _global_script_classes=[ {
 "base": "MorphState",
 "class": "NeutralState",
 "language": "GDScript",
-"path": "res://Scripts/Samus/States/Mode/Neutral/Neutral.gd"
+"path": "res://Scripts/Samus/States/Morph/Neutral/Neutral.gd"
 }, {
 "base": "MotionState",
 "class": "OnGroundState",

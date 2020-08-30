@@ -3,6 +3,7 @@ extends State
 class_name MorphState
 
 
+onready var motion_state_machine = owner.get_node("MotionStateMachine")
 onready var neutral_collision = owner.get_node("NeutralCollision")
 onready var crouch_collision = owner.get_node("CrouchCollision")
 onready var morph_ball_collision = owner.get_node("MorphBallCollision")

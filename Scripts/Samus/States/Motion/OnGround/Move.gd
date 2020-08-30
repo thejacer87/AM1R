@@ -2,19 +2,14 @@ extends OnGroundState
 
 class_name MoveState
 
-var run_speed : float = 17.75 * Globals.UNIT_SIZE
-
+const RUN_SPEED := 17.75 * Globals.UNIT_SIZE
+const MORPH_SPEED := 21 * Globals.UNIT_SIZE
 
 func enter():
-	if mode_state_machine.current_state:
-#		if mode_state_machine.current_state == mode_state_machine.states_map["crouch"]:
-#			animation_state.travel("Crouch")
-#			emit_signal("finished", "crouch")
-#		el
-		if mode_state_machine.current_state == mode_state_machine.states_map["morph_ball"]:
-			animation_state.travel("MorphBall")
-		else:
-			animation_state.travel("Move")
+	speed = RUN_SPEED
+	if morph_state_machine.current_state == morph_state_machine.states_map["morph_ball"]:
+		speed = MORPH_SPEED
+		animation_state.travel("MorphBall")
 	else:
 		animation_state.travel("Move")
 
@@ -32,6 +27,10 @@ func update(delta):
 	else:
 		emit_signal("finished", "idle")
 
-	velocity.x = input_direction.x * run_speed
+	velocity.x = sign(input_direction.x) * speed
 	.apply_gravity(delta)
-	.apply_movement()
+	if morph_state_machine.current_state == morph_state_machine.states_map["crouch"]:
+		emit_signal("finished", "idle")
+	else:
+		.apply_movement()
+		

@@ -14,7 +14,7 @@ var jump_duration := .8
 var blend := "parameters/%s/blend_position"
 
 
-onready var mode_state_machine = owner.get_node("MorphStateMachine")
+onready var morph_state_machine = owner.get_node("MorphStateMachine")
 onready var animation_tree = owner.get_node("AnimationTree")
 onready var animation_state = animation_tree.get("parameters/playback")
 
