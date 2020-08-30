@@ -1,4 +1,4 @@
-extends ModeState
+extends MorphState
 
 class_name MorphBallState
 

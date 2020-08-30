@@ -2,6 +2,7 @@ extends MotionState
 
 class_name AirborneState
 
+var aerial_speed : float =  10 * Globals.UNIT_SIZE
 var max_jump_velocity
 var min_jump_velocity
 

@@ -24,15 +24,15 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Scripts/Samus/States/Motion/Airborne/Jump.gd"
 }, {
-"base": "State",
-"class": "ModeState",
-"language": "GDScript",
-"path": "res://Scripts/Samus/States/Mode/Mode.gd"
-}, {
-"base": "ModeState",
+"base": "MorphState",
 "class": "MorphBallState",
 "language": "GDScript",
 "path": "res://Scripts/Samus/States/Mode/MorphBall/MorphBall.gd"
+}, {
+"base": "State",
+"class": "MorphState",
+"language": "GDScript",
+"path": "res://Scripts/Samus/States/Mode/Morph.gd"
 }, {
 "base": "State",
 "class": "MotionState",
@@ -44,7 +44,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Scripts/Samus/States/Motion/OnGround/Move.gd"
 }, {
-"base": "ModeState",
+"base": "MorphState",
 "class": "NeutralState",
 "language": "GDScript",
 "path": "res://Scripts/Samus/States/Mode/Neutral/Neutral.gd"
@@ -73,8 +73,8 @@ _global_script_class_icons={
 "AirborneState": "",
 "IdleState": "",
 "JumpState": "",
-"ModeState": "",
 "MorphBallState": "",
+"MorphState": "",
 "MotionState": "",
 "MoveState": "",
 "NeutralState": "",
@@ -171,8 +171,8 @@ arm={
 
 [rendering]
 
-quality/2d/use_pixel_snap=true
 quality/2d/use_nvidia_rect_flicker_workaround=true
+quality/2d/use_pixel_snap=true
 
 [world]
 

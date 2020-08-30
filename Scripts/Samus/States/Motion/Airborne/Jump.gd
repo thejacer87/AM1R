@@ -2,14 +2,9 @@ extends AirborneState
 
 class_name JumpState
 
-const BASE_MAX_HORIZONTAL_SPEED := 400.0
-var horizontal_speed := 0.0
-var max_horizontal_speed = 0.00
-var horizontal_velocity = Vector2.ZERO
+var enter_velocity := Vector2.ZERO
 
-var enter_velocity = Vector2.ZERO
-
-func initialize(velocity):
+func initialize(velocity: Vector2):
 	enter_velocity = velocity
 
 
@@ -25,19 +20,17 @@ func enter():
 	
 	velocity.y = max_jump_velocity
 
-#func handle_input(event: InputEvent):
-#	if event.is_action_pressed("jump"):
-##			todo not high enough to get off the ground!??!
-#		velocity.y = max_jump_velocity
+func handle_input(event: InputEvent):
+	if event.is_action_released("jump") && velocity.y < min_jump_velocity:
+		velocity.y = min_jump_velocity
 
 func update(delta: float) -> void:
 	var input_direction = get_input_direction()
-	var AAAAAAA = input_direction.dot(velocity.normalized())
 	if input_direction:
 		animation_tree.set(blend % "SpinJump", input_direction)
 		animation_tree.set(blend % "Jump", input_direction)
 		if sign(velocity.x) != sign(input_direction.x): 
-			velocity.x = velocity.x * delta
+			velocity.x = aerial_speed * sign(input_direction.x)
 			
 	if velocity.y >= 0 and owner.is_on_floor():
 		animation_state.travel("Move")

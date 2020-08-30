@@ -39,7 +39,7 @@ onready var mode_label = $mode
 
 func _physics_process(delta):
 	label.text = $MotionStateMachine.current_state.get_name()
-	mode_label.text = $ModeStateMachine.current_state.get_name()
+	mode_label.text = $MorphStateMachine.current_state.get_name()
 
 
 #func set_look_direction(value):
