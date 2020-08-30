@@ -648,7 +648,7 @@ script = ExtResource( 6 )
 texture = ExtResource( 1 )
 vframes = 47
 hframes = 43
-frame = 191
+frame = 192
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/CrouchLeft = SubResource( 4 )

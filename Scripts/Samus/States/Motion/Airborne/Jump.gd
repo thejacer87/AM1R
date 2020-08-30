@@ -13,7 +13,8 @@ func enter():
 
 	if input_direction:
 		velocity = enter_velocity 
-		animation_state.travel("SpinJump")
+		if morph_state_machine.current_state != morph_state_machine.states_map["morph_ball"]:
+			animation_state.travel("SpinJump")
 	else:
 		velocity = Vector2.ZERO
 		animation_state.travel("Jump")
