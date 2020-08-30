@@ -35,7 +35,7 @@ func update(delta: float) -> void:
 			
 	if velocity.y >= 0 and owner.is_on_floor():
 		animation_state.travel("Move")
-		emit_signal("finished", "previous")
+		emit_signal("finished", "move")
 
 	.apply_gravity(delta)
 	.apply_movement()
