@@ -10,9 +10,3 @@ func _ready() -> void:
 		"crouch": crouch,
 		"morph_ball": morph_ball,
 	}
-
-func _change_state(state_name):
-	._change_state(state_name)
-
-func handle_input(event):
-	return .handle_input(event)

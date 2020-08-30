@@ -1,3 +1,3 @@
 extends Node
 
-const UNIT_SIZE = 16
+const UNIT_SIZE = 16.0

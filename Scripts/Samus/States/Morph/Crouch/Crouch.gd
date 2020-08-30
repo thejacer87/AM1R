@@ -1,7 +1,20 @@
 extends MorphState
 
+const CROUCH_STICKYNESS := 0.33
 
-onready var timer = $Timer
+
+onready var timer = Timer.new()
+
+func _ready():
+	timer.connect("timeout", self, "_on_timer_timeout")
+	timer.wait_time = CROUCH_STICKYNESS
+	timer.one_shot = true
+	add_child(timer)
+
+
+func enter() -> void:
+	animation_state.travel("Crouch")
+	._set_collision_state("Crouch")
 
 
 func handle_input(event: InputEvent):
@@ -18,11 +31,8 @@ func handle_input(event: InputEvent):
 		timer.stop()
 	return .handle_input(event)
 
+func exit() -> void:
+	timer.stop()
 
-func enter() -> void:
-	animation_state.travel("Crouch")
-	._set_collision_state("Crouch")
-	
-
-func _on_Timer_timeout():
+func _on_timer_timeout():
 	emit_signal("finished", "neutral")

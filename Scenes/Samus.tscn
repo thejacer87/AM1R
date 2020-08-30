@@ -614,6 +614,19 @@ position = Vector2( 0, 24.5 )
 shape = SubResource( 3 )
 disabled = true
 
+[node name="MorphStateMachine" type="Node" parent="."]
+script = ExtResource( 4 )
+START_STATE = NodePath("../MorphStateMachine/Neutral")
+
+[node name="Crouch" type="Node" parent="MorphStateMachine"]
+script = ExtResource( 7 )
+
+[node name="Neutral" type="Node" parent="MorphStateMachine"]
+script = ExtResource( 8 )
+
+[node name="MorphBall" type="Node" parent="MorphStateMachine"]
+script = ExtResource( 6 )
+
 [node name="MotionStateMachine" type="Node" parent="."]
 script = ExtResource( 3 )
 START_STATE = NodePath("../MotionStateMachine/Idle")
@@ -627,28 +640,11 @@ script = ExtResource( 10 )
 [node name="Jump" type="Node" parent="MotionStateMachine"]
 script = ExtResource( 9 )
 
-[node name="MorphStateMachine" type="Node" parent="."]
-script = ExtResource( 4 )
-START_STATE = NodePath("../MorphStateMachine/Neutral")
-
-[node name="Crouch" type="Node" parent="MorphStateMachine"]
-script = ExtResource( 7 )
-
-[node name="Timer" type="Timer" parent="MorphStateMachine/Crouch"]
-wait_time = 0.33
-one_shot = true
-
-[node name="Neutral" type="Node" parent="MorphStateMachine"]
-script = ExtResource( 8 )
-
-[node name="MorphBall" type="Node" parent="MorphStateMachine"]
-script = ExtResource( 6 )
-
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )
 vframes = 47
 hframes = 43
-frame = 192
+frame = 191
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/CrouchLeft = SubResource( 4 )
@@ -690,21 +686,21 @@ parameters/Move/blend_position = Vector2( 0, 0 )
 parameters/SpinJump/blend_position = Vector2( 0.0436817, -0.298969 )
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
-margin_left = -50.3726
-margin_top = -40.7612
-margin_right = -10.3726
-margin_bottom = -0.761166
+margin_left = -36.734
+margin_top = -29.7727
+margin_right = 41.266
+margin_bottom = 11.2273
 text = "Idle"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="mode" type="RichTextLabel" parent="."]
-margin_left = 10.2768
-margin_top = -41.6531
-margin_right = 50.2768
-margin_bottom = -1.65306
+margin_left = -36.6381
+margin_top = -44.3282
+margin_right = 66.3619
+margin_bottom = -3.32818
+text = "Neutral"
 __meta__ = {
 "_edit_use_anchors_": false
 }
-[connection signal="timeout" from="MorphStateMachine/Crouch/Timer" to="MorphStateMachine/Crouch" method="_on_Timer_timeout"]

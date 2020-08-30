@@ -3,14 +3,13 @@ extends State
 class_name MotionState
 
 const FLOOR := Vector2.UP
-const MAX_FALL_SPEED := 2000
+const MAX_FALL_SPEED := 415.0
 
-var gravity
+var gravity : float
 var velocity := Vector2.ZERO
-var health := 1
-var max_jump_height : float = 7.75 * Globals.UNIT_SIZE
-var min_jump_height : float = 2.25 * Globals.UNIT_SIZE
-var jump_duration := .8
+var max_jump_height := 7.75 * Globals.UNIT_SIZE
+var min_jump_height := 2.25 * Globals.UNIT_SIZE
+var jump_duration := 0.6
 var blend := "parameters/%s/blend_position"
 
 
@@ -22,8 +21,6 @@ onready var animation_state = animation_tree.get("parameters/playback")
 func _ready() -> void:
 	gravity = 2 * max_jump_height / pow(jump_duration, 2)
 
-func handle_input(event: InputEvent):
-	.handle_input(event)
 
 func get_input_direction() -> Vector2:
 	var input = Vector2.ZERO
@@ -35,6 +32,10 @@ func get_input_direction() -> Vector2:
 func update(delta: float) -> void:
 	apply_gravity(delta)
 	apply_movement()
+
+
+func update_blend_position(animation: String):
+	animation_tree.set(blend % animation, get_input_direction())
 
 
 func apply_gravity(delta: float) -> void:
