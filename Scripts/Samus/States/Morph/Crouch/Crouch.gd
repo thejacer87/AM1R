@@ -31,8 +31,10 @@ func handle_input(event: InputEvent):
 		timer.stop()
 	return .handle_input(event)
 
+
 func exit() -> void:
 	timer.stop()
 
-func _on_timer_timeout():
+
+func _on_timer_timeout() -> void:
 	emit_signal("finished", "neutral")

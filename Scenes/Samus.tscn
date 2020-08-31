@@ -1,4 +1,4 @@
-[gd_scene load_steps=84 format=2]
+[gd_scene load_steps=91 format=2]
 
 [ext_resource path="res://Sprites/Samus/power_suit.png" type="Texture" id=1]
 [ext_resource path="res://Scripts/Samus/Samus.gd" type="Script" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://Scripts/Samus/States/Morph/Neutral/Neutral.gd" type="Script" id=8]
 [ext_resource path="res://Scripts/Samus/States/Motion/Airborne/Jump.gd" type="Script" id=9]
 [ext_resource path="res://Scripts/Samus/States/Motion/OnGround/Move.gd" type="Script" id=10]
+[ext_resource path="res://Scripts/Samus/States/Motion/Airborne/Fall.gd" type="Script" id=11]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 8, 20 )
@@ -148,6 +149,40 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ 284 ]
+}
+
+[sub_resource type="Animation" id=74]
+resource_name = "FallLeft"
+length = 0.7
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 532, 531, 530, 529 ]
+}
+
+[sub_resource type="Animation" id=75]
+resource_name = "FallRight"
+length = 0.7
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 542, 543, 544, 545 ]
 }
 
 [sub_resource type="Animation" id=12]
@@ -289,6 +324,40 @@ tracks/0/keys = {
 "values": [ 199 ]
 }
 
+[sub_resource type="Animation" id=76]
+resource_name = "JumpLeft"
+length = 0.4
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.05, 0.1, 0.25 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 536, 535, 534 ]
+}
+
+[sub_resource type="Animation" id=77]
+resource_name = "JumpRight"
+length = 0.4
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.05, 0.1, 0.25 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 538, 539, 540 ]
+}
+
 [sub_resource type="Animation" id=21]
 resource_name = "MorphLeft"
 length = 0.8
@@ -356,9 +425,9 @@ tracks/0/keys = {
 }
 
 [sub_resource type="Animation" id=25]
-length = 0.8
+length = 0.5
 loop = true
-step = 0.08
+step = 0.05
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
@@ -366,10 +435,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.08, 0.16, 0.24, 0.32, 0.4, 0.48, 0.56, 0.64, 0.72 ),
+"times": PoolRealArray( 0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 667, 668, 669, 670, 671, 672, 673, 674, 675, 676 ]
+"values": [ 667, 668, 670, 669, 671, 672, 673, 674, 675, 676 ]
 }
 
 [sub_resource type="Animation" id=26]
@@ -434,6 +503,19 @@ blend_point_1/node = SubResource( 30 )
 blend_point_1/pos = Vector2( 1, 0 )
 blend_mode = 1
 
+[sub_resource type="AnimationNodeAnimation" id=88]
+animation = "FallLeft"
+
+[sub_resource type="AnimationNodeAnimation" id=89]
+animation = "FallRight"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id=78]
+blend_point_0/node = SubResource( 88 )
+blend_point_0/pos = Vector2( -1, 0 )
+blend_point_1/node = SubResource( 89 )
+blend_point_1/pos = Vector2( 1, 0 )
+blend_mode = 1
+
 [sub_resource type="AnimationNodeAnimation" id=32]
 animation = "IdleLeft"
 
@@ -447,70 +529,30 @@ blend_point_1/node = SubResource( 33 )
 blend_point_1/pos = Vector2( 1, 0 )
 blend_mode = 1
 
-[sub_resource type="AnimationNodeAnimation" id=35]
-animation = "IdleLeft"
+[sub_resource type="AnimationNodeAnimation" id=79]
+animation = "FallLeft"
 
-[sub_resource type="AnimationNodeAnimation" id=36]
-animation = "IdleRight"
-
-[sub_resource type="AnimationNodeAnimation" id=37]
-animation = "IdleLeftAimUp"
-
-[sub_resource type="AnimationNodeAnimation" id=38]
-animation = "IdleRightAimUp"
-
-[sub_resource type="AnimationNodeAnimation" id=39]
-animation = "IdleRightAimUpRight"
-
-[sub_resource type="AnimationNodeAnimation" id=40]
-animation = "IdleLeftAimUpLeft"
-
-[sub_resource type="AnimationNodeAnimation" id=41]
-animation = "IdleLeftAimDownLeft"
-
-[sub_resource type="AnimationNodeAnimation" id=42]
-animation = "IdleRightAimDownRight"
-
-[sub_resource type="AnimationNodeAnimation" id=43]
-animation = "SpinJumpLeft"
-
-[sub_resource type="AnimationNodeAnimation" id=44]
-animation = "IdleRightAimUpRight"
+[sub_resource type="AnimationNodeAnimation" id=80]
+animation = "FallRight"
 
 [sub_resource type="AnimationNodeBlendSpace2D" id=45]
-blend_point_0/node = SubResource( 35 )
+blend_point_0/node = SubResource( 79 )
 blend_point_0/pos = Vector2( -1, 0 )
-blend_point_1/node = SubResource( 36 )
-blend_point_1/pos = Vector2( 1, 0 )
-blend_point_2/node = SubResource( 37 )
-blend_point_2/pos = Vector2( -0.1, -1 )
-blend_point_3/node = SubResource( 38 )
-blend_point_3/pos = Vector2( 0.1, -1 )
-blend_point_4/node = SubResource( 39 )
-blend_point_4/pos = Vector2( 0.5, -0.5 )
-blend_point_5/node = SubResource( 40 )
-blend_point_5/pos = Vector2( -0.5, -0.5 )
-blend_point_6/node = SubResource( 41 )
-blend_point_6/pos = Vector2( -0.1, 1 )
-blend_point_7/node = SubResource( 42 )
-blend_point_7/pos = Vector2( 0.1, 1 )
-blend_point_8/node = SubResource( 43 )
-blend_point_8/pos = Vector2( 0, 1 )
-blend_point_9/node = SubResource( 44 )
-blend_point_9/pos = Vector2( 0.5, -0.5 )
-
-[sub_resource type="AnimationNodeAnimation" id=46]
-animation = "MorphLeft"
-
-[sub_resource type="AnimationNodeAnimation" id=47]
-animation = "MorphRight"
-
-[sub_resource type="AnimationNodeBlendSpace2D" id=48]
-blend_point_0/node = SubResource( 46 )
-blend_point_0/pos = Vector2( -1, 0 )
-blend_point_1/node = SubResource( 47 )
+blend_point_1/node = SubResource( 80 )
 blend_point_1/pos = Vector2( 1, 0 )
 blend_mode = 1
+
+[sub_resource type="AnimationNodeAnimation" id=90]
+animation = "MorphLeft"
+
+[sub_resource type="AnimationNodeAnimation" id=91]
+animation = "MorphRight"
+
+[sub_resource type="AnimationNodeBlendSpace1D" id=92]
+blend_point_0/node = SubResource( 90 )
+blend_point_0/pos = -0.1
+blend_point_1/node = SubResource( 91 )
+blend_point_1/pos = 0.1
 
 [sub_resource type="AnimationNodeAnimation" id=49]
 animation = "RunLeft"
@@ -535,6 +577,19 @@ blend_point_3/node = SubResource( 52 )
 blend_point_3/pos = Vector2( 0, -1 )
 blend_mode = 1
 
+[sub_resource type="AnimationNodeAnimation" id=86]
+animation = "SpinJumpLeft"
+
+[sub_resource type="AnimationNodeAnimation" id=87]
+animation = "SpinJumpRight"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id=81]
+blend_point_0/node = SubResource( 86 )
+blend_point_0/pos = Vector2( -1, 0 )
+blend_point_1/node = SubResource( 87 )
+blend_point_1/pos = Vector2( 1, 0 )
+blend_mode = 1
+
 [sub_resource type="AnimationNodeAnimation" id=54]
 animation = "SpinJumpLeft"
 
@@ -554,62 +609,83 @@ blend_mode = 1
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=59]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=60]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=61]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=62]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=63]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=64]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=65]
-
 [sub_resource type="AnimationNodeStateMachineTransition" id=66]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=67]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=68]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=69]
+[sub_resource type="AnimationNodeStateMachineTransition" id=82]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=70]
+[sub_resource type="AnimationNodeStateMachineTransition" id=83]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=71]
+[sub_resource type="AnimationNodeStateMachineTransition" id=84]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=85]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=93]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=94]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=95]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=96]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=97]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=98]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=99]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=100]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=101]
 
 [sub_resource type="AnimationNodeStateMachine" id=72]
 states/Crouch/node = SubResource( 31 )
-states/Crouch/position = Vector2( 193, 444.639 )
+states/Crouch/position = Vector2( -1, 334.639 )
+states/Fall/node = SubResource( 78 )
+states/Fall/position = Vector2( -411, -67.953 )
 states/Idle/node = SubResource( 34 )
-states/Idle/position = Vector2( 193, 261 )
+states/Idle/position = Vector2( -418, 187 )
 states/Jump/node = SubResource( 45 )
-states/Jump/position = Vector2( 498, 96 )
-states/MorphBall/node = SubResource( 48 )
-states/MorphBall/position = Vector2( 498, 444.639 )
+states/Jump/position = Vector2( -101, -67.953 )
+states/MorphBall/node = SubResource( 92 )
+states/MorphBall/position = Vector2( -1, 67.639 )
 states/Move/node = SubResource( 53 )
-states/Move/position = Vector2( 863, 261 )
+states/Move/position = Vector2( 412, 187 )
+states/SpinFall/node = SubResource( 81 )
+states/SpinFall/position = Vector2( 147, -67.953 )
 states/SpinJump/node = SubResource( 56 )
-states/SpinJump/position = Vector2( 863, 96 )
-transitions = [ "Idle", "Move", SubResource( 57 ), "Move", "Idle", SubResource( 58 ), "Move", "SpinJump", SubResource( 59 ), "SpinJump", "Idle", SubResource( 60 ), "SpinJump", "MorphBall", SubResource( 61 ), "Idle", "MorphBall", SubResource( 62 ), "Move", "MorphBall", SubResource( 63 ), "Crouch", "MorphBall", SubResource( 64 ), "MorphBall", "Crouch", SubResource( 65 ), "Crouch", "Idle", SubResource( 66 ), "Idle", "Crouch", SubResource( 67 ), "Idle", "Jump", SubResource( 68 ), "Jump", "Idle", SubResource( 69 ), "Jump", "MorphBall", SubResource( 70 ), "SpinJump", "Jump", SubResource( 71 ) ]
+states/SpinJump/position = Vector2( 412, -67.953 )
+transitions = [ "Idle", "Move", SubResource( 57 ), "Move", "Idle", SubResource( 58 ), "Move", "SpinJump", SubResource( 59 ), "Crouch", "Idle", SubResource( 66 ), "Idle", "Crouch", SubResource( 67 ), "Idle", "Jump", SubResource( 68 ), "Jump", "Fall", SubResource( 82 ), "Fall", "Idle", SubResource( 83 ), "SpinJump", "SpinFall", SubResource( 84 ), "SpinFall", "Idle", SubResource( 85 ), "SpinJump", "MorphBall", SubResource( 93 ), "MorphBall", "Crouch", SubResource( 94 ), "Crouch", "MorphBall", SubResource( 95 ), "Idle", "MorphBall", SubResource( 96 ), "Move", "MorphBall", SubResource( 97 ), "Jump", "MorphBall", SubResource( 98 ), "Fall", "MorphBall", SubResource( 99 ), "SpinFall", "MorphBall", SubResource( 100 ), "MorphBall", "Idle", SubResource( 101 ) ]
 start_node = "Idle"
-graph_offset = Vector2( -65.618, 48.047 )
+graph_offset = Vector2( -712.414, -88.2487 )
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=73]
 
 [node name="Samus" type="KinematicBody2D"]
 script = ExtResource( 2 )
 
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+vframes = 47
+hframes = 43
+frame = 192
+
 [node name="NeutralCollision" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2( 0, 12 )
 shape = SubResource( 1 )
 
 [node name="CrouchCollision" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2( 0, 16.5 )
 shape = SubResource( 2 )
 disabled = true
 
 [node name="MorphBallCollision" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2( 0, 24.5 )
 shape = SubResource( 3 )
 disabled = true
@@ -640,13 +716,11 @@ script = ExtResource( 10 )
 [node name="Jump" type="Node" parent="MotionStateMachine"]
 script = ExtResource( 9 )
 
-[node name="Sprite" type="Sprite" parent="."]
-texture = ExtResource( 1 )
-vframes = 47
-hframes = 43
-frame = 190
+[node name="Fall" type="Node" parent="MotionStateMachine"]
+script = ExtResource( 11 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "IdleLeft"
 anims/CrouchLeft = SubResource( 4 )
 anims/CrouchLeftAimDownLeft = SubResource( 5 )
 anims/CrouchLeftAimUp = SubResource( 6 )
@@ -655,6 +729,8 @@ anims/CrouchRight = SubResource( 8 )
 anims/CrouchRightAimDownRight = SubResource( 9 )
 anims/CrouchRightAimUp = SubResource( 10 )
 anims/CrouchRightAimUpRight = SubResource( 11 )
+anims/FallLeft = SubResource( 74 )
+anims/FallRight = SubResource( 75 )
 anims/Heal = SubResource( 12 )
 anims/IdleLeft = SubResource( 13 )
 anims/IdleLeftAimDownLeft = SubResource( 14 )
@@ -664,6 +740,8 @@ anims/IdleRight = SubResource( 17 )
 anims/IdleRightAimDownRight = SubResource( 18 )
 anims/IdleRightAimUp = SubResource( 19 )
 anims/IdleRightAimUpRight = SubResource( 20 )
+anims/JumpLeft = SubResource( 76 )
+anims/JumpRight = SubResource( 77 )
 anims/MorphLeft = SubResource( 21 )
 anims/MorphRight = SubResource( 22 )
 anims/RunLeft = SubResource( 23 )
@@ -679,11 +757,13 @@ anim_player = NodePath("../AnimationPlayer")
 active = true
 parameters/playback = SubResource( 73 )
 parameters/Crouch/blend_position = Vector2( 0, 0 )
+parameters/Fall/blend_position = Vector2( 0, 0 )
 parameters/Idle/blend_position = Vector2( 0, 0 )
-parameters/Jump/blend_position = Vector2( 0.049922, 0.688442 )
+parameters/Jump/blend_position = Vector2( 0, 0 )
 parameters/MorphBall/blend_position = Vector2( 0, 0 )
 parameters/Move/blend_position = Vector2( 0, 0 )
-parameters/SpinJump/blend_position = Vector2( 0.0436817, -0.298969 )
+parameters/SpinFall/blend_position = Vector2( 0, 0 )
+parameters/SpinJump/blend_position = Vector2( 0, 0 )
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 margin_left = -36.734
