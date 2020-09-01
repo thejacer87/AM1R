@@ -7,6 +7,7 @@ var min_jump_velocity
 var aerial_speed : float = 10 * Globals.UNIT_SIZE
 var enter_velocity := Vector2.ZERO
 
+
 func initialize(velocity: Vector2) -> void:
 	enter_velocity = velocity
 

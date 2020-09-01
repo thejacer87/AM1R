@@ -29,7 +29,6 @@ func update(delta: float) -> void:
 			velocity.x = aerial_speed * sign(input_direction.x)
 
 	if velocity.y >= 0:
-		animation_state.travel("Fall")
 		emit_signal("finished", "fall")
 
 	.update(delta)

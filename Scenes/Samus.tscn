@@ -674,11 +674,11 @@ disabled = true
 script = ExtResource( 4 )
 START_STATE = NodePath("Neutral")
 
-[node name="Crouch" type="Node" parent="MorphStateMachine"]
-script = ExtResource( 7 )
-
 [node name="Neutral" type="Node" parent="MorphStateMachine"]
 script = ExtResource( 8 )
+
+[node name="Crouch" type="Node" parent="MorphStateMachine"]
+script = ExtResource( 7 )
 
 [node name="MorphBall" type="Node" parent="MorphStateMachine"]
 script = ExtResource( 6 )

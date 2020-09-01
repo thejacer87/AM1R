@@ -20,14 +20,16 @@ func update(delta: float) -> void:
 	var input_direction = get_input_direction()
 	if input_direction:
 		update_blend_position("Idle")
-		update_blend_position("MorphBall")
-		update_blend_position("Crouch")
 		update_blend_position("Move")
-		update_blend_position("Fall")
 		update_blend_position("Jump")
+		update_blend_position("Fall")
+		update_blend_position("Neutral")
+		update_blend_position("Crouch")
+		update_blend_position("MorphBall")
 	else:
 		emit_signal("finished", "idle")
 
+	# Change to idle if crouching so Samus stops moving
 	if morph_state_machine.current_state == morph_state_machine.states_map["crouch"]:
 		emit_signal("finished", "idle")
 

@@ -14,7 +14,7 @@ func enter():
 func update(delta: float) -> void:
 	var input_direction = get_input_direction()
 	if morph_state_machine.current_state == morph_state_machine.states_map["crouch"]:
-		if input_direction:
+		if input_direction.x:
 			update_blend_position("Crouch")
 	elif morph_state_machine.current_state != morph_state_machine.states_map["crouch"] or morph_state_machine.current_state != morph_state_machine.states_map["morph_ball"]:
 		if input_direction.x:
