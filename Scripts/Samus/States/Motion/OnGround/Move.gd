@@ -23,6 +23,8 @@ func update(delta: float) -> void:
 		update_blend_position("MorphBall")
 		update_blend_position("Crouch")
 		update_blend_position("Move")
+		update_blend_position("Fall")
+		update_blend_position("Jump")
 	else:
 		emit_signal("finished", "idle")
 
