@@ -30,13 +30,11 @@ func get_input_direction() -> Vector2:
 
 
 func update(delta: float) -> void:
-	print(animation_state.get_current_node())
 	apply_gravity(delta)
 	apply_movement()
 
 
 func update_blend_position(animation: String):
-	print(get_input_direction())
 	animation_tree.set(blend % animation, get_input_direction())
 
 

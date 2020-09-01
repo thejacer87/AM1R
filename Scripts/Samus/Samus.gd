@@ -37,6 +37,9 @@ onready var mode_label = $mode
 #onready var modes_sm = $ModesStateMachine
 
 
+func _process(delta):
+	var test = 3
+	
 func _physics_process(delta):
 	label.text = $MotionStateMachine.current_state.get_name()
 	mode_label.text = $MorphStateMachine.current_state.get_name()
