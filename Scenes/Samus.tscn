@@ -620,11 +620,11 @@ blend_mode = 1
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=71]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=74]
+[sub_resource type="AnimationNodeStateMachineTransition" id=72]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=75]
+[sub_resource type="AnimationNodeStateMachineTransition" id=73]
 
-[sub_resource type="AnimationNodeStateMachine" id=72]
+[sub_resource type="AnimationNodeStateMachine" id=74]
 states/Crouch/node = SubResource( 35 )
 states/Crouch/position = Vector2( -1, 334.639 )
 states/Fall/node = SubResource( 38 )
@@ -641,11 +641,11 @@ states/SpinFall/node = SubResource( 53 )
 states/SpinFall/position = Vector2( 147, -67.953 )
 states/SpinJump/node = SubResource( 56 )
 states/SpinJump/position = Vector2( 412, -67.953 )
-transitions = [ "Fall", "Idle", SubResource( 57 ), "Idle", "Crouch", SubResource( 58 ), "Crouch", "Idle", SubResource( 59 ), "Idle", "Move", SubResource( 60 ), "Move", "Idle", SubResource( 61 ), "Idle", "MorphBall", SubResource( 62 ), "MorphBall", "Idle", SubResource( 63 ), "MorphBall", "Move", SubResource( 64 ), "Move", "MorphBall", SubResource( 65 ), "Move", "SpinJump", SubResource( 66 ), "SpinJump", "SpinFall", SubResource( 67 ), "SpinFall", "MorphBall", SubResource( 68 ), "SpinFall", "Idle", SubResource( 69 ), "Jump", "Fall", SubResource( 70 ), "Idle", "Jump", SubResource( 71 ), "MorphBall", "Crouch", SubResource( 74 ), "Crouch", "MorphBall", SubResource( 75 ) ]
+transitions = [ "Fall", "Idle", SubResource( 57 ), "Idle", "Crouch", SubResource( 58 ), "Crouch", "Idle", SubResource( 59 ), "Idle", "Move", SubResource( 60 ), "Move", "Idle", SubResource( 61 ), "Idle", "MorphBall", SubResource( 62 ), "MorphBall", "Idle", SubResource( 63 ), "MorphBall", "Move", SubResource( 64 ), "Move", "MorphBall", SubResource( 65 ), "Move", "SpinJump", SubResource( 66 ), "SpinJump", "SpinFall", SubResource( 67 ), "SpinFall", "MorphBall", SubResource( 68 ), "SpinFall", "Idle", SubResource( 69 ), "Jump", "Fall", SubResource( 70 ), "Idle", "Jump", SubResource( 71 ), "MorphBall", "Crouch", SubResource( 72 ), "Crouch", "MorphBall", SubResource( 73 ) ]
 start_node = "Idle"
 graph_offset = Vector2( -651.414, -120.249 )
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id=73]
+[sub_resource type="AnimationNodeStateMachinePlayback" id=75]
 resource_local_to_scene = false
 
 [node name="Samus" type="KinematicBody2D"]
@@ -655,21 +655,18 @@ script = ExtResource( 2 )
 texture = ExtResource( 1 )
 vframes = 47
 hframes = 43
-frame = 190
+frame = 191
 
 [node name="NeutralCollision" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2( 0, 12 )
 shape = SubResource( 1 )
 
 [node name="CrouchCollision" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2( 0, 16.5 )
 shape = SubResource( 2 )
 disabled = true
 
 [node name="MorphBallCollision" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2( 0, 24.5 )
 shape = SubResource( 3 )
 disabled = true
@@ -735,10 +732,10 @@ anims/SpinJumpLeft = SubResource( 31 )
 anims/SpinJumpRight = SubResource( 32 )
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
-tree_root = SubResource( 72 )
+tree_root = SubResource( 74 )
 anim_player = NodePath("../AnimationPlayer")
 active = true
-parameters/playback = SubResource( 73 )
+parameters/playback = SubResource( 75 )
 parameters/Crouch/blend_position = Vector2( 0, 0 )
 parameters/Fall/blend_position = Vector2( -0.0658208, -0.123487 )
 parameters/Idle/blend_position = Vector2( -0.218081, -0.100877 )
