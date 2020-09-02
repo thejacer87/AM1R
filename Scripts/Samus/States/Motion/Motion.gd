@@ -9,7 +9,7 @@ var gravity : float
 var velocity := Vector2.ZERO
 var max_jump_height := 7.75 * Globals.UNIT_SIZE
 var min_jump_height := 2.25 * Globals.UNIT_SIZE
-var jump_duration := 0.6
+var jump_duration := 0.7
 var blend := "parameters/%s/blend_position"
 
 

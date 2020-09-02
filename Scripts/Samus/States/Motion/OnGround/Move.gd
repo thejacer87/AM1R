@@ -2,8 +2,8 @@ extends OnGroundState
 
 class_name MoveState
 
-const RUN_SPEED := 17.75 * Globals.UNIT_SIZE
-const MORPH_SPEED := 21 * Globals.UNIT_SIZE
+const RUN_SPEED := 7.75 * Globals.UNIT_SIZE
+const MORPH_SPEED := 10 * Globals.UNIT_SIZE
 
 
 func enter() -> void:
@@ -14,7 +14,7 @@ func enter() -> void:
 		travel = "MorphBall"
 
 	animation_state.travel(travel)
-
+	
 
 func update(delta: float) -> void:
 	var input_direction = get_input_direction()

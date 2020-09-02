@@ -4,7 +4,7 @@ class_name AirborneState
 
 var max_jump_velocity
 var min_jump_velocity
-var aerial_speed : float = 10 * Globals.UNIT_SIZE
+var aerial_speed : float = 5 * Globals.UNIT_SIZE
 var enter_velocity := Vector2.ZERO
 
 

@@ -5,6 +5,7 @@ const CROUCH_STICKYNESS := 0.33
 
 onready var timer = Timer.new()
 
+
 func _ready():
 	timer.connect("timeout", self, "_on_timer_timeout")
 	timer.wait_time = CROUCH_STICKYNESS
