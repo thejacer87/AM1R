@@ -26,12 +26,15 @@ func update(delta: float) -> void:
 		update_blend_position("Neutral")
 		update_blend_position("Crouch")
 		update_blend_position("MorphBall")
+	
+		animation_tree.set("parameters/Move/1/TurnRightGate/turn_right/blend_position", sign(input_direction.x))
+		animation_tree.set("parameters/Move/0/TurnLeftGate/turn_left/blend_position", sign(-input_direction.x))
 	else:
 		emit_signal("finished", "idle")
 
 	# Change to idle if crouching so Samus stops moving
 	if morph_state_machine.current_state == morph_state_machine.states_map["crouch"]:
 		emit_signal("finished", "idle")
-
+	
 	velocity.x = sign(input_direction.x) * speed
 	.update(delta)
