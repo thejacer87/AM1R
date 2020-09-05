@@ -28,7 +28,7 @@ func update(delta: float) -> void:
 		update_blend_position("MorphBall")
 	
 		var look_same_as_move = sign(input_direction.x) == sign(velocity.x)
-		animation_tree.set("parameters/Move/1/TurnRightGate/turn_right/blend_position", -1 if look_same_as_move else 1)
+		animation_tree.set("parameters/Move/1/TurnRightGate/turn_right/blend_position", 1 if look_same_as_move else 1)
 		animation_tree.set("parameters/Move/0/TurnLeftGate/turn_left/blend_position", 1 if look_same_as_move else 1)
 	else:
 		emit_signal("finished", "idle")
