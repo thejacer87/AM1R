@@ -2,7 +2,7 @@ extends OnGroundState
 
 class_name IdleState
 
-func enter():
+func enter() -> void:
 	if morph_state_machine.current_state == morph_state_machine.states_map["crouch"]:
 		animation_state.travel("Crouch")
 	elif morph_state_machine.current_state == morph_state_machine.states_map["morph_ball"]:
@@ -23,3 +23,9 @@ func update(delta: float) -> void:
 			emit_signal("finished", "move")
 			velocity.x = 0.0
 	.update(delta)
+
+
+func exit() -> void:
+	var input_direction = get_input_direction()
+	animation_tree.set("parameters/Move/1/TurnRightGate/turn_right/blend_position", -sign(input_direction.x))
+	animation_tree.set("parameters/Move/0/TurnLeftGate/turn_left/blend_position", -sign(input_direction.x))

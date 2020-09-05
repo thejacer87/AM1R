@@ -19,7 +19,7 @@ func update(delta: float) -> void:
 	if input_direction:
 		update_blend_position("SpinFall")
 		update_blend_position("Fall")
-		if sign(velocity.x) != sign(input_direction.x): 
+		if sign(velocity.x) != sign(input_direction.x):
 			velocity.x = aerial_speed * sign(input_direction.x)
 
 	if velocity.y >= 0 and owner.is_on_floor():

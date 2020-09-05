@@ -2,8 +2,8 @@ extends OnGroundState
 
 class_name MoveState
 
-const RUN_SPEED := 7.75 * Globals.UNIT_SIZE
-const MORPH_SPEED := 10 * Globals.UNIT_SIZE
+const RUN_SPEED := 10 * Globals.UNIT_SIZE
+const MORPH_SPEED := RUN_SPEED * 1.5
 
 
 func enter() -> void:
@@ -14,7 +14,13 @@ func enter() -> void:
 		travel = "MorphBall"
 
 	animation_state.travel(travel)
-	
+
+
+func handle_input(event: InputEvent):
+	if morph_state_machine.current_state == morph_state_machine.states_map["morph_ball"]:
+		speed = MORPH_SPEED
+	return .handle_input(event)
+
 
 func update(delta: float) -> void:
 	var input_direction = get_input_direction()
@@ -26,16 +32,12 @@ func update(delta: float) -> void:
 		update_blend_position("Neutral")
 		update_blend_position("Crouch")
 		update_blend_position("MorphBall")
-	
-		var look_same_as_move = sign(input_direction.x) == sign(velocity.x)
-		animation_tree.set("parameters/Move/1/TurnRightGate/turn_right/blend_position", 1 if look_same_as_move else 1)
-		animation_tree.set("parameters/Move/0/TurnLeftGate/turn_left/blend_position", 1 if look_same_as_move else 1)
 	else:
 		emit_signal("finished", "idle")
 
 	# Change to idle if crouching so Samus stops moving
 	if morph_state_machine.current_state == morph_state_machine.states_map["crouch"]:
 		emit_signal("finished", "idle")
-	
+
 	velocity.x = sign(input_direction.x) * speed
 	.update(delta)

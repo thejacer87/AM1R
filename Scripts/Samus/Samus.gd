@@ -12,3 +12,5 @@ func _physics_process(delta):
 	mode_label.text = $MorphStateMachine.current_state.get_name()
 	print(label.text)
 
+func _process(delta):
+	var test =1
