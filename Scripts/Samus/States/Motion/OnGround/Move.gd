@@ -24,7 +24,7 @@ func handle_input(event: InputEvent):
 
 func update(delta: float) -> void:
 	var input_direction = get_input_direction()
-	if input_direction:
+	if input_direction.x:
 		update_blend_position("Idle")
 		update_blend_position("Move")
 		update_blend_position("Jump")
