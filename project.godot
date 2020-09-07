@@ -104,8 +104,8 @@ GameMusic="*res://Scripts/GameMusic.gd"
 
 [display]
 
-window/size/width=600
-window/size/height=360
+window/size/width=300
+window/size/height=180
 window/size/always_on_top=true
 window/size/test_width=1200
 window/size/test_height=720
