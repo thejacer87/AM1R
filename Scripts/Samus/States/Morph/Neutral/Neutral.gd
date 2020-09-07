@@ -11,6 +11,5 @@ func handle_input(event):
 
 
 func enter() -> void:
-	animation_state.travel("Idle")
 	._set_collision_state("Neutral")
 

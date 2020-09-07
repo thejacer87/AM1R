@@ -23,11 +23,13 @@ func handle_input(event: InputEvent):
 		emit_signal("finished", "morph_ball")
 	if event.is_action_pressed("up"):
 		emit_signal("finished", "neutral")
+	if event.is_action_pressed("jump"):
+		emit_signal("finished", "neutral")
 	return .handle_input(event)
 
 
 func update(delta: float) -> void:
-	# TODO: if moving in morphball, then morph out to crouch. this wont fire if already holding left/right... FIX IT!!	
+	# TODO: if moving in morphball, then morph out to crouch. this wont fire if already holding left/right... FIX IT!!
 	if Input.is_action_just_pressed("right") or Input.is_action_just_pressed("left"):
 		timer.start()
 	if Input.is_action_just_released("right"):

@@ -21,7 +21,7 @@ func _change_state(state_name):
 	if current_state == move and state_name == "jump":
 		jump.initialize(move.velocity)
 	if current_state == jump and state_name == "fall":
-		fall.initialize(jump.velocity)             
+		fall.initialize(jump.velocity)
 	._change_state(state_name)
 
 

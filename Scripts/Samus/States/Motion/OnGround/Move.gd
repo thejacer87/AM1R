@@ -2,7 +2,7 @@ extends OnGroundState
 
 class_name MoveState
 
-const RUN_SPEED := 10 * Globals.UNIT_SIZE
+const RUN_SPEED := 7 * Globals.UNIT_SIZE
 const MORPH_SPEED := RUN_SPEED * 1.5
 
 
@@ -38,6 +38,9 @@ func update(delta: float) -> void:
 	# Change to idle if crouching so Samus stops moving
 	if morph_state_machine.current_state == morph_state_machine.states_map["crouch"]:
 		emit_signal("finished", "idle")
+
+	if not owner.is_on_floor():
+		emit_signal("finished", "fall")
 
 	velocity.x = sign(input_direction.x) * speed
 	.update(delta)

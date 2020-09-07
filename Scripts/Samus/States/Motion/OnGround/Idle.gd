@@ -2,6 +2,7 @@ extends OnGroundState
 
 class_name IdleState
 
+
 func enter() -> void:
 	if morph_state_machine.current_state == morph_state_machine.states_map["crouch"]:
 		animation_state.travel("Crouch")
@@ -22,6 +23,9 @@ func update(delta: float) -> void:
 			update_blend_position("Move")
 			emit_signal("finished", "move")
 			velocity.x = 0.0
+		else:
+			emit_signal("finished", "idle")
+
 	.update(delta)
 
 
