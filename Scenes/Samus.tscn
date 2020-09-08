@@ -1,4 +1,4 @@
-[gd_scene load_steps=96 format=2]
+[gd_scene load_steps=100 format=2]
 
 [ext_resource path="res://Sprites/Samus/zm_power_suit.png" type="Texture" id=1]
 [ext_resource path="res://Scripts/Samus/Samus.gd" type="Script" id=2]
@@ -11,8 +11,9 @@
 [ext_resource path="res://Scripts/Samus/States/Motion/Airborne/Jump.gd" type="Script" id=9]
 [ext_resource path="res://Scripts/Samus/States/Motion/OnGround/Move.gd" type="Script" id=10]
 [ext_resource path="res://Scripts/Samus/States/Motion/Airborne/Fall.gd" type="Script" id=11]
+[ext_resource path="res://Scenes/BeamCannon.tscn" type="PackedScene" id=12]
 
-[sub_resource type="ConvexPolygonShape2D" id=84]
+[sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 7.5, 16, -7.5, 16, -7.5, -10, -2, -15.5, 2, -15.5, 7.5, -10 )
 
 [sub_resource type="RectangleShape2D" id=2]
@@ -138,7 +139,7 @@ tracks/0/keys = {
 "values": [ 360, 356, 357 ]
 }
 
-[sub_resource type="Animation" id=86]
+[sub_resource type="Animation" id=11]
 resource_name = "FallRight"
 step = 0.166667
 tracks/0/type = "value"
@@ -316,7 +317,7 @@ tracks/0/keys = {
 "values": [ 358, 359, 360 ]
 }
 
-[sub_resource type="Animation" id=85]
+[sub_resource type="Animation" id=22]
 resource_name = "JumpRight"
 length = 0.6
 tracks/0/type = "value"
@@ -731,9 +732,15 @@ blend_mode = 1
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=81]
 
+[sub_resource type="AnimationNodeStateMachineTransition" id=82]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=85]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=86]
+
 [sub_resource type="AnimationNodeStateMachineTransition" id=87]
 
-[sub_resource type="AnimationNodeStateMachine" id=82]
+[sub_resource type="AnimationNodeStateMachine" id=83]
 states/Crouch/node = SubResource( 39 )
 states/Crouch/position = Vector2( -411, 425.639 )
 states/Fall/node = SubResource( 42 )
@@ -750,26 +757,28 @@ states/SpinFall/node = SubResource( 61 )
 states/SpinFall/position = Vector2( 147, -67.953 )
 states/SpinJump/node = SubResource( 64 )
 states/SpinJump/position = Vector2( 412, -67.953 )
-transitions = [ "Fall", "Idle", SubResource( 65 ), "Idle", "Crouch", SubResource( 66 ), "Crouch", "Idle", SubResource( 67 ), "Idle", "Move", SubResource( 68 ), "Move", "Idle", SubResource( 69 ), "Idle", "MorphBall", SubResource( 70 ), "MorphBall", "Idle", SubResource( 71 ), "MorphBall", "Move", SubResource( 72 ), "Move", "MorphBall", SubResource( 73 ), "Move", "SpinJump", SubResource( 74 ), "SpinJump", "SpinFall", SubResource( 75 ), "SpinFall", "MorphBall", SubResource( 76 ), "SpinFall", "Idle", SubResource( 77 ), "Jump", "Fall", SubResource( 78 ), "Idle", "Jump", SubResource( 79 ), "MorphBall", "Crouch", SubResource( 80 ), "Crouch", "MorphBall", SubResource( 81 ), "Crouch", "Jump", SubResource( 87 ) ]
+transitions = [ "Fall", "Idle", SubResource( 65 ), "Idle", "Crouch", SubResource( 66 ), "Crouch", "Idle", SubResource( 67 ), "Idle", "Move", SubResource( 68 ), "Move", "Idle", SubResource( 69 ), "Idle", "MorphBall", SubResource( 70 ), "MorphBall", "Idle", SubResource( 71 ), "MorphBall", "Move", SubResource( 72 ), "Move", "MorphBall", SubResource( 73 ), "Move", "SpinJump", SubResource( 74 ), "SpinJump", "SpinFall", SubResource( 75 ), "SpinFall", "MorphBall", SubResource( 76 ), "SpinFall", "Idle", SubResource( 77 ), "Jump", "Fall", SubResource( 78 ), "Idle", "Jump", SubResource( 79 ), "MorphBall", "Crouch", SubResource( 80 ), "Crouch", "MorphBall", SubResource( 81 ), "Crouch", "Jump", SubResource( 82 ), "SpinJump", "MorphBall", SubResource( 85 ), "Jump", "MorphBall", SubResource( 86 ), "Fall", "MorphBall", SubResource( 87 ) ]
 start_node = "Idle"
-graph_offset = Vector2( -597.414, -99.249 )
+graph_offset = Vector2( -645.414, -47.249 )
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id=83]
+[sub_resource type="AnimationNodeStateMachinePlayback" id=84]
 resource_local_to_scene = false
 
 [node name="Samus" type="KinematicBody2D"]
 script = ExtResource( 2 )
 
+[node name="BeamCannon" parent="." instance=ExtResource( 12 )]
+
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )
 vframes = 40
 hframes = 25
-frame = 84
+frame = 83
 
 [node name="NeutralCollision" type="CollisionShape2D" parent="."]
 visible = false
 position = Vector2( 0, 8 )
-shape = SubResource( 84 )
+shape = SubResource( 1 )
 
 [node name="CrouchCollision" type="CollisionShape2D" parent="."]
 visible = false
@@ -820,7 +829,7 @@ anims/CrouchRight = SubResource( 7 )
 anims/CrouchRightAimDiagonalDown = SubResource( 8 )
 anims/CrouchRightAimDiagonalUp = SubResource( 9 )
 anims/FallLeft = SubResource( 10 )
-anims/FallRight = SubResource( 86 )
+anims/FallRight = SubResource( 11 )
 anims/Heal = SubResource( 12 )
 anims/IdleLeft = SubResource( 13 )
 anims/IdleLeftAimDiagonalDown = SubResource( 14 )
@@ -831,7 +840,7 @@ anims/IdleRightAimDiagonalDown = SubResource( 18 )
 anims/IdleRightAimDiagonalUp = SubResource( 19 )
 anims/IdleRightAimUp = SubResource( 20 )
 anims/JumpLeft = SubResource( 21 )
-anims/JumpRight = SubResource( 85 )
+anims/JumpRight = SubResource( 22 )
 anims/MorphLeft = SubResource( 23 )
 anims/MorphRight = SubResource( 24 )
 anims/RunLeft = SubResource( 25 )
@@ -848,10 +857,10 @@ anims/TurnLeftRun = SubResource( 35 )
 anims/TurnRightRun = SubResource( 36 )
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
-tree_root = SubResource( 82 )
+tree_root = SubResource( 83 )
 anim_player = NodePath("../AnimationPlayer")
 active = true
-parameters/playback = SubResource( 83 )
+parameters/playback = SubResource( 84 )
 parameters/Crouch/blend_position = Vector2( 0, 0 )
 parameters/Fall/blend_position = Vector2( 0, 0 )
 parameters/Idle/blend_position = Vector2( 0, 0 )
