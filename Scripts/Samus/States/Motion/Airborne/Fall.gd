@@ -19,6 +19,9 @@ func update(delta: float) -> void:
 	if input_direction:
 		update_blend_position("SpinFall")
 		update_blend_position("Fall")
+		update_blend_position("Jump")
+		update_blend_position("Idle")
+		update_blend_position("Move")
 		if sign(velocity.x) != sign(input_direction.x):
 			velocity.x = aerial_speed * sign(input_direction.x)
 

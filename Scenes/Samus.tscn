@@ -38,6 +38,30 @@ tracks/0/keys = {
 "update": 1,
 "values": [ 258, 259, 260 ]
 }
+tracks/1/type = "value"
+tracks/1/path = NodePath("BeamCannon:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ Vector2( -14, 11 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("BeamCannon:FIRE_DIRECTION")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ Vector2( -1, 0 ) ]
+}
 
 [sub_resource type="Animation" id=5]
 resource_name = "CrouchLeftAimDiagonalDown"
@@ -54,6 +78,30 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
 "values": [ 283, 284, 285 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("BeamCannon:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ Vector2( -12, 19 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("BeamCannon:FIRE_DIRECTION")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ Vector2( -1, 1 ) ]
 }
 
 [sub_resource type="Animation" id=6]
@@ -72,6 +120,30 @@ tracks/0/keys = {
 "update": 1,
 "values": [ 233, 234, 235 ]
 }
+tracks/1/type = "value"
+tracks/1/path = NodePath("BeamCannon:FIRE_DIRECTION")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ Vector2( -1, -1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("BeamCannon:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ Vector2( -13, -5 ) ]
+}
 
 [sub_resource type="Animation" id=7]
 resource_name = "CrouchRight"
@@ -89,6 +161,30 @@ tracks/0/keys = {
 "update": 1,
 "values": [ 263, 264, 265 ]
 }
+tracks/1/type = "value"
+tracks/1/path = NodePath("BeamCannon:FIRE_DIRECTION")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ Vector2( 1, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("BeamCannon:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ Vector2( 14, 11 ) ]
+}
 
 [sub_resource type="Animation" id=8]
 loop = true
@@ -104,6 +200,30 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
 "values": [ 288, 289, 290 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("BeamCannon:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ Vector2( 13, 19 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("BeamCannon:FIRE_DIRECTION")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ Vector2( 1, 1 ) ]
 }
 
 [sub_resource type="Animation" id=9]
@@ -122,6 +242,30 @@ tracks/0/keys = {
 "update": 1,
 "values": [ 238, 239, 240 ]
 }
+tracks/1/type = "value"
+tracks/1/path = NodePath("BeamCannon:FIRE_DIRECTION")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ Vector2( 1, -1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("BeamCannon:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ Vector2( 13, -5 ) ]
+}
 
 [sub_resource type="Animation" id=10]
 resource_name = "FallLeft"
@@ -138,6 +282,30 @@ tracks/0/keys = {
 "update": 1,
 "values": [ 360, 356, 357 ]
 }
+tracks/1/type = "value"
+tracks/1/path = NodePath("BeamCannon:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ Vector2( -14, -3 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("BeamCannon:FIRE_DIRECTION")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ Vector2( -1, 0 ) ]
+}
 
 [sub_resource type="Animation" id=11]
 resource_name = "FallRight"
@@ -153,6 +321,30 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
 "values": [ 365, 366, 367 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("BeamCannon:FIRE_DIRECTION")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ Vector2( 1, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("BeamCannon:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ Vector2( 14, -3 ) ]
 }
 
 [sub_resource type="Animation" id=12]
@@ -186,12 +378,24 @@ tracks/0/keys = {
 "values": [ 83, 84, 85 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("BeamCannon:position")
+tracks/1/path = NodePath("BeamCannon:FIRE_DIRECTION")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ Vector2( -1, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("BeamCannon:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
@@ -247,6 +451,30 @@ tracks/0/keys = {
 "update": 1,
 "values": [ 33, 34, 35 ]
 }
+tracks/1/type = "value"
+tracks/1/path = NodePath("BeamCannon:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ Vector2( -8, -20 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("BeamCannon:FIRE_DIRECTION")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ Vector2( 0, -1 ) ]
+}
 
 [sub_resource type="Animation" id=17]
 loop = true
@@ -274,6 +502,18 @@ tracks/1/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ Vector2( 18, -3 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("BeamCannon:FIRE_DIRECTION")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ Vector2( 1, 0 ) ]
 }
 
 [sub_resource type="Animation" id=18]
@@ -325,6 +565,30 @@ tracks/0/keys = {
 "update": 1,
 "values": [ 38, 39, 40 ]
 }
+tracks/1/type = "value"
+tracks/1/path = NodePath("BeamCannon:FIRE_DIRECTION")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ Vector2( 0, -1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("BeamCannon:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ Vector2( 8, -20 ) ]
+}
 
 [sub_resource type="Animation" id=21]
 length = 0.6
@@ -339,6 +603,30 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
 "values": [ 358, 359, 360 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("BeamCannon:FIRE_DIRECTION")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ Vector2( -1, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("BeamCannon:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ Vector2( -14, -3 ) ]
 }
 
 [sub_resource type="Animation" id=22]
@@ -355,6 +643,30 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
 "values": [ 363, 364, 365 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("BeamCannon:FIRE_DIRECTION")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ Vector2( 1, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("BeamCannon:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ Vector2( 14, -3 ) ]
 }
 
 [sub_resource type="Animation" id=23]
@@ -407,6 +719,30 @@ tracks/0/keys = {
 "update": 1,
 "values": [ 127, 128, 129, 130, 131, 132, 133, 134, 135, 136 ]
 }
+tracks/1/type = "value"
+tracks/1/path = NodePath("BeamCannon:FIRE_DIRECTION")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ Vector2( -1, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("BeamCannon:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ Vector2( -14, -3 ) ]
+}
 
 [sub_resource type="Animation" id=26]
 resource_name = "RunLeftAim"
@@ -443,6 +779,30 @@ tracks/0/keys = {
 "update": 1,
 "values": [ 202, 203, 204, 205, 206, 207, 208, 209, 210, 211 ]
 }
+tracks/1/type = "value"
+tracks/1/path = NodePath("BeamCannon:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ Vector2( -14, 8 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("BeamCannon:FIRE_DIRECTION")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ Vector2( -1, 1 ) ]
+}
 
 [sub_resource type="Animation" id=28]
 resource_name = "RunLeftAimDiagonalUp"
@@ -461,6 +821,30 @@ tracks/0/keys = {
 "update": 1,
 "values": [ 152, 153, 154, 155, 156, 157, 158, 159, 160, 161 ]
 }
+tracks/1/type = "value"
+tracks/1/path = NodePath("BeamCannon:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ Vector2( -16, -16 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("BeamCannon:FIRE_DIRECTION")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ Vector2( -1, -1 ) ]
+}
 
 [sub_resource type="Animation" id=29]
 length = 0.5
@@ -477,6 +861,30 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
 "values": [ 137, 138, 139, 140, 141, 142, 143, 144, 145, 146 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("BeamCannon:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ Vector2( 19, -3 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("BeamCannon:FIRE_DIRECTION")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ Vector2( 1, 0 ) ]
 }
 
 [sub_resource type="Animation" id=30]
@@ -496,6 +904,30 @@ tracks/0/keys = {
 "update": 1,
 "values": [ 187, 188, 189, 190, 191, 192, 193, 194, 195, 196 ]
 }
+tracks/1/type = "value"
+tracks/1/path = NodePath("BeamCannon:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ Vector2( 19, -3 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("BeamCannon:FIRE_DIRECTION")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ Vector2( 1, 0 ) ]
+}
 
 [sub_resource type="Animation" id=31]
 resource_name = "RunRightAimDiagonalDown"
@@ -514,6 +946,30 @@ tracks/0/keys = {
 "update": 1,
 "values": [ 212, 213, 214, 215, 216, 217, 218, 219, 220, 221 ]
 }
+tracks/1/type = "value"
+tracks/1/path = NodePath("BeamCannon:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ Vector2( 14, 8 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("BeamCannon:FIRE_DIRECTION")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ Vector2( 1, 1 ) ]
+}
 
 [sub_resource type="Animation" id=32]
 length = 0.5
@@ -530,6 +986,30 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
 "values": [ 162, 163, 164, 165, 166, 167, 168, 169, 170, 171 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("BeamCannon:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ Vector2( 16, -16 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("BeamCannon:FIRE_DIRECTION")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ Vector2( 1, -1 ) ]
 }
 
 [sub_resource type="Animation" id=33]
@@ -548,6 +1028,30 @@ tracks/0/keys = {
 "update": 1,
 "values": [ 429, 430, 431, 432, 433, 434, 435, 436 ]
 }
+tracks/1/type = "value"
+tracks/1/path = NodePath("BeamCannon:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ Vector2( -14, -3 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("BeamCannon:FIRE_DIRECTION")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ Vector2( -1, 0 ) ]
+}
 
 [sub_resource type="Animation" id=34]
 length = 0.4
@@ -564,6 +1068,30 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
 "values": [ 439, 440, 441, 442, 443, 444, 445, 446 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("BeamCannon:FIRE_DIRECTION")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ Vector2( 1, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("BeamCannon:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ Vector2( 14, -3 ) ]
 }
 
 [sub_resource type="Animation" id=35]
@@ -758,13 +1286,13 @@ blend_mode = 1
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=82]
 
+[sub_resource type="AnimationNodeStateMachineTransition" id=83]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=84]
+
 [sub_resource type="AnimationNodeStateMachineTransition" id=85]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=86]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=87]
-
-[sub_resource type="AnimationNodeStateMachine" id=83]
+[sub_resource type="AnimationNodeStateMachine" id=86]
 states/Crouch/node = SubResource( 39 )
 states/Crouch/position = Vector2( -411, 425.639 )
 states/Fall/node = SubResource( 42 )
@@ -781,24 +1309,25 @@ states/SpinFall/node = SubResource( 61 )
 states/SpinFall/position = Vector2( 147, -67.953 )
 states/SpinJump/node = SubResource( 64 )
 states/SpinJump/position = Vector2( 412, -67.953 )
-transitions = [ "Fall", "Idle", SubResource( 65 ), "Idle", "Crouch", SubResource( 66 ), "Crouch", "Idle", SubResource( 67 ), "Idle", "Move", SubResource( 68 ), "Move", "Idle", SubResource( 69 ), "Idle", "MorphBall", SubResource( 70 ), "MorphBall", "Idle", SubResource( 71 ), "MorphBall", "Move", SubResource( 72 ), "Move", "MorphBall", SubResource( 73 ), "Move", "SpinJump", SubResource( 74 ), "SpinJump", "SpinFall", SubResource( 75 ), "SpinFall", "MorphBall", SubResource( 76 ), "SpinFall", "Idle", SubResource( 77 ), "Jump", "Fall", SubResource( 78 ), "Idle", "Jump", SubResource( 79 ), "MorphBall", "Crouch", SubResource( 80 ), "Crouch", "MorphBall", SubResource( 81 ), "Crouch", "Jump", SubResource( 82 ), "SpinJump", "MorphBall", SubResource( 85 ), "Jump", "MorphBall", SubResource( 86 ), "Fall", "MorphBall", SubResource( 87 ) ]
+transitions = [ "Fall", "Idle", SubResource( 65 ), "Idle", "Crouch", SubResource( 66 ), "Crouch", "Idle", SubResource( 67 ), "Idle", "Move", SubResource( 68 ), "Move", "Idle", SubResource( 69 ), "Idle", "MorphBall", SubResource( 70 ), "MorphBall", "Idle", SubResource( 71 ), "MorphBall", "Move", SubResource( 72 ), "Move", "MorphBall", SubResource( 73 ), "Move", "SpinJump", SubResource( 74 ), "SpinJump", "SpinFall", SubResource( 75 ), "SpinFall", "MorphBall", SubResource( 76 ), "SpinFall", "Idle", SubResource( 77 ), "Jump", "Fall", SubResource( 78 ), "Idle", "Jump", SubResource( 79 ), "MorphBall", "Crouch", SubResource( 80 ), "Crouch", "MorphBall", SubResource( 81 ), "Crouch", "Jump", SubResource( 82 ), "SpinJump", "MorphBall", SubResource( 83 ), "Jump", "MorphBall", SubResource( 84 ), "Fall", "MorphBall", SubResource( 85 ) ]
 start_node = "Idle"
 graph_offset = Vector2( -645.414, -47.249 )
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id=84]
+[sub_resource type="AnimationNodeStateMachinePlayback" id=87]
 resource_local_to_scene = false
 
 [node name="Samus" type="KinematicBody2D"]
 script = ExtResource( 2 )
 
 [node name="BeamCannon" parent="." instance=ExtResource( 12 )]
-position = Vector2( 18, -3 )
+position = Vector2( -18, -3 )
+FIRE_DIRECTION = Vector2( -1, 0 )
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )
 vframes = 40
 hframes = 25
-frame = 263
+frame = 83
 
 [node name="NeutralCollision" type="CollisionShape2D" parent="."]
 visible = false
@@ -882,9 +1411,10 @@ anims/TurnLeftRun = SubResource( 35 )
 anims/TurnRightRun = SubResource( 36 )
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
-tree_root = SubResource( 83 )
+tree_root = SubResource( 86 )
 anim_player = NodePath("../AnimationPlayer")
-parameters/playback = SubResource( 84 )
+active = true
+parameters/playback = SubResource( 87 )
 parameters/Crouch/blend_position = Vector2( 0, 0 )
 parameters/Fall/blend_position = Vector2( 0, 0 )
 parameters/Idle/blend_position = Vector2( 0, 0 )
