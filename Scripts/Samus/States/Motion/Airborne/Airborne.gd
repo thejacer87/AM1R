@@ -31,7 +31,6 @@ func handle_input(event: InputEvent):
 	if not in_morph_ball():
 		if event.is_action_pressed("jump") and wall_stick.time_left > 0:
 			var input_direction = get_input_direction()
-			var dir = sign(input_direction.x)
 			if wall_direction != sign(input_direction.x):
 				wall_stick.stop()
 				velocity.x = 1.75 * -wall_direction * aerial_speed

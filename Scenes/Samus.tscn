@@ -1327,7 +1327,7 @@ FIRE_DIRECTION = Vector2( -1, 0 )
 texture = ExtResource( 1 )
 vframes = 40
 hframes = 25
-frame = 85
+frame = 83
 
 [node name="NeutralCollision" type="CollisionShape2D" parent="."]
 visible = false
