@@ -9,7 +9,7 @@ const MORPH_SPEED := RUN_SPEED * 1.5
 func enter() -> void:
 	speed = RUN_SPEED
 	var travel = "Move"
-	if morph_state_machine.current_state == morph_state_machine.states_map["morph_ball"]:
+	if in_morph_ball():
 		speed = MORPH_SPEED
 		travel = "MorphBall"
 
@@ -17,7 +17,7 @@ func enter() -> void:
 
 
 func handle_input(event: InputEvent):
-	if morph_state_machine.current_state == morph_state_machine.states_map["morph_ball"]:
+	if in_morph_ball():
 		speed = MORPH_SPEED
 	return .handle_input(event)
 
@@ -38,7 +38,7 @@ func update(delta: float) -> void:
 		emit_signal("finished", "idle")
 
 	# Change to idle if crouching so Samus stops moving
-	if morph_state_machine.current_state == morph_state_machine.states_map["crouch"]:
+	if is_crouched():
 		emit_signal("finished", "idle")
 
 	if not owner.is_on_floor():

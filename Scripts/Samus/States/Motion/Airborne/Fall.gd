@@ -6,7 +6,7 @@ class_name FallState
 func enter() -> void:
 	var input_direction = get_input_direction()
 
-	if morph_state_machine.current_state == morph_state_machine.states_map["morph_ball"]:
+	if in_morph_ball():
 		animation_state.travel("MorphBall")
 	else:
 		animation_state.travel("SpinFall") if animation_state.get_current_node() == "SpinJump" else animation_state.travel("Fall")

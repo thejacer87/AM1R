@@ -4,9 +4,9 @@ class_name IdleState
 
 
 func enter() -> void:
-	if morph_state_machine.current_state == morph_state_machine.states_map["crouch"]:
+	if is_crouched():
 		animation_state.travel("Crouch")
-	elif morph_state_machine.current_state == morph_state_machine.states_map["morph_ball"]:
+	elif in_morph_ball():
 		animation_state.travel("MorphBall")
 	else:
 		animation_state.travel("Idle")
@@ -14,15 +14,15 @@ func enter() -> void:
 
 func update(delta: float) -> void:
 	var input_direction = get_input_direction()
-	if morph_state_machine.current_state == morph_state_machine.states_map["crouch"]:
+	if is_crouched():
 		if input_direction.x:
 			update_blend_position("Crouch")
-	elif morph_state_machine.current_state != morph_state_machine.states_map["crouch"] or morph_state_machine.current_state != morph_state_machine.states_map["morph_ball"]:
+	elif not is_crouched() or in_morph_ball():
 		if input_direction.x:
 			update_blend_position("Idle")
 			update_blend_position("Move")
-			emit_signal("finished", "move")
 			velocity.x = 0.0
+			emit_signal("finished", "move")
 		else:
 			emit_signal("finished", "idle")
 

@@ -45,3 +45,11 @@ func apply_gravity(delta: float) -> void:
 
 func apply_movement() -> void:
 	owner.move_and_slide(velocity, FLOOR)
+
+
+func in_morph_ball() -> bool:
+	return morph_state_machine.current_state == morph_state_machine.states_map["morph_ball"]
+
+
+func is_crouched() -> bool:
+	return morph_state_machine.current_state == morph_state_machine.states_map["crouch"]

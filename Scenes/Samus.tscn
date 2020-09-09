@@ -1327,7 +1327,7 @@ FIRE_DIRECTION = Vector2( -1, 0 )
 texture = ExtResource( 1 )
 vframes = 40
 hframes = 25
-frame = 83
+frame = 85
 
 [node name="NeutralCollision" type="CollisionShape2D" parent="."]
 visible = false
@@ -1443,3 +1443,7 @@ text = "Neutral"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="WallStickTimer" type="Timer" parent="."]
+wait_time = 0.08
+one_shot = true
