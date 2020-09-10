@@ -51,7 +51,7 @@ tracks/1/keys = {
 "values": [ Vector2( -14, 11 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("BeamCannon:FIRE_DIRECTION")
+tracks/2/path = NodePath("BeamCannon:fire_direction")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -92,7 +92,7 @@ tracks/1/keys = {
 "values": [ Vector2( -12, 19 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("BeamCannon:FIRE_DIRECTION")
+tracks/2/path = NodePath("BeamCannon:fire_direction")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -121,7 +121,7 @@ tracks/0/keys = {
 "values": [ 233, 234, 235 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("BeamCannon:FIRE_DIRECTION")
+tracks/1/path = NodePath("BeamCannon:fire_direction")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -162,7 +162,7 @@ tracks/0/keys = {
 "values": [ 263, 264, 265 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("BeamCannon:FIRE_DIRECTION")
+tracks/1/path = NodePath("BeamCannon:fire_direction")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -214,7 +214,7 @@ tracks/1/keys = {
 "values": [ Vector2( 13, 19 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("BeamCannon:FIRE_DIRECTION")
+tracks/2/path = NodePath("BeamCannon:fire_direction")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -243,7 +243,7 @@ tracks/0/keys = {
 "values": [ 238, 239, 240 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("BeamCannon:FIRE_DIRECTION")
+tracks/1/path = NodePath("BeamCannon:fire_direction")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -295,7 +295,7 @@ tracks/1/keys = {
 "values": [ Vector2( -14, -3 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("BeamCannon:FIRE_DIRECTION")
+tracks/2/path = NodePath("BeamCannon:fire_direction")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -323,7 +323,7 @@ tracks/0/keys = {
 "values": [ 365, 366, 367 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("BeamCannon:FIRE_DIRECTION")
+tracks/1/path = NodePath("BeamCannon:fire_direction")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -378,7 +378,7 @@ tracks/0/keys = {
 "values": [ 83, 84, 85 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("BeamCannon:FIRE_DIRECTION")
+tracks/1/path = NodePath("BeamCannon:fire_direction")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -464,7 +464,7 @@ tracks/1/keys = {
 "values": [ Vector2( -8, -20 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("BeamCannon:FIRE_DIRECTION")
+tracks/2/path = NodePath("BeamCannon:fire_direction")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -504,7 +504,7 @@ tracks/1/keys = {
 "values": [ Vector2( 18, -3 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("BeamCannon:FIRE_DIRECTION")
+tracks/2/path = NodePath("BeamCannon:fire_direction")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -566,7 +566,7 @@ tracks/0/keys = {
 "values": [ 38, 39, 40 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("BeamCannon:FIRE_DIRECTION")
+tracks/1/path = NodePath("BeamCannon:fire_direction")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -605,7 +605,7 @@ tracks/0/keys = {
 "values": [ 358, 359, 360 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("BeamCannon:FIRE_DIRECTION")
+tracks/1/path = NodePath("BeamCannon:fire_direction")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -645,7 +645,7 @@ tracks/0/keys = {
 "values": [ 363, 364, 365 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("BeamCannon:FIRE_DIRECTION")
+tracks/1/path = NodePath("BeamCannon:fire_direction")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -720,7 +720,7 @@ tracks/0/keys = {
 "values": [ 127, 128, 129, 130, 131, 132, 133, 134, 135, 136 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("BeamCannon:FIRE_DIRECTION")
+tracks/1/path = NodePath("BeamCannon:fire_direction")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -792,7 +792,7 @@ tracks/1/keys = {
 "values": [ Vector2( -14, 8 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("BeamCannon:FIRE_DIRECTION")
+tracks/2/path = NodePath("BeamCannon:fire_direction")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -834,7 +834,7 @@ tracks/1/keys = {
 "values": [ Vector2( -16, -16 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("BeamCannon:FIRE_DIRECTION")
+tracks/2/path = NodePath("BeamCannon:fire_direction")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -875,7 +875,7 @@ tracks/1/keys = {
 "values": [ Vector2( 19, -3 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("BeamCannon:FIRE_DIRECTION")
+tracks/2/path = NodePath("BeamCannon:fire_direction")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -917,7 +917,7 @@ tracks/1/keys = {
 "values": [ Vector2( 19, -3 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("BeamCannon:FIRE_DIRECTION")
+tracks/2/path = NodePath("BeamCannon:fire_direction")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -959,7 +959,7 @@ tracks/1/keys = {
 "values": [ Vector2( 14, 8 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("BeamCannon:FIRE_DIRECTION")
+tracks/2/path = NodePath("BeamCannon:fire_direction")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -1000,7 +1000,7 @@ tracks/1/keys = {
 "values": [ Vector2( 16, -16 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("BeamCannon:FIRE_DIRECTION")
+tracks/2/path = NodePath("BeamCannon:fire_direction")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -1041,7 +1041,7 @@ tracks/1/keys = {
 "values": [ Vector2( -14, -3 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("BeamCannon:FIRE_DIRECTION")
+tracks/2/path = NodePath("BeamCannon:fire_direction")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -1070,7 +1070,7 @@ tracks/0/keys = {
 "values": [ 439, 440, 441, 442, 443, 444, 445, 446 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("BeamCannon:FIRE_DIRECTION")
+tracks/1/path = NodePath("BeamCannon:fire_direction")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -1321,13 +1321,13 @@ script = ExtResource( 2 )
 
 [node name="BeamCannon" parent="." instance=ExtResource( 12 )]
 position = Vector2( -18, -3 )
-FIRE_DIRECTION = Vector2( -1, 0 )
+fire_direction = Vector2( -1, 0 )
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )
 vframes = 40
 hframes = 25
-frame = 83
+frame = 84
 
 [node name="NeutralCollision" type="CollisionShape2D" parent="."]
 visible = false

@@ -8,11 +8,11 @@ func enter() -> void:
 
 
 func handle_input(event: InputEvent):
-	if event.is_action_pressed("arm"):
+	if event.is_action_released("arm"):
 		emit_signal("finished", "beam")
 	return .handle_input(event)
 
 
 func update(delta: float) -> void:
-	pass
+	.update(delta)
 
