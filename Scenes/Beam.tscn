@@ -1,7 +1,8 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://Sprites/Samus/zm_power_suit.png" type="Texture" id=1]
 [ext_resource path="res://Scripts/BeamCannon/Beam.gd" type="Script" id=2]
+[ext_resource path="res://Scenes/Hitboxes/Hitbox.tscn" type="PackedScene" id=3]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 3.94401
@@ -287,6 +288,10 @@ start_node = "Beam"
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=20]
 
+[sub_resource type="CapsuleShape2D" id=21]
+radius = 4.0
+height = 9.0
+
 [node name="Beam" type="Area2D"]
 collision_layer = 32
 collision_mask = 12
@@ -330,6 +335,16 @@ anim_player = NodePath("../AnimationPlayer")
 active = true
 parameters/playback = SubResource( 20 )
 parameters/Beam/blend_position = Vector2( 0, 0 )
+
+[node name="Hitbox" parent="." instance=ExtResource( 3 )]
+collision_layer = 32
+collision_mask = 2147483660
+
+[node name="CollisionShape2D" parent="Hitbox" index="0"]
+rotation = 1.5708
+shape = SubResource( 21 )
 [connection signal="body_entered" from="." to="." method="_on_Beam_body_entered"]
 [connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+
+[editable path="Hitbox"]

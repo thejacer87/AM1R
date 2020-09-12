@@ -1,4 +1,4 @@
-[gd_scene load_steps=100 format=2]
+[gd_scene load_steps=102 format=2]
 
 [ext_resource path="res://Sprites/Samus/zm_power_suit.png" type="Texture" id=1]
 [ext_resource path="res://Scripts/Samus/Samus.gd" type="Script" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://Scripts/Samus/States/Motion/OnGround/Move.gd" type="Script" id=10]
 [ext_resource path="res://Scripts/Samus/States/Motion/Airborne/Fall.gd" type="Script" id=11]
 [ext_resource path="res://Scenes/BeamCannon.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Scenes/Hitboxes/Hurtbox.tscn" type="PackedScene" id=13]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 7.5, 16, -7.5, 16, -7.5, -10, -2, -15.5, 2, -15.5, 7.5, -10 )
@@ -1316,6 +1317,10 @@ graph_offset = Vector2( -645.414, -47.249 )
 [sub_resource type="AnimationNodeStateMachinePlayback" id=87]
 resource_local_to_scene = false
 
+[sub_resource type="CapsuleShape2D" id=88]
+radius = 9.0
+height = 18.0
+
 [node name="Samus" type="KinematicBody2D"]
 script = ExtResource( 2 )
 
@@ -1447,3 +1452,12 @@ __meta__ = {
 [node name="WallStickTimer" type="Timer" parent="."]
 wait_time = 0.08
 one_shot = true
+
+[node name="Hurtbox" parent="." instance=ExtResource( 13 )]
+collision_layer = 1
+
+[node name="CollisionShape2D" parent="Hurtbox" index="0"]
+position = Vector2( -1, 6 )
+shape = SubResource( 88 )
+
+[editable path="Hurtbox"]
