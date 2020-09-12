@@ -1325,7 +1325,7 @@ fire_direction = Vector2( -1, 0 )
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )
-vframes = 40
+vframes = 30
 hframes = 25
 frame = 84
 
