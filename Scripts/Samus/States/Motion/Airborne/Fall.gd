@@ -28,5 +28,8 @@ func update(delta: float) -> void:
 	if velocity.y >= 0 and owner.is_on_floor():
 		animation_state.travel("Idle")
 		emit_signal("finished", "idle")
+		
+	print(velocity.y)
+#	velocity.y = min(velocity.y, MAX_FALL_SPEED)
 
 	.update(delta)

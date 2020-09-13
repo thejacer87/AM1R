@@ -1332,7 +1332,7 @@ fire_direction = Vector2( -1, 0 )
 texture = ExtResource( 1 )
 vframes = 30
 hframes = 25
-frame = 84
+frame = 85
 
 [node name="NeutralCollision" type="CollisionShape2D" parent="."]
 visible = false
@@ -1454,6 +1454,7 @@ wait_time = 0.08
 one_shot = true
 
 [node name="Hurtbox" parent="." instance=ExtResource( 13 )]
+visible = false
 collision_layer = 1
 
 [node name="CollisionShape2D" parent="Hurtbox" index="0"]

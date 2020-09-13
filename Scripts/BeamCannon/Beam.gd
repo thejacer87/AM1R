@@ -28,6 +28,7 @@ func _on_Timer_timeout():
 
 
 func _on_Hitbox_body_entered(body):
+	# if not wave beam
 	queue_free()
 
 

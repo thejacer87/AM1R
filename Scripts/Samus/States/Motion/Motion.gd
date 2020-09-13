@@ -3,7 +3,7 @@ extends State
 class_name MotionState
 
 const FLOOR := Vector2.UP
-const MAX_FALL_SPEED := 415.0
+const MAX_FALL_SPEED := 230.0
 
 var gravity : float
 var velocity := Vector2.ZERO
