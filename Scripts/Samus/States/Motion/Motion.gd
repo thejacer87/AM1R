@@ -34,6 +34,11 @@ func update(delta: float) -> void:
 	apply_movement()
 
 
+func update_blend_positions(animations: Array):
+	for animation in animations:
+		update_blend_position(animation)
+
+
 func update_blend_position(animation: String):
 	animation_tree.set(blend % animation, get_input_direction())
 

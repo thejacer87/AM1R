@@ -16,11 +16,10 @@ func update(delta: float) -> void:
 	var input_direction = get_input_direction()
 	if is_crouched():
 		if input_direction.x:
-			update_blend_position("Crouch")
+			update_blend_positions(["Crouch"])
 	elif not is_crouched() or in_morph_ball():
 		if input_direction.x:
-			update_blend_position("Idle")
-			update_blend_position("Move")
+			update_blend_positions(["Idle", "Move"])
 			velocity.x = 0.0
 			emit_signal("finished", "move")
 		else:

@@ -6,7 +6,8 @@ onready var wall_stick = owner.get_node("WallStickTimer")
 
 var max_jump_velocity
 var min_jump_velocity
-var aerial_speed : float = 4 * Globals.UNIT_SIZE
+var is_spinning := false
+var aerial_speed := 4 * Globals.UNIT_SIZE
 var enter_velocity := Vector2.ZERO
 var wall_direction := 1
 
@@ -24,18 +25,36 @@ func update(delta: float) -> void:
 	if owner.is_on_wall():
 		wall_stick.start()
 		wall_direction = get_wall_collided()
+
+	var input_direction = get_input_direction()
+	if input_direction:
+		update_blend_positions(["Fall", "Jump", "SpinJump", "Idle", "Move"])
+		if sign(velocity.x) != sign(input_direction.x):
+			velocity.x = aerial_speed * sign(input_direction.x)
 	.update(delta)
 
 
 func handle_input(event: InputEvent):
 	if not in_morph_ball():
-		if event.is_action_pressed("jump") and wall_stick.time_left > 0:
+		if is_spinning:
 			var input_direction = get_input_direction()
-			if wall_direction == sign(input_direction.x):
-				wall_stick.stop()
-				velocity.x = 1.75 * -wall_direction * aerial_speed
-				velocity.y = max_jump_velocity * .8
-				print('wall jump bro')
+			# Stop spinning
+			if abs(input_direction.y) == 1:
+				var facing = sign(velocity.x)
+				animation_state.travel("Jump") if velocity.y > 0 else animation_state.travel("Fall")
+				is_spinning = false
+			# Wall jump
+			if event.is_action_pressed("jump") and wall_stick.time_left > 0:
+				if wall_direction == sign(input_direction.x):
+					wall_stick.stop()
+					velocity.x = 1.75 * -wall_direction * aerial_speed
+					velocity.y = max_jump_velocity * .8
+		else:
+			if Input.is_action_just_pressed("jump"):
+				var facing = sign(velocity.x)
+#				animation_state.travel("SpinJump")
+				velocity.x = facing * 100
+
 	return .handle_input(event)
 
 

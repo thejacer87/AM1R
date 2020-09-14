@@ -1,6 +1,7 @@
 extends Area2D
 
-const SPEED := 250
+const MISSILE_FULL_SPEED := 175
+onready var missile_speed := 25
 export var direction := Vector2.RIGHT
 var velocity := Vector2.ZERO
 
@@ -10,16 +11,12 @@ func _ready() -> void:
 
 
 func _physics_process(delta) -> void:
-	velocity.x = direction.x * SPEED * delta
-	velocity.y = direction.y * SPEED * delta
+	velocity.x = direction.x * missile_speed * delta
+	velocity.y = direction.y * missile_speed * delta
 	translate(velocity)
 
 
 func _on_VisibilityNotifier2D_screen_exited():
-	queue_free()
-
-
-func _on_Timer_timeout():
 	queue_free()
 
 
@@ -30,3 +27,7 @@ func _on_Hitbox_body_entered(body):
 
 func _on_Hitbox_area_entered(area):
 	queue_free()
+
+
+func _on_Timer_timeout():
+	missile_speed = MISSILE_FULL_SPEED

@@ -9,7 +9,8 @@ func enter() -> void:
 	if in_morph_ball():
 		animation_state.travel("MorphBall")
 	else:
-		animation_state.travel("SpinJump") if input_direction else animation_state.travel("Jump")
+		animation_state.travel("SpinJump") if input_direction.x else animation_state.travel("Jump")
+		is_spinning = bool(input_direction.x)
 
 	velocity = enter_velocity if input_direction else Vector2.ZERO
 	velocity.y = max_jump_velocity
@@ -22,17 +23,6 @@ func handle_input(event: InputEvent):
 
 
 func update(delta: float) -> void:
-	var input_direction = get_input_direction()
-	if input_direction:
-		update_blend_position("SpinFall")
-		update_blend_position("Fall")
-		update_blend_position("SpinJump")
-		update_blend_position("Jump")
-		update_blend_position("Idle")
-		update_blend_position("Move")
-		if sign(velocity.x) != sign(input_direction.x):
-			velocity.x = aerial_speed * sign(input_direction.x)
-
 	if owner.is_on_ceiling():
 		velocity.y = 0
 
