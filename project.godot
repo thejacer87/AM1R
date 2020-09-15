@@ -14,15 +14,20 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Scripts/Samus/States/Motion/Airborne/Airborne.gd"
 }, {
-"base": "State",
+"base": "CannonState",
 "class": "BeamState",
 "language": "GDScript",
-"path": "res://Scripts/Weapon/States/Beam/Beam.gd"
+"path": "res://Scripts/Weapon/States/Cannon/Beam.gd"
 }, {
 "base": "State",
 "class": "BombState",
 "language": "GDScript",
 "path": "res://Scripts/Weapon/States/Bomb/Bomb.gd"
+}, {
+"base": "State",
+"class": "CannonState",
+"language": "GDScript",
+"path": "res://Scripts/Weapon/States/Cannon/Cannon.gd"
 }, {
 "base": "AirborneState",
 "class": "FallState",
@@ -39,10 +44,10 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Scripts/Samus/States/Motion/Airborne/Jump.gd"
 }, {
-"base": "State",
+"base": "CannonState",
 "class": "MissileState",
 "language": "GDScript",
-"path": "res://Scripts/Weapon/States/Missile/Missile.gd"
+"path": "res://Scripts/Weapon/States/Cannon/Missile.gd"
 }, {
 "base": "MorphState",
 "class": "MorphBallState",
@@ -74,6 +79,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Scripts/Samus/States/Motion/OnGround/OnGround.gd"
 }, {
+"base": "State",
+"class": "PowerBombState",
+"language": "GDScript",
+"path": "res://Scripts/Weapon/States/Bomb/PowerBomb.gd"
+}, {
 "base": "KinematicBody2D",
 "class": "Samus",
 "language": "GDScript",
@@ -98,6 +108,7 @@ _global_script_class_icons={
 "AirborneState": "",
 "BeamState": "",
 "BombState": "",
+"CannonState": "",
 "FallState": "",
 "IdleState": "",
 "JumpState": "",
@@ -108,6 +119,7 @@ _global_script_class_icons={
 "MoveState": "",
 "NeutralState": "",
 "OnGroundState": "",
+"PowerBombState": "",
 "Samus": "",
 "State": "",
 "StateMachine": "",
@@ -225,11 +237,13 @@ aim={
 2d_physics/layer_5="item"
 2d_physics/layer_6="beam"
 2d_physics/layer_7="missile"
+2d_physics/layer_8="bomb"
+2d_physics/layer_9="power_bomb"
 
 [rendering]
 
-quality/2d/use_nvidia_rect_flicker_workaround=true
 quality/2d/use_pixel_snap=true
+quality/2d/use_nvidia_rect_flicker_workaround=true
 
 [world]
 

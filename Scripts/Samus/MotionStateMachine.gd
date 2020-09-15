@@ -13,6 +13,7 @@ func _ready() -> void:
 		"jump": jump,
 		"fall": fall,
 	}
+	Globals.STATES['Motion'] = self
 
 
 func _change_state(state_name):

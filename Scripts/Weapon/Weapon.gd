@@ -2,7 +2,6 @@ extends Node2D
 
 class_name Weapon
 
-#const SUPER_MISSILE := preload("res://Scenes/Beam.tscn")
 const BEAM_COLOR := Color(1, 0, 0, 0.25)
 const MISSILE_COLOR := Color(0, 0, 1, 0.25)
 
@@ -41,7 +40,10 @@ func fire(weapon: Area2D) -> void:
 
 
 func bomb(bomb: Area2D) -> void:
-	print("bomb")
+	bomb.direction = fire_direction
+	bomb.position = global_position
+	get_tree().get_root().add_child(bomb)
+	fire_audio.play()
 
 
 func get_barrel_direction() -> Vector2:
@@ -52,4 +54,4 @@ func get_barrel_direction() -> Vector2:
 
 
 func missile_is_armed() -> bool:
-	return weapon_state_machine.current_state == weapon_state_machine.states_map["missile"]
+	return weapon_state_machine.current_state == Globals.STATES["Weapon"].states_map["missile"]

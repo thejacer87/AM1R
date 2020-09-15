@@ -10,3 +10,4 @@ func _ready() -> void:
 		"crouch": crouch,
 		"morph_ball": morph_ball,
 	}
+	Globals.STATES['Morph'] = self

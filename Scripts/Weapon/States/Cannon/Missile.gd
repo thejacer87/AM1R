@@ -1,8 +1,6 @@
-extends State
+extends CannonState
 
 class_name MissileState
-
-const MISSILE := preload("res://Scenes/Missile.tscn")
 
 
 func enter() -> void:
