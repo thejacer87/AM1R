@@ -1,16 +1,14 @@
 extends Node2D
 
-class_name BeamCannon
+class_name Weapon
 
-const BEAM := preload("res://Scenes/Beam.tscn")
-const MISSILE := preload("res://Scenes/Missile.tscn")
 #const SUPER_MISSILE := preload("res://Scenes/Beam.tscn")
 const BEAM_COLOR := Color(1, 0, 0, 0.25)
 const MISSILE_COLOR := Color(0, 0, 1, 0.25)
 
 onready var barrel := $Barrel
 onready var arrow := $Barrel/Arrow
-onready var beam_state_machine := $BeamStateMachine
+onready var weapon_state_machine := $WeaponStateMachine
 onready var fire_audio := $FireAudioStreamPlayer2D
 
 var fire_direction := Vector2.RIGHT
@@ -35,14 +33,15 @@ func _physics_process(delta) -> void:
 			arrow.get_node("Polygon2D").color = BEAM_COLOR
 
 
-func fire() -> void:
-	var shot = BEAM.instance()
-	if Input.is_action_pressed("arm"):
-		shot = MISSILE.instance()
-	shot.direction = fire_direction
-	shot.position = global_position
-	get_tree().get_root().add_child(shot)
+func fire(weapon: Area2D) -> void:
+	weapon.direction = fire_direction
+	weapon.position = global_position
+	get_tree().get_root().add_child(weapon)
 	fire_audio.play()
+
+
+func bomb(bomb: Area2D) -> void:
+	print("bomb")
 
 
 func get_barrel_direction() -> Vector2:
@@ -53,4 +52,4 @@ func get_barrel_direction() -> Vector2:
 
 
 func missile_is_armed() -> bool:
-	return beam_state_machine.current_state == beam_state_machine.states_map["missile"]
+	return weapon_state_machine.current_state == weapon_state_machine.states_map["missile"]

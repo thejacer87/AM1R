@@ -11,7 +11,7 @@
 [ext_resource path="res://Scripts/Samus/States/Motion/Airborne/Jump.gd" type="Script" id=9]
 [ext_resource path="res://Scripts/Samus/States/Motion/OnGround/Move.gd" type="Script" id=10]
 [ext_resource path="res://Scripts/Samus/States/Motion/Airborne/Fall.gd" type="Script" id=11]
-[ext_resource path="res://Scenes/BeamCannon.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Scenes/Weapon.tscn" type="PackedScene" id=12]
 [ext_resource path="res://Scenes/Hitboxes/Hurtbox.tscn" type="PackedScene" id=13]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
@@ -21,7 +21,7 @@ points = PoolVector2Array( 7.5, 16, -7.5, 16, -7.5, -10, -2, -15.5, 2, -15.5, 7.
 extents = Vector2( 8, 12 )
 
 [sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 8, 7.5 )
+extents = Vector2( 7.5, 7.5 )
 
 [sub_resource type="Animation" id=4]
 resource_name = "CrouchLeft"
@@ -40,7 +40,7 @@ tracks/0/keys = {
 "values": [ 258, 259, 260 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("BeamCannon:position")
+tracks/1/path = NodePath("Weapon:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -52,7 +52,7 @@ tracks/1/keys = {
 "values": [ Vector2( -14, 11 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("BeamCannon:fire_direction")
+tracks/2/path = NodePath("Weapon:fire_direction")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -81,7 +81,7 @@ tracks/0/keys = {
 "values": [ 283, 284, 285 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("BeamCannon:position")
+tracks/1/path = NodePath("Weapon:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -93,7 +93,7 @@ tracks/1/keys = {
 "values": [ Vector2( -12, 19 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("BeamCannon:fire_direction")
+tracks/2/path = NodePath("Weapon:fire_direction")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -122,7 +122,7 @@ tracks/0/keys = {
 "values": [ 233, 234, 235 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("BeamCannon:fire_direction")
+tracks/1/path = NodePath("Weapon:fire_direction")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -134,7 +134,7 @@ tracks/1/keys = {
 "values": [ Vector2( -1, -1 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("BeamCannon:position")
+tracks/2/path = NodePath("Weapon:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -163,7 +163,7 @@ tracks/0/keys = {
 "values": [ 263, 264, 265 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("BeamCannon:fire_direction")
+tracks/1/path = NodePath("Weapon:fire_direction")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -175,7 +175,7 @@ tracks/1/keys = {
 "values": [ Vector2( 1, 0 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("BeamCannon:position")
+tracks/2/path = NodePath("Weapon:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -203,7 +203,7 @@ tracks/0/keys = {
 "values": [ 288, 289, 290 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("BeamCannon:position")
+tracks/1/path = NodePath("Weapon:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -215,7 +215,7 @@ tracks/1/keys = {
 "values": [ Vector2( 13, 19 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("BeamCannon:fire_direction")
+tracks/2/path = NodePath("Weapon:fire_direction")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -244,7 +244,7 @@ tracks/0/keys = {
 "values": [ 238, 239, 240 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("BeamCannon:fire_direction")
+tracks/1/path = NodePath("Weapon:fire_direction")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -256,7 +256,7 @@ tracks/1/keys = {
 "values": [ Vector2( 1, -1 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("BeamCannon:position")
+tracks/2/path = NodePath("Weapon:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -284,7 +284,7 @@ tracks/0/keys = {
 "values": [ 360, 356, 357 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("BeamCannon:position")
+tracks/1/path = NodePath("Weapon:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -296,7 +296,7 @@ tracks/1/keys = {
 "values": [ Vector2( -14, -3 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("BeamCannon:fire_direction")
+tracks/2/path = NodePath("Weapon:fire_direction")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -324,7 +324,7 @@ tracks/0/keys = {
 "values": [ 365, 366, 367 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("BeamCannon:fire_direction")
+tracks/1/path = NodePath("Weapon:fire_direction")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -336,7 +336,7 @@ tracks/1/keys = {
 "values": [ Vector2( 1, 0 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("BeamCannon:position")
+tracks/2/path = NodePath("Weapon:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -379,7 +379,7 @@ tracks/0/keys = {
 "values": [ 83, 84, 85 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("BeamCannon:fire_direction")
+tracks/1/path = NodePath("Weapon:fire_direction")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -391,7 +391,7 @@ tracks/1/keys = {
 "values": [ Vector2( -1, 0 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("BeamCannon:position")
+tracks/2/path = NodePath("Weapon:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -453,7 +453,7 @@ tracks/0/keys = {
 "values": [ 33, 34, 35 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("BeamCannon:position")
+tracks/1/path = NodePath("Weapon:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -465,7 +465,7 @@ tracks/1/keys = {
 "values": [ Vector2( -8, -20 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("BeamCannon:fire_direction")
+tracks/2/path = NodePath("Weapon:fire_direction")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -493,7 +493,7 @@ tracks/0/keys = {
 "values": [ 88, 89, 90 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("BeamCannon:position")
+tracks/1/path = NodePath("Weapon:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -505,7 +505,7 @@ tracks/1/keys = {
 "values": [ Vector2( 18, -3 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("BeamCannon:fire_direction")
+tracks/2/path = NodePath("Weapon:fire_direction")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -567,7 +567,7 @@ tracks/0/keys = {
 "values": [ 38, 39, 40 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("BeamCannon:fire_direction")
+tracks/1/path = NodePath("Weapon:fire_direction")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -579,7 +579,7 @@ tracks/1/keys = {
 "values": [ Vector2( 0, -1 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("BeamCannon:position")
+tracks/2/path = NodePath("Weapon:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -606,7 +606,7 @@ tracks/0/keys = {
 "values": [ 358, 359, 360 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("BeamCannon:fire_direction")
+tracks/1/path = NodePath("Weapon:fire_direction")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -618,7 +618,7 @@ tracks/1/keys = {
 "values": [ Vector2( -1, 0 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("BeamCannon:position")
+tracks/2/path = NodePath("Weapon:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -646,7 +646,7 @@ tracks/0/keys = {
 "values": [ 363, 364, 365 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("BeamCannon:fire_direction")
+tracks/1/path = NodePath("Weapon:fire_direction")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -658,7 +658,7 @@ tracks/1/keys = {
 "values": [ Vector2( 1, 0 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("BeamCannon:position")
+tracks/2/path = NodePath("Weapon:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -721,7 +721,7 @@ tracks/0/keys = {
 "values": [ 127, 128, 129, 130, 131, 132, 133, 134, 135, 136 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("BeamCannon:fire_direction")
+tracks/1/path = NodePath("Weapon:fire_direction")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -733,7 +733,7 @@ tracks/1/keys = {
 "values": [ Vector2( -1, 0 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("BeamCannon:position")
+tracks/2/path = NodePath("Weapon:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -781,7 +781,7 @@ tracks/0/keys = {
 "values": [ 202, 203, 204, 205, 206, 207, 208, 209, 210, 211 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("BeamCannon:position")
+tracks/1/path = NodePath("Weapon:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -793,7 +793,7 @@ tracks/1/keys = {
 "values": [ Vector2( -14, 8 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("BeamCannon:fire_direction")
+tracks/2/path = NodePath("Weapon:fire_direction")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -823,7 +823,7 @@ tracks/0/keys = {
 "values": [ 152, 153, 154, 155, 156, 157, 158, 159, 160, 161 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("BeamCannon:position")
+tracks/1/path = NodePath("Weapon:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -835,7 +835,7 @@ tracks/1/keys = {
 "values": [ Vector2( -16, -16 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("BeamCannon:fire_direction")
+tracks/2/path = NodePath("Weapon:fire_direction")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -864,7 +864,7 @@ tracks/0/keys = {
 "values": [ 137, 138, 139, 140, 141, 142, 143, 144, 145, 146 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("BeamCannon:position")
+tracks/1/path = NodePath("Weapon:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -876,7 +876,7 @@ tracks/1/keys = {
 "values": [ Vector2( 19, -3 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("BeamCannon:fire_direction")
+tracks/2/path = NodePath("Weapon:fire_direction")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -906,7 +906,7 @@ tracks/0/keys = {
 "values": [ 187, 188, 189, 190, 191, 192, 193, 194, 195, 196 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("BeamCannon:position")
+tracks/1/path = NodePath("Weapon:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -918,7 +918,7 @@ tracks/1/keys = {
 "values": [ Vector2( 19, -3 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("BeamCannon:fire_direction")
+tracks/2/path = NodePath("Weapon:fire_direction")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -948,7 +948,7 @@ tracks/0/keys = {
 "values": [ 212, 213, 214, 215, 216, 217, 218, 219, 220, 221 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("BeamCannon:position")
+tracks/1/path = NodePath("Weapon:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -960,7 +960,7 @@ tracks/1/keys = {
 "values": [ Vector2( 14, 8 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("BeamCannon:fire_direction")
+tracks/2/path = NodePath("Weapon:fire_direction")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -989,7 +989,7 @@ tracks/0/keys = {
 "values": [ 162, 163, 164, 165, 166, 167, 168, 169, 170, 171 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("BeamCannon:position")
+tracks/1/path = NodePath("Weapon:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -1001,7 +1001,7 @@ tracks/1/keys = {
 "values": [ Vector2( 16, -16 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("BeamCannon:fire_direction")
+tracks/2/path = NodePath("Weapon:fire_direction")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -1030,7 +1030,7 @@ tracks/0/keys = {
 "values": [ 429, 430, 431, 432, 433, 434, 435, 436 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("BeamCannon:position")
+tracks/1/path = NodePath("Weapon:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -1042,7 +1042,7 @@ tracks/1/keys = {
 "values": [ Vector2( -14, -3 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("BeamCannon:fire_direction")
+tracks/2/path = NodePath("Weapon:fire_direction")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -1071,7 +1071,7 @@ tracks/0/keys = {
 "values": [ 439, 440, 441, 442, 443, 444, 445, 446 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("BeamCannon:fire_direction")
+tracks/1/path = NodePath("Weapon:fire_direction")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -1083,7 +1083,7 @@ tracks/1/keys = {
 "values": [ Vector2( 1, 0 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("BeamCannon:position")
+tracks/2/path = NodePath("Weapon:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -1225,18 +1225,24 @@ blend_point_5/node = SubResource( 57 )
 blend_point_5/pos = Vector2( 0.1, 1 )
 blend_mode = 1
 
-[sub_resource type="AnimationNodeAnimation" id=62]
+[sub_resource type="AnimationNodeAnimation" id=59]
 animation = "SpinJumpLeft"
 
-[sub_resource type="AnimationNodeAnimation" id=63]
+[sub_resource type="AnimationNodeAnimation" id=60]
 animation = "SpinJumpRight"
 
-[sub_resource type="AnimationNodeBlendSpace2D" id=64]
-blend_point_0/node = SubResource( 62 )
+[sub_resource type="AnimationNodeBlendSpace2D" id=61]
+blend_point_0/node = SubResource( 59 )
 blend_point_0/pos = Vector2( -1, 0 )
-blend_point_1/node = SubResource( 63 )
+blend_point_1/node = SubResource( 60 )
 blend_point_1/pos = Vector2( 1, 0 )
 blend_mode = 1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=62]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=63]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=64]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=65]
 
@@ -1258,6 +1264,12 @@ blend_mode = 1
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=74]
 
+[sub_resource type="AnimationNodeStateMachineTransition" id=75]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=76]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=77]
+
 [sub_resource type="AnimationNodeStateMachineTransition" id=78]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=79]
@@ -1270,19 +1282,7 @@ blend_mode = 1
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=83]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=84]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=85]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=89]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=90]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=91]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=92]
-
-[sub_resource type="AnimationNodeStateMachine" id=86]
+[sub_resource type="AnimationNodeStateMachine" id=84]
 states/Crouch/node = SubResource( 39 )
 states/Crouch/position = Vector2( -411, 425.639 )
 states/Fall/node = SubResource( 42 )
@@ -1295,23 +1295,23 @@ states/MorphBall/node = SubResource( 51 )
 states/MorphBall/position = Vector2( -1, 90.7513 )
 states/Move/node = SubResource( 58 )
 states/Move/position = Vector2( 412, 187 )
-states/SpinJump/node = SubResource( 64 )
+states/SpinJump/node = SubResource( 61 )
 states/SpinJump/position = Vector2( 125, -135.953 )
-transitions = [ "Fall", "Idle", SubResource( 65 ), "Idle", "Crouch", SubResource( 66 ), "Crouch", "Idle", SubResource( 67 ), "Idle", "Move", SubResource( 68 ), "Move", "Idle", SubResource( 69 ), "Idle", "MorphBall", SubResource( 70 ), "MorphBall", "Idle", SubResource( 71 ), "MorphBall", "Move", SubResource( 72 ), "Move", "MorphBall", SubResource( 73 ), "Move", "SpinJump", SubResource( 74 ), "Jump", "Fall", SubResource( 78 ), "Idle", "Jump", SubResource( 79 ), "MorphBall", "Crouch", SubResource( 80 ), "Crouch", "MorphBall", SubResource( 81 ), "Crouch", "Jump", SubResource( 82 ), "SpinJump", "MorphBall", SubResource( 83 ), "Jump", "MorphBall", SubResource( 84 ), "Fall", "MorphBall", SubResource( 85 ), "MorphBall", "SpinJump", SubResource( 89 ), "SpinJump", "Idle", SubResource( 90 ), "SpinJump", "Fall", SubResource( 91 ), "SpinJump", "Jump", SubResource( 92 ) ]
+transitions = [ "Fall", "Idle", SubResource( 62 ), "Idle", "Crouch", SubResource( 63 ), "Crouch", "Idle", SubResource( 64 ), "Idle", "Move", SubResource( 65 ), "Move", "Idle", SubResource( 66 ), "Idle", "MorphBall", SubResource( 67 ), "MorphBall", "Idle", SubResource( 68 ), "MorphBall", "Move", SubResource( 69 ), "Move", "MorphBall", SubResource( 70 ), "Move", "SpinJump", SubResource( 71 ), "Jump", "Fall", SubResource( 72 ), "Idle", "Jump", SubResource( 73 ), "MorphBall", "Crouch", SubResource( 74 ), "Crouch", "MorphBall", SubResource( 75 ), "Crouch", "Jump", SubResource( 76 ), "SpinJump", "MorphBall", SubResource( 77 ), "Jump", "MorphBall", SubResource( 78 ), "Fall", "MorphBall", SubResource( 79 ), "MorphBall", "SpinJump", SubResource( 80 ), "SpinJump", "Idle", SubResource( 81 ), "SpinJump", "Fall", SubResource( 82 ), "SpinJump", "Jump", SubResource( 83 ) ]
 start_node = "Idle"
 graph_offset = Vector2( -584.414, -147.089 )
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id=87]
+[sub_resource type="AnimationNodeStateMachinePlayback" id=85]
 resource_local_to_scene = false
 
-[sub_resource type="CapsuleShape2D" id=88]
+[sub_resource type="CapsuleShape2D" id=86]
 radius = 9.0
 height = 18.0
 
 [node name="Samus" type="KinematicBody2D"]
 script = ExtResource( 2 )
 
-[node name="BeamCannon" parent="." instance=ExtResource( 12 )]
+[node name="Weapon" parent="." instance=ExtResource( 12 )]
 position = Vector2( -18, -3 )
 
 [node name="Sprite" type="Sprite" parent="."]
@@ -1402,10 +1402,10 @@ anims/TurnLeftRun = SubResource( 35 )
 anims/TurnRightRun = SubResource( 36 )
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
-tree_root = SubResource( 86 )
+tree_root = SubResource( 84 )
 anim_player = NodePath("../AnimationPlayer")
 active = true
-parameters/playback = SubResource( 87 )
+parameters/playback = SubResource( 85 )
 parameters/Crouch/blend_position = Vector2( 0, 0 )
 parameters/Fall/blend_position = Vector2( 0, 0 )
 parameters/Idle/blend_position = Vector2( 0, 0 )
@@ -1444,6 +1444,6 @@ collision_layer = 1
 
 [node name="CollisionShape2D" parent="Hurtbox" index="0"]
 position = Vector2( -1, 6 )
-shape = SubResource( 88 )
+shape = SubResource( 86 )
 
 [editable path="Hurtbox"]

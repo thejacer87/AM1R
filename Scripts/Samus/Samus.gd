@@ -13,7 +13,3 @@ func _physics_process(_delta):
 	label.text = $MotionStateMachine.current_state.get_name()
 	mode_label.text = $MorphStateMachine.current_state.get_name()
 
-
-func _input(event) -> void:
-	if event.is_action_pressed("shoot"):
-		beam_cannon.fire()

@@ -14,15 +14,15 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Scripts/Samus/States/Motion/Airborne/Airborne.gd"
 }, {
-"base": "Node2D",
-"class": "BeamCannon",
-"language": "GDScript",
-"path": "res://Scripts/BeamCannon/BeamCannon.gd"
-}, {
 "base": "State",
 "class": "BeamState",
 "language": "GDScript",
-"path": "res://Scripts/BeamCannon/States/Beam/Beam.gd"
+"path": "res://Scripts/Weapon/States/Beam/Beam.gd"
+}, {
+"base": "State",
+"class": "BombState",
+"language": "GDScript",
+"path": "res://Scripts/Weapon/States/Bomb/Bomb.gd"
 }, {
 "base": "AirborneState",
 "class": "FallState",
@@ -42,7 +42,7 @@ _global_script_classes=[ {
 "base": "State",
 "class": "MissileState",
 "language": "GDScript",
-"path": "res://Scripts/BeamCannon/States/Missile/Missile.gd"
+"path": "res://Scripts/Weapon/States/Missile/Missile.gd"
 }, {
 "base": "MorphState",
 "class": "MorphBallState",
@@ -88,11 +88,16 @@ _global_script_classes=[ {
 "class": "StateMachine",
 "language": "GDScript",
 "path": "res://Scripts/StateMachine.gd"
+}, {
+"base": "Node2D",
+"class": "Weapon",
+"language": "GDScript",
+"path": "res://Scripts/Weapon/Weapon.gd"
 } ]
 _global_script_class_icons={
 "AirborneState": "",
-"BeamCannon": "",
 "BeamState": "",
+"BombState": "",
 "FallState": "",
 "IdleState": "",
 "JumpState": "",
@@ -105,7 +110,8 @@ _global_script_class_icons={
 "OnGroundState": "",
 "Samus": "",
 "State": "",
-"StateMachine": ""
+"StateMachine": "",
+"Weapon": ""
 }
 
 [application]
