@@ -23,11 +23,6 @@ func _ready() -> void:
 	connect("bomb_jump", self, "_bomb_jump")
 
 
-func _bomb_jump() -> void:
-	print('here in motion')
-	velocity.y = -100
-	
-	
 func get_input_direction() -> Vector2:
 	return Vector2(
 		Input.get_action_strength("right") - Input.get_action_strength("left"),

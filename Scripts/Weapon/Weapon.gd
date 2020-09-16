@@ -41,11 +41,12 @@ func fire(weapon: Area2D) -> void:
 
 
 func bomb(bomb: Area2D) -> void:
-	bomb.direction = fire_direction
-	bomb.position = owner.global_position
-	bomb.position.y += MORPH_POSITION_OFFSET
-	get_tree().get_root().add_child(bomb)
-	fire_audio.play()
+	if get_tree().get_nodes_in_group("BOMBS").size() < 3:
+		bomb.direction = fire_direction
+		bomb.position = owner.global_position
+		bomb.position.y += MORPH_POSITION_OFFSET
+		get_tree().get_root().add_child(bomb)
+		fire_audio.play()
 
 
 func get_barrel_direction() -> Vector2:

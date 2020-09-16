@@ -6,4 +6,5 @@ func damage() -> void:
 
 
 func _on_Hurtbox_area_entered(area):
+	print('hit zoomer')
 	damage()
