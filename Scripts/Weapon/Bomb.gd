@@ -16,9 +16,9 @@ func _ready() -> void:
 func _on_Timer_timeout():
 	# play explosion animation
 #	explosion_shape.set_deferred("disabled", false)
-	explosion.set_deferred("monitored", true)
+	explosion.set_deferred("monitoring", true)
 	explosion.set_deferred("monitorable", true)
-	bomb_jump.set_deferred("monitored", true)
+	bomb_jump.set_deferred("monitoring", true)
 	bomb_jump.set_deferred("monitorable", true)
 	animation_player.play("Detonate")
 	print('exploded')
@@ -32,5 +32,4 @@ func _on_ExplosionHitbox_area_entered(area):
 
 
 func _on_BombJumpHitbox_body_entered(samus):
-	print('bomb jump')
-	emit_signal("bomb_jump")
+	samus.bomb_jump()
