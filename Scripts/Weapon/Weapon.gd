@@ -4,6 +4,7 @@ class_name Weapon
 
 const BEAM_COLOR := Color(1, 0, 0, 0.25)
 const MISSILE_COLOR := Color(0, 0, 1, 0.25)
+const MORPH_POSITION_OFFSET := 16
 
 onready var barrel := $Barrel
 onready var arrow := $Barrel/Arrow
@@ -41,7 +42,8 @@ func fire(weapon: Area2D) -> void:
 
 func bomb(bomb: Area2D) -> void:
 	bomb.direction = fire_direction
-	bomb.position = global_position
+	bomb.position = owner.global_position
+	bomb.position.y += MORPH_POSITION_OFFSET
 	get_tree().get_root().add_child(bomb)
 	fire_audio.play()
 
