@@ -20,7 +20,6 @@ onready var animation_state = animation_tree.get("parameters/playback")
 
 func _ready() -> void:
 	gravity = 2 * max_jump_height / pow(jump_duration, 2)
-	connect("bomb_jump", self, "_bomb_jump")
 
 
 func get_input_direction() -> Vector2:

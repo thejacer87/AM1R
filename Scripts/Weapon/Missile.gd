@@ -8,7 +8,7 @@ var velocity := Vector2.ZERO
 
 func _ready() -> void:
 	rotation_degrees = rad2deg(direction.angle())
-	Globals.GameSFX.play(Globals.sfx['beam'])
+	Globals.GameSFX.play(Globals.sfx['missile'])
 
 
 func _physics_process(delta) -> void:

@@ -6,7 +6,7 @@
 [ext_resource path="res://Sounds/bomb_drop.wav" type="AudioStream" id=4]
 [ext_resource path="res://Sounds/bomb_explode.wav" type="AudioStream" id=5]
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=1]
 length = 0.766668
 step = 0.0166667
 tracks/0/type = "value"
@@ -98,8 +98,7 @@ tracks/6/keys = {
 "values": [ true, false ]
 }
 
-[sub_resource type="Animation" id=1]
-resource_name = "Drop"
+[sub_resource type="Animation" id=2]
 step = 0.0166667
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -156,8 +155,8 @@ autostart = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "Drop"
-anims/Detonate = SubResource( 2 )
-anims/Drop = SubResource( 1 )
+anims/Detonate = SubResource( 1 )
+anims/Drop = SubResource( 2 )
 
 [node name="ExplosionHitbox" parent="." instance=ExtResource( 3 )]
 monitoring = false

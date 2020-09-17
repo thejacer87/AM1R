@@ -32,7 +32,9 @@ func _physics_process(delta) -> void:
 			arrow.get_node("Polygon2D").color = BEAM_COLOR
 
 
-func fire(weapon: Area2D) -> void:
+func fire(weapon: Area2D, is_missile : bool = false) -> void:
+	if is_missile and get_tree().get_nodes_in_group("MISSILES").size() >= 1:
+		return
 	weapon.direction = fire_direction
 	weapon.position = global_position
 	get_tree().get_root().add_child(weapon)
