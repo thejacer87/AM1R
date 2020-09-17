@@ -1,10 +1,9 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Scripts/Weapon/States/WeaponStateMachine.gd" type="Script" id=1]
 [ext_resource path="res://Scripts/Weapon/States/Cannon/Beam.gd" type="Script" id=2]
 [ext_resource path="res://Scripts/Weapon/Weapon.gd" type="Script" id=3]
 [ext_resource path="res://Scripts/Weapon/States/Cannon/Missile.gd" type="Script" id=4]
-[ext_resource path="res://Sounds/beam.wav" type="AudioStream" id=5]
 [ext_resource path="res://Scripts/Weapon/States/Bomb/Bomb.gd" type="Script" id=6]
 
 [node name="Weapon" type="Node2D"]
@@ -50,6 +49,3 @@ script = ExtResource( 6 )
 
 [node name="Missile" type="Node" parent="WeaponStateMachine"]
 script = ExtResource( 4 )
-
-[node name="FireAudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource( 5 )

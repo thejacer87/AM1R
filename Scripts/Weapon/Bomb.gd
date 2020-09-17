@@ -9,15 +9,7 @@ onready var bomb_jump := $BombJumpHitbox
 onready var animation_player := $AnimationPlayer
 
 
-func _ready() -> void:
-	rotation_degrees = rad2deg(direction.angle())
-
-
 func _on_Timer_timeout():
-	explosion.set_deferred("monitoring", true)
-	explosion.set_deferred("monitorable", true)
-	bomb_jump.set_deferred("monitoring", true)
-	bomb_jump.set_deferred("monitorable", true)
 	animation_player.play("Detonate")
 
 

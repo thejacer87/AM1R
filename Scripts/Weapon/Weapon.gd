@@ -9,7 +9,6 @@ const MORPH_POSITION_OFFSET := 16
 onready var barrel := $Barrel
 onready var arrow := $Barrel/Arrow
 onready var weapon_state_machine := $WeaponStateMachine
-onready var fire_audio := $FireAudioStreamPlayer2D
 
 var fire_direction := Vector2.RIGHT
 
@@ -37,7 +36,6 @@ func fire(weapon: Area2D) -> void:
 	weapon.direction = fire_direction
 	weapon.position = global_position
 	get_tree().get_root().add_child(weapon)
-	fire_audio.play()
 
 
 func bomb(bomb: Area2D) -> void:
@@ -46,7 +44,6 @@ func bomb(bomb: Area2D) -> void:
 		bomb.position = owner.global_position
 		bomb.position.y += MORPH_POSITION_OFFSET
 		get_tree().get_root().add_child(bomb)
-		fire_audio.play()
 
 
 func get_barrel_direction() -> Vector2:
