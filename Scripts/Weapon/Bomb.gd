@@ -13,10 +13,5 @@ func _on_Timer_timeout():
 	animation_player.play("Detonate")
 
 
-func _on_ExplosionHitbox_area_entered(area):
-	print('bomed an area')
-
-
 func _on_BombJumpHitbox_body_entered(samus):
 	samus.bomb_jump()
-

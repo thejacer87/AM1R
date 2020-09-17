@@ -3,7 +3,7 @@ extends Node2D
 onready var audiostream := $Audio
 
 func _ready() -> void:
-	Globals.GameMusic = self
+	Globals.GameSFX = self
 
 func play(path) -> void:
 	var audio_file = load(path)

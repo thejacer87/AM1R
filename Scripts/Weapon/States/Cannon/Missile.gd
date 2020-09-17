@@ -11,7 +11,7 @@ func handle_input(event: InputEvent):
 	if event.is_action_released("arm"):
 		emit_signal("finished", "beam")
 	if event.is_action_released("shoot"):
-		owner.fire(MISSILE.instance())
+		owner.fire(Globals.MISSILE.instance())
 	return .handle_input(event)
 
 

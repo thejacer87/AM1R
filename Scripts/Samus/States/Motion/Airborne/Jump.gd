@@ -4,6 +4,7 @@ class_name JumpState
 
 
 func enter() -> void:
+	Globals.GameSFX.play(Globals.sfx['jump'])
 	var input_direction = get_input_direction()
 
 	if in_morph_ball():

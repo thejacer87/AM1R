@@ -11,7 +11,7 @@ func handle_input(event: InputEvent):
 	if event.is_action_pressed("arm"):
 		emit_signal("finished", "missile")
 	if event.is_action_pressed("shoot"):
-		owner.fire(BEAM.instance())
+		owner.fire(Globals.BEAM.instance())
 	return .handle_input(event)
 
 

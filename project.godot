@@ -131,6 +131,7 @@ config/icon="res://Sprites/logo.png"
 
 Globals="*res://Scripts/Globals.gd"
 GameMusic="*res://Scripts/GameMusic.gd"
+GameSFX="*res://Scenes/GameSFX.tscn"
 
 [display]
 

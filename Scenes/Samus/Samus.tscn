@@ -11,7 +11,7 @@
 [ext_resource path="res://Scripts/Samus/States/Motion/Airborne/Jump.gd" type="Script" id=9]
 [ext_resource path="res://Scripts/Samus/States/Motion/OnGround/Move.gd" type="Script" id=10]
 [ext_resource path="res://Scripts/Samus/States/Motion/Airborne/Fall.gd" type="Script" id=11]
-[ext_resource path="res://Scenes/Weapon.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Scenes/Samus/Weapons/Weapon.tscn" type="PackedScene" id=12]
 [ext_resource path="res://Scenes/Hitboxes/Hurtbox.tscn" type="PackedScene" id=13]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
