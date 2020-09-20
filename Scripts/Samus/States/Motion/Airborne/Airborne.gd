@@ -8,6 +8,7 @@ var max_jump_velocity
 var min_jump_velocity
 var is_spinning := false
 var aerial_speed := 4 * Globals.UNIT_SIZE
+var morph_aerial_speed := 100 * Globals.UNIT_SIZE
 var enter_velocity := Vector2.ZERO
 var wall_direction := 1
 

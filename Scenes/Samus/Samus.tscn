@@ -1,4 +1,4 @@
-[gd_scene load_steps=100 format=2]
+[gd_scene load_steps=101 format=2]
 
 [ext_resource path="res://Sprites/Samus/zm_power_suit.png" type="Texture" id=1]
 [ext_resource path="res://Scripts/Samus/Samus.gd" type="Script" id=2]
@@ -1282,6 +1282,8 @@ blend_mode = 1
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=83]
 
+[sub_resource type="AnimationNodeStateMachineTransition" id=87]
+
 [sub_resource type="AnimationNodeStateMachine" id=84]
 states/Crouch/node = SubResource( 39 )
 states/Crouch/position = Vector2( -411, 425.639 )
@@ -1297,7 +1299,7 @@ states/Move/node = SubResource( 58 )
 states/Move/position = Vector2( 412, 187 )
 states/SpinJump/node = SubResource( 61 )
 states/SpinJump/position = Vector2( 125, -135.953 )
-transitions = [ "Fall", "Idle", SubResource( 62 ), "Idle", "Crouch", SubResource( 63 ), "Crouch", "Idle", SubResource( 64 ), "Idle", "Move", SubResource( 65 ), "Move", "Idle", SubResource( 66 ), "Idle", "MorphBall", SubResource( 67 ), "MorphBall", "Idle", SubResource( 68 ), "MorphBall", "Move", SubResource( 69 ), "Move", "MorphBall", SubResource( 70 ), "Move", "SpinJump", SubResource( 71 ), "Jump", "Fall", SubResource( 72 ), "Idle", "Jump", SubResource( 73 ), "MorphBall", "Crouch", SubResource( 74 ), "Crouch", "MorphBall", SubResource( 75 ), "Crouch", "Jump", SubResource( 76 ), "SpinJump", "MorphBall", SubResource( 77 ), "Jump", "MorphBall", SubResource( 78 ), "Fall", "MorphBall", SubResource( 79 ), "MorphBall", "SpinJump", SubResource( 80 ), "SpinJump", "Idle", SubResource( 81 ), "SpinJump", "Fall", SubResource( 82 ), "SpinJump", "Jump", SubResource( 83 ) ]
+transitions = [ "Fall", "Idle", SubResource( 62 ), "Idle", "Crouch", SubResource( 63 ), "Crouch", "Idle", SubResource( 64 ), "Idle", "Move", SubResource( 65 ), "Move", "Idle", SubResource( 66 ), "Idle", "MorphBall", SubResource( 67 ), "MorphBall", "Idle", SubResource( 68 ), "MorphBall", "Move", SubResource( 69 ), "Move", "MorphBall", SubResource( 70 ), "Move", "SpinJump", SubResource( 71 ), "Jump", "Fall", SubResource( 72 ), "Idle", "Jump", SubResource( 73 ), "MorphBall", "Crouch", SubResource( 74 ), "Crouch", "MorphBall", SubResource( 75 ), "Crouch", "Jump", SubResource( 76 ), "SpinJump", "MorphBall", SubResource( 77 ), "Jump", "MorphBall", SubResource( 78 ), "Fall", "MorphBall", SubResource( 79 ), "MorphBall", "SpinJump", SubResource( 80 ), "SpinJump", "Idle", SubResource( 81 ), "SpinJump", "Fall", SubResource( 82 ), "SpinJump", "Jump", SubResource( 83 ), "Move", "Fall", SubResource( 87 ) ]
 start_node = "Idle"
 graph_offset = Vector2( -584.414, -147.089 )
 

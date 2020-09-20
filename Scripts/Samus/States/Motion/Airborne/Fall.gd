@@ -26,3 +26,7 @@ func update(delta: float) -> void:
 		emit_signal("finished", "idle")
 
 	.update(delta)
+
+func exit() -> void:
+	velocity = Vector2.ZERO
+	
