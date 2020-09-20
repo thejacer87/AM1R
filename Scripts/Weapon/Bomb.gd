@@ -1,7 +1,5 @@
 extends Area2D
 
-signal bomb_jump()
-
 export var direction := Vector2.RIGHT
 var velocity := Vector2.ZERO
 onready var explosion := $ExplosionHitbox

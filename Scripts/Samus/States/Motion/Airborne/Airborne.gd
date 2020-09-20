@@ -39,9 +39,14 @@ func handle_input(event: InputEvent):
 		if is_spinning:
 			var input_direction = get_input_direction()
 			# Stop spinning
-			if abs(input_direction.y) == 1:
+			if input_direction.y == -1:
+				print("press up")
 				var facing = sign(velocity.x)
 				animation_state.travel("Jump") if velocity.y > 0 else animation_state.travel("Fall")
+				is_spinning = false
+			# Aim down
+			if input_direction.y == 1:
+				print("press down")
 				is_spinning = false
 			# Wall jump
 			if event.is_action_pressed("jump") and wall_stick.time_left > 0:
@@ -52,8 +57,8 @@ func handle_input(event: InputEvent):
 		else:
 			if Input.is_action_just_pressed("jump"):
 				var facing = sign(velocity.x)
-#				animation_state.travel("SpinJump")
-				velocity.x = facing * 100
+				# animation_state.travel("SpinJump")
+				# velocity.x = facing * 100
 
 	return .handle_input(event)
 

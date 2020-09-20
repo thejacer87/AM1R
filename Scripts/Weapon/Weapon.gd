@@ -17,7 +17,7 @@ func _ready() -> void:
 	arrow.visible = OS.is_debug_build()
 
 
-func _physics_process(delta) -> void:
+func _physics_process(_delta) -> void:
 	var barrel_direction = get_barrel_direction()
 	if barrel_direction:
 		fire_direction = barrel_direction

@@ -4,12 +4,10 @@ class_name FallState
 
 
 func enter() -> void:
-	var input_direction = get_input_direction()
-
 	if in_morph_ball():
 		animation_state.travel("MorphBall")
 	else:
-		if animation_state.get_current_node() == "Jump":
+		if animation_state.get_current_node() != "SpinJump":
 			animation_state.travel("Fall")
 		is_spinning = animation_state.get_current_node() == "SpinJump"
 
