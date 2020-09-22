@@ -16,4 +16,5 @@ func _physics_process(_delta):
 	mode_label.text = morph_state_machine.current_state.get_name()
 
 func bomb_jump() -> void:
-	motion_state_machine.current_state.velocity.y = -150
+	if morph_state_machine.current_state == Globals.STATES["Morph"].states_map["morph_ball"]:
+		motion_state_machine._change_state("bomb_jump")
