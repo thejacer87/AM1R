@@ -1311,7 +1311,9 @@ resource_local_to_scene = false
 radius = 9.0
 height = 18.0
 
-[node name="Samus" type="KinematicBody2D"]
+[node name="Samus" type="KinematicBody2D" groups=[
+"persist",
+]]
 script = ExtResource( 2 )
 
 [node name="Weapon" parent="." instance=ExtResource( 12 )]

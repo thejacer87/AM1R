@@ -1,0 +1,8 @@
+[gd_scene format=2]
+
+[node name="Camera2D" type="Camera2D"]
+current = true
+limit_left = -450
+limit_right = 750
+limit_bottom = 175
+smoothing_enabled = true

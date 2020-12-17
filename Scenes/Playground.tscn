@@ -1,8 +1,10 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Scenes/Samus/Samus.tscn" type="PackedScene" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
 [ext_resource path="res://Scenes/Enemies/Zoomer.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/Levels/SaveStation.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/Playground.gd" type="Script" id=5]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 16, 16, 0, 16, 0, 0, 16, 0 )
@@ -31,6 +33,7 @@ points = PoolVector2Array( 16, 16, 0, 16, 0, 0, 16, 0 )
 0/z_index = 0
 
 [node name="Playground" type="Node2D"]
+script = ExtResource( 5 )
 
 [node name="Floor" type="Control" parent="."]
 margin_right = 40.0
@@ -51,15 +54,14 @@ tile_data = PoolIntArray( -458784, 0, 0, -458783, 0, 0, -458782, 0, 0, -458781, 
 [node name="Samus" parent="." instance=ExtResource( 1 )]
 position = Vector2( 80, 96 )
 
-[node name="Camera2D" type="Camera2D" parent="Samus"]
-current = true
-limit_left = -450
-limit_right = 750
-limit_bottom = 175
-smoothing_enabled = true
-
 [node name="Zoomer2" parent="." instance=ExtResource( 3 )]
-position = Vector2( 248, 96 )
+position = Vector2( 264, 34.8938 )
 
 [node name="Zoomer" parent="." instance=ExtResource( 3 )]
 position = Vector2( 368, 56 )
+
+[node name="SaveStation" parent="." instance=ExtResource( 4 )]
+position = Vector2( 176, 136 )
+
+[node name="SaveStation2" parent="." instance=ExtResource( 4 )]
+position = Vector2( 568, 136 )
