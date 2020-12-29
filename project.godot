@@ -84,6 +84,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Scripts/Samus/States/Motion/OnGround/OnGround.gd"
 }, {
+"base": "Area2D",
+"class": "Pickup",
+"language": "GDScript",
+"path": "res://Scripts/Pickups/Pickup.gd"
+}, {
 "base": "KinematicBody2D",
 "class": "Samus",
 "language": "GDScript",
@@ -120,6 +125,7 @@ _global_script_class_icons={
 "MoveState": "",
 "NeutralState": "",
 "OnGroundState": "",
+"Pickup": "",
 "Samus": "",
 "State": "",
 "StateMachine": "",

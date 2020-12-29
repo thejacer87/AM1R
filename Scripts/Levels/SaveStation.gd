@@ -1,5 +1,7 @@
 extends Node2D
 
+var samus
+
 func _save_game() -> void:
 	var save_game = File.new()
 	save_game.open("user://savegame.save", File.WRITE)
@@ -23,11 +25,13 @@ func _save_game() -> void:
 	save_game.close()
 
 
-func _on_SaveArea_body_entered(body: Node) -> void:
+func _on_SaveArea_body_entered(body: Samus) -> void:
+	samus = Samus
 	$Timer.start()
 	_save_game()
 
 
 func _on_Timer_timeout() -> void:
 	print('timeout')
+	samus.animate_save()
 	pass

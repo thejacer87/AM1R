@@ -9,6 +9,7 @@ const MORPH_POSITION_OFFSET := 16
 onready var barrel := $Barrel
 onready var arrow := $Barrel/Arrow
 onready var weapon_state_machine := $WeaponStateMachine
+onready var samus := get_owner()
 
 var fire_direction := Vector2.RIGHT
 
@@ -33,11 +34,17 @@ func _physics_process(_delta) -> void:
 
 
 func fire(weapon: Area2D, is_missile : bool = false) -> void:
-	if is_missile and get_tree().get_nodes_in_group("MISSILES").size() >= 1:
-		return
-	weapon.direction = fire_direction
-	weapon.position = global_position
-	get_tree().get_root().add_child(weapon)
+	if is_missile:
+		if has_missiles() and get_tree().get_nodes_in_group("MISSILES").size() == 0:
+			weapon.direction = fire_direction
+			weapon.position = global_position
+			samus.missile_count -= 1
+			get_tree().get_root().add_child(weapon)
+	else:
+		weapon.direction = fire_direction
+		weapon.position = global_position
+		get_tree().get_root().add_child(weapon)
+		
 
 
 func bomb(bomb: Area2D) -> void:
@@ -57,3 +64,8 @@ func get_barrel_direction() -> Vector2:
 
 func missile_is_armed() -> bool:
 	return weapon_state_machine.current_state == Globals.STATES["Weapon"].states_map["missile"]
+
+
+func has_missiles() -> bool:
+	var m = samus.missile_count
+	return samus.missile_count > 0

@@ -1323,7 +1323,7 @@ position = Vector2( -18, -3 )
 texture = ExtResource( 1 )
 vframes = 30
 hframes = 25
-frame = 85
+frame = 84
 
 [node name="NeutralCollision" type="CollisionShape2D" parent="."]
 visible = false
