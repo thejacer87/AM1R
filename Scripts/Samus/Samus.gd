@@ -9,19 +9,21 @@ onready var beam_cannon = $BeamCannon
 onready var animation_tree = $AnimationTree
 onready var motion_state_machine = $MotionStateMachine
 onready var morph_state_machine = $MorphStateMachine
-onready var ui = $UI
+
+var ui
 
 export var missile_count = 0
 
+var camera = load("res://Camera.tscn")
+	
 func _ready() -> void:
-	var camera = load("res://Camera.tscn")
+	ui = get_tree().get_root().get_node("Playground/UI/UI/VBoxContainer/HBoxContainer/MissileCount")
 	add_child(camera.instance())
 
 func _physics_process(_delta):
 	label.text = motion_state_machine.current_state.get_name()
 	mode_label.text = morph_state_machine.current_state.get_name()
-	var count = ui.find_node("MissileCount")
-	count.text = String(missile_count)
+	ui.text = String(missile_count)
 
 func bomb_jump() -> void:
 	if morph_state_machine.current_state == Globals.STATES["Morph"].states_map["morph_ball"]:

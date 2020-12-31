@@ -56,12 +56,6 @@ tile_data = PoolIntArray( -458784, 0, 0, -458783, 0, 0, -458782, 0, 0, -458781, 
 [node name="Samus" parent="." instance=ExtResource( 1 )]
 position = Vector2( 80, 96 )
 
-[node name="UI" parent="Samus" instance=ExtResource( 7 )]
-margin_left = -80.0
-margin_top = -96.0
-margin_right = -80.0
-margin_bottom = -96.0
-
 [node name="Zoomer2" parent="." instance=ExtResource( 3 )]
 position = Vector2( 420.053, 99.2565 )
 
@@ -82,3 +76,7 @@ position = Vector2( 224.485, 99.6237 )
 
 [node name="Missile2" parent="." instance=ExtResource( 6 )]
 position = Vector2( 260.07, 101.871 )
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="UI" parent="UI" instance=ExtResource( 7 )]
