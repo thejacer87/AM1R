@@ -38,6 +38,7 @@ func save(load_position) -> Dictionary:
 		"parent": get_parent().get_path(),
 		"pos_x": load_position.x,
 		"pos_y": load_position.y,
-		"camera": $Camera2D
+		"camera": $Camera2D,
+		"missile_count": missile_count
 	}
 	return save
