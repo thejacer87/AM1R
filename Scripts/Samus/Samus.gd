@@ -14,11 +14,11 @@ var ui
 
 export var missile_count = 0
 
-var camera = load("res://Camera.tscn")
-	
+onready var camera = $Camera2D
+
 func _ready() -> void:
 	ui = get_tree().get_root().get_node("Playground/UI/UI/VBoxContainer/HBoxContainer/MissileCount")
-	add_child(camera.instance())
+#	add_child(camera.instance())
 
 func _physics_process(_delta):
 	label.text = motion_state_machine.current_state.get_name()
@@ -30,7 +30,7 @@ func bomb_jump() -> void:
 		motion_state_machine._change_state("bomb_jump")
 
 func animate_save()-> void:
-	print('anmiate save') 
+	print('anmiate save')
 
 func save(load_position) -> Dictionary:
 	var save = {

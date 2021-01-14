@@ -49,6 +49,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Scripts/Samus/States/Motion/Airborne/Jump.gd"
 }, {
+"base": "Camera2D",
+"class": "MainCamera",
+"language": "GDScript",
+"path": "res://Scripts/Levels/Camera.gd"
+}, {
 "base": "CannonState",
 "class": "MissileState",
 "language": "GDScript",
@@ -118,6 +123,7 @@ _global_script_class_icons={
 "FallState": "",
 "IdleState": "",
 "JumpState": "",
+"MainCamera": "",
 "MissileState": "",
 "MorphBallState": "",
 "MorphState": "",
