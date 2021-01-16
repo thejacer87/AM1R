@@ -23,8 +23,8 @@ func _ready() -> void:
 
 
 func _physics_process(_delta):
-	label.text = motion_state_machine.current_state.get_name()
-	mode_label.text = morph_state_machine.current_state.get_name()
+#	label.text = motion_state_machine.current_state.get_name()
+#	mode_label.text = morph_state_machine.current_state.get_name()
 	ui.text = String(missile_count)
 
 
@@ -45,6 +45,9 @@ func show_black_screen() -> void:
 
 func hide_black_screen() -> void:
 	black_screen.queue_free()
+	var level = get_parent()
+	for door in get_tree().get_nodes_in_group("DOOR"):
+		level.move_child(door, level.get_child_count())
 
 
 func animate_save()-> void:

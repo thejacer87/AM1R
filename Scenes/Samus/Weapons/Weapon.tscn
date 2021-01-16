@@ -7,6 +7,7 @@
 [ext_resource path="res://Scripts/Weapon/States/Bomb/Bomb.gd" type="Script" id=6]
 
 [node name="Weapon" type="Node2D"]
+visible = false
 script = ExtResource( 3 )
 __meta__ = {
 "_edit_group_": true

@@ -44,7 +44,7 @@ func fire(weapon: Area2D, is_missile : bool = false) -> void:
 		weapon.direction = fire_direction
 		weapon.position = global_position
 		get_tree().get_root().add_child(weapon)
-		
+
 
 
 func bomb(bomb: Area2D) -> void:
