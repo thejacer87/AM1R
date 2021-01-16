@@ -252,6 +252,7 @@ aim={
 2d_physics/layer_7="missile"
 2d_physics/layer_8="bomb"
 2d_physics/layer_9="power_bomb"
+2d_physics/layer_10="door_lock"
 
 [rendering]
 

@@ -12,14 +12,3 @@ smoothing_enabled = true
 script = ExtResource( 1 )
 
 [node name="Tween" type="Tween" parent="."]
-
-[node name="BlackLayer" type="CanvasLayer" parent="."]
-
-[node name="ColorRect" type="ColorRect" parent="BlackLayer"]
-visible = false
-anchor_right = 1.0
-anchor_bottom = 1.0
-color = Color( 0, 0, 0, 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}

@@ -1,6 +1,8 @@
 extends Node
 
 const UNIT_SIZE := 16.0
+const SCREEN_WIDTH := 300
+const SCREEN_HEIGHT := 180
 var STATES := {}
 
 # Preloaded Scenes
