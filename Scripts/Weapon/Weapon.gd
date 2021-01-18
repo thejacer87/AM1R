@@ -46,9 +46,9 @@ func fire(weapon: Area2D, is_missile : bool = false) -> void:
 		get_tree().get_root().add_child(weapon)
 
 	# Not really working as expected
-	if samus.motion_state_machine.current_state != Globals.STATES["Motion"].states_map["idle"]:
-		if samus.motion_state_machine.current_state == Globals.STATES["Motion"].states_map["jump"] or samus.motion_state_machine.current_state == Globals.STATES["Motion"].states_map["fall"]:
-			samus.motion_state_machine._change_state("idle")
+#	if samus.motion_state_machine.current_state != Globals.STATES["Motion"].states_map["idle"]:
+#		if samus.motion_state_machine.current_state == Globals.STATES["Motion"].states_map["jump"] or samus.motion_state_machine.current_state == Globals.STATES["Motion"].states_map["fall"]:
+#			samus.motion_state_machine._change_state("idle")
 
 
 func bomb(bomb: Area2D) -> void:
