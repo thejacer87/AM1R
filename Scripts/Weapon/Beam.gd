@@ -1,6 +1,6 @@
 extends Area2D
 
-const SPEED := 250
+const SPEED := 450
 export var direction := Vector2.RIGHT
 var velocity := Vector2.ZERO
 

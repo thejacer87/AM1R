@@ -23,7 +23,7 @@ points = PoolVector2Array( 7.5, 16, -7.5, 16, -7.5, -10, -2, -15.5, 2, -15.5, 7.
 extents = Vector2( 8, 12 )
 
 [sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 7.5, 7.5 )
+extents = Vector2( 6.5, 7.5 )
 
 [sub_resource type="Animation" id=4]
 resource_name = "CrouchLeft"
@@ -1324,7 +1324,7 @@ position = Vector2( -18, -3 )
 texture = ExtResource( 1 )
 vframes = 30
 hframes = 25
-frame = 83
+frame = 84
 
 [node name="NeutralCollision" type="CollisionShape2D" parent="."]
 visible = false
@@ -1338,7 +1338,6 @@ shape = SubResource( 2 )
 disabled = true
 
 [node name="MorphBallCollision" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2( 0, 15.5 )
 shape = SubResource( 3 )
 disabled = true

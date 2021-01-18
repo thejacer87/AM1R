@@ -19,7 +19,7 @@ export var missile_count = 0
 
 
 func _ready() -> void:
-	ui = get_tree().get_root().get_node("Playground/UI/UI/VBoxContainer/HBoxContainer/MissileCount")
+	ui = get_tree().get_root().get_node("Main/Brinstar/UI/UI/VBoxContainer/HBoxContainer/MissileCount")
 
 
 func _physics_process(_delta):

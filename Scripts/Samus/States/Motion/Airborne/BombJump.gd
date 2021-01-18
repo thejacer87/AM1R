@@ -2,7 +2,7 @@ extends AirborneState
 
 class_name BombJumpState
 
-const BOMB_JUMP_HEIGHT := -150
+const BOMB_JUMP_HEIGHT := -160
 
 
 func enter() -> void:
