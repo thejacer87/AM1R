@@ -1,21 +1,21 @@
 extends MorphState
 
-const CROUCH_STICKYNESS := 0.33
+const CROUCH_STICKYNESS := 0.22
 
 
-onready var timer = Timer.new()
+var timer
 
 
-func _ready():
+func enter() -> void:
+	timer = Timer.new()
 	timer.connect("timeout", self, "_on_timer_timeout")
 	timer.wait_time = CROUCH_STICKYNESS
 	timer.one_shot = true
 	add_child(timer)
-
-
-func enter() -> void:
 	animation_state.travel("Crouch")
 	._set_collision_state("Crouch")
+	if Input.is_action_pressed("right") or Input.is_action_pressed("left"):
+		timer.start()
 
 
 func handle_input(event: InputEvent):
@@ -29,13 +29,13 @@ func handle_input(event: InputEvent):
 
 
 func update(delta: float) -> void:
-	# TODO: if moving in morphball, then morph out to crouch. this wont fire if already holding left/right... FIX IT!!
 	if Input.is_action_just_pressed("right") or Input.is_action_just_pressed("left"):
 		timer.start()
 	if Input.is_action_just_released("right"):
 		timer.stop()
 	if Input.is_action_just_released("left"):
 		timer.stop()
+
 
 func exit() -> void:
 	timer.stop()

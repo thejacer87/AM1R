@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Scenes/Levels/Transition.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scripts/Levels/Door.gd" type="Script" id=3]
@@ -9,6 +9,9 @@ extents = Vector2( 8, 32 )
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 24, 32 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 8, 32 )
 
 [node name="Door" type="StaticBody2D" groups=[
 "DOOR",
@@ -59,6 +62,15 @@ shape = SubResource( 2 )
 
 [node name="Transition" parent="." instance=ExtResource( 2 )]
 position = Vector2( 16, 0 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+modulate = Color( 0.439216, 0.0784314, 0.00784314, 1 )
+position = Vector2( 8, 0 )
+shape = SubResource( 3 )
 [connection signal="area_entered" from="Lock" to="." method="_on_Lock_area_entered"]
 
 [editable path="Transition"]

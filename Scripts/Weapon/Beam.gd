@@ -2,12 +2,19 @@ extends Area2D
 
 const SPEED := 450
 export var direction := Vector2.RIGHT
+
 var velocity := Vector2.ZERO
+var beam_distance := 0.15
+var long_beam_distance := 0.5
+
+onready var timer := $Timer
 
 
 func _ready() -> void:
 	rotation_degrees = rad2deg(direction.angle())
 	Globals.GameSFX.play(Globals.sfx['beam'])
+	timer.wait_time = beam_distance if false else long_beam_distance
+	timer.start()
 
 
 func _physics_process(delta) -> void:

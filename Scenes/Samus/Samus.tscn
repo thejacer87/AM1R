@@ -1338,6 +1338,7 @@ shape = SubResource( 2 )
 disabled = true
 
 [node name="MorphBallCollision" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2( 0, 15.5 )
 shape = SubResource( 3 )
 disabled = true
@@ -1423,7 +1424,6 @@ parameters/Move/blend_position = Vector2( 0, 0 )
 parameters/SpinJump/blend_position = Vector2( 0, 0 )
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
-visible = false
 margin_left = -36.734
 margin_top = -29.7727
 margin_right = 41.266
@@ -1434,7 +1434,6 @@ __meta__ = {
 }
 
 [node name="mode" type="RichTextLabel" parent="."]
-visible = false
 margin_left = -36.6381
 margin_top = -44.3282
 margin_right = 66.3619

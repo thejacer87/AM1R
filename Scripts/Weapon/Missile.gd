@@ -1,7 +1,7 @@
 extends Area2D
 
 const MISSILE_FULL_SPEED := 375
-onready var missile_speed := 75
+onready var missile_speed := 375
 export var direction := Vector2.RIGHT
 var velocity := Vector2.ZERO
 
