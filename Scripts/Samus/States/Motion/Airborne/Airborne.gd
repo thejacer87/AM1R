@@ -6,6 +6,7 @@ onready var wall_stick = owner.get_node("WallStickTimer")
 
 var max_jump_velocity
 var min_jump_velocity
+var high_jump_multiplier = 1.38
 var is_spinning := false
 var aerial_speed := 4 * Globals.UNIT_SIZE
 var morph_aerial_speed := 100 * Globals.UNIT_SIZE
@@ -18,7 +19,8 @@ func initialize(velocity: Vector2) -> void:
 
 
 func _ready() -> void:
-	max_jump_velocity = -sqrt(2 * gravity * max_jump_height)
+	var multiplier = high_jump_multiplier if (owner as Samus).has_powerup("high_jump") else 1
+	max_jump_velocity = -sqrt(2 * gravity * max_jump_height * multiplier)
 	min_jump_velocity = -sqrt(2 * gravity * min_jump_height)
 
 

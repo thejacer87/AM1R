@@ -12,13 +12,16 @@ onready var morph_state_machine = $MorphStateMachine
 onready var camera = $Camera2D
 onready var black_screen_scene := preload("res://Scenes/Levels/BlackScreen.tscn")
 
+
 var ui
 var black_screen
+var collected_powerups = []
 
 export var missile_count = 0
 
 
 func _ready() -> void:
+	Globals.Samus = self
 	ui = get_tree().get_root().get_node("Main/Brinstar/UI/UI/VBoxContainer/HBoxContainer/MissileCount")
 
 
@@ -50,8 +53,17 @@ func hide_black_screen() -> void:
 		level.move_child(door, level.get_child_count())
 
 
-func animate_save()-> void:
+func animate_save() -> void:
 	print('anmiate save')
+
+
+func has_powerup(powerup: String) -> bool:
+	return collected_powerups.has(powerup)
+
+
+func collect_powerup(powerup: String) -> void:
+	if not collected_powerups.has(powerup):
+		collected_powerups.push_back(powerup)
 
 
 func save(load_position) -> Dictionary:
@@ -61,6 +73,7 @@ func save(load_position) -> Dictionary:
 		"pos_x": load_position.x,
 		"pos_y": load_position.y,
 		"camera": $Camera2D,
-		"missile_count": missile_count
+		"missile_count": missile_count,
+		"collected_powerups": collected_powerups
 	}
 	return save

@@ -6,6 +6,7 @@
 pause_mode = 2
 current = true
 limit_left = -450
+limit_top = -96
 limit_right = 750
 limit_bottom = 175
 smoothing_enabled = true

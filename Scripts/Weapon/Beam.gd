@@ -13,7 +13,7 @@ onready var timer := $Timer
 func _ready() -> void:
 	rotation_degrees = rad2deg(direction.angle())
 	Globals.GameSFX.play(Globals.sfx['beam'])
-	timer.wait_time = beam_distance if false else long_beam_distance
+	timer.wait_time = long_beam_distance if Globals.Samus.has_powerup("long_beam") else beam_distance
 	timer.start()
 
 

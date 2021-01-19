@@ -12,6 +12,7 @@ const MISSILE = preload("res://Scenes/Samus/Weapons/Missile.tscn")
 
 var GameMusic
 var GameSFX
+var Samus
 
 
 var sfx := {

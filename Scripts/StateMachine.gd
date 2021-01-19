@@ -42,6 +42,9 @@ func _physics_process(delta: float) -> void:
 func _change_state(state_name):
 	if not _active:
 		return
+	if state_name == "morph_ball" and not (owner as Samus).has_powerup("morph_ball"):
+		return
+
 	current_state.exit()
 
 	current_state = states_map[state_name]

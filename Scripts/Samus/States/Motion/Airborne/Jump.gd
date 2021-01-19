@@ -32,6 +32,7 @@ func update(delta: float) -> void:
 
 	.update(delta)
 
+
 func exit() -> void:
 	velocity = Vector2.ZERO
 	enter_velocity = Vector2.ZERO

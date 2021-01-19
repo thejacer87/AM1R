@@ -8,8 +8,8 @@ const MAX_FALL_SPEED := 230.0
 var gravity : float
 var velocity := Vector2.ZERO
 var max_jump_height := 5.25 * Globals.UNIT_SIZE
-var min_jump_height := 2.15 * Globals.UNIT_SIZE
-var jump_duration := 0.7
+var min_jump_height := 1.25 * Globals.UNIT_SIZE
+var jump_duration := 0.4
 var blend := "parameters/%s/blend_position"
 
 
