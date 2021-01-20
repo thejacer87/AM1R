@@ -1,0 +1,1 @@
+have an arm cannon node. should help with animations separate from whateve is being shot
