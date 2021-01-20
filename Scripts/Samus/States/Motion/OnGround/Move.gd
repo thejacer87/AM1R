@@ -2,8 +2,8 @@ extends OnGroundState
 
 class_name MoveState
 
-const RUN_SPEED := 7 * Globals.UNIT_SIZE
-const MORPH_SPEED := RUN_SPEED * 1.5
+const RUN_SPEED := 11 * Globals.UNIT_SIZE
+const MORPH_SPEED := RUN_SPEED * 1.25
 
 
 func enter() -> void:

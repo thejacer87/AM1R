@@ -6,7 +6,7 @@ onready var wall_stick = owner.get_node("WallStickTimer")
 
 var max_jump_velocity
 var min_jump_velocity
-var high_jump_multiplier = 1.38
+var high_jump_multiplier = 1.578
 var is_spinning := false
 var aerial_speed := 4 * Globals.UNIT_SIZE
 var morph_aerial_speed := 100 * Globals.UNIT_SIZE
@@ -19,12 +19,14 @@ func initialize(velocity: Vector2) -> void:
 
 
 func _ready() -> void:
-	var multiplier = high_jump_multiplier if (owner as Samus).has_powerup("high_jump") else 1
-	max_jump_velocity = -sqrt(2 * gravity * max_jump_height * multiplier)
+	max_jump_velocity = -sqrt(2 * gravity * max_jump_height)
 	min_jump_velocity = -sqrt(2 * gravity * min_jump_height)
 
 
 func update(delta: float) -> void:
+	# Kinda works. will need re-doing.
+	if Globals.Samus.has_powerup("high_jump"):
+		max_jump_velocity = -sqrt(2 * gravity * max_jump_height * high_jump_multiplier)
 	if owner.is_on_wall():
 		wall_stick.start()
 		wall_direction = get_wall_collided()
