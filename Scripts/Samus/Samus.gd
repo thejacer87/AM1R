@@ -77,3 +77,11 @@ func save(load_position) -> Dictionary:
 		"collected_powerups": collected_powerups
 	}
 	return save
+
+func damage() -> void:
+	print('hurt Samus 1')
+
+func _on_Hurtbox_body_entered(body: Node) -> void:
+	print('hurt Samus 2')
+	print(body.name)
+	pass # Replace with function body.
