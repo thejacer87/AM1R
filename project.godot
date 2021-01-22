@@ -113,6 +113,11 @@ _global_script_classes=[ {
 "class": "Weapon",
 "language": "GDScript",
 "path": "res://Scripts/Weapon/Weapon.gd"
+}, {
+"base": "KinematicBody2D",
+"class": "Zoomer",
+"language": "GDScript",
+"path": "res://Scripts/Enemies/Zoomer.gd"
 } ]
 _global_script_class_icons={
 "AirborneState": "",
@@ -135,7 +140,8 @@ _global_script_class_icons={
 "Samus": "",
 "State": "",
 "StateMachine": "",
-"Weapon": ""
+"Weapon": "",
+"Zoomer": ""
 }
 
 [application]

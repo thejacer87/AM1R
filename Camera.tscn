@@ -5,10 +5,10 @@
 [node name="Camera2D" type="Camera2D"]
 pause_mode = 2
 current = true
-limit_left = -450
+limit_left = -416
 limit_top = -96
-limit_right = 750
-limit_bottom = 175
+limit_right = 736
+limit_bottom = 176
 smoothing_enabled = true
 script = ExtResource( 1 )
 
