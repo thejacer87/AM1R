@@ -1,13 +1,8 @@
 extends Pickup
 
-
-func _ready():
-	pass
+const MISSILE_AMOUNT := 2
 
 
-func _on_Pickup_body_entered(samus : Samus):
-	samus.missile_count += 2
-	samus.collect_powerup("morph_ball")
-	samus.collect_powerup("high_jump")
-	samus.collect_powerup("long_beam")
-	queue_free()
+func _on_PickUp_body_entered(samus: Samus):
+	samus.add_missiles(MISSILE_AMOUNT)
+	._on_PickUp_body_entered(samus)

@@ -35,7 +35,7 @@ func _physics_process(_delta) -> void:
 
 func fire(weapon: Area2D, is_missile : bool = false) -> void:
 	if is_missile:
-		if has_missiles() and get_tree().get_nodes_in_group("MISSILES").size() == 0:
+		if samus.has_powerup("missiles") and has_missiles() and get_tree().get_nodes_in_group("MISSILES").size() == 0:
 			weapon.direction = fire_direction
 			weapon.position = global_position
 			samus.missile_count -= 1
@@ -52,7 +52,7 @@ func fire(weapon: Area2D, is_missile : bool = false) -> void:
 
 
 func bomb(bomb: Area2D) -> void:
-	if get_tree().get_nodes_in_group("BOMBS").size() < 3:
+	if Globals.Samus.has_powerup("bomb") && get_tree().get_nodes_in_group("BOMBS").size() < 3:
 		bomb.direction = fire_direction
 		bomb.position = owner.global_position
 		bomb.position.y += MORPH_POSITION_OFFSET
@@ -71,5 +71,4 @@ func missile_is_armed() -> bool:
 
 
 func has_missiles() -> bool:
-	var m = samus.missile_count
 	return samus.missile_count > 0

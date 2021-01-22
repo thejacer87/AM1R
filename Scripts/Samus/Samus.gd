@@ -2,6 +2,8 @@ extends KinematicBody2D
 
 class_name Samus
 
+export var missile_count = 2
+export var energy = 99
 
 onready var label = $RichTextLabel
 onready var mode_label = $mode
@@ -13,22 +15,28 @@ onready var camera = $Camera2D
 onready var black_screen_scene := preload("res://Scenes/Levels/BlackScreen.tscn")
 
 
-var ui
+var missile_ui
+var missile_count_ui
+var energy_count_ui
 var black_screen
 var collected_powerups = []
-
-export var missile_count = 0
 
 
 func _ready() -> void:
 	Globals.Samus = self
-	ui = get_tree().get_root().get_node("Main/Brinstar/UI/UI/VBoxContainer/HBoxContainer/MissileCount")
+	energy_count_ui = get_tree().get_root().get_node("Main/Brinstar/UI/UI/VBoxContainer/Energy/EnergyCount")
+	missile_ui = get_tree().get_root().get_node("Main/Brinstar/UI/UI/VBoxContainer/Missiles")
+	missile_count_ui = missile_ui.get_node("MissileCount")
+	missile_ui.hide()
 
 
 func _physics_process(_delta):
 	label.text = motion_state_machine.current_state.get_name()
 	mode_label.text = morph_state_machine.current_state.get_name()
-	ui.text = String(missile_count)
+	if has_powerup("missiles"):
+		missile_ui.show()
+		missile_count_ui.text = String(missile_count)
+	energy_count_ui.text = String(energy)
 
 
 func bomb_jump() -> void:
@@ -55,6 +63,14 @@ func hide_black_screen() -> void:
 
 func animate_save() -> void:
 	print('anmiate save')
+
+
+func add_energy(amount: int) -> void:
+	energy += amount
+
+
+func add_missiles(amount: int) -> void:
+	missile_count += amount
 
 
 func has_powerup(powerup: String) -> bool:
