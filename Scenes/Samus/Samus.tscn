@@ -1315,6 +1315,7 @@ height = 18.0
 [node name="Samus" type="KinematicBody2D" groups=[
 "persist",
 ]]
+collision_mask = 0
 script = ExtResource( 2 )
 
 [node name="Weapon" parent="." instance=ExtResource( 12 )]
@@ -1324,7 +1325,7 @@ position = Vector2( -18, -3 )
 texture = ExtResource( 1 )
 vframes = 30
 hframes = 25
-frame = 83
+frame = 84
 
 [node name="NeutralCollision" type="CollisionShape2D" parent="."]
 visible = false
