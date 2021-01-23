@@ -17,7 +17,7 @@
 [ext_resource path="res://Camera.tscn" type="PackedScene" id=15]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
-points = PoolVector2Array( 7.5, 16, -7.5, 16, -7.5, -10, -2, -15.5, 2, -15.5, 7.5, -10 )
+points = PoolVector2Array( 7.25, 16, -7.25, 16, -7.25, -10, -2, -15.5, 2, -15.5, 7.25, -10 )
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 8, 12 )
@@ -1315,7 +1315,7 @@ height = 18.0
 [node name="Samus" type="KinematicBody2D" groups=[
 "persist",
 ]]
-collision_mask = 0
+collision_mask = 4
 script = ExtResource( 2 )
 
 [node name="Weapon" parent="." instance=ExtResource( 12 )]
@@ -1328,7 +1328,6 @@ hframes = 25
 frame = 84
 
 [node name="NeutralCollision" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2( 0, 8 )
 shape = SubResource( 1 )
 
@@ -1451,6 +1450,7 @@ wait_time = 0.08
 one_shot = true
 
 [node name="Hurtbox" parent="." instance=ExtResource( 13 )]
+visible = false
 collision_mask = 8
 
 [node name="CollisionShape2D" parent="Hurtbox" index="0"]

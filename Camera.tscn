@@ -5,12 +5,12 @@
 [node name="Camera2D" type="Camera2D"]
 pause_mode = 2
 current = true
-limit_left = -416
-limit_top = -94
-limit_right = 736
-limit_bottom = 176
+limit_left = 0
+limit_top = 0
+limit_right = 1136
+limit_bottom = 240
 smoothing_enabled = true
-smoothing_speed = 25.0
+smoothing_speed = 15.0
 script = ExtResource( 1 )
 
 [node name="Tween" type="Tween" parent="."]
