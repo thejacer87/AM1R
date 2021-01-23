@@ -39,7 +39,7 @@ texture = ExtResource( 4 )
 hframes = 9
 
 [node name="Sprite3" type="Sprite" parent="Sprites"]
-position = Vector2( 24, 0 )
+position = Vector2( 16, 0 )
 texture = ExtResource( 4 )
 hframes = 9
 frame = 2
@@ -63,7 +63,12 @@ shape = SubResource( 2 )
 [node name="Transition" parent="." instance=ExtResource( 2 )]
 position = Vector2( 16, 0 )
 
+[node name="Entry" parent="Transition" index="0"]
+visible = false
+position = Vector2( -8, 0 )
+
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
+visible = false
 collision_layer = 0
 collision_mask = 8
 
