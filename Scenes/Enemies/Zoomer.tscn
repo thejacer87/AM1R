@@ -53,13 +53,14 @@ script = ExtResource( 2 )
 
 [node name="Hitbox" parent="." instance=ExtResource( 1 )]
 collision_layer = 8
-collision_mask = 1
+collision_mask = 2147483649
 damage = 8
 
 [node name="CollisionShape2D" parent="Hitbox" index="0"]
 shape = SubResource( 1 )
 
 [node name="Hurtbox" parent="." instance=ExtResource( 3 )]
+collision_layer = 8
 collision_mask = 2147484128
 
 [node name="CollisionShape2D" parent="Hurtbox" index="0"]

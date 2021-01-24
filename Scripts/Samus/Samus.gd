@@ -36,7 +36,7 @@ func _physics_process(_delta):
 	if has_powerup("missiles"):
 		missile_ui.show()
 		missile_count_ui.text = String(missile_count)
-#	energy_count_ui.text = String(energy)
+	energy_count_ui.text = String(energy)
 
 
 func bomb_jump() -> void:
@@ -98,7 +98,13 @@ func save(load_position) -> Dictionary:
 func _damage(amount: int) -> void:
 	# Stun/flash and make invulnerable for a half second?
 	energy -= amount
+#	var x = position.x +15
+#	var y = position.y
+#	position.x = lerp(position.x, position.x + 50, .5)
+#	position.y = lerp(position.y, position.y - 100, .5)
+#	motion_state_machine._change_state("idle")
 
 
-func _on_Hurtbox_area_entered(hitbox: Hitbox) -> void:
-	_damage(hitbox.damage)
+func _on_Hurtbox_area_entered(area: Area2D) -> void:
+	if area is Hitbox:
+		_damage(area.damage)

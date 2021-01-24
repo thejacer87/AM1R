@@ -60,7 +60,7 @@ func _walk_on_walls(delta: float) -> void:
 	if not col:
 		for i in 10:
 			position = pos
-			rotate(PI / 32)
+			rotate(PI / 128)
 			move = move.rotated(PI / 32)
 			col = move_and_collide(move.rotated(PI / 2) * multiplier)
 
@@ -68,13 +68,17 @@ func _walk_on_walls(delta: float) -> void:
 				move = col.normal.rotated(PI / 2)
 				rotation = move.angle()
 				break
+			else:
+				# Fall down if not on a wall.
+				position.y += 3
 	else:
 		move = col.normal.rotated(PI / 2)
 		rotation = move.angle()
 
 
-func _on_Hurtbox_area_entered(hitbox: Hitbox):
-	_damage(hitbox.damage)
+func _on_Hurtbox_area_entered(area: Area2D):
+	if area is Hitbox:
+		_damage(area.damage)
 
 
 func _on_VisibilityEnabler2D_screen_exited() -> void:

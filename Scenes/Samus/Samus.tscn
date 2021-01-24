@@ -1325,7 +1325,7 @@ position = Vector2( -18, -3 )
 texture = ExtResource( 1 )
 vframes = 30
 hframes = 25
-frame = 85
+frame = 83
 
 [node name="NeutralCollision" type="CollisionShape2D" parent="."]
 position = Vector2( 0, 8 )
@@ -1451,6 +1451,7 @@ one_shot = true
 
 [node name="Hurtbox" parent="." instance=ExtResource( 13 )]
 visible = false
+collision_layer = 1
 collision_mask = 8
 
 [node name="CollisionShape2D" parent="Hurtbox" index="0"]

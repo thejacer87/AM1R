@@ -30,9 +30,11 @@ tile_data = PoolIntArray( 131100, 1, 0, 131106, 1, 0, 458819, 1, 0, 655370, 1, 0
 
 [node name="Morphball" parent="Sections/A" instance=ExtResource( 3 )]
 position = Vector2( 215, 153 )
+collision_mask = 2147483649
 
 [node name="JustinBailey" parent="Sections/A" instance=ExtResource( 5 )]
-position = Vector2( 512, 161 )
+position = Vector2( 528, 176 )
+collision_mask = 2147483649
 
 [node name="B" type="Node2D" parent="Sections"]
 

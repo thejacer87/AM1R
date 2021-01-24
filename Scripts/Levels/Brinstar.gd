@@ -22,7 +22,6 @@ func _convert_tilecells_to_nodes(tilemap) -> void:
 				"weak_block":
 					child = weak_block.instance()
 				"zoomer":
-					offset = Vector2(0, 1)
 					child = zoomer.instance()
 
 			if child != null:
