@@ -164,6 +164,7 @@ monitoring = false
 monitorable = false
 collision_layer = 128
 collision_mask = 2147483660
+damage = 10
 
 [node name="CollisionShape2D" parent="ExplosionHitbox" index="0"]
 rotation = 1.5708

@@ -54,19 +54,20 @@ script = ExtResource( 2 )
 [node name="Hitbox" parent="." instance=ExtResource( 1 )]
 collision_layer = 8
 collision_mask = 1
+damage = 8
 
 [node name="CollisionShape2D" parent="Hitbox" index="0"]
 shape = SubResource( 1 )
 
 [node name="Hurtbox" parent="." instance=ExtResource( 3 )]
-collision_mask = 480
+collision_mask = 2147484128
 
 [node name="CollisionShape2D" parent="Hurtbox" index="0"]
 shape = SubResource( 2 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 9 )
-frame = 2
+frame = 4
 playing = true
 offset = Vector2( 0, 1.5 )
 
@@ -77,7 +78,7 @@ shape = SubResource( 10 )
 process_parent = true
 physics_process_parent = true
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_Hurtbox_area_entered"]
-[connection signal="body_entered" from="Hurtbox" to="." method="_on_Hurtbox_body_entered"]
+[connection signal="screen_exited" from="VisibilityEnabler2D" to="." method="_on_VisibilityEnabler2D_screen_exited"]
 
 [editable path="Hitbox"]
 

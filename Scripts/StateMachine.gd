@@ -1,6 +1,5 @@
-extends Node
-
 class_name StateMachine
+extends Node
 
 signal state_changed(current_state)
 
@@ -8,8 +7,8 @@ export(NodePath) var START_STATE
 
 var states_map = {}
 var current_state = null
-var _active = false setget set_active
 
+var _active = false setget set_active
 
 func _ready() -> void:
 	for child in get_children():

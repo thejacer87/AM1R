@@ -1,19 +1,8 @@
-extends KinematicBody2D
-
 class_name Samus
+extends KinematicBody2D
 
 export var missile_count = 2
 export var energy = 99
-
-onready var label = $RichTextLabel
-onready var mode_label = $mode
-onready var beam_cannon = $BeamCannon
-onready var animation_tree = $AnimationTree
-onready var motion_state_machine = $MotionStateMachine
-onready var morph_state_machine = $MorphStateMachine
-onready var camera = $Camera2D
-onready var black_screen_scene := preload("res://Scenes/Levels/BlackScreen.tscn")
-
 
 var missile_ui
 var missile_count_ui
@@ -21,11 +10,22 @@ var energy_count_ui
 var black_screen
 var collected_powerups = []
 
+onready var label = $RichTextLabel
+onready var camera = $Camera2D
+onready var mode_label = $mode
+onready var beam_cannon = $BeamCannon
+onready var animation_tree = $AnimationTree
+onready var black_screen_scene := preload("res://Scenes/Levels/BlackScreen.tscn")
+onready var gameplay_ui := preload("res://Scenes/UI/GameplayUI.tscn")
+onready var motion_state_machine = $MotionStateMachine
+onready var morph_state_machine = $MorphStateMachine
 
 func _ready() -> void:
 	Globals.Samus = self
-	energy_count_ui = get_tree().get_root().get_node("Main/Brinstar/UI/UI/VBoxContainer/Energy/EnergyCount")
-	missile_ui = get_tree().get_root().get_node("Main/Brinstar/UI/UI/VBoxContainer/Missiles")
+	var ui = load("res://Scenes/UI/GameplayUI.tscn").instance()
+	Globals.UI.add_child(ui)
+	energy_count_ui = Globals.GameplayUI.get_node("VBoxContainer/Energy/EnergyCount")
+	missile_ui = Globals.GameplayUI.get_node("VBoxContainer/Missiles")
 	missile_count_ui = missile_ui.get_node("MissileCount")
 	missile_ui.hide()
 
@@ -36,7 +36,7 @@ func _physics_process(_delta):
 	if has_powerup("missiles"):
 		missile_ui.show()
 		missile_count_ui.text = String(missile_count)
-	energy_count_ui.text = String(energy)
+#	energy_count_ui.text = String(energy)
 
 
 func bomb_jump() -> void:
@@ -94,10 +94,11 @@ func save(load_position) -> Dictionary:
 	}
 	return save
 
-func damage() -> void:
-	print('hurt Samus 1')
 
-func _on_Hurtbox_body_entered(body: Node) -> void:
-	print('hurt Samus 2')
-	print(body.name)
-	pass # Replace with function body.
+func _damage(amount: int) -> void:
+	# Stun/flash and make invulnerable for a half second?
+	energy -= amount
+
+
+func _on_Hurtbox_area_entered(hitbox: Hitbox) -> void:
+	_damage(hitbox.damage)

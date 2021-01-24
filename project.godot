@@ -39,6 +39,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Scripts/Samus/States/Motion/Airborne/Fall.gd"
 }, {
+"base": "Area2D",
+"class": "Hitbox",
+"language": "GDScript",
+"path": "res://Scripts/Hitboxes/Hitbox.gd"
+}, {
 "base": "OnGroundState",
 "class": "IdleState",
 "language": "GDScript",
@@ -131,6 +136,7 @@ _global_script_class_icons={
 "BombState": "",
 "CannonState": "",
 "FallState": "",
+"Hitbox": "",
 "IdleState": "",
 "JumpState": "",
 "MainCamera": "",
@@ -162,6 +168,7 @@ config/icon="res://Sprites/logo.png"
 Globals="*res://Scripts/Globals.gd"
 GameMusic="*res://Scripts/GameMusic.gd"
 GameSFX="*res://Scenes/GameSFX.tscn"
+Ui="*res://Scenes/UI/UI.tscn"
 
 [display]
 

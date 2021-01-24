@@ -3,7 +3,7 @@ extends Node
 
 func _ready() -> void:
 	# Load Brinstar
-	var brinstar = load("res://Scenes/Levels/Brinstar.tscn")
+	var brinstar = load("res://Scenes/Levels/Brinstar/Brinstar.tscn")
 	add_child(brinstar.instance())
 	var save_game = File.new()
 	if not save_game.file_exists("user://savegame.save"):

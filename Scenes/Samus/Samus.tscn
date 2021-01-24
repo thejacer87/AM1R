@@ -1325,7 +1325,7 @@ position = Vector2( -18, -3 )
 texture = ExtResource( 1 )
 vframes = 30
 hframes = 25
-frame = 84
+frame = 85
 
 [node name="NeutralCollision" type="CollisionShape2D" parent="."]
 position = Vector2( 0, 8 )
@@ -1458,6 +1458,6 @@ position = Vector2( -1, 6 )
 shape = SubResource( 87 )
 
 [node name="Camera2D" parent="." instance=ExtResource( 15 )]
-[connection signal="body_entered" from="Hurtbox" to="." method="_on_Hurtbox_body_entered"]
+[connection signal="area_entered" from="Hurtbox" to="." method="_on_Hurtbox_area_entered"]
 
 [editable path="Hurtbox"]

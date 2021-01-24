@@ -1,13 +1,16 @@
 extends Node2D
 
-onready var tilemap := $TileMaps/DynamicTileMap
+onready var sections := $Sections
 
 var weak_block := preload("res://Scenes/Levels/WeakBlock.tscn")
+var zoomer := preload("res://Scenes/Enemies/Zoomer.tscn")
 
 func _ready() -> void:
-	_convert_tilecells_to_nodes()
+	for section in sections.get_children():
+		var tilemap = section.get_node("TileMaps/DynamicTileMap")
+		_convert_tilecells_to_nodes(tilemap)
 
-func _convert_tilecells_to_nodes() -> void:
+func _convert_tilecells_to_nodes(tilemap) -> void:
 	var cells = tilemap.get_used_cells()
 	for cell in cells:
 		var cell_id = tilemap.get_cellv(cell)
@@ -18,6 +21,9 @@ func _convert_tilecells_to_nodes() -> void:
 			match tile_name:
 				"weak_block":
 					child = weak_block.instance()
+				"zoomer":
+					offset = Vector2(0, 1)
+					child = zoomer.instance()
 
 			if child != null:
 				child.position = tilemap.map_to_world(cell) + (tilemap.cell_size / 2) + offset
