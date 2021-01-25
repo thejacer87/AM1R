@@ -1,0 +1,14 @@
+[gd_scene format=2]
+
+[node name="TileMaps" type="Node2D"]
+
+[node name="TileMap" type="TileMap" parent="."]
+cell_size = Vector2( 16, 16 )
+cell_custom_transform = Transform2D( 0, 0, 0, 0, 0, 0 )
+collision_layer = 4
+collision_mask = 2147483648
+format = 1
+
+[node name="DynamicTileMap" type="TileMap" parent="."]
+cell_size = Vector2( 16, 16 )
+format = 1

@@ -36,3 +36,8 @@ func _ready() -> void:
 			new_object.set(i, node_data[i])
 
 	save_game.close()
+	var camera = Globals.Samus.get_node("Camera2D")
+	camera.limit_left = -176
+	camera.limit_right = 1280
+	camera.limit_bottom = 240
+	camera.limit_top = 0

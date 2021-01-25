@@ -10,13 +10,15 @@ var energy_count_ui
 var black_screen
 var collected_powerups = []
 
+var _morph_blockers := 0
+
 onready var label = $RichTextLabel
 onready var camera = $Camera2D
 onready var mode_label = $mode
 onready var beam_cannon = $BeamCannon
+onready var gameplay_ui := preload("res://Scenes/UI/GameplayUI.tscn")
 onready var animation_tree = $AnimationTree
 onready var black_screen_scene := preload("res://Scenes/Levels/BlackScreen.tscn")
-onready var gameplay_ui := preload("res://Scenes/UI/GameplayUI.tscn")
 onready var motion_state_machine = $MotionStateMachine
 onready var morph_state_machine = $MorphStateMachine
 
@@ -37,6 +39,7 @@ func _physics_process(_delta):
 		missile_ui.show()
 		missile_count_ui.text = String(missile_count)
 	energy_count_ui.text = String(energy)
+	print(_morph_blockers)
 
 
 func bomb_jump() -> void:
@@ -77,6 +80,10 @@ func has_powerup(powerup: String) -> bool:
 	return collected_powerups.has(powerup)
 
 
+func can_morph() -> bool:
+	return _morph_blockers < 1
+
+
 func collect_powerup(powerup: String) -> void:
 	if not collected_powerups.has(powerup):
 		collected_powerups.push_back(powerup)
@@ -98,13 +105,19 @@ func save(load_position) -> Dictionary:
 func _damage(amount: int) -> void:
 	# Stun/flash and make invulnerable for a half second?
 	energy -= amount
-#	var x = position.x +15
-#	var y = position.y
-#	position.x = lerp(position.x, position.x + 50, .5)
-#	position.y = lerp(position.y, position.y - 100, .5)
-#	motion_state_machine._change_state("idle")
 
 
 func _on_Hurtbox_area_entered(area: Area2D) -> void:
 	if area is Hitbox:
 		_damage(area.damage)
+
+
+func _on_MorphCheckArea_body_entered(body: Node) -> void:
+	_morph_blockers += 1
+
+
+func _on_MorphCheckArea_body_exited(body: Node) -> void:
+	if _morph_blockers <= 0:
+		_morph_blockers = 0
+	else:
+		_morph_blockers -= 1
