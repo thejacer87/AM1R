@@ -16,6 +16,9 @@ var GameplayUI
 var UI
 var Samus
 
+var bit_masks := {
+	"samus": 1
+}
 
 var sfx := {
 	'beam': "res://Sounds/beam.wav",

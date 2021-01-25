@@ -1,9 +1,7 @@
+class_name MainCamera
 extends Camera2D
 
-class_name MainCamera
-
-
-onready var _tween := $Tween
+signal transition_completed(samus)
 
 var _samus
 var _left
@@ -12,15 +10,14 @@ var _top
 var _bottom
 var _exit
 
-signal transition_completed(samus)
+onready var _tween := $Tween
 
-
-func transition(samus: Samus, left : Position2D, right : Position2D, top : Position2D, bottom : Position2D, exit : Position2D) -> void:
-	_samus = samus
-	_left = left
-	_right = right
-	_top = top
-	_bottom = bottom
+func transition(bounds : Array, exit : Position2D) -> void:
+	_samus = Globals.Samus
+	_top = bounds[0]
+	_right = bounds[1]
+	_bottom = bounds[2]
+	_left = bounds[3]
 	_exit = exit
 
 	# Pause player processing (physics and input processing, animations, state
@@ -38,11 +35,11 @@ func transition(samus: Samus, left : Position2D, right : Position2D, top : Posit
 	# Restore processing.
 	get_tree().paused = false
 
-	emit_signal('transition_completed', samus)
+	emit_signal('transition_completed', _samus)
 
 
 func _interpolate_camera_pos() -> void:
-	var duration := 0.75
+	var duration := 0.66
 	var offset_x := Globals.SCREEN_WIDTH / 2
 	var offset_y := Globals.SCREEN_HEIGHT / 2
 	var trans := Tween.TRANS_LINEAR
@@ -52,6 +49,7 @@ func _interpolate_camera_pos() -> void:
 	_tween.interpolate_property(_samus, "position:x", _samus.position.x, _exit.global_position.x, duration, trans, easing)
 
 	# Move the camera limits to the edges
+	# right to left smoothness might have somethign to do with this...
 	_tween.interpolate_property(self, "limit_left", max(self.limit_left, self.global_position.x - offset_x), _left.global_position.x, duration, trans, easing)
 	_tween.interpolate_property(self, "limit_right", min(self.limit_right, self.global_position.x + offset_x), _right.global_position.x, duration, trans, easing)
 	_tween.interpolate_property(self, "limit_top", min(self.limit_top, self.global_position.y - offset_y), _top.global_position.y, duration, trans, easing)

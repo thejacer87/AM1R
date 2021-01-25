@@ -11,7 +11,6 @@ func _on_PowerUp_body_entered(samus: Samus) -> void:
 	samus.add_missiles(999)
 	print("collected justin bailey")
 	# change to longer time to match the jingle
-	yield(get_tree().create_timer(.5), "timeout")
 	# play jingle and show something
 	queue_free()
 	get_tree().paused = false

@@ -39,7 +39,6 @@ func _physics_process(_delta):
 		missile_ui.show()
 		missile_count_ui.text = String(missile_count)
 	energy_count_ui.text = String(energy)
-	print(_morph_blockers)
 
 
 func bomb_jump() -> void:
