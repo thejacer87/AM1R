@@ -94,7 +94,6 @@ func save(load_position) -> Dictionary:
 		"parent": get_parent().get_path(),
 		"pos_x": load_position.x,
 		"pos_y": load_position.y,
-		"camera": $Camera2D,
 		"missile_count": missile_count,
 		"collected_powerups": collected_powerups
 	}
@@ -111,10 +110,14 @@ func _on_Hurtbox_area_entered(area: Area2D) -> void:
 		_damage(area.damage)
 
 
-func on_transition_started(old, new, left) -> void:
+func _on_transition_started(old, new, door, left) -> void:
 	show_black_screen()
-	camera.transition(old, new, left)
+	camera.connect("transition_completed", self, "_on_transition_completed")
+	camera.connect("transition_completed", door, "_on_transition_completed")
+	camera.transition(old, new, door, left)
 
+func _on_transition_completed() -> void:
+	hide_black_screen()
 
 func _on_MorphCheckArea_body_entered(body: Node) -> void:
 	_morph_blockers += 1

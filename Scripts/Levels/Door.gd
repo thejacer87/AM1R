@@ -1,16 +1,13 @@
 extends StaticBody2D
 
+signal transition_started
+
 export (NodePath) var left_room_path
 export (NodePath) var right_room_path
 
 onready var wall := $Wall
 onready var left_door := $Left
 onready var right_door := $Right
-
-func _on_transition_completed() -> void:
-	Globals.Samus.hide_black_screen()
-	_lock()
-
 
 func _unlock(door: Node2D) -> void:
 	collision_mask -= Globals.bit_masks["samus"]
@@ -28,6 +25,10 @@ func _lock() -> void:
 	right_door.get_node("Sprites/Door").show()
 
 
+func _on_transition_completed() -> void:
+	_lock()
+
+
 func _on_Left_Lock_area_entered(area: Area2D) -> void:
 	_unlock(left_door)
 
@@ -37,17 +38,10 @@ func _on_Right_Lock_area_entered(area: Area2D) -> void:
 
 
 func _on_Left_Transition_body_entered(samus: Samus) -> void:
-	var camera := _setup_camera_transition(samus)
-	camera.transition(get_node(left_room_path), get_node(right_room_path), self)
+	connect("transition_started", samus, "_on_transition_started")
+	emit_signal("transition_started", get_node(left_room_path), get_node(right_room_path), self, true)
 
 
 func _on_Right_Transition_body_entered(samus: Samus) -> void:
-	var camera := _setup_camera_transition(samus)
-	camera.transition(get_node(right_room_path), get_node(left_room_path), self, false)
-
-
-func _setup_camera_transition(samus: Samus) -> MainCamera:
-	var camera: MainCamera = samus.get_node("Camera2D")
-	camera.connect("transition_completed", self, "_on_transition_completed")
-	samus.show_black_screen()
-	return camera
+	connect("transition_started", samus, "_on_transition_started")
+	emit_signal("transition_started", get_node(right_room_path), get_node(left_room_path), self, false)

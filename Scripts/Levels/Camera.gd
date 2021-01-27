@@ -1,7 +1,7 @@
 class_name MainCamera
 extends Camera2D
 
-signal transition_completed(samus)
+signal transition_completed
 
 enum Bounds {TOP, RIGHT, BOTTOM, LEFT}
 
