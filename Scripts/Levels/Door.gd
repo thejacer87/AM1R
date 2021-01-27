@@ -7,8 +7,8 @@ onready var wall := $Wall
 onready var left_door := $Left
 onready var right_door := $Right
 
-func _on_transition_completed(samus) -> void:
-	samus.hide_black_screen()
+func _on_transition_completed() -> void:
+	Globals.Samus.hide_black_screen()
 	_lock()
 
 
@@ -37,17 +37,17 @@ func _on_Right_Lock_area_entered(area: Area2D) -> void:
 
 
 func _on_Left_Transition_body_entered(samus: Samus) -> void:
-	var camera = samus.get_node("Camera2D")
-	camera.connect("transition_completed", self, "_on_transition_completed")
-	samus.show_black_screen()
-	var right_room_bounds = get_node(right_room_path).get_node("CameraBounds").get_children()
-	camera.transition(right_room_bounds, left_door.get_node("Exit"))
+	var camera := _setup_camera_transition(samus)
+	camera.transition(get_node(left_room_path), get_node(right_room_path), self)
+
 
 func _on_Right_Transition_body_entered(samus: Samus) -> void:
-	# Right to left transistion animation off... samus jumps acrross half the screen to start the animation for some reason.
-	# not as smooth as left to right
-	var camera = samus.get_node("Camera2D")
+	var camera := _setup_camera_transition(samus)
+	camera.transition(get_node(right_room_path), get_node(left_room_path), self, false)
+
+
+func _setup_camera_transition(samus: Samus) -> MainCamera:
+	var camera: MainCamera = samus.get_node("Camera2D")
 	camera.connect("transition_completed", self, "_on_transition_completed")
 	samus.show_black_screen()
-	var left_room_bounds = get_node(left_room_path).get_node("CameraBounds").get_children()
-	camera.transition(left_room_bounds, right_door.get_node("Exit"))
+	return camera

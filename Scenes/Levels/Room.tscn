@@ -5,13 +5,12 @@
 [node name="CameraBounds" type="Node2D" parent="."]
 
 [node name="Top" type="Position2D" parent="CameraBounds"]
-position = Vector2( 213, 0 )
 
 [node name="Right" type="Position2D" parent="CameraBounds"]
-position = Vector2( 426, 120 )
+position = Vector2( 512, 144 )
 
 [node name="Bottom" type="Position2D" parent="CameraBounds"]
-position = Vector2( 213, 240 )
+position = Vector2( 0, 288 )
 
 [node name="Left" type="Position2D" parent="CameraBounds"]
-position = Vector2( 0, 120 )
+position = Vector2( 0, 144 )

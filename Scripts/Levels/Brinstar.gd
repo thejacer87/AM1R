@@ -1,14 +1,15 @@
 extends Node2D
 
-onready var rooms := $Rooms
-
 var weak_block := preload("res://Scenes/Levels/WeakBlock.tscn")
 var zoomer := preload("res://Scenes/Enemies/Zoomer.tscn")
+
+onready var rooms := $Rooms
 
 func _ready() -> void:
 	for room in rooms.get_children():
 		var tilemap = room.get_node("TileMaps/DynamicTileMap")
 		_convert_tilecells_to_nodes(tilemap)
+
 
 func _convert_tilecells_to_nodes(tilemap) -> void:
 	var cells = tilemap.get_used_cells()

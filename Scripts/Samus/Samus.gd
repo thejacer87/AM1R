@@ -111,6 +111,11 @@ func _on_Hurtbox_area_entered(area: Area2D) -> void:
 		_damage(area.damage)
 
 
+func on_transition_started(old, new, left) -> void:
+	show_black_screen()
+	camera.transition(old, new, left)
+
+
 func _on_MorphCheckArea_body_entered(body: Node) -> void:
 	_morph_blockers += 1
 

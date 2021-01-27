@@ -37,7 +37,7 @@ func _ready() -> void:
 
 	save_game.close()
 	var camera = Globals.Samus.get_node("Camera2D")
-	camera.limit_left = -176
-	camera.limit_right = 1280
-	camera.limit_bottom = 240
+	camera.limit_left = 0
+	camera.limit_right = 1104
+	camera.limit_bottom = 256
 	camera.limit_top = 0
