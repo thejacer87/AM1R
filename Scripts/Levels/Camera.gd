@@ -13,7 +13,7 @@ onready var _tween: Tween = $Tween
 func transition(old_room, new_room, door, left = true) -> void:
 	_samus = Globals.Samus
 	_is_moving_left = left
-	transition_setup()
+	_transition_setup()
 
 	_interpolate_camera_pos(old_room, new_room, door)
 
@@ -26,7 +26,7 @@ func transition(old_room, new_room, door, left = true) -> void:
 	emit_signal('transition_completed')
 
 
-func transition_setup():
+func _transition_setup():
 	get_tree().paused = true
 	self.smoothing_enabled = false
 
@@ -50,19 +50,17 @@ func _set_camera_bounds(room) -> void:
 func _interpolate_camera_pos(old_room, new_room, door) -> void:
 	var duration := 0.66
 	var trans := Tween.TRANS_LINEAR
-	var easing := Tween.EASE_IN_OUT
+	var easing := Tween.EASE_OUT
 	var old := "Left" if _is_moving_left else "Right"
 	var new := "Right" if _is_moving_left else "Left"
 
-	# Don't interpolate Samus' position, causes issues.
-	var samus_new := Vector2(door.get_node(old + "/Exit").global_position.x, _samus.global_position.y)
-	_samus.position = samus_new
-
 	var anchor_pos_old: Vector2 = door.get_node(old + "/CameraAnchor").global_position
 	var anchor_pos_new: Vector2 = door.get_node(new + "/CameraAnchor").global_position
+	var samus_new := Vector2(door.get_node(old + "/Exit").global_position.x, _samus.global_position.y)
 
 	_tween.stop_all()
 	_tween.interpolate_property(self, "global_position", anchor_pos_old, anchor_pos_new, duration, trans, easing)
+	_tween.interpolate_property(_samus, "global_position", _samus.global_position, samus_new, duration, trans, easing)
 	_tween.start()
 
 

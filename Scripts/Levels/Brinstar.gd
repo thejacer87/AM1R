@@ -4,11 +4,15 @@ var weak_block := preload("res://Scenes/Levels/WeakBlock.tscn")
 var zoomer := preload("res://Scenes/Enemies/Zoomer.tscn")
 
 onready var rooms := $Rooms
+onready var doors := $Doors
 
 func _ready() -> void:
 	for room in rooms.get_children():
 		var tilemap = room.get_node("TileMaps/DynamicTileMap")
 		_convert_tilecells_to_nodes(tilemap)
+
+	# Move Doors to front of tree so Samus will be rendered underneath.
+	move_child(doors, get_child_count())
 
 
 func _convert_tilecells_to_nodes(tilemap) -> void:
