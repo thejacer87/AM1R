@@ -34,6 +34,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Scripts/Weapon/States/Cannon/Cannon.gd"
 }, {
+"base": "KinematicBody2D",
+"class": "Enemy",
+"language": "GDScript",
+"path": "res://Scripts/Enemies/Enemy.gd"
+}, {
 "base": "AirborneState",
 "class": "FallState",
 "language": "GDScript",
@@ -124,7 +129,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Scripts/Weapon/Weapon.gd"
 }, {
-"base": "KinematicBody2D",
+"base": "Enemy",
 "class": "Zoomer",
 "language": "GDScript",
 "path": "res://Scripts/Enemies/Zoomer.gd"
@@ -135,6 +140,7 @@ _global_script_class_icons={
 "BombJumpState": "",
 "BombState": "",
 "CannonState": "",
+"Enemy": "",
 "FallState": "",
 "Hitbox": "",
 "IdleState": "",

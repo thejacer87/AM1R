@@ -14,7 +14,7 @@
 [ext_resource path="res://Scenes/Samus/Weapons/Weapon.tscn" type="PackedScene" id=12]
 [ext_resource path="res://Scenes/Hitboxes/Hurtbox.tscn" type="PackedScene" id=13]
 [ext_resource path="res://Scripts/Samus/States/Motion/Airborne/BombJump.gd" type="Script" id=14]
-[ext_resource path="res://Camera.tscn" type="PackedScene" id=15]
+[ext_resource path="res://Scenes/Camera.tscn" type="PackedScene" id=15]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 7.25, 16, -7.25, 16, -7.25, -10, -2, -15.5, 2, -15.5, 7.25, -10 )
@@ -1309,7 +1309,7 @@ position = Vector2( -18, -3 )
 texture = ExtResource( 1 )
 vframes = 30
 hframes = 25
-frame = 85
+frame = 83
 
 [node name="NeutralCollision" type="CollisionShape2D" parent="."]
 position = Vector2( 0, 8 )
