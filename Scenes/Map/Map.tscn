@@ -291,18 +291,21 @@
 13/shapes = [  ]
 13/z_index = 0
 
-[node name="Map" type="Control"]
-anchor_right = 1.0
-anchor_bottom = 1.0
+[node name="Map" type="CanvasLayer"]
+pause_mode = 2
+layer = 10
+scale = Vector2( 2, 2 )
+transform = Transform2D( 2, 0, 0, 2, 0, 0 )
 script = ExtResource( 4 )
-__meta__ = {
-"_edit_group_": true,
-"_edit_use_anchors_": false
-}
 
 [node name="TextureRect" type="TextureRect" parent="."]
+pause_mode = 2
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = -512.0
+margin_top = -288.0
+margin_right = 512.0
+margin_bottom = 288.0
 texture = ExtResource( 1 )
 expand = true
 stretch_mode = 2
@@ -310,7 +313,15 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Background" type="ColorRect" parent="."]
+[node name="Control" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Background" type="ColorRect" parent="Control"]
 visible = false
 anchor_left = 0.5
 anchor_top = 0.5
@@ -325,19 +336,19 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="RoomsTileMap" type="TileMap" parent="."]
+[node name="RoomsTileMap" type="TileMap" parent="Control"]
 tile_set = SubResource( 1 )
 cell_size = Vector2( 8, 8 )
 format = 1
 tile_data = PoolIntArray( 196635, 0, 0, 196637, 0, 0, 262171, 0, 0, 262173, 0, 0, 327707, 0, 0, 327709, 0, 0, 393243, 0, 0, 393245, 0, 0, 458779, 0, 0, 458781, 0, 0, 524315, 0, 0, 524317, 0, 0, 589851, 0, 0, 589852, 3, 0, 589853, 0, 0, 655387, 0, 0, 655389, 0, 0, 720923, 0, 0, 720925, 0, 0, 786459, 0, 0, 786461, 0, 0, 851995, 0, 0, 851997, 0, 0, 917531, 0, 0, 917533, 0, 0, 983067, 0, 0, 1048593, 0, 0, 1048594, 0, 0, 1048595, 0, 0, 1048596, 0, 0, 1048597, 0, 0, 1048598, 0, 0, 1048599, 0, 0, 1048600, 0, 0, 1048601, 0, 0, 1048602, 0, 0, 1048603, 0, 0, 1048604, 5, 0, 1114134, 3, 0, 1114139, 0, 0, 1179670, 3, 0, 1245206, 3, 0, 1310742, 3, 0, 1310743, 0, 0, 1376278, 3, 0 )
 
-[node name="ItemsTileMap" type="TileMap" parent="."]
+[node name="ItemsTileMap" type="TileMap" parent="Control"]
 tile_set = SubResource( 2 )
 cell_size = Vector2( 8, 8 )
 format = 1
 tile_data = PoolIntArray( 196635, 0, 0, 196637, 0, 0, 262171, 0, 0, 262173, 0, 0, 327707, 0, 0, 327709, 0, 0, 393243, 0, 0, 393245, 0, 0, 458779, 0, 0, 458781, 0, 0, 524315, 0, 0, 524317, 0, 0, 589851, 0, 0, 589852, 3, 0, 589853, 0, 0, 655387, 0, 0, 655389, 0, 0, 720923, 0, 0, 720925, 0, 0, 786459, 0, 0, 786461, 0, 0, 851995, 0, 0, 851997, 0, 0, 917531, 0, 0, 917533, 0, 0, 983067, 0, 0, 1048593, 4, 0, 1048594, 0, 0, 1048595, 0, 0, 1048596, 0, 0, 1048597, 0, 0, 1048598, 0, 0, 1048599, 0, 0, 1048600, 0, 0, 1048601, 0, 0, 1048602, 0, 0, 1048603, 0, 0, 1048604, 5, 0, 1114134, 3, 0, 1114139, 0, 0, 1179670, 3, 0, 1245206, 3, 0, 1310742, 3, 0, 1310743, 0, 0, 1376278, 3, 0 )
 
-[node name="WallsTileMap" type="TileMap" parent="."]
+[node name="WallsTileMap" type="TileMap" parent="Control"]
 tile_set = SubResource( 3 )
 cell_size = Vector2( 8, 8 )
 format = 1

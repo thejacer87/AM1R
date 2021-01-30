@@ -19,6 +19,7 @@ onready var beam_cannon = $BeamCannon
 onready var gameplay_ui := preload("res://Scenes/UI/GameplayUI.tscn")
 onready var animation_tree = $AnimationTree
 onready var black_screen_scene := preload("res://Scenes/Levels/BlackScreen.tscn")
+onready var map := preload("res://Scenes/Map/Map.tscn")
 onready var motion_state_machine = $MotionStateMachine
 onready var morph_state_machine = $MorphStateMachine
 
@@ -40,6 +41,10 @@ func _physics_process(_delta):
 		missile_ui.show()
 		missile_count_ui.text = String(missile_count)
 	energy_count_ui.text = String(energy)
+
+	if Input.is_action_just_pressed("start"):
+		get_tree().paused = true
+		add_child(map.instance())
 
 
 func bomb_jump() -> void:
