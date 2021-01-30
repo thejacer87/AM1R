@@ -3,6 +3,7 @@ extends Node2D
 onready var energy_scene = preload("res://Scenes/Pickups/Energy.tscn")
 onready var missile_scene = preload("res://Scenes/Pickups/Missile.tscn")
 
+
 func _ready() -> void:
 	randomize()
 	var roll = randi() % 10

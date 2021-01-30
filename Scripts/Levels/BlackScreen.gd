@@ -5,6 +5,7 @@ var _transparent := Color(1, 1, 1, 0)
 
 onready var _tween := $Tween
 
+
 func _interpolate(old, new) -> void:
 	var duration := 0.125
 	var trans := Tween.TRANS_LINEAR

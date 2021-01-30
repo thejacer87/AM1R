@@ -1,6 +1,6 @@
+class_name Pickup
 extends Area2D
 
-class_name Pickup
 
 func _ready():
 	pass

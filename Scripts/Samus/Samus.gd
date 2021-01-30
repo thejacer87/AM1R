@@ -22,6 +22,7 @@ onready var black_screen_scene := preload("res://Scenes/Levels/BlackScreen.tscn"
 onready var motion_state_machine = $MotionStateMachine
 onready var morph_state_machine = $MorphStateMachine
 
+
 func _ready() -> void:
 	Globals.Samus = self
 	var ui = load("res://Scenes/UI/GameplayUI.tscn").instance()

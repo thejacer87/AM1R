@@ -2,6 +2,9 @@ extends Node
 
 
 func _ready() -> void:
+	# Hide mouse pointer
+	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+
 	# Load Brinstar
 	var brinstar = load("res://Scenes/Levels/Brinstar/Brinstar.tscn")
 	add_child(brinstar.instance())

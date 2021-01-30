@@ -6,6 +6,7 @@ var zoomer := preload("res://Scenes/Enemies/Zoomer.tscn")
 onready var rooms := $Rooms
 onready var doors := $Doors
 
+
 func _ready() -> void:
 	for room in rooms.get_children():
 		var tilemap = room.get_node("TileMaps/DynamicTileMap")

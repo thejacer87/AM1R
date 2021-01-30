@@ -10,6 +10,7 @@ var _is_moving_left
 
 onready var _tween: Tween = $Tween
 
+
 func transition(old_room, new_room, door, left = true) -> void:
 	_samus = Globals.Samus
 	_is_moving_left = left

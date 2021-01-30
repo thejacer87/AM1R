@@ -1,6 +1,6 @@
+class_name PowerUp
 extends Area2D
 
-class_name PowerUp
 
 export var powerup_name: String
 

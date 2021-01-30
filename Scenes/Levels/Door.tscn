@@ -47,7 +47,6 @@ texture = ExtResource( 4 )
 hframes = 9
 
 [node name="Lock" type="Area2D" parent="Left"]
-visible = false
 position = Vector2( -24, 0 )
 collision_layer = 512
 collision_mask = 480
@@ -56,7 +55,6 @@ collision_mask = 480
 shape = SubResource( 1 )
 
 [node name="ClosedDoor" type="StaticBody2D" parent="Left"]
-visible = false
 position = Vector2( -24, 0 )
 collision_layer = 0
 collision_mask = 9
@@ -132,7 +130,6 @@ position = Vector2( -32, 0 )
 position = Vector2( 256, 0 )
 
 [node name="Wall" type="CollisionShape2D" parent="."]
-visible = false
 self_modulate = Color( 0.027451, 0.862745, 0, 1 )
 shape = SubResource( 4 )
 
