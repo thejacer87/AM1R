@@ -4,7 +4,7 @@ extends KinematicBody2D
 export var starting_hp = 10
 
 var hp: int
-var starting_pos : Vector2
+var starting_pos: Vector2
 var is_dead := false
 
 onready var hitbox := $Hitbox
@@ -39,8 +39,9 @@ func _damage(amount: int) -> void:
 	hp -= amount
 
 
-func _die() -> void:
-	_drop_item()
+func _die(drop_item := true) -> void:
+	if drop_item:
+		_drop_item()
 	set_physics_process(false)
 	_disable_collisions()
 	hide()

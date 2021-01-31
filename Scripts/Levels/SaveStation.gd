@@ -32,6 +32,5 @@ func _on_SaveArea_body_entered(body: Samus) -> void:
 
 
 func _on_Timer_timeout() -> void:
-	print('timeout')
 	samus.animate_save()
 	pass

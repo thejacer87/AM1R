@@ -7,6 +7,7 @@ func _ready():
 
 
 func _on_PickUp_body_entered(samus: Samus) -> void:
+	print(samus.name)
 	queue_free()
 
 

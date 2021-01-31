@@ -4,10 +4,10 @@
 [ext_resource path="res://Scripts/Enemies/Zoomer.gd" type="Script" id=2]
 [ext_resource path="res://Sprites/zoomer.png" type="Texture" id=4]
 
-[sub_resource type="RectangleShape2D" id=11]
+[sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 8, 8 )
 
-[sub_resource type="RectangleShape2D" id=12]
+[sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 9, 9 )
 
 [sub_resource type="AtlasTexture" id=3]
@@ -57,18 +57,18 @@ collision_mask = 2147483649
 damage = 8
 
 [node name="CollisionShape2D" parent="Hitbox" index="0"]
-shape = SubResource( 11 )
+shape = SubResource( 1 )
 
 [node name="Hurtbox" parent="." index="1"]
 collision_layer = 8
 collision_mask = 2147484128
 
 [node name="CollisionShape2D" parent="Hurtbox" index="0"]
-shape = SubResource( 12 )
+shape = SubResource( 2 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="." index="2"]
 frames = SubResource( 9 )
-frame = 5
+frame = 3
 playing = true
 offset = Vector2( 0, 1.5 )
 

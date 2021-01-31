@@ -2,6 +2,7 @@ extends Node2D
 
 var weak_block := preload("res://Scenes/Levels/WeakBlock.tscn")
 var zoomer := preload("res://Scenes/Enemies/Zoomer.tscn")
+var skree := preload("res://Scenes/Enemies/Skree.tscn")
 
 onready var rooms := $Rooms
 onready var doors := $Doors
@@ -29,6 +30,9 @@ func _convert_tilecells_to_nodes(tilemap) -> void:
 					child = weak_block.instance()
 				"zoomer":
 					child = zoomer.instance()
+				"skree":
+					offset = Vector2(0, 8)
+					child = skree.instance()
 
 			if child != null:
 				child.position = tilemap.map_to_world(cell) + (tilemap.cell_size / 2) + offset
