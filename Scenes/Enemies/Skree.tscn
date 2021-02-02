@@ -4,14 +4,14 @@
 [ext_resource path="res://Sprites/skree.png" type="Texture" id=2]
 [ext_resource path="res://Scripts/Enemies/Skree.gd" type="Script" id=3]
 
-[sub_resource type="CapsuleShape2D" id=12]
+[sub_resource type="CapsuleShape2D" id=1]
 radius = 8.0
 height = 12.0
 
-[sub_resource type="CapsuleShape2D" id=13]
+[sub_resource type="CapsuleShape2D" id=2]
 height = 16.0
 
-[sub_resource type="Animation" id=15]
+[sub_resource type="Animation" id=3]
 resource_name = "detected"
 length = 0.4
 step = 0.05
@@ -42,7 +42,7 @@ tracks/1/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=16]
+[sub_resource type="Animation" id=4]
 resource_name = "idle"
 length = 0.4
 loop = true
@@ -59,7 +59,7 @@ tracks/0/keys = {
 "values": [ 0, 1, 2, 3 ]
 }
 
-[sub_resource type="RectangleShape2D" id=14]
+[sub_resource type="RectangleShape2D" id=5]
 
 [node name="Skree" instance=ExtResource( 1 )]
 collision_layer = 8
@@ -73,7 +73,7 @@ damage = 12
 
 [node name="CollisionShape2D" parent="Hitbox" index="0"]
 position = Vector2( 0, -2 )
-shape = SubResource( 12 )
+shape = SubResource( 1 )
 
 [node name="Hurtbox" parent="." index="1"]
 collision_layer = 8
@@ -81,7 +81,7 @@ collision_mask = 480
 
 [node name="CollisionShape2D" parent="Hurtbox" index="0"]
 position = Vector2( 0, -2 )
-shape = SubResource( 13 )
+shape = SubResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="." index="3"]
 texture = ExtResource( 2 )
@@ -89,8 +89,8 @@ hframes = 6
 frame = 5
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="4"]
-anims/detected = SubResource( 15 )
-anims/idle = SubResource( 16 )
+anims/detected = SubResource( 3 )
+anims/idle = SubResource( 4 )
 
 [node name="LeftRayCast2D" type="RayCast2D" parent="." index="5"]
 position = Vector2( -40, 0 )
@@ -103,7 +103,7 @@ enabled = true
 cast_to = Vector2( 0, 288 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="7"]
-shape = SubResource( 14 )
+shape = SubResource( 5 )
 
 [node name="Timer" type="Timer" parent="." index="8"]
 wait_time = 2.0

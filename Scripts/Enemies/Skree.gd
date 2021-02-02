@@ -3,7 +3,7 @@ extends Enemy
 
 const FLOOR := Vector2.UP
 const GRAVITY := 980
-const MAX_FALL_SPEED := 250
+const MAX_FALL_SPEED := 400
 
 var _samus: Samus
 var _velocity := Vector2.ZERO
@@ -53,7 +53,7 @@ func _attack(delta: float) -> void:
 	_apply_gravity(delta)
 	animated_player.play("idle")
 	move_and_slide(_velocity, FLOOR)
-	global_position.x = lerp(global_position.x, _samus.global_position.x, 0.01)
+	global_position.x = lerp(global_position.x, _samus.global_position.x, 0.05)
 	if is_on_floor():
 		_attacking = false
 		timer.start()

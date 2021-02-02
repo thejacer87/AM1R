@@ -5,14 +5,16 @@ signal transition_completed
 
 enum Bounds {TOP, RIGHT, BOTTOM, LEFT}
 
-var _samus: Samus
+var _samus
 var _is_moving_left
 
 onready var _tween: Tween = $Tween
 
+func _ready() -> void:
+	_samus = get_parent()
+
 
 func transition(old_room, new_room, door, left = true) -> void:
-	_samus = Globals.Samus
 	_is_moving_left = left
 	_transition_setup()
 
@@ -27,25 +29,25 @@ func transition(old_room, new_room, door, left = true) -> void:
 	emit_signal('transition_completed')
 
 
-func _transition_setup():
-	get_tree().paused = true
-	self.smoothing_enabled = false
-
-
-func _transition_teardown(room) -> void:
-	_set_camera_bounds(room)
-	self.smoothing_enabled = true
-	get_tree().paused = false
-
-
-func _set_camera_bounds(room) -> void:
-	var camera_bounds = room.get_node("CameraBounds").get_children()
+func set_camera_bounds(room: Room) -> void:
+	var camera_bounds = room.camera_bounds.get_children()
 
 	self.limit_top = camera_bounds[Bounds.TOP].global_position.y
 	self.limit_right = camera_bounds[Bounds.RIGHT].global_position.x
 	self.limit_bottom = camera_bounds[Bounds.BOTTOM].global_position.y
 	self.limit_left = camera_bounds[Bounds.LEFT].global_position.x
 	self.position = Vector2.ZERO
+
+
+func _transition_setup():
+	get_tree().paused = true
+	self.smoothing_enabled = false
+
+
+func _transition_teardown(room) -> void:
+	set_camera_bounds(room)
+	self.smoothing_enabled = true
+	get_tree().paused = false
 
 
 func _interpolate_camera_pos(old_room, new_room, door) -> void:

@@ -8,6 +8,8 @@ var missile_ui
 var missile_count_ui
 var energy_count_ui
 var black_screen
+var current_room: Room setget ,get_current_room
+var current_room_path: NodePath
 var collected_powerups = []
 
 var _morph_blockers := 0
@@ -47,6 +49,16 @@ func _physics_process(_delta):
 		add_child(map.instance())
 
 
+func bind_camera_limits() -> void:
+	if current_room_path:
+		camera.set_camera_bounds(get_current_room())
+	else:
+		camera.set_camera_bounds("../Rooms/A")
+
+func get_current_room() -> Room:
+	return get_node(current_room_path) as Room
+
+
 func bomb_jump() -> void:
 	if morph_state_machine.current_state == Globals.STATES["Morph"].states_map["morph_ball"]:
 		motion_state_machine._change_state("bomb_jump")
@@ -77,6 +89,7 @@ func collect_powerup(powerup: String) -> void:
 		collected_powerups.push_back(powerup)
 
 
+
 func save(load_position) -> Dictionary:
 	var save = {
 		"filename": get_filename(),
@@ -84,7 +97,8 @@ func save(load_position) -> Dictionary:
 		"pos_x": load_position.x,
 		"pos_y": load_position.y,
 		"missile_count": missile_count,
-		"collected_powerups": collected_powerups
+		"collected_powerups": collected_powerups,
+		"current_room_path": current_room_path
 	}
 	return save
 

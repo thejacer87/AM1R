@@ -1,0 +1,93 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://Scripts/Levels/ElevatorDown.gd" type="Script" id=1]
+[ext_resource path="res://Sprites/elevator.png" type="Texture" id=2]
+[ext_resource path="res://Sprites/elevator_shaft.png" type="Texture" id=4]
+
+[sub_resource type="AtlasTexture" id=1]
+atlas = ExtResource( 2 )
+region = Rect2( 0, 0, 32, 5 )
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 2 )
+region = Rect2( 32, 0, 32, 5 )
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 2 )
+region = Rect2( 64, 0, 32, 5 )
+
+[sub_resource type="AtlasTexture" id=4]
+atlas = ExtResource( 2 )
+region = Rect2( 96, 0, 32, 5 )
+
+[sub_resource type="SpriteFrames" id=5]
+animations = [ {
+"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ) ],
+"loop": true,
+"name": "default",
+"speed": 4.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 10, 24 )
+
+[sub_resource type="RectangleShape2D" id=7]
+extents = Vector2( 24, 8 )
+
+[node name="ElevatorDown" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="Shaft" type="Node2D" parent="."]
+
+[node name="Sprite" type="Sprite" parent="Shaft"]
+position = Vector2( 0, 127 )
+texture = ExtResource( 4 )
+hframes = 2
+frame = 1
+
+[node name="Sprite2" type="Sprite" parent="Shaft"]
+position = Vector2( 0, 237 )
+texture = ExtResource( 4 )
+hframes = 2
+frame = 1
+
+[node name="ElevatorSprite" type="Sprite" parent="."]
+position = Vector2( 0, 33 )
+texture = ExtResource( 4 )
+hframes = 2
+
+[node name="PlatformSprite" type="AnimatedSprite" parent="."]
+position = Vector2( 0, -1 )
+frames = SubResource( 5 )
+frame = 1
+playing = true
+
+[node name="Down" type="Area2D" parent="."]
+position = Vector2( 0, -2 )
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Down"]
+position = Vector2( 0, 16 )
+shape = SubResource( 6 )
+
+[node name="Down2" type="Area2D" parent="."]
+position = Vector2( 0, -2 )
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Down2"]
+position = Vector2( 0, 16 )
+shape = SubResource( 6 )
+
+[node name="StaticBody2D" type="KinematicBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource( 7 )
+
+[node name="Tween" type="Tween" parent="."]
+playback_process_mode = 0
+[connection signal="body_entered" from="Down" to="." method="_on_Area2D_body_entered"]
+[connection signal="body_exited" from="Down" to="." method="_on_Area2D_body_exited"]
+[connection signal="body_entered" from="Down2" to="." method="_on_Area2D_body_entered"]
+[connection signal="body_exited" from="Down2" to="." method="_on_Area2D_body_exited"]
