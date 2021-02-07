@@ -37,7 +37,7 @@ _global_script_classes=[ {
 "base": "Node2D",
 "class": "Elevator",
 "language": "GDScript",
-"path": "res://Scripts/Levels/ElevatorDown.gd"
+"path": "res://Scripts/Levels/Elevator.gd"
 }, {
 "base": "KinematicBody2D",
 "class": "Enemy",
@@ -193,6 +193,7 @@ Globals="*res://Scripts/Globals.gd"
 GameMusic="*res://Scripts/GameMusic.gd"
 GameSFX="*res://Scenes/GameSFX.tscn"
 Ui="*res://Scenes/UI/UI.tscn"
+AreaTransition="*res://Scripts/AreaTransition.gd"
 
 [display]
 

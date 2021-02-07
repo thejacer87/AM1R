@@ -9,10 +9,11 @@ var missile_count_ui
 var energy_count_ui
 var black_screen
 var current_room: Room setget ,get_current_room
-var current_room_path: NodePath
+var current_room_path: String setget set_current_room_path
 var collected_powerups = []
 
 var _morph_blockers := 0
+var _test
 
 onready var label = $RichTextLabel
 onready var camera = $Camera2D
@@ -36,7 +37,7 @@ func _ready() -> void:
 	missile_ui.hide()
 
 
-func _physics_process(_delta):
+func _physics_process(_delta: float) -> void:
 	label.text = motion_state_machine.current_state.get_name()
 	mode_label.text = morph_state_machine.current_state.get_name()
 	if has_powerup("missiles"):
@@ -52,11 +53,14 @@ func _physics_process(_delta):
 func bind_camera_limits() -> void:
 	if current_room_path:
 		camera.set_camera_bounds(get_current_room())
-	else:
-		camera.set_camera_bounds("../Rooms/A")
+
 
 func get_current_room() -> Room:
-	return get_node(current_room_path) as Room
+	return (get_node(current_room_path) if get_node(current_room_path) else get_node("../" + current_room_path)) as Room
+
+
+func set_current_room_path(path: String) -> void:
+	current_room_path = path
 
 
 func bomb_jump() -> void:
@@ -87,7 +91,6 @@ func can_morph() -> bool:
 func collect_powerup(powerup: String) -> void:
 	if not collected_powerups.has(powerup):
 		collected_powerups.push_back(powerup)
-
 
 
 func save(load_position) -> Dictionary:
@@ -123,6 +126,30 @@ func _hide_black_screen() -> void:
 	var level = get_parent()
 	var doors = level.get_node("Doors")
 	level.move_child(doors, level.get_child_count())
+
+
+func _on_transition_out_started() -> void:
+	hide()
+	camera.set_deferred("current", false)
+	morph_state_machine._change_state("neutral")
+	set_physics_process(false)
+	set_process(false)
+
+
+func _on_transition_in_started(room: String) -> void:
+	set_current_room_path(room)
+	bind_camera_limits()
+	var elevator = get_current_room().get_node("Elevator")
+	global_position = elevator.global_position
+	position.y -= 32
+
+
+func _on_transition_in_finished() -> void:
+	print("in finished")
+	camera.set_deferred("current", true)
+	set_process(true)
+	set_physics_process(true)
+	show()
 
 
 func _on_Hurtbox_area_entered(area: Area2D) -> void:
