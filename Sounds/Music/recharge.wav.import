@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/recharge.wav-8877f0646a619e1c5c8f6ca62ad59fc8.sample"
+
+[deps]
+
+source_file="res://Sounds/Music/recharge.wav"
+dest_files=[ "res://.import/recharge.wav-8877f0646a619e1c5c8f6ca62ad59fc8.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
