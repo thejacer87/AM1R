@@ -190,7 +190,7 @@ config/icon="res://Sprites/logo.png"
 [autoload]
 
 Globals="*res://Scripts/Globals.gd"
-GameMusic="*res://Scripts/GameMusic.gd"
+GameMusic="*res://Scenes/Globals/GameMusic.tscn"
 GameSFX="*res://Scenes/GameSFX.tscn"
 Ui="*res://Scenes/UI/UI.tscn"
 AreaTransition="*res://Scripts/AreaTransition.gd"

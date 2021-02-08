@@ -9,6 +9,7 @@ var can_activate := false
 var _samus
 
 onready var animation_player := $AnimationPlayer setget ,get_animation_player
+onready var platform := $Platform setget ,get_platform
 
 
 func _input(event: InputEvent) -> void:
@@ -21,6 +22,10 @@ func _input(event: InputEvent) -> void:
 
 func get_animation_player() -> AnimationPlayer:
 	return (animation_player as AnimationPlayer)
+
+
+func get_platform() -> Node2D:
+	return (platform as Node2D)
 
 
 func _on_ActivationArea_body_entered(body: Node) -> void:

@@ -95,13 +95,17 @@ func collect_powerup(powerup: String) -> void:
 
 func save(load_position) -> Dictionary:
 	var save = {
-		"filename": get_filename(),
-		"parent": get_parent().get_path(),
-		"pos_x": load_position.x,
-		"pos_y": load_position.y,
-		"missile_count": missile_count,
-		"collected_powerups": collected_powerups,
-		"current_room_path": current_room_path
+		"samus": {
+			"filename": get_filename(),
+			"missile_count": missile_count,
+			"collected_powerups": collected_powerups,
+			"pos_x": load_position.x,
+			"pos_y": load_position.y,
+			"current_room_path": current_room_path,
+		},
+		"area": {
+			"filename": get_parent().get_filename(),
+		},
 	}
 	return save
 
@@ -139,14 +143,14 @@ func _on_transition_out_started() -> void:
 func _on_transition_in_started(room: String) -> void:
 	set_current_room_path(room)
 	bind_camera_limits()
-	var elevator = get_current_room().get_node("Elevator")
-	global_position = elevator.global_position
-	position.y -= 32
 
 
 func _on_transition_in_finished() -> void:
 	print("in finished")
 	camera.set_deferred("current", true)
+	var elevator = get_current_room().get_node("Elevator")
+	global_position = elevator.get_platform().global_position
+	position.y -= 24
 	set_process(true)
 	set_physics_process(true)
 	show()
@@ -162,6 +166,7 @@ func _on_transition_started(old, new, door, left) -> void:
 	camera.connect("transition_completed", self, "_on_transition_completed")
 	camera.connect("transition_completed", door, "_on_transition_completed")
 	camera.transition(old, new, door, left)
+	set_current_room_path(new.get_path())
 
 
 func _on_transition_completed() -> void:
