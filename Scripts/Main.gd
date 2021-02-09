@@ -23,6 +23,12 @@ func _ready() -> void:
 	_load_game()
 
 
+func restart() -> void:
+	for child in get_children():
+		child.queue_free()
+	_load_game()
+
+
 func _load_game() -> void:
 	var save_game = File.new()
 

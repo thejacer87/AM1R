@@ -113,6 +113,17 @@ func save(load_position) -> Dictionary:
 func _damage(amount: int) -> void:
 	# Stun/flash and make invulnerable for a half second?
 	energy -= amount
+	if energy < 30:
+		print("play alarm")
+		pass
+	if energy <= 0:
+		_die()
+
+
+func _die() -> void:
+	print("animate death")
+	print("show menu")
+	get_tree().get_root().get_node("Main").restart()
 
 
 func _show_black_screen() -> void:
