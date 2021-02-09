@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://src/pickups/PowerUp.tscn" type="PackedScene" id=2]
+
+
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 8, 8 )
+
+[node name="HighJumpBoots" instance=ExtResource( 2 )]
+powerup_name = "high_jump"
+
+[node name="Sprite" parent="." index="0"]
+frame = 14
+
+[node name="CollisionShape2D" parent="." index="1"]
+shape = SubResource( 1 )

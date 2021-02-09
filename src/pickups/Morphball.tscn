@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://src/pickups/PowerUp.tscn" type="PackedScene" id=1]
+
+
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 7.0
+
+[node name="Morphball" instance=ExtResource( 1 )]
+powerup_name = "morph_ball"
+
+[node name="Sprite" parent="." index="0"]
+frame = 13
+
+[node name="CollisionShape2D" parent="." index="1"]
+shape = SubResource( 1 )

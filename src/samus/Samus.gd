@@ -16,12 +16,12 @@ var _morph_blockers := 0
 var _test
 
 onready var label = $RichTextLabel
-onready var camera = $Camera2D
+onready var camera = $MainCamera
 onready var mode_label = $mode
 onready var gameplay_ui := preload("res://src/interface/GameplayUI.tscn")
 onready var animation_tree = $AnimationTree
-onready var black_screen_scene := preload("res://Scenes/Levels/BlackScreen.tscn")
-onready var map := preload("res://Scenes/Map/Map.tscn")
+onready var black_screen_scene := preload("res://src/areas/BlackScreen.tscn")
+onready var map := preload("res://src/map/Map.tscn")
 onready var motion_state_machine = $MotionStateMachine
 onready var morph_state_machine = $MorphStateMachine
 

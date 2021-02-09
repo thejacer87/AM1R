@@ -31,17 +31,17 @@ var sfx := {
 }
 
 var levels = {
-		"Brinstar": "res://Scenes/Levels/Brinstar/Brinstar.tscn",
-		"Kraid's Lair": "res://Scenes/Levels/KraidsLair/KraidsLair.tscn",
+		"Brinstar": "res://src/Levels/Brinstar/Brinstar.tscn",
+		"Kraid's Lair": "res://src/Levels/KraidsLair/KraidsLair.tscn",
 		"Norfair": "",
 		"Ridley's Hideout": "",
 		"Tourian": "",
 	}
 
 var levels_flip = {
-		"res://Scenes/Levels/Brinstar/Brinstar.tscn": "Brinstar",
-		"res://Scenes/Levels/KraidsLair/KraidsLair.tscn": "Kraid's Lair",
-		"res://Scenes/Levels/Norfair/Norfair.tscn": "Norfair",
-		"res://Scenes/Levels/RidleysHideout/RidleysHideout.tscn": "Ridley's Hideout",
-		"res://Scenes/Levels/Tourian/Tourian.tscn": "Tourian",
+		"res://src/Levels/Brinstar/Brinstar.tscn": "Brinstar",
+		"res://src/Levels/KraidsLair/KraidsLair.tscn": "Kraid's Lair",
+		"res://src/Levels/Norfair/Norfair.tscn": "Norfair",
+		"res://src/Levels/RidleysHideout/RidleysHideout.tscn": "Ridley's Hideout",
+		"res://src/Levels/Tourian/Tourian.tscn": "Tourian",
 	}

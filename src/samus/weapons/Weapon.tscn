@@ -1,10 +1,11 @@
 [gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://Scripts/Weapon/States/WeaponStateMachine.gd" type="Script" id=1]
-[ext_resource path="res://Scripts/Weapon/States/Cannon/Beam.gd" type="Script" id=2]
-[ext_resource path="res://Scripts/Weapon/Weapon.gd" type="Script" id=3]
-[ext_resource path="res://Scripts/Weapon/States/Cannon/Missile.gd" type="Script" id=4]
-[ext_resource path="res://Scripts/Weapon/States/Bomb/Bomb.gd" type="Script" id=6]
+[ext_resource path="res://src/Scripts/Weapon/States/WeaponStateMachine.gd" type="Script" id=1]
+[ext_resource path="res://src/Scripts/Weapon/States/Cannon/Beam.gd" type="Script" id=2]
+[ext_resource path="res://src/Scripts/Weapon/Weapon.gd" type="Script" id=3]
+[ext_resource path="res://src/Scripts/Weapon/States/Cannon/Missile.gd" type="Script" id=4]
+[ext_resource path="res://src/Scripts/Weapon/States/Bomb/Bomb.gd" type="Script" id=6]
+
 
 [node name="Weapon" type="Node2D"]
 visible = false
