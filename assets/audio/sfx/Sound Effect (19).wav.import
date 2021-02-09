@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Sound Effect (19).wav-196eb7ba2d17537e7d516b7aeac3bb9b.sample"
+
+[deps]
+
+source_file="res://assets/audio/sfx/Sound Effect (19).wav"
+dest_files=[ "res://.import/Sound Effect (19).wav-196eb7ba2d17537e7d516b7aeac3bb9b.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

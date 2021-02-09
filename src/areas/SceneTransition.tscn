@@ -1,0 +1,82 @@
+[gd_scene load_steps=2 format=2]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends CanvasLayer
+
+signal scene_changed
+
+onready var animation_player := $AnimationPlayer
+onready var black := $Control/Black
+onready var area_name := $Control/Area/Label
+
+func load_scene(scene):
+	Globals.load_level(scene)
+
+
+func change_scene(scene):
+	area_name.text = \"x   %d\" % Globals.GameState.lives
+	animation_player.play(\"fade_out\")
+	yield(animation_player, \"animation_finished\")
+	Globals.goto_level(scene)
+	animation_player.play(\"fade_in\")
+	yield(animation_player, \"animation_finished\")
+	emit_signal(\"scene_changed\")
+
+
+#func reload_scene(scene, position = null, delay = 1.5):
+#	lives.text = \"x   %d\" % Globals.GameState.lives
+#	level.text = \"WORLD %s\" % Globals.levels_flip[scene]
+#	animation_player.play(\"fade_out\")
+#	yield(get_tree().create_timer(delay), \"timeout\")
+#	Globals.goto_level(scene, position)
+#	animation_player.play(\"fade_in\")
+#	yield(get_tree().create_timer(delay), \"timeout\")
+#	emit_signal(\"scene_changed\")
+
+"
+
+[node name="SceneTransition" type="CanvasLayer"]
+script = SubResource( 1 )
+
+[node name="Control" type="Control" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Black" type="ColorRect" parent="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Area" type="Control" parent="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="Control/Area"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -32.0
+color = Color( 0.0235294, 0.431373, 0.145098, 0.894118 )
+
+[node name="Label" type="Label" parent="Control/Area"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -40.0
+margin_top = 120.0
+margin_right = 43.0
+margin_bottom = 134.0
+text = "KRAID'S LAIR"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]

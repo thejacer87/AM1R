@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/tourian.wav-efc0eb076cf87ff86d299a647aaa1dae.sample"
+
+[deps]
+
+source_file="res://assets/audio/music/tourian.wav"
+dest_files=[ "res://.import/tourian.wav-efc0eb076cf87ff86d299a647aaa1dae.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=true
+compress/mode=0
