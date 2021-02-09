@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/missile.png-980edb51ded2d910af8d1187f804f41e.stex"
+path="res://.import/missile.png-3dc56b7b6abb05c07a571c719ad02e34.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://src/samus/weapons/missile.png"
-dest_files=[ "res://.import/missile.png-980edb51ded2d910af8d1187f804f41e.stex" ]
+source_file="res://assets/sprites/missile.png"
+dest_files=[ "res://.import/missile.png-3dc56b7b6abb05c07a571c719ad02e34.stex" ]
 
 [params]
 

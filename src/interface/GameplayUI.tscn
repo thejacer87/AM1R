@@ -1,7 +1,11 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://src/Scripts/UI/GameplayUI.gd" type="Script" id=1]
-[ext_resource path="res://src/samus/weapons/missile.png" type="Texture" id=2]
+[ext_resource path="res://src/interface/GameplayUI.gd" type="Script" id=1]
+[ext_resource path="res://assets/sprites/missile.png" type="Texture" id=2]
+
+
+
+
 
 
 

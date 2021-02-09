@@ -1,10 +1,8 @@
 [gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://src/Scripts/Weapon/Beam.gd" type="Script" id=1]
-[ext_resource path="res://src/Hitboxes/Hitbox.tscn" type="PackedScene" id=2]
-[ext_resource path="res://src/samus/zm_power_suit.png" type="Texture" id=3]
-
-
+[ext_resource path="res://assets/sprites/zm_power_suit.png" type="Texture" id=1]
+[ext_resource path="res://src/weapons/Beam.gd" type="Script" id=2]
+[ext_resource path="res://src/hitboxes/Hitbox.tscn" type="PackedScene" id=3]
 
 
 
@@ -32,14 +30,14 @@ height = 9.0
 [node name="Beam" type="Area2D"]
 collision_layer = 32
 collision_mask = 12
-script = ExtResource( 1 )
+script = ExtResource( 2 )
 __meta__ = {
 "_edit_group_": true
 }
 
 [node name="Sprite" type="Sprite" parent="."]
 rotation = 1.5708
-texture = ExtResource( 3 )
+texture = ExtResource( 1 )
 vframes = 30
 hframes = 25
 frame = 3
@@ -54,7 +52,7 @@ one_shot = true
 autoplay = "Shoot"
 anims/Shoot = SubResource( 1 )
 
-[node name="Hitbox" parent="." instance=ExtResource( 2 )]
+[node name="Hitbox" parent="." instance=ExtResource( 3 )]
 collision_layer = 32
 collision_mask = 2147483660
 damage = 10

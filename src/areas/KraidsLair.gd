@@ -2,9 +2,9 @@ extends Node2D
 
 export(NodePath) var entry
 
-var weak_block := preload("res://src/Levels/WeakBlock.tscn")
-var zoomer := preload("res://src/Enemies/Zoomer.tscn")
-var skree := preload("res://src/Enemies/Skree.tscn")
+var weak_block := preload("res://src/areas/WeakBlock.tscn")
+var zoomer := preload("res://src/enemies/zoomer/Zoomer.tscn")
+var skree := preload("res://src/enemies/skree/Skree.tscn")
 
 onready var rooms := $Rooms
 onready var doors := $Doors
@@ -17,7 +17,7 @@ func _ready() -> void:
 
 	# Move Doors to front of tree so Samus will be rendered underneath.
 	move_child(doors, get_child_count())
-	Globals.GameMusic.play("res://Sounds/Music/kraid.wav")
+	Globals.GameMusic.play("res://assets/audio/music/kraid.wav")
 
 
 func _on_transition_out_finished() -> void:

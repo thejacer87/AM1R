@@ -1,8 +1,10 @@
 [gd_scene load_steps=14 format=2]
 
-[ext_resource path="res://src/Scripts/Levels/Elevator.gd" type="Script" id=1]
+[ext_resource path="res://src/areas/Elevator.gd" type="Script" id=1]
 [ext_resource path="res://assets/sprites/elevator.png" type="Texture" id=2]
-[ext_resource path="res://src/samus/zm_power_suit.png" type="Texture" id=3]
+[ext_resource path="res://assets/sprites/zm_power_suit.png" type="Texture" id=3]
+
+
 
 
 

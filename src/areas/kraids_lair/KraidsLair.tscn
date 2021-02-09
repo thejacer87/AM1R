@@ -1,11 +1,12 @@
 [gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://src/Scripts/Levels/KraidsLair.gd" type="Script" id=1]
+[ext_resource path="res://src/areas/KraidsLair.gd" type="Script" id=1]
 [ext_resource path="res://src/areas/Elevator.tscn" type="PackedScene" id=2]
 [ext_resource path="res://src/areas/SaveStation.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/tilesets/brinstar/BrinstarTileMaps.tscn" type="PackedScene" id=4]
 [ext_resource path="res://assets/sprites/logo.png" type="Texture" id=5]
 [ext_resource path="res://src/areas/Room.tscn" type="PackedScene" id=8]
+
 
 
 

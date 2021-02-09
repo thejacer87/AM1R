@@ -18,7 +18,7 @@ func _ready() -> void:
 
 	# Move Doors to front of tree so Samus will be rendered underneath.
 	move_child(doors, get_child_count())
-	Globals.GameMusic.play("res://Sounds/Music/brinstar.wav")
+	Globals.GameMusic.play("res://assets/audio/music/brinstar.wav")
 
 
 func _on_transition_out_finished() -> void:
