@@ -12,7 +12,7 @@ _global_script_classes=[ {
 "base": "MotionState",
 "class": "AirborneState",
 "language": "GDScript",
-"path": "res://Scripts/Samus/States/Motion/Airborne/Airborne.gd"
+"path": "res://src/samus/States/Motion/Airborne/Airborne.gd"
 }, {
 "base": "CannonState",
 "class": "BeamState",
@@ -22,7 +22,7 @@ _global_script_classes=[ {
 "base": "AirborneState",
 "class": "BombJumpState",
 "language": "GDScript",
-"path": "res://Scripts/Samus/States/Motion/Airborne/BombJump.gd"
+"path": "res://src/samus/States/Motion/Airborne/BombJump.gd"
 }, {
 "base": "State",
 "class": "BombState",
@@ -47,7 +47,7 @@ _global_script_classes=[ {
 "base": "AirborneState",
 "class": "FallState",
 "language": "GDScript",
-"path": "res://Scripts/Samus/States/Motion/Airborne/Fall.gd"
+"path": "res://src/samus/States/Motion/Airborne/Fall.gd"
 }, {
 "base": "Area2D",
 "class": "Hitbox",
@@ -57,12 +57,12 @@ _global_script_classes=[ {
 "base": "OnGroundState",
 "class": "IdleState",
 "language": "GDScript",
-"path": "res://Scripts/Samus/States/Motion/OnGround/Idle.gd"
+"path": "res://src/samus/States/Motion/OnGround/Idle.gd"
 }, {
 "base": "AirborneState",
 "class": "JumpState",
 "language": "GDScript",
-"path": "res://Scripts/Samus/States/Motion/Airborne/Jump.gd"
+"path": "res://src/samus/States/Motion/Airborne/Jump.gd"
 }, {
 "base": "Camera2D",
 "class": "MainCamera",
@@ -77,32 +77,32 @@ _global_script_classes=[ {
 "base": "MorphState",
 "class": "MorphBallState",
 "language": "GDScript",
-"path": "res://Scripts/Samus/States/Morph/MorphBall/MorphBall.gd"
+"path": "res://src/samus/States/Morph/MorphBall/MorphBall.gd"
 }, {
 "base": "State",
 "class": "MorphState",
 "language": "GDScript",
-"path": "res://Scripts/Samus/States/Morph/Morph.gd"
+"path": "res://src/samus/States/Morph/Morph.gd"
 }, {
 "base": "State",
 "class": "MotionState",
 "language": "GDScript",
-"path": "res://Scripts/Samus/States/Motion/Motion.gd"
+"path": "res://src/samus/States/Motion/Motion.gd"
 }, {
 "base": "OnGroundState",
 "class": "MoveState",
 "language": "GDScript",
-"path": "res://Scripts/Samus/States/Motion/OnGround/Move.gd"
+"path": "res://src/samus/States/Motion/OnGround/Move.gd"
 }, {
-"base": "MorphState",
+"base": "Reference",
 "class": "NeutralState",
 "language": "GDScript",
-"path": "res://Scripts/Samus/States/Morph/Neutral/Neutral.gd"
+"path": "res://src/samus/States/Morph/Neutral/Neutral.gd"
 }, {
 "base": "MotionState",
 "class": "OnGroundState",
 "language": "GDScript",
-"path": "res://Scripts/Samus/States/Motion/OnGround/OnGround.gd"
+"path": "res://src/samus/States/Motion/OnGround/OnGround.gd"
 }, {
 "base": "Area2D",
 "class": "Pickup",
@@ -122,7 +122,7 @@ _global_script_classes=[ {
 "base": "KinematicBody2D",
 "class": "Samus",
 "language": "GDScript",
-"path": "res://Scripts/Samus/Samus.gd"
+"path": "res://src/samus/Samus.gd"
 }, {
 "base": "Enemy",
 "class": "Skree",
@@ -184,16 +184,16 @@ _global_script_class_icons={
 
 config/name="AM1R"
 config/description="A Metroid 1 Remake"
-run/main_scene="res://Scenes/Main.tscn"
+run/main_scene="res://src/main/Main.tscn"
 config/icon="res://Sprites/logo.png"
 
 [autoload]
 
-Globals="*res://Scripts/Globals.gd"
-GameMusic="*res://Scenes/Globals/GameMusic.tscn"
-GameSFX="*res://Scenes/GameSFX.tscn"
-Ui="*res://Scenes/UI/UI.tscn"
-AreaTransition="*res://Scripts/AreaTransition.gd"
+Globals="*res://src/main/globals/Globals.gd"
+GameMusic="*res://src/main/globals/GameMusic.tscn"
+GameSFX="*res://src/main/globals/GameSFX.tscn"
+AreaTransition="*res://src/main/globals/AreaTransition.gd"
+UI="*res://src/interface/UI.tscn"
 
 [display]
 
