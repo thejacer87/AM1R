@@ -18,8 +18,7 @@ var _test
 onready var label = $RichTextLabel
 onready var camera = $Camera2D
 onready var mode_label = $mode
-onready var beam_cannon = $BeamCannon
-onready var gameplay_ui := preload("res://Scenes/UI/GameplayUI.tscn")
+onready var gameplay_ui := preload("res://src/interface/GameplayUI.tscn")
 onready var animation_tree = $AnimationTree
 onready var black_screen_scene := preload("res://Scenes/Levels/BlackScreen.tscn")
 onready var map := preload("res://Scenes/Map/Map.tscn")
@@ -29,7 +28,7 @@ onready var morph_state_machine = $MorphStateMachine
 
 func _ready() -> void:
 	Globals.Samus = self
-	var ui = load("res://Scenes/UI/GameplayUI.tscn").instance()
+	var ui = load("res://src/interface/GameplayUI.tscn").instance()
 	Globals.UI.add_child(ui)
 	energy_count_ui = Globals.GameplayUI.get_node("VBoxContainer/Energy/EnergyCount")
 	missile_ui = Globals.GameplayUI.get_node("VBoxContainer/Missiles")

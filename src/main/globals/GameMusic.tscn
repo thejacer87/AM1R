@@ -2,8 +2,6 @@
 
 [ext_resource path="res://src/main/globals/GameMusic.gd" type="Script" id=1]
 
-
-
 [node name="GameMusic" type="Node"]
 pause_mode = 2
 script = ExtResource( 1 )

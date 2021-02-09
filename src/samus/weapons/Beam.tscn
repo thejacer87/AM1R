@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Scripts/Weapon/Beam.gd" type="Script" id=1]
-[ext_resource path="res://Sprites/Samus/zm_power_suit.png" type="Texture" id=2]
-[ext_resource path="res://Scenes/Hitboxes/Hitbox.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/Hitboxes/Hitbox.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Sprites/Samus/zm_power_suit.png" type="Texture" id=3]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Shoot"
@@ -35,7 +35,7 @@ __meta__ = {
 
 [node name="Sprite" type="Sprite" parent="."]
 rotation = 1.5708
-texture = ExtResource( 2 )
+texture = ExtResource( 3 )
 vframes = 30
 hframes = 25
 frame = 3
@@ -50,7 +50,7 @@ one_shot = true
 autoplay = "Shoot"
 anims/Shoot = SubResource( 1 )
 
-[node name="Hitbox" parent="." instance=ExtResource( 3 )]
+[node name="Hitbox" parent="." instance=ExtResource( 2 )]
 collision_layer = 32
 collision_mask = 2147483660
 damage = 10
