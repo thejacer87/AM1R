@@ -1,10 +1,8 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Scripts/Weapon/Bomb.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/Samus/zm_power_suit.png" type="Texture" id=2]
 [ext_resource path="res://Scenes/Hitboxes/Hitbox.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Sounds/bomb_drop.wav" type="AudioStream" id=4]
-[ext_resource path="res://Sounds/bomb_explode.wav" type="AudioStream" id=5]
 
 [sub_resource type="Animation" id=1]
 length = 0.766668
@@ -35,22 +33,20 @@ tracks/1/keys = {
 "method": "queue_free"
 } ]
 }
-tracks/2/type = "audio"
-tracks/2/path = NodePath("AudioStreamPlayer2D")
+tracks/2/type = "value"
+tracks/2/path = NodePath("ExplosionHitbox:monitoring")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"clips": [ {
-"end_offset": 0.0,
-"start_offset": 0.0,
-"stream": ExtResource( 5 )
-} ],
-"times": PoolRealArray( 0 )
+"times": PoolRealArray( 0, 0.05 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("ExplosionHitbox:monitoring")
+tracks/3/path = NodePath("BombJumpHitbox:monitoring")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -62,7 +58,7 @@ tracks/3/keys = {
 "values": [ true, false ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("BombJumpHitbox:monitoring")
+tracks/4/path = NodePath("BombJumpHitbox:monitorable")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -74,24 +70,12 @@ tracks/4/keys = {
 "values": [ true, false ]
 }
 tracks/5/type = "value"
-tracks/5/path = NodePath("BombJumpHitbox:monitorable")
+tracks/5/path = NodePath("ExplosionHitbox:monitorable")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
 tracks/5/enabled = true
 tracks/5/keys = {
-"times": PoolRealArray( 0, 0.05 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ true, false ]
-}
-tracks/6/type = "value"
-tracks/6/path = NodePath("ExplosionHitbox:monitorable")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/keys = {
 "times": PoolRealArray( 0, 0.05 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
@@ -111,20 +95,6 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
 "values": [ 52, 53, 54, 55, 52, 53, 54, 55, 52, 53, 54, 55, 52, 53, 54, 55, 52, 53, 54, 55, 52, 53 ]
-}
-tracks/1/type = "audio"
-tracks/1/path = NodePath("AudioStreamPlayer2D")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"clips": [ {
-"end_offset": 0.0,
-"start_offset": 0.0,
-"stream": ExtResource( 4 )
-} ],
-"times": PoolRealArray( 0 )
 }
 
 [sub_resource type="CircleShape2D" id=3]
@@ -164,6 +134,7 @@ monitoring = false
 monitorable = false
 collision_layer = 128
 collision_mask = 2147483660
+damage = 10
 
 [node name="CollisionShape2D" parent="ExplosionHitbox" index="0"]
 rotation = 1.5708
@@ -179,10 +150,6 @@ collision_mask = 1
 [node name="CollisionShape2D" parent="BombJumpHitbox" index="0"]
 self_modulate = Color( 0, 1, 0.298039, 1 )
 shape = SubResource( 4 )
-
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource( 5 )
-autoplay = true
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 [connection signal="body_entered" from="BombJumpHitbox" to="." method="_on_BombJumpHitbox_body_entered"]
 

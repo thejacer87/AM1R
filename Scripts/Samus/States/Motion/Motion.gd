@@ -49,7 +49,10 @@ func apply_gravity(delta: float) -> void:
 
 
 func apply_movement() -> void:
-	owner.move_and_slide(velocity, FLOOR)
+	# check the vid. will need with_snap to not stutter when on the elevator
+	# https://youtu.be/mBNa8LcAsns?t=427
+	var snap = Vector2.DOWN * 32 if false else Vector2.ZERO
+	owner.move_and_slide_with_snap(velocity, snap, FLOOR, true)
 
 
 func in_morph_ball() -> bool:

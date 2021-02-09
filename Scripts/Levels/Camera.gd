@@ -1,59 +1,74 @@
+class_name MainCamera
 extends Camera2D
 
-class_name MainCamera
+signal transition_completed
 
-
-onready var _tween := $Tween
+enum Bounds {TOP, RIGHT, BOTTOM, LEFT}
 
 var _samus
-var _left
-var _right
-var _top
-var _bottom
-var _exit
+var _is_moving_left
 
-signal transition_completed(samus)
+onready var _tween: Tween = $Tween
+
+func _ready() -> void:
+	_samus = get_parent()
 
 
-func transition(samus: Samus, left : Position2D, right : Position2D, top : Position2D, bottom : Position2D, exit : Position2D) -> void:
-	_samus = samus
-	_left = left
-	_right = right
-	_top = top
-	_bottom = bottom
-	_exit = exit
+func transition(old_room, new_room, door, left = true) -> void:
+	_is_moving_left = left
+	_transition_setup()
 
-	# Pause player processing (physics and input processing, animations, state
-	# timers, etc.)
-	get_tree().paused = true
-	# Disable smoothing to avoid jitter during transition.
-	self.smoothing_enabled = false
+	_interpolate_camera_pos(old_room, new_room, door)
 
-	_interpolate_camera_pos()
+	yield(_tween, 'tween_started')
+	_remove_camera_limits()
 
 	yield(_tween, 'tween_completed')
-	# Re-enable smoothing now that the transition has completed.
-	self.smoothing_enabled = true
+	_transition_teardown(new_room)
 
-	# Restore processing.
+	emit_signal('transition_completed')
+
+
+func set_camera_bounds(room: Room) -> void:
+	var camera_bounds = room.camera_bounds.get_children()
+
+	self.limit_top = camera_bounds[Bounds.TOP].global_position.y
+	self.limit_right = camera_bounds[Bounds.RIGHT].global_position.x
+	self.limit_bottom = camera_bounds[Bounds.BOTTOM].global_position.y
+	self.limit_left = camera_bounds[Bounds.LEFT].global_position.x
+	self.position = Vector2.ZERO
+
+
+func _transition_setup():
+	get_tree().paused = true
+	self.smoothing_enabled = false
+
+
+func _transition_teardown(room) -> void:
+	set_camera_bounds(room)
+	self.smoothing_enabled = true
 	get_tree().paused = false
 
-	emit_signal('transition_completed', samus)
 
-
-func _interpolate_camera_pos() -> void:
-	var duration := 0.75
-	var offset_x := Globals.SCREEN_WIDTH / 2
-	var offset_y := Globals.SCREEN_HEIGHT / 2
+func _interpolate_camera_pos(old_room, new_room, door) -> void:
+	var duration := 0.66
 	var trans := Tween.TRANS_LINEAR
-	var easing := Tween.EASE_IN_OUT
+	var easing := Tween.EASE_OUT
+	var old := "Left" if _is_moving_left else "Right"
+	var new := "Right" if _is_moving_left else "Left"
+
+	var anchor_pos_old: Vector2 = door.get_node(old + "/CameraAnchor").global_position
+	var anchor_pos_new: Vector2 = door.get_node(new + "/CameraAnchor").global_position
+	var samus_new := Vector2(door.get_node(old + "/Exit").global_position.x, _samus.global_position.y)
 
 	_tween.stop_all()
-	_tween.interpolate_property(_samus, "position:x", _samus.position.x, _exit.global_position.x, duration, trans, easing)
-
-	# Move the camera limits to the edges
-	_tween.interpolate_property(self, "limit_left", max(self.limit_left, self.global_position.x - offset_x), _left.global_position.x, duration, trans, easing)
-	_tween.interpolate_property(self, "limit_right", min(self.limit_right, self.global_position.x + offset_x), _right.global_position.x, duration, trans, easing)
-	_tween.interpolate_property(self, "limit_top", min(self.limit_top, self.global_position.y - offset_y), _top.global_position.y, duration, trans, easing)
-	_tween.interpolate_property(self, "limit_bottom", max(self.limit_bottom, self.global_position.y + offset_y), _bottom.global_position.y, duration, trans, easing)
+	_tween.interpolate_property(self, "global_position", anchor_pos_old, anchor_pos_new, duration, trans, easing)
+	_tween.interpolate_property(_samus, "global_position", _samus.global_position, samus_new, duration, trans, easing)
 	_tween.start()
+
+
+func _remove_camera_limits() -> void:
+	self.limit_left = -10000000
+	self.limit_right = 10000000
+	self.limit_top = -10000000
+	self.limit_bottom = 10000000

@@ -1,16 +1,15 @@
-extends KinematicBody2D
-
 class_name Zoomer
-
-export var direction := 1
-
-onready var collision_shape : CircleShape2D = $CollisionShape2D.shape
+extends Enemy
 
 var rotating: int
 var move := Vector2.ZERO
 var speed := 43
+var direction := 1
 
-func _physics_process(delta: float) -> void:
+onready var collision_shape : CircleShape2D = $CollisionShape2D.shape
+
+
+func _move(delta: float) -> void:
 	if rotating:
 		rotation = lerp_angle(rotation, move.angle(), 0.1)
 		rotating -= 1
@@ -28,29 +27,18 @@ func _physics_process(delta: float) -> void:
 	if not col:
 		for i in 10:
 			position = pos
-			rotate(PI/32)
-			move = move.rotated(PI/32)
+			rotate(PI / 128)
+			move = move.rotated(PI / 32)
 			col = move_and_collide(move.rotated(PI / 2) * multiplier)
 
 			if col:
 				move = col.normal.rotated(PI / 2)
 				rotation = move.angle()
 				break
+			else:
+				# Fall down if not on a wall.
+				position.y += 3
 	else:
 		move = col.normal.rotated(PI / 2)
 		rotation = move.angle()
 
-
-func _damage() -> void:
-	queue_free()
-
-
-func _on_Hurtbox_area_entered(area):
-	print('hit zoomer area')
-	_damage()
-
-
-func _on_Hurtbox_body_entered(body: Node) -> void:
-	print('hurt zoomer body')
-	print(body.name)
-	_damage()

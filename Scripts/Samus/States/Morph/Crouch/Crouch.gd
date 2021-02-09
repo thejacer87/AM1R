@@ -19,7 +19,7 @@ func enter() -> void:
 
 
 func handle_input(event: InputEvent):
-	if (owner as Samus).has_powerup("morph_ball") and (event.is_action_pressed("morph_ball") or event.is_action_pressed("down")):
+	if (owner as Samus).has_powerup("morph_ball") and (owner as Samus).can_morph() and (event.is_action_pressed("morph_ball") or event.is_action_pressed("down")):
 		emit_signal("finished", "morph_ball")
 	if event.is_action_pressed("up"):
 		emit_signal("finished", "neutral")

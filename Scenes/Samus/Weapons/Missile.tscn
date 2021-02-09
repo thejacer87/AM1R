@@ -46,7 +46,6 @@ frame = 27
 position = Vector2( -8, 0 )
 rotation = 1.5708
 frames = SubResource( 3 )
-frame = 1
 playing = true
 
 [node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
@@ -56,6 +55,7 @@ visible = false
 visible = false
 collision_layer = 64
 collision_mask = 2147483660
+damage = 25
 
 [node name="CollisionShape2D" parent="Hitbox" index="0"]
 rotation = 1.5708

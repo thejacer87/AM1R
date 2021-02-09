@@ -1,13 +1,40 @@
 extends Node
 
+var _path := "user://savegame.save"
+var _data := { }
+var _new_game := {
+	"samus": {
+		"filename": "res://Scenes/Samus/Samus.tscn",
+		"missile_count": 0,
+		"collected_powerups": [],
+		"current_room_path": "../Rooms/A",
+		"pos_x": 480,
+		"pos_y": 176,
+	},
+	"area": {
+		"filename": "res://Scenes/Levels/Brinstar/Brinstar.tscn",
+	},
+}
+
 
 func _ready() -> void:
-	# Load Brinstar
-	var brinstar = load("res://Scenes/Levels/Brinstar.tscn")
-	add_child(brinstar.instance())
+	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+
+	_load_game()
+
+
+func restart() -> void:
+	for child in get_children():
+		child.queue_free()
+	_load_game()
+
+
+func _load_game() -> void:
 	var save_game = File.new()
-	if not save_game.file_exists("user://savegame.save"):
-		return # Error! We don't have a save to load.
+
+	# Will need to pass in save slot when time comes.
+	if not save_game.file_exists(_path):
+		_data = _new_game
 
 	# We need to revert the game state so we're not cloning objects
 	# during loading. This will vary wildly depending on the needs of a
@@ -17,22 +44,27 @@ func _ready() -> void:
 	for i in save_nodes:
 		i.queue_free()
 
-	# Load the file line by line and process that dictionary to restore
-	# the object it represents.
 	save_game.open("user://savegame.save", File.READ)
-	while save_game.get_position() < save_game.get_len():
-		# Get the saved dictionary from the next line in the save file
-		var node_data = parse_json(save_game.get_line())
 
-		# Firstly, we need to create the object and add it to the tree and set its position.
-		var new_object = load(node_data["filename"]).instance()
-		get_node(node_data["parent"]).add_child(new_object)
-		new_object.position = Vector2(node_data["pos_x"], node_data["pos_y"])
+	var text = save_game.get_as_text()
 
-		# Now we set the remaining variables.
-		for i in node_data.keys():
-			if i == "filename" or i == "parent" or i == "pos_x" or i == "pos_y":
-				continue
-			new_object.set(i, node_data[i])
+	if text.empty():
+		_data = _new_game
+	else:
+		_data = parse_json(text)
 
+	var samus = load(_data.samus.filename).instance() as Samus
+	var area = load(_data.area.filename).instance()
+	add_child(area)
+	area.add_child(samus)
+	samus.position = Vector2(_data.samus.pos_x, _data.samus.pos_y)
+
+	# Now we set the remaining variables.
+	for i in _data.samus.keys():
+		if i == "filename":
+			continue
+		samus.set(i, _data.samus[i])
+
+	samus.bind_camera_limits()
 	save_game.close()
+

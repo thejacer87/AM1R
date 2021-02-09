@@ -53,6 +53,7 @@ anims/Shoot = SubResource( 1 )
 [node name="Hitbox" parent="." instance=ExtResource( 3 )]
 collision_layer = 32
 collision_mask = 2147483660
+damage = 10
 
 [node name="CollisionShape2D" parent="Hitbox" index="0"]
 rotation = 1.5708
