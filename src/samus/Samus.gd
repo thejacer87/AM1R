@@ -7,12 +7,12 @@ export var energy = 99
 var missile_ui
 var missile_count_ui
 var energy_count_ui
-var black_screen
 var current_room: Room setget ,get_current_room
 var current_room_path: String setget set_current_room_path
 var collected_powerups = []
 
 var _morph_blockers := 0
+var _black_screen
 var _test
 
 onready var label = $RichTextLabel
@@ -129,17 +129,16 @@ func _show_black_screen() -> void:
 	# Add the black screen to Samus. Then make sure Samus is in the front of
 	# the tree before showing the black screen.
 	var level = get_parent()
-	add_child(black_screen_scene.instance())
-	black_screen = get_node("BlackScreen")
-	level.move_child(self, level.get_child_count())
-	black_screen.fade_in()
+	_black_screen = black_screen_scene.instance()
+	get_tree().get_root().add_child(_black_screen)
+	_black_screen.fade_in()
 
 
 func _hide_black_screen() -> void:
-	black_screen.fade_out()
-	var level = get_parent()
-	var doors = level.get_node("Doors")
-	level.move_child(doors, level.get_child_count())
+	_black_screen.fade_out()
+#	var level = get_parent()
+#	var doors = level.get_node("Doors")
+#	level.move_child(doors, level.get_child_count())
 
 
 func _on_transition_out_started() -> void:
@@ -156,7 +155,6 @@ func _on_transition_in_started(room: String) -> void:
 
 
 func _on_transition_in_finished() -> void:
-	print("in finished")
 	camera.set_deferred("current", true)
 	var elevator = get_current_room().get_node("Elevator")
 	global_position = elevator.get_platform().global_position
@@ -171,16 +169,21 @@ func _on_Hurtbox_area_entered(area: Area2D) -> void:
 		_damage(area.damage)
 
 
-func _on_transition_started(old, new, door, left) -> void:
+func _on_transition_started(old, new, door, direction) -> void:
+	door.z_index = VisualServer.CANVAS_ITEM_Z_MAX
+	get_tree().paused = true
 	_show_black_screen()
 	camera.connect("transition_completed", self, "_on_transition_completed")
-	camera.connect("transition_completed", door, "_on_transition_completed")
-	camera.transition(old, new, door, left)
+	_black_screen.connect("fade_out_finished", door, "_on_transition_completed")
+	yield(_black_screen, "fade_in_finished")
+	camera.transition(old, new, door, direction)
 	set_current_room_path(new.get_path())
 
 
 func _on_transition_completed() -> void:
 	_hide_black_screen()
+	yield(_black_screen, "fade_out_finished")
+	get_tree().paused = false
 
 
 func _on_MorphCheckArea_body_entered(body: Node) -> void:

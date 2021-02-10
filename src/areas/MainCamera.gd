@@ -5,25 +5,47 @@ signal transition_completed
 
 enum Bounds {TOP, RIGHT, BOTTOM, LEFT}
 
-var _samus
+const TRANSITION_DURATION := 1.5
+
 var _is_moving_left
 
-onready var _tween: Tween = $Tween
-
-func _ready() -> void:
-	_samus = get_parent()
+onready var _samus: Samus = get_parent()
+onready var _tween := $Tween
 
 
-func transition(old_room, new_room, door, left = true) -> void:
-	_is_moving_left = left
+func transition(old_room, new_room, door, direction) -> void:
 	_transition_setup()
 
-	_interpolate_camera_pos(old_room, new_room, door)
+	var door_exit = "Left/Exit"
+	var camera_anchor_old = "Left/CameraAnchor"
+	var camera_anchor_new = "Right/CameraAnchor"
+	if not direction == Vector2.RIGHT:
+		door_exit = "Right/Exit"
+		camera_anchor_old = "Right/CameraAnchor"
+		camera_anchor_new = "Left/CameraAnchor"
 
+	var duration = TRANSITION_DURATION
+	var anchor_pos_old: Vector2 = self.to_local(door.get_node(camera_anchor_old).global_position)
+	var anchor_pos_new: Vector2 = self.to_local(door.get_node(camera_anchor_new).global_position)
+
+	if not anchor_pos_old.y == anchor_pos_new.y:
+		# Only take a small portion of the total time to transition for vertical change.
+		var height_diff = min(abs(anchor_pos_old.y - anchor_pos_new.y) / Globals.SCREEN_HEIGHT, 0.35)
+		var height_duration = TRANSITION_DURATION * height_diff
+		duration = TRANSITION_DURATION - height_duration
+
+		_interpolate_camera_pos("position:y", anchor_pos_old.y, anchor_pos_new.y, height_duration)
+		yield(_tween, 'tween_started')
+		_remove_camera_y_limits()
+		yield(_tween, 'tween_completed')
+
+	_interpolate_camera_pos("position:x", anchor_pos_old.x, anchor_pos_new.x, duration)
 	yield(_tween, 'tween_started')
-	_remove_camera_limits()
-
+	_remove_camera_x_limits()
 	yield(_tween, 'tween_completed')
+
+	_samus.global_position = Vector2(door.get_node(door_exit).global_position.x, _samus.global_position.y)
+
 	_transition_teardown(new_room)
 
 	emit_signal('transition_completed')
@@ -40,35 +62,25 @@ func set_camera_bounds(room: Room) -> void:
 
 
 func _transition_setup():
-	get_tree().paused = true
 	self.smoothing_enabled = false
 
 
 func _transition_teardown(room) -> void:
 	set_camera_bounds(room)
 	self.smoothing_enabled = true
-	get_tree().paused = false
 
 
-func _interpolate_camera_pos(old_room, new_room, door) -> void:
-	var duration := 0.66
-	var trans := Tween.TRANS_LINEAR
-	var easing := Tween.EASE_OUT
-	var old := "Left" if _is_moving_left else "Right"
-	var new := "Right" if _is_moving_left else "Left"
-
-	var anchor_pos_old: Vector2 = door.get_node(old + "/CameraAnchor").global_position
-	var anchor_pos_new: Vector2 = door.get_node(new + "/CameraAnchor").global_position
-	var samus_new := Vector2(door.get_node(old + "/Exit").global_position.x, _samus.global_position.y)
-
+func _interpolate_camera_pos(property, anchor_pos_old, anchor_pos_new, duration) -> void:
 	_tween.stop_all()
-	_tween.interpolate_property(self, "global_position", anchor_pos_old, anchor_pos_new, duration, trans, easing)
-	_tween.interpolate_property(_samus, "global_position", _samus.global_position, samus_new, duration, trans, easing)
+	_tween.interpolate_property(self, property, anchor_pos_old, anchor_pos_new, duration, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 	_tween.start()
 
 
-func _remove_camera_limits() -> void:
+func _remove_camera_x_limits() -> void:
 	self.limit_left = -10000000
 	self.limit_right = 10000000
+
+
+func _remove_camera_y_limits() -> void:
 	self.limit_top = -10000000
 	self.limit_bottom = 10000000

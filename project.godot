@@ -94,7 +94,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/samus/states/motion/on_ground/Move.gd"
 }, {
-"base": "Reference",
+"base": "MorphState",
 "class": "NeutralState",
 "language": "GDScript",
 "path": "res://src/samus/states/morph/neutral/Neutral.gd"
