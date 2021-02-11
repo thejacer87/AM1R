@@ -4,8 +4,8 @@ extends Enemy
 enum DirectionsX {LEFT = -1, RIGHT = 1}
 enum DirectionsY {UP = -1, DOWN = 1}
 
-const SPEED_HORIZONTAL := 125
-const SPEED_VERTICAL := 100
+const SPEED_HORIZONTAL := 75
+const SPEED_VERTICAL := 50
 
 var velocity := Vector2.ZERO
 
