@@ -3,12 +3,13 @@ extends Enemy
 
 enum Directions {LEFT = -1, RIGHT = 1}
 
-const SPEED := 125
+const SPEED := 40
 
 var velocity := Vector2.ZERO
 
 var _direction: int = Directions.LEFT
 
+onready var sprite := $Sprite
 onready var animated_sprite := $AnimatedSprite
 onready var animation_player := $AnimationPlayer
 
@@ -25,7 +26,16 @@ func _move(_delta: float) -> void:
 func turnaround() -> void:
 	_direction *= -1
 	animated_sprite.flip_h = not animated_sprite.flip_h
+	sprite.flip_h = not sprite.flip_h
 	velocity = Vector2.ZERO
+
+
+func stop() -> void:
+	set_physics_process(false)
+
+
+func start() -> void:
+	set_physics_process(true)
 
 
 func _on_Hurtbox_area_entered(area: Area2D):
