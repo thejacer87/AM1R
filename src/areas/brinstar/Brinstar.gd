@@ -51,7 +51,7 @@ func _convert_tilecells_to_nodes(tilemap) -> void:
 					offset = Vector2(0, 8)
 					child = ripper.instance()
 				"waver":
-#					offset = Vector2(0, 8)
+					offset = Vector2(0, 8)
 					child = waver.instance()
 
 			if child != null:
