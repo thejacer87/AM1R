@@ -1,52 +1,94 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://src/enemies/Enemy.tscn" type="PackedScene" id=1]
-[ext_resource path="res://src/enemies/waver/waver.png" type="Texture" id=2]
+[ext_resource path="res://src/enemies/ripper/ripper.png" type="Texture" id=2]
 [ext_resource path="res://src/enemies/ripper/Ripper.gd" type="Script" id=3]
 
 [sub_resource type="CapsuleShape2D" id=1]
-radius = 11.0
-height = 0.0
+radius = 6.0
+height = 10.0
 
 [sub_resource type="CapsuleShape2D" id=2]
-radius = 11.0
-height = 6.5
+radius = 7.61253
+height = 9.40778
 
-[sub_resource type="AtlasTexture" id=3]
+[sub_resource type="AtlasTexture" id=11]
 atlas = ExtResource( 2 )
-region = Rect2( 0, 0, 32, 32 )
+region = Rect2( 0, 0, 32, 16 )
 
-[sub_resource type="AtlasTexture" id=4]
+[sub_resource type="AtlasTexture" id=12]
 atlas = ExtResource( 2 )
-region = Rect2( 32, 0, 32, 32 )
+region = Rect2( 32, 0, 32, 16 )
 
-[sub_resource type="AtlasTexture" id=5]
+[sub_resource type="AtlasTexture" id=13]
 atlas = ExtResource( 2 )
-region = Rect2( 64, 0, 32, 32 )
-
-[sub_resource type="AtlasTexture" id=6]
-atlas = ExtResource( 2 )
-region = Rect2( 96, 0, 32, 32 )
-
-[sub_resource type="AtlasTexture" id=7]
-atlas = ExtResource( 2 )
-region = Rect2( 128, 0, 32, 32 )
-
-[sub_resource type="AtlasTexture" id=8]
-atlas = ExtResource( 2 )
-region = Rect2( 160, 0, 32, 32 )
+region = Rect2( 64, 0, 32, 16 )
 
 [sub_resource type="SpriteFrames" id=9]
 animations = [ {
-"frames": [ SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ) ],
+"frames": [ SubResource( 11 ), SubResource( 12 ), SubResource( 13 ) ],
 "loop": true,
 "name": "default",
-"speed": 12.0
+"speed": 6.0
 } ]
 
 [sub_resource type="CapsuleShape2D" id=10]
-radius = 8.0
-height = 12.0
+radius = 7.5
+height = 10.0
+
+[sub_resource type="Animation" id=14]
+resource_name = "turnaround"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "turnaround"
+} ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 3, 4 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Sprite:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
 
 [node name="Ripper" instance=ExtResource( 1 )]
 collision_layer = 8
@@ -55,34 +97,48 @@ script = ExtResource( 3 )
 starting_hp = 25
 
 [node name="Hitbox" parent="." index="0"]
+visible = false
 collision_layer = 8
 collision_mask = 1
 damage = 25
 
 [node name="CollisionShape2D" parent="Hitbox" index="0"]
+position = Vector2( 0, 1 )
 rotation = 1.5708
 shape = SubResource( 1 )
 
 [node name="Hurtbox" parent="." index="1"]
+visible = false
 collision_layer = 8
-collision_mask = 480
+collision_mask = 1504
 
 [node name="CollisionShape2D" parent="Hurtbox" index="0"]
+position = Vector2( 0, 1 )
 rotation = 1.5708
 shape = SubResource( 2 )
 
 [node name="VisibilityEnabler2D" parent="." index="2"]
+visible = false
 position = Vector2( -2.38419e-07, 1.43051e-06 )
 scale = Vector2( 1.6, 1.6 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="." index="3"]
 frames = SubResource( 9 )
-frame = 4
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="4"]
+position = Vector2( 0, 1 )
 rotation = 1.5708
 shape = SubResource( 10 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="5"]
+anims/turnaround = SubResource( 14 )
+
+[node name="Sprite" type="Sprite" parent="." index="6"]
+visible = false
+texture = ExtResource( 2 )
+hframes = 5
+frame = 4
 
 [editable path="Hitbox"]
 

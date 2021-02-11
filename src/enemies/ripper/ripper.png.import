@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/therealripper.png-e3dbfb0a1e15a3b33bd113e4a39518e4.stex"
+path="res://.import/ripper.png-4c3ac08e504e50a048654a469471fcc8.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://src/enemies/ripper/therealripper.png"
-dest_files=[ "res://.import/therealripper.png-e3dbfb0a1e15a3b33bd113e4a39518e4.stex" ]
+source_file="res://src/enemies/ripper/ripper.png"
+dest_files=[ "res://.import/ripper.png-4c3ac08e504e50a048654a469471fcc8.stex" ]
 
 [params]
 
