@@ -12,12 +12,12 @@ var _main_scene
 var _loader
 
 
-func _ready():
+func _ready() -> void:
 	var root = get_tree().get_root()
 	_main_scene = root.get_child(root.get_child_count() - 1)
 
 
-func _process(time):
+func _process(delta: float) -> void:
 	if _loader == null:
 		# no need to process anymore
 		set_process(false)

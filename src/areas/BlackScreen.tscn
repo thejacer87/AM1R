@@ -2,10 +2,8 @@
 
 [ext_resource path="res://src/areas/BlackScreen.gd" type="Script" id=1]
 
-
 [node name="BlackScreen" type="ColorRect"]
 pause_mode = 2
-show_behind_parent = true
 margin_left = -10000.0
 margin_top = -10000.0
 margin_right = 10000.0

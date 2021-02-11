@@ -57,6 +57,8 @@ func _load_game() -> void:
 	var area = load(_data.area.filename).instance()
 	add_child(area)
 	area.add_child(samus)
+	# Put Samus behind the Doors
+	area.move_child(samus, area.get_child_count() - 2)
 	samus.position = Vector2(_data.samus.pos_x, _data.samus.pos_y)
 
 	# Now we set the remaining variables.

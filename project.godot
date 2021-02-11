@@ -94,7 +94,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/samus/states/motion/on_ground/Move.gd"
 }, {
-"base": "Reference",
+"base": "MorphState",
 "class": "NeutralState",
 "language": "GDScript",
 "path": "res://src/samus/states/morph/neutral/Neutral.gd"
@@ -113,6 +113,11 @@ _global_script_classes=[ {
 "class": "PowerUp",
 "language": "GDScript",
 "path": "res://src/pickups/Powerup.gd"
+}, {
+"base": "Enemy",
+"class": "Ripper",
+"language": "GDScript",
+"path": "res://src/enemies/ripper/Ripper.gd"
 }, {
 "base": "Node2D",
 "class": "Room",
@@ -138,6 +143,11 @@ _global_script_classes=[ {
 "class": "StateMachine",
 "language": "GDScript",
 "path": "res://src/main/StateMachine.gd"
+}, {
+"base": "Enemy",
+"class": "Waver",
+"language": "GDScript",
+"path": "res://src/enemies/waver/Waver.gd"
 }, {
 "base": "Node2D",
 "class": "Weapon",
@@ -171,11 +181,13 @@ _global_script_class_icons={
 "OnGroundState": "",
 "Pickup": "",
 "PowerUp": "",
+"Ripper": "",
 "Room": "",
 "Samus": "",
 "Skree": "",
 "State": "",
 "StateMachine": "",
+"Waver": "",
 "Weapon": "",
 "Zoomer": ""
 }
@@ -332,6 +344,7 @@ select={
 2d_physics/layer_8="bomb"
 2d_physics/layer_9="power_bomb"
 2d_physics/layer_10="door_lock"
+2d_physics/layer_11="ice"
 
 [physics]
 

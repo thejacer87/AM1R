@@ -3,6 +3,7 @@ extends Node2D
 
 export(String, FILE, "*tscn") var next_area
 export(String) var next_room
+export(Vector2) var starting_position := Vector2.UP
 
 var can_activate := false
 
@@ -10,6 +11,10 @@ var _samus
 
 onready var animation_player := $AnimationPlayer setget ,get_animation_player
 onready var platform := $Platform setget ,get_platform
+
+func _ready() -> void:
+	if not starting_position == Vector2.UP:
+		animation_player.play("start_bottom")
 
 
 func _input(event: InputEvent) -> void:

@@ -1,53 +1,8 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://src/areas/Elevator.gd" type="Script" id=1]
 [ext_resource path="res://assets/sprites/elevator.png" type="Texture" id=2]
 [ext_resource path="res://assets/sprites/zm_power_suit.png" type="Texture" id=3]
-
-
-
-
-
-
-
-[sub_resource type="Animation" id=1]
-resource_name = "default"
-tracks/0/type = "value"
-tracks/0/path = NodePath("Platform/SamusSprite:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ false ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("Platform/Camera2D:current")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ false ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("Platform:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( 0, 0 ) ]
-}
 
 [sub_resource type="Animation" id=2]
 length = 4.0
@@ -86,6 +41,84 @@ tracks/2/keys = {
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Vector2( 0, 0 ), Vector2( 0, 288 ) ]
+}
+
+[sub_resource type="Animation" id=1]
+resource_name = "start_bottom"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Platform/SamusSprite:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Platform/Camera2D:current")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Platform:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 288 ) ]
+}
+
+[sub_resource type="Animation" id=11]
+resource_name = "start_top"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Platform/SamusSprite:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Platform/Camera2D:current")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Platform:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
 }
 
 [sub_resource type="Animation" id=3]
@@ -160,11 +193,15 @@ animations = [ {
 
 [node name="Elevator" type="Node2D"]
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_horizontal_guides_": [ 248.0 ]
+}
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-autoplay = "default"
-anims/default = SubResource( 1 )
+autoplay = "start_top"
 anims/down = SubResource( 2 )
+anims/start_bottom = SubResource( 1 )
+anims/start_top = SubResource( 11 )
 anims/up = SubResource( 3 )
 
 [node name="Platform" type="Node2D" parent="."]
@@ -174,7 +211,6 @@ position = Vector2( 0, 3 )
 collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platform/ActivationArea"]
-visible = false
 position = Vector2( 0, 3 )
 shape = SubResource( 4 )
 
@@ -183,12 +219,10 @@ position = Vector2( 0, 8 )
 collision_layer = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platform/PlatformBody"]
-visible = false
 shape = SubResource( 5 )
 
 [node name="PlatformSprite" type="AnimatedSprite" parent="Platform"]
 frames = SubResource( 10 )
-frame = 2
 playing = true
 
 [node name="SamusSprite" type="Sprite" parent="Platform"]

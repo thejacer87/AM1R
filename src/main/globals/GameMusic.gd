@@ -5,6 +5,8 @@ onready var audio := $AudioStreamPlayer
 
 func _ready() -> void:
 	Globals.GameMusic = self
+	# todo just for testing
+	audio.volume_db = -80
 
 
 func update_volume(vol: int) -> void:
