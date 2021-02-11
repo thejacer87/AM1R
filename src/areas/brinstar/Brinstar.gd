@@ -5,6 +5,8 @@ export(NodePath) var entry
 var weak_block := preload("res://src/areas/WeakBlock.tscn")
 var zoomer := preload("res://src/enemies/zoomer/Zoomer.tscn")
 var skree := preload("res://src/enemies/skree/Skree.tscn")
+var ripper := preload("res://src/enemies/ripper/Ripper.tscn")
+var waver := preload("res://src/enemies/waver/Waver.tscn")
 
 onready var rooms := $Rooms
 onready var doors := $Doors
@@ -45,6 +47,12 @@ func _convert_tilecells_to_nodes(tilemap) -> void:
 				"skree":
 					offset = Vector2(0, 8)
 					child = skree.instance()
+				"ripper":
+					offset = Vector2(0, 8)
+					child = ripper.instance()
+				"waver":
+#					offset = Vector2(0, 8)
+					child = waver.instance()
 
 			if child != null:
 				child.position = tilemap.map_to_world(cell) + (tilemap.cell_size / 2) + offset
