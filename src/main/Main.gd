@@ -12,7 +12,7 @@ var _new_game := {
 		"pos_y": 176,
 	},
 	"area": {
-		"filename": "res://src/Levels/Brinstar/Brinstar.tscn",
+		"filename": "res://src/areas/brinstar/Brinstar.tscn",
 	},
 }
 

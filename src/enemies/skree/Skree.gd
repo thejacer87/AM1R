@@ -19,7 +19,7 @@ func _ready() -> void:
 	animated_player.play("idle")
 
 
-func _physics_process(delta: float) -> void:
+func _move(delta: float) -> void:
 	if _attacking:
 		_attack(delta)
 	if raycast_left.is_colliding():

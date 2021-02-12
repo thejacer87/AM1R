@@ -1,13 +1,11 @@
 class_name Ripper
 extends Enemy
 
-enum Directions {LEFT = -1, RIGHT = 1}
-
 const SPEED := 40
 
 var velocity := Vector2.ZERO
 
-var _direction: int = Directions.LEFT
+var _direction: int = DirectionsX.LEFT
 
 onready var sprite := $Sprite
 onready var animated_sprite := $AnimatedSprite

@@ -1,6 +1,9 @@
 class_name Enemy
 extends KinematicBody2D
 
+enum DirectionsX {LEFT = -1, RIGHT = 1}
+enum DirectionsY {UP = -1, DOWN = 1}
+
 export var starting_hp = 10
 
 var hp: int
