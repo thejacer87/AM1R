@@ -7,6 +7,7 @@ var ripper := preload("res://src/enemies/ripper/Ripper.tscn")
 var skree := preload("res://src/enemies/skree/Skree.tscn")
 var waver := preload("res://src/enemies/waver/Waver.tscn")
 var weak_block := preload("res://src/areas/WeakBlock.tscn")
+var zeb := preload("res://src/enemies/zeb/Zeb.tscn")
 var zoomer := preload("res://src/enemies/zoomer/Zoomer.tscn")
 
 onready var rooms := $Rooms
@@ -54,6 +55,8 @@ func _convert_tilecells_to_nodes(tilemap) -> void:
 					child = waver.instance()
 				"weak_block":
 					child = weak_block.instance()
+				"zeb":
+					child = zeb.instance()
 				"zoomer":
 					child = zoomer.instance()
 
