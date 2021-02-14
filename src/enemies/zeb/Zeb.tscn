@@ -50,6 +50,7 @@ scale = Vector2( 1, 3.7 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="." index="3"]
 frames = SubResource( 5 )
+frame = 1
 playing = true
 
 [node name="RayCast2D" type="RayCast2D" parent="." index="4"]

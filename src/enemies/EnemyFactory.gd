@@ -24,10 +24,11 @@ func _physics_process(delta: float) -> void:
 			has_pickups = true
 
 	if _enemy.is_dead and not has_pickups:
+		yield(get_tree().create_timer(0.33), "timeout")
 		_respawn_enemy()
 
 
 func _respawn_enemy() -> void:
-	_enemy.position = _spawn_point.position
 	_enemy.die(false)
+	_enemy.position = _spawn_point.position
 	_enemy.regenerate()

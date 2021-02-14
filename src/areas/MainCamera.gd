@@ -3,7 +3,7 @@ extends Camera2D
 
 signal transition_completed
 
-enum Bounds {TOP, RIGHT, BOTTOM, LEFT}
+enum Bounds { TOP, RIGHT, BOTTOM, LEFT }
 
 const TRANSITION_DURATION := 1.5
 
