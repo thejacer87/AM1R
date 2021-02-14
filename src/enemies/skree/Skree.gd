@@ -19,6 +19,13 @@ func _ready() -> void:
 	animated_player.play("idle")
 
 
+func die(drop_item := true) -> void:
+	timer.stop()
+	animated_player.play("idle")
+	animated_player.playback_speed = 1
+	.die(drop_item)
+
+
 func _move(delta: float) -> void:
 	if _attacking:
 		_attack(delta)
@@ -30,13 +37,6 @@ func _move(delta: float) -> void:
 
 func detected() -> void:
 	_attacking = true
-
-
-func _die(drop_item := true) -> void:
-	timer.stop()
-	animated_player.play("idle")
-	animated_player.playback_speed = 1
-	._die(drop_item)
 
 
 func _apply_gravity(delta: float) -> void:
@@ -84,4 +84,4 @@ func _enable_collisions() -> void:
 
 func _on_Timer_timeout() -> void:
 	#explode
-	_die(false)
+	die(false)

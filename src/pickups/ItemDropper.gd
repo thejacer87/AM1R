@@ -17,7 +17,7 @@ func _ready() -> void:
 
 func _drop_energy(small: bool = true) -> void:
 	var energy = energy_scene.instance()
-	get_tree().get_root().add_child(energy)
+	get_parent().get_parent().add_child(energy)
 	energy.small = small
 	if not small:
 		energy.scale = Vector2(1.5, 1.5)
@@ -27,6 +27,6 @@ func _drop_energy(small: bool = true) -> void:
 
 func _drop_missile() -> void:
 	var missile = missile_scene.instance()
-	get_tree().get_root().add_child(missile)
+	get_parent().get_parent().add_child(missile)
 	missile.global_position = global_position
 	queue_free()

@@ -23,14 +23,10 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	_move(delta)
 	if (hp <= 0):
-		_die()
+		die()
 
 
-func _move(delta: float) -> void:
-	pass
-
-
-func _regenerate() -> void:
+func regenerate() -> void:
 	hp = starting_hp
 	is_dead = false
 	_enable_collisions()
@@ -38,11 +34,7 @@ func _regenerate() -> void:
 	set_physics_process(true)
 
 
-func _damage(amount: int) -> void:
-	hp -= amount
-
-
-func _die(drop_item := true) -> void:
+func die(drop_item := true) -> void:
 	if drop_item:
 		_drop_item()
 	set_physics_process(false)
@@ -52,8 +44,17 @@ func _die(drop_item := true) -> void:
 	position = starting_pos
 
 
+func _move(delta: float) -> void:
+	pass
+
+
+func _damage(amount: int) -> void:
+	hp -= amount
+
+
 func _drop_item() -> void:
 	add_child(item_dropper_scene.instance())
+	emit_signal("pickup_dropped")
 
 
 func _disable_collisions() -> void:
@@ -77,4 +78,4 @@ func _on_Hurtbox_area_entered(area: Area2D):
 
 func _on_VisibilityEnabler2D_screen_exited() -> void:
 	if is_dead:
-		_regenerate()
+		regenerate()
