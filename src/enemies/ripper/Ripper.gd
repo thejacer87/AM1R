@@ -5,7 +5,7 @@ const SPEED := 40
 
 var velocity := Vector2.ZERO
 
-var _direction: int = DirectionsX.LEFT
+var _direction: int = Globals.DIRECTIONS.LEFT
 
 onready var sprite := $Sprite
 onready var animated_sprite := $AnimatedSprite

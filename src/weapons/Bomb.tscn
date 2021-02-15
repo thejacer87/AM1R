@@ -4,8 +4,6 @@
 [ext_resource path="res://src/hitboxes/Hitbox.tscn" type="PackedScene" id=2]
 [ext_resource path="res://src/weapons/Bomb.gd" type="Script" id=3]
 
-
-
 [sub_resource type="Animation" id=1]
 length = 0.766668
 step = 0.0166667
@@ -122,7 +120,7 @@ hframes = 25
 frame = 72
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 0.5
+wait_time = 0.66
 one_shot = true
 autostart = true
 

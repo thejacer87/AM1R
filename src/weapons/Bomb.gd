@@ -1,7 +1,7 @@
 extends Area2D
 
-export var direction := Vector2.RIGHT
 var velocity := Vector2.ZERO
+
 onready var explosion := $ExplosionHitbox
 onready var bomb_jump := $BombJumpHitbox
 onready var animation_player := $AnimationPlayer

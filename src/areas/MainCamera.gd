@@ -13,13 +13,13 @@ onready var _samus: Samus = get_parent()
 onready var _tween := $Tween
 
 
-func transition(old_room, new_room, door, direction) -> void:
+func transition(new_room, door, direction) -> void:
 	_transition_setup()
 
 	var door_exit = "Left/Exit"
 	var camera_anchor_old = "Left/CameraAnchor"
 	var camera_anchor_new = "Right/CameraAnchor"
-	if not direction == Vector2.RIGHT:
+	if not direction == Globals.DIRECTIONS.RIGHT:
 		door_exit = "Right/Exit"
 		camera_anchor_old = "Right/CameraAnchor"
 		camera_anchor_new = "Left/CameraAnchor"

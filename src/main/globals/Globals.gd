@@ -3,6 +3,7 @@ extends Node
 const UNIT_SIZE := 16.0
 const SCREEN_WIDTH := 512
 const SCREEN_HEIGHT := 288
+var DIRECTIONS := { UP = -1, DOWN = 1, LEFT = -1, RIGHT = 1 }
 var STATES := {}
 
 const BOMB := preload("res://src/weapons/Bomb.tscn")

@@ -1,17 +1,16 @@
-extends Node2D
-
 class_name Weapon
+extends Node2D
 
 const BEAM_COLOR := Color(1, 0, 0, 0.25)
 const MISSILE_COLOR := Color(0, 0, 1, 0.25)
 const MORPH_POSITION_OFFSET := 16
 
+var fire_direction := Vector2.RIGHT
+
 onready var barrel := $Barrel
 onready var arrow := $Barrel/Arrow
 onready var weapon_state_machine := $WeaponStateMachine
 onready var samus := get_owner()
-
-var fire_direction := Vector2.RIGHT
 
 
 func _ready() -> void:

@@ -163,14 +163,14 @@ func _on_Hurtbox_area_entered(area: Area2D) -> void:
 		_damage(area.damage)
 
 
-func _on_transition_started(old, new, door, direction) -> void:
+func _on_transition_started(new, door, direction) -> void:
 	door.z_index = VisualServer.CANVAS_ITEM_Z_MAX
 	get_tree().paused = true
 	_show_black_screen()
 	camera.connect("transition_completed", self, "_on_transition_completed")
 	_black_screen.connect("fade_out_finished", door, "_on_transition_completed")
 	yield(_black_screen, "fade_in_finished")
-	camera.transition(old, new, door, direction)
+	camera.transition(new, door, direction)
 	set_current_room_path(new.get_path())
 
 

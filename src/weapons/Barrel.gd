@@ -1,8 +1,8 @@
 tool
 extends Position2D
 
-
 export var direction := Vector2.RIGHT
+
 onready var arrow := $Arrow
 
 
