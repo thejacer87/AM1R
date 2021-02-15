@@ -19,7 +19,7 @@ func transition(new_room, door, direction) -> void:
 	var door_exit = "Left/Exit"
 	var camera_anchor_old = "Left/CameraAnchor"
 	var camera_anchor_new = "Right/CameraAnchor"
-	if not direction == Globals.DIRECTIONS.RIGHT:
+	if not direction == Globals.Directions.RIGHT:
 		door_exit = "Right/Exit"
 		camera_anchor_old = "Right/CameraAnchor"
 		camera_anchor_new = "Left/CameraAnchor"

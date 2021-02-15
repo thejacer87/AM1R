@@ -52,7 +52,6 @@ func fire(weapon: Area2D, is_missile : bool = false) -> void:
 
 func bomb(bomb: Area2D) -> void:
 	if Globals.Samus.has_powerup("bomb") && get_tree().get_nodes_in_group("BOMBS").size() < 3:
-		bomb.direction = fire_direction
 		bomb.position = owner.global_position
 		bomb.position.y += MORPH_POSITION_OFFSET
 		get_tree().get_root().add_child(bomb)

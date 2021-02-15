@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://src/areas/Door.gd" type="Script" id=3]
 [ext_resource path="res://assets/sprites/doors.png" type="Texture" id=4]
@@ -14,9 +14,6 @@ extents = Vector2( 4, 32 )
 
 [sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 24, 32 )
-
-[sub_resource type="RectangleShape2D" id=5]
-extents = Vector2( 2, 32 )
 
 [node name="Door" type="StaticBody2D" groups=[
 "DOORS",
@@ -47,6 +44,7 @@ texture = ExtResource( 4 )
 hframes = 9
 
 [node name="Lock" type="Area2D" parent="Left"]
+visible = false
 position = Vector2( -24, 0 )
 collision_layer = 512
 collision_mask = 480
@@ -55,6 +53,7 @@ collision_mask = 480
 shape = SubResource( 1 )
 
 [node name="ClosedDoor" type="StaticBody2D" parent="Left"]
+visible = false
 position = Vector2( -24, 0 )
 collision_layer = 0
 collision_mask = 9
@@ -64,6 +63,7 @@ modulate = Color( 0.439216, 0.0784314, 0.00784314, 1 )
 shape = SubResource( 2 )
 
 [node name="Transition" type="Area2D" parent="Left"]
+visible = false
 position = Vector2( -12, 0 )
 collision_layer = 0
 
@@ -108,6 +108,7 @@ collision_mask = 480
 shape = SubResource( 1 )
 
 [node name="ClosedDoor" type="StaticBody2D" parent="Right"]
+visible = false
 position = Vector2( 24, 0 )
 collision_layer = 0
 collision_mask = 9
@@ -117,6 +118,7 @@ modulate = Color( 0.439216, 0.0784314, 0.00784314, 1 )
 shape = SubResource( 2 )
 
 [node name="Transition" type="Area2D" parent="Right"]
+visible = false
 position = Vector2( 12, 0 )
 collision_layer = 0
 
@@ -132,13 +134,6 @@ position = Vector2( 256, 0 )
 [node name="Wall" type="CollisionShape2D" parent="."]
 self_modulate = Color( 0.027451, 0.862745, 0, 1 )
 shape = SubResource( 4 )
-
-[node name="RoomDivider" type="StaticBody2D" parent="."]
-collision_layer = 0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RoomDivider"]
-self_modulate = Color( 0.027451, 0.862745, 0, 1 )
-shape = SubResource( 5 )
 [connection signal="area_entered" from="Left/Lock" to="." method="_on_Left_Lock_area_entered"]
 [connection signal="body_entered" from="Left/Transition" to="." method="_on_Left_Transition_body_entered"]
 [connection signal="area_entered" from="Right/Lock" to="." method="_on_Right_Lock_area_entered"]
