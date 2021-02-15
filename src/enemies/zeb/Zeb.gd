@@ -22,7 +22,7 @@ func regenerate() -> void:
 	_ascend()
 
 
-func _move(delta: float) -> void:
+func _move(_delta: float) -> void:
 	if _attacking:
 		velocity = Vector2(SPEED * _direction, 0)
 		velocity = move_and_slide(velocity)

@@ -38,6 +38,6 @@ func _on_ActivationArea_body_entered(body: Node) -> void:
 	_samus = body
 
 
-func _on_ActivationArea_body_exited(body: Node) -> void:
+func _on_ActivationArea_body_exited(_body: Node) -> void:
 	can_activate = false
 

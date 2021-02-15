@@ -5,8 +5,9 @@ const FLOOR := Vector2.UP
 const GRAVITY := 980
 const MAX_FALL_SPEED := 400
 
+var velocity := Vector2.ZERO
+
 var _samus: Samus
-var _velocity := Vector2.ZERO
 var _attacking := false
 
 onready var timer := $Timer
@@ -40,8 +41,8 @@ func detected() -> void:
 
 
 func _apply_gravity(delta: float) -> void:
-	if _velocity.y < MAX_FALL_SPEED:
-		_velocity.y += GRAVITY * delta
+	if velocity.y < MAX_FALL_SPEED:
+		velocity.y += GRAVITY * delta
 
 
 func _detect(samus: Samus) -> void:
@@ -52,12 +53,12 @@ func _detect(samus: Samus) -> void:
 func _attack(delta: float) -> void:
 	_apply_gravity(delta)
 	animated_player.play("idle")
-	move_and_slide(_velocity, FLOOR)
+	velocity = move_and_slide(velocity, FLOOR)
 	global_position.x = lerp(global_position.x, _samus.global_position.x, 0.05)
 	if is_on_floor():
 		_attacking = false
 		timer.start()
-		_velocity = Vector2.ZERO
+		velocity = Vector2.ZERO
 		_disable_raycasts()
 		animated_player.playback_speed = 2
 

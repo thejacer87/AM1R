@@ -41,21 +41,23 @@ func _on_transition_completed() -> void:
 	_lock()
 
 
-func _on_Left_Lock_area_entered(area: Area2D) -> void:
+func _on_Left_Lock_area_entered(_area: Area2D) -> void:
 	_unlock(left_door)
 	_unlock(right_door)
 
 
-func _on_Right_Lock_area_entered(area: Area2D) -> void:
+func _on_Right_Lock_area_entered(_area: Area2D) -> void:
 	_unlock(right_door)
 	_unlock(left_door)
 
 
 func _on_Left_Transition_body_entered(samus: Samus) -> void:
+	# warning-ignore:return_value_discarded
 	connect("transition_started", samus, "_on_transition_started")
 	emit_signal("transition_started", get_node(left_room_path), get_node(right_room_path), self, Vector2.RIGHT)
 
 
 func _on_Right_Transition_body_entered(samus: Samus) -> void:
+	# warning-ignore:return_value_discarded
 	connect("transition_started", samus, "_on_transition_started")
 	emit_signal("transition_started", get_node(right_room_path), get_node(left_room_path), self, Vector2.LEFT)

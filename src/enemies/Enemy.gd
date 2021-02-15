@@ -44,7 +44,7 @@ func die(drop_item := true) -> void:
 	position = starting_pos
 
 
-func _move(delta: float) -> void:
+func _move(_delta: float) -> void:
 	pass
 
 
@@ -54,7 +54,6 @@ func _damage(amount: int) -> void:
 
 func _drop_item() -> void:
 	add_child(item_dropper_scene.instance())
-	emit_signal("pickup_dropped")
 
 
 func _disable_collisions() -> void:
