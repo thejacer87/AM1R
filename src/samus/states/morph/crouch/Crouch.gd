@@ -28,7 +28,7 @@ func handle_input(event: InputEvent):
 	return .handle_input(event)
 
 
-func update(delta: float) -> void:
+func update(_delta: float) -> void:
 	if Input.is_action_just_pressed("right") or Input.is_action_just_pressed("left"):
 		timer.start()
 	if Input.is_action_just_released("right"):

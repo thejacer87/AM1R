@@ -19,4 +19,5 @@ func play(path) -> void:
 
 
 func _on_audio_finished(player: AudioStreamPlayer) -> void:
+	emit_signal("audio_finished")
 	player.queue_free()

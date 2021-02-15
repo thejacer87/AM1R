@@ -53,7 +53,6 @@ func load_level(level: String) -> void:
 
 func set_new_scene(next_scene):
 	set_process(false)
-	var child = _main_scene.get_children()
 	var old_scene = _main_scene.get_child(0)
 	var next_level = false
 	if is_instance_valid(next_scene):

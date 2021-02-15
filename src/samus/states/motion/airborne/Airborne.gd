@@ -45,7 +45,9 @@ func handle_input(event: InputEvent):
 			var input_direction = get_input_direction()
 			# Stop spinning
 			if input_direction.y == -1:
+# warning-ignore:unused_variable
 				var facing = sign(velocity.x)
+# warning-ignore:standalone_ternary
 				animation_state.travel("Jump") if velocity.y > 0 else animation_state.travel("Fall")
 				is_spinning = false
 			# Aim down
@@ -59,6 +61,7 @@ func handle_input(event: InputEvent):
 					velocity.y = max_jump_velocity * .8
 		else:
 			if Input.is_action_just_pressed("jump"):
+# warning-ignore:unused_variable
 				var facing = sign(velocity.x)
 				# animation_state.travel("SpinJump")
 				# velocity.x = facing * 100

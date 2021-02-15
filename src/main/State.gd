@@ -2,6 +2,7 @@ extends Node
 
 class_name State
 
+# warning-ignore:unused_signal
 signal finished(next_state_name)
 
 
@@ -15,9 +16,11 @@ func exit() -> void:
 	return
 
 
+# warning-ignore:unused_argument
 func handle_input(event: InputEvent) -> void:
 	return
 
 
+# warning-ignore:unused_argument
 func update(delta: float) -> void:
 	return

@@ -1,6 +1,6 @@
 extends Node2D
 
-var samus
+var _samus
 
 
 func _save_game() -> void:
@@ -26,8 +26,8 @@ func _save_game() -> void:
 	save_game.close()
 
 
-func _on_SaveArea_body_entered(body: Samus) -> void:
-	samus = Samus
+func _on_SaveArea_body_entered(samus: Samus) -> void:
+	_samus = samus
 	$Timer.start()
 	_save_game()
 

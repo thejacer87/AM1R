@@ -26,7 +26,7 @@ func _restore():
 		_restore()
 
 
-func _on_Hurtbox_area_entered(area: Area2D) -> void:
+func _on_Hurtbox_area_entered(_area: Area2D) -> void:
 	_destroy()
 
 
@@ -34,9 +34,9 @@ func _on_Timer_timeout() -> void:
 	_restore()
 
 
-func _on_Restore_body_entered(body: Node) -> void:
+func _on_Restore_body_entered(_body: Node) -> void:
 	restore_counter += 1
 
 
-func _on_Restore_body_exited(body: Node) -> void:
+func _on_Restore_body_exited(_body: Node) -> void:
 	restore_counter -= 1

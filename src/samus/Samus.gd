@@ -126,9 +126,6 @@ func _die() -> void:
 
 
 func _show_black_screen() -> void:
-	# Add the black screen to Samus. Then make sure Samus is in the front of
-	# the tree before showing the black screen.
-	var level = get_parent()
 	_black_screen = black_screen_scene.instance()
 	get_tree().get_root().add_child(_black_screen)
 	_black_screen.fade_in()
@@ -136,9 +133,6 @@ func _show_black_screen() -> void:
 
 func _hide_black_screen() -> void:
 	_black_screen.fade_out()
-#	var level = get_parent()
-#	var doors = level.get_node("Doors")
-#	level.move_child(doors, level.get_child_count())
 
 
 func _on_transition_out_started() -> void:
