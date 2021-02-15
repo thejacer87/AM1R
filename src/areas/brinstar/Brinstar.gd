@@ -59,6 +59,9 @@ func _convert_tilecells_to_nodes(tilemap) -> void:
 					child = zeb.instance()
 				"zoomer":
 					child = zoomer.instance()
+				"zoomer_left":
+					child = zoomer.instance()
+					child.direction = child.DirectionsX.LEFT
 
 			if child != null:
 				child.position = tilemap.map_to_world(cell) + (tilemap.cell_size / 2) + offset
