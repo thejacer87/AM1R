@@ -15,7 +15,7 @@ func _ready() -> void:
 	offset = _room_coord
 
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if Input.is_action_just_pressed("start"):
 		get_tree().paused = false
 		queue_free()

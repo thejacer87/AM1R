@@ -36,7 +36,7 @@ func start() -> void:
 	set_physics_process(true)
 
 
-func _on_Hurtbox_area_entered(area: Area2D):
+func _on_Hurtbox_area_entered(_area: Area2D):
 	if true: #ice ice baby
 		print('freeze only')
 	else:

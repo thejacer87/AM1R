@@ -17,7 +17,7 @@ func _ready() -> void:
 	_main_scene = root.get_child(root.get_child_count() - 1)
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if _loader == null:
 		# no need to process anymore
 		set_process(false)
@@ -67,21 +67,25 @@ func set_new_scene(next_scene):
 
 
 func transition_out(player: AnimationPlayer, animation: String, scene: String) -> void:
+# warning-ignore:return_value_discarded
 	connect("transition_out_started", Globals.Samus, "_on_transition_out_started")
 	emit_signal("transition_out_started")
 	player.play(animation)
 	load_level(scene)
 	yield(player, "animation_finished")
 	var next_level = set_new_scene(_next_scene)
+# warning-ignore:return_value_discarded
 	connect("transition_out_finished", next_level, "_on_transition_out_finished")
 	emit_signal("transition_out_finished")
 
 
 func transition_in(player: AnimationPlayer, animation: String, room: String) -> void:
+# warning-ignore:return_value_discarded
 	connect("transition_in_started", Globals.Samus, "_on_transition_in_started")
 	emit_signal("transition_in_started", room)
 	player.play(animation)
 	yield(player, "animation_finished")
+# warning-ignore:return_value_discarded
 	connect("transition_in_finished", Globals.Samus, "_on_transition_in_finished")
 	emit_signal("transition_in_finished")
 

@@ -31,10 +31,10 @@ func _on_Timer_timeout():
 	queue_free()
 
 
-func _on_Hitbox_body_entered(body):
+func _on_Hitbox_body_entered(_body):
 	# if not wave beam
 	queue_free()
 
 
-func _on_Hitbox_area_entered(area):
+func _on_Hitbox_area_entered(_area):
 	queue_free()

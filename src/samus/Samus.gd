@@ -186,11 +186,11 @@ func _on_transition_completed() -> void:
 	get_tree().paused = false
 
 
-func _on_MorphCheckArea_body_entered(body: Node) -> void:
+func _on_MorphCheckArea_body_entered(_body: Node) -> void:
 	_morph_blockers += 1
 
 
-func _on_MorphCheckArea_body_exited(body: Node) -> void:
+func _on_MorphCheckArea_body_exited(_body: Node) -> void:
 	if _morph_blockers <= 0:
 		_morph_blockers = 0
 	else:

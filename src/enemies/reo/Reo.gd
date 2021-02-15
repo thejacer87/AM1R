@@ -50,9 +50,9 @@ func _enable_detections() -> void:
 	detection_right.set_deferred("disabled", false)
 
 
-func _on_LeftDetection_body_entered(body: Node) -> void:
+func _on_LeftDetection_body_entered(_body: Node) -> void:
 	_detect(DirectionsX.LEFT)
 
 
-func _on_RightDetection_body_entered(body: Node) -> void:
+func _on_RightDetection_body_entered(_body: Node) -> void:
 	_detect(DirectionsX.RIGHT)

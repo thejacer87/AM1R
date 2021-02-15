@@ -10,6 +10,7 @@ func enter() -> void:
 	if in_morph_ball():
 		animation_state.travel("MorphBall")
 	else:
+# warning-ignore:standalone_ternary
 		animation_state.travel("SpinJump") if input_direction.x else animation_state.travel("Jump")
 		is_spinning = bool(input_direction.x)
 
