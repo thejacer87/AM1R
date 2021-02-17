@@ -5,8 +5,12 @@
 [node name="MainCamera" type="Camera2D"]
 pause_mode = 2
 current = true
+drag_margin_v_enabled = true
 smoothing_enabled = true
 smoothing_speed = 15.0
+offset_v = -0.28
+editor_draw_limits = true
+editor_draw_drag_margin = true
 script = ExtResource( 1 )
 
 [node name="Tween" type="Tween" parent="."]
