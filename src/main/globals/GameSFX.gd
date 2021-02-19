@@ -13,7 +13,7 @@ func play(path) -> void:
 	var audio_file = load(path)
 	var new_player = audio.duplicate()
 	new_player.connect("finished", self, "_on_audio_finished", [new_player])
-	get_tree().get_root().add_child(new_player)
+	Globals.GameViewport.add_child(new_player)
 	new_player.stream = audio_file
 	new_player.play()
 

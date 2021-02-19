@@ -26,7 +26,7 @@ position = Vector2( 1024, 0 )
 [node name="Doors" type="Node2D" parent="."]
 
 [node name="DoorAB" parent="Doors" instance=ExtResource( 7 )]
-position = Vector2( 1024, 144 )
+position = Vector2( 1024, 112 )
 left_room_path = NodePath("../../Rooms/RoomBrinstarA")
 right_room_path = NodePath("../../Rooms/RoomBrinstarB")
 

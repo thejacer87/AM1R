@@ -46,7 +46,7 @@ func _physics_process(_delta: float) -> void:
 
 	if Input.is_action_just_pressed("start"):
 		get_tree().paused = true
-		add_child(map.instance())
+		get_tree().get_root().add_child(map.instance())
 
 
 func bind_camera_limits() -> void:
@@ -127,7 +127,7 @@ func _die() -> void:
 
 func _show_black_screen() -> void:
 	_black_screen = black_screen_scene.instance()
-	get_tree().get_root().add_child(_black_screen)
+	Globals.GameViewport.add_child(_black_screen)
 	_black_screen.fade_in()
 
 

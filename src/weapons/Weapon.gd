@@ -38,11 +38,11 @@ func fire(weapon: Area2D, is_missile : bool = false) -> void:
 			weapon.direction = fire_direction
 			weapon.position = global_position
 			samus.missile_count -= 1
-			get_tree().get_root().add_child(weapon)
+			Globals.GameViewport.add_child(weapon)
 	else:
 		weapon.direction = fire_direction
 		weapon.position = global_position
-		get_tree().get_root().add_child(weapon)
+		Globals.GameViewport.add_child(weapon)
 
 	# Not really working as expected
 #	if samus.motion_state_machine.current_state != Globals.STATES["Motion"].states_map["idle"]:
@@ -54,7 +54,7 @@ func bomb(bomb: Area2D) -> void:
 	if Globals.Samus.has_powerup("bomb") && get_tree().get_nodes_in_group("BOMBS").size() < 3:
 		bomb.position = owner.global_position
 		bomb.position.y += MORPH_POSITION_OFFSET
-		get_tree().get_root().add_child(bomb)
+		Globals.GameViewport.add_child(bomb)
 
 
 func get_barrel_direction() -> Vector2:

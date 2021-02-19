@@ -25,10 +25,10 @@ __meta__ = {
 [node name="Top" type="Position2D" parent="CameraBounds"]
 
 [node name="Right" type="Position2D" parent="CameraBounds"]
-position = Vector2( 512, 160 )
+position = Vector2( 512, 128 )
 
 [node name="Bottom" type="Position2D" parent="CameraBounds"]
-position = Vector2( 0, 288 )
+position = Vector2( 0, 256 )
 
 [node name="Left" type="Position2D" parent="CameraBounds"]
-position = Vector2( 0, 160 )
+position = Vector2( 0, 128 )

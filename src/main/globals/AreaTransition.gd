@@ -8,13 +8,7 @@ signal transition_out_finished
 var _time_max := 100
 var _next_scene
 var _next_room
-var _main_scene
 var _loader
-
-
-func _ready() -> void:
-	var root = get_tree().get_root()
-	_main_scene = root.get_child(root.get_child_count() - 1)
 
 
 func _process(_delta: float) -> void:
@@ -53,7 +47,7 @@ func load_level(level: String) -> void:
 
 func set_new_scene(next_scene):
 	set_process(false)
-	var old_scene = _main_scene.get_child(0)
+	var old_scene = Globals.GameViewport.get_child(0)
 	var next_level = false
 	if is_instance_valid(next_scene):
 		next_level = next_scene.instance()
@@ -61,7 +55,7 @@ func set_new_scene(next_scene):
 			old_scene.remove_child(Globals.Samus)
 			old_scene.queue_free()
 			next_level.add_child(Globals.Samus)
-		_main_scene.add_child(next_level)
+		Globals.GameViewport.add_child(next_level)
 	return next_level
 
 

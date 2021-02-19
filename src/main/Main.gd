@@ -16,6 +16,8 @@ var _new_game := {
 	},
 }
 
+onready var game_viewport := $GameViewportContainer/Viewport
+
 
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
@@ -55,7 +57,7 @@ func _load_game() -> void:
 
 	var samus = load(_data.samus.filename).instance()
 	var area = load(_data.area.filename).instance()
-	add_child(area)
+	game_viewport.add_child(area)
 	area.add_child(samus)
 	# Put Samus behind the Doors
 	area.move_child(samus, area.get_child_count() - 2)

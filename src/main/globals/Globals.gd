@@ -13,6 +13,7 @@ var STATES := {}
 var Samus
 var UI
 var GameplayUI
+var GameViewport
 var GameState
 var GameMusic
 var GameSFX
