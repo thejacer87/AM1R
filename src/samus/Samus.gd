@@ -51,7 +51,9 @@ func _physics_process(_delta: float) -> void:
 
 func bind_camera_limits() -> void:
 	if current_room_path:
-		camera.set_camera_bounds(get_current_room())
+		var room = get_current_room()
+		camera.set_camera_bounds(room)
+		room.activate()
 
 
 func get_current_room() -> Room:
@@ -163,15 +165,17 @@ func _on_Hurtbox_area_entered(area: Area2D) -> void:
 		_damage(area.damage)
 
 
-func _on_transition_started(new, door, direction) -> void:
+func _on_transition_started(old_room: Room, new_room: Room, door, direction) -> void:
 	door.z_index = VisualServer.CANVAS_ITEM_Z_MAX
 	get_tree().paused = true
 	_show_black_screen()
 	camera.connect("transition_completed", self, "_on_transition_completed")
 	_black_screen.connect("fade_out_finished", door, "_on_transition_completed")
 	yield(_black_screen, "fade_in_finished")
-	camera.transition(new, door, direction)
-	set_current_room_path(new.get_path())
+	old_room.deactivate()
+	camera.transition(new_room, door, direction)
+	new_room.activate()
+	set_current_room_path(new_room.get_path())
 
 
 func _on_transition_completed() -> void:

@@ -21,7 +21,7 @@ centered = false
 [node name="RoomBrinstarA" parent="Rooms" instance=ExtResource( 5 )]
 
 [node name="RoomBrinstarB" parent="Rooms" instance=ExtResource( 10 )]
-position = Vector2( 1024, 0 )
+position = Vector2( 1024, 16 )
 
 [node name="Doors" type="Node2D" parent="."]
 
@@ -29,5 +29,8 @@ position = Vector2( 1024, 0 )
 position = Vector2( 1024, 112 )
 left_room_path = NodePath("../../Rooms/RoomBrinstarA")
 right_room_path = NodePath("../../Rooms/RoomBrinstarB")
+
+[node name="CameraAnchor" parent="Doors/DoorAB/Right" index="5"]
+position = Vector2( 128, -16 )
 
 [editable path="Doors/DoorAB"]

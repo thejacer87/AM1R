@@ -3,7 +3,6 @@ extends CanvasLayer
 const SPEED := -256
 const ROOM_SIZE := 8
 const WORLD_OFFSET := Vector2(168, 111)
-const SCALE := Vector2(4, 4)
 const ZOOMED_SCALE := Vector2(4, 4)
 
 var _zoomed := true
@@ -52,7 +51,7 @@ func _input(event: InputEvent) -> void:
 func _update_current_room() -> void:
 	_samus = Globals.Samus
 	var position = _convert_to_map_position()
-	_room_coord = position * -SCALE
+	_room_coord = position * -ZOOMED_SCALE
 	_room_coord += Vector2(Globals.SCREEN_WIDTH / 2 - 16, Globals.SCREEN_HEIGHT / 2 - 20)
 	$current.rect_position = position
 

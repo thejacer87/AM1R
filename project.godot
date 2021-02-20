@@ -214,7 +214,7 @@ _global_script_class_icons={
 
 config/name="AM1R"
 config/description="A Metroid 1 Remake"
-run/main_scene="res://src/main/Main.tscn"
+run/main_scene="res://src/main/Game.tscn"
 config/icon="res://assets/sprites/logo.png"
 
 [autoload]
