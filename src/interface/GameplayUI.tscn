@@ -3,14 +3,6 @@
 [ext_resource path="res://src/interface/GameplayUI.gd" type="Script" id=1]
 [ext_resource path="res://assets/sprites/missile.png" type="Texture" id=2]
 
-
-
-
-
-
-
-
-
 [node name="GameplayUI" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -23,7 +15,7 @@ __meta__ = {
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 16.0
-margin_top = 16.0
+margin_top = 4.0
 __meta__ = {
 "_edit_use_anchors_": false
 }

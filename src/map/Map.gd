@@ -1,9 +1,14 @@
 extends CanvasLayer
 
+export var mini := false
+
 const SPEED := -256
 const ROOM_SIZE := 8
-const WORLD_OFFSET := Vector2(168, 111)
-const ZOOMED_SCALE := Vector2(4, 4)
+const OFFSET_MINI := Vector2(28, 8)
+const OFFSET_WORLD := Vector2(168, 111)
+const SCALE_MINI := Vector2(1, 1)
+const SCALE_ZOOMED := Vector2(4, 4)
+const SCALE_DEFAULT := Vector2(1, 1)
 
 var _zoomed := true
 var _room_coord
@@ -13,21 +18,25 @@ onready var camera := $Camera2D
 
 
 func _ready() -> void:
-	scale = ZOOMED_SCALE
+	scale = SCALE_ZOOMED
 	_update_current_room()
 	offset = _room_coord
 
 
 func _physics_process(_delta: float) -> void:
-	if Input.is_action_just_pressed("start"):
+	_update_current_room()
+
+	if mini:
+		scale = SCALE_MINI
+		offset = -_convert_to_map_position() + OFFSET_MINI
+	elif Input.is_action_just_pressed("start"):
 		get_tree().paused = false
 		queue_free()
 
-	_update_current_room()
 
 
 func _process(delta: float) -> void:
-	if _zoomed:
+	if _zoomed and not mini:
 		var input_direction = Vector2(
 			Input.get_action_strength("right") - Input.get_action_strength("left"),
 			Input.get_action_strength("down") - Input.get_action_strength("up")
@@ -38,12 +47,12 @@ func _process(delta: float) -> void:
 
 
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("jump"):
+	if event.is_action_pressed("jump") and not mini:
 		if _zoomed:
-			scale = Vector2(1, 1)
+			scale = SCALE_DEFAULT
 			offset = Vector2.ZERO
 		else:
-			scale = ZOOMED_SCALE
+			scale = SCALE_ZOOMED
 			offset = _room_coord
 		_zoomed = not _zoomed
 
@@ -51,14 +60,17 @@ func _input(event: InputEvent) -> void:
 func _update_current_room() -> void:
 	_samus = Globals.Samus
 	var position = _convert_to_map_position()
-	_room_coord = position * -ZOOMED_SCALE
+	_room_coord = position * -SCALE_ZOOMED
 	_room_coord += Vector2(Globals.SCREEN_WIDTH / 2 - 16, Globals.SCREEN_HEIGHT / 2 - 20)
-	$current.rect_position = position
+	$current.position = position
 
 
 func _convert_to_map_position() -> Vector2:
-	var pos = _samus.global_position / 32
-	pos.x = ROOM_SIZE * floor(abs(pos.x / ROOM_SIZE))
-	pos.y = ROOM_SIZE * floor(abs(pos.y / ROOM_SIZE))
-	pos += WORLD_OFFSET
-	return pos
+	if _samus:
+		var pos = _samus.global_position / 32
+		pos.x = ROOM_SIZE * floor(abs(pos.x / ROOM_SIZE))
+		pos.y = ROOM_SIZE * floor(abs(pos.y / ROOM_SIZE))
+		pos += OFFSET_WORLD
+		return pos
+
+	return Vector2.ZERO

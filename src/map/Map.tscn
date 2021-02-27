@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://src/map/Map.gd" type="Script" id=1]
 [ext_resource path="res://assets/sprites/map_bg.png" type="Texture" id=2]
 [ext_resource path="res://assets/sprites/map_room_colours.png" type="Texture" id=3]
+[ext_resource path="res://assets/sprites/current_room.png" type="Texture" id=4]
 [ext_resource path="res://src/map/Map.tres" type="TileSet" id=5]
 
 [sub_resource type="TileSet" id=1]
@@ -91,12 +92,12 @@
 5/shapes = [  ]
 5/z_index = 0
 
-[sub_resource type="StreamTexture" id=3]
+[sub_resource type="StreamTexture" id=2]
 load_path = "res://.import/map_tiles.png-fb33fc12e26f87764b3d47e9fe951075.stex"
 
-[sub_resource type="TileSet" id=2]
+[sub_resource type="TileSet" id=3]
 0/name = "map_tiles.png 0"
-0/texture = SubResource( 3 )
+0/texture = SubResource( 2 )
 0/tex_offset = Vector2( 0, 0 )
 0/modulate = Color( 1, 1, 1, 1 )
 0/region = Rect2( 0, 0, 8, 8 )
@@ -110,7 +111,7 @@ load_path = "res://.import/map_tiles.png-fb33fc12e26f87764b3d47e9fe951075.stex"
 0/shapes = [  ]
 0/z_index = 0
 1/name = "map_tiles.png 1"
-1/texture = SubResource( 3 )
+1/texture = SubResource( 2 )
 1/tex_offset = Vector2( 0, 0 )
 1/modulate = Color( 1, 1, 1, 1 )
 1/region = Rect2( 8, 0, 8, 8 )
@@ -124,7 +125,7 @@ load_path = "res://.import/map_tiles.png-fb33fc12e26f87764b3d47e9fe951075.stex"
 1/shapes = [  ]
 1/z_index = 0
 2/name = "map_tiles.png 2"
-2/texture = SubResource( 3 )
+2/texture = SubResource( 2 )
 2/tex_offset = Vector2( 0, 0 )
 2/modulate = Color( 1, 1, 1, 1 )
 2/region = Rect2( 16, 0, 8, 8 )
@@ -138,7 +139,7 @@ load_path = "res://.import/map_tiles.png-fb33fc12e26f87764b3d47e9fe951075.stex"
 2/shapes = [  ]
 2/z_index = 0
 3/name = "map_tiles.png 3"
-3/texture = SubResource( 3 )
+3/texture = SubResource( 2 )
 3/tex_offset = Vector2( 0, 0 )
 3/modulate = Color( 1, 1, 1, 1 )
 3/region = Rect2( 24, 0, 8, 8 )
@@ -152,7 +153,7 @@ load_path = "res://.import/map_tiles.png-fb33fc12e26f87764b3d47e9fe951075.stex"
 3/shapes = [  ]
 3/z_index = 0
 4/name = "map_tiles.png 4"
-4/texture = SubResource( 3 )
+4/texture = SubResource( 2 )
 4/tex_offset = Vector2( 0, 0 )
 4/modulate = Color( 1, 1, 1, 1 )
 4/region = Rect2( 32, 0, 8, 8 )
@@ -166,7 +167,7 @@ load_path = "res://.import/map_tiles.png-fb33fc12e26f87764b3d47e9fe951075.stex"
 4/shapes = [  ]
 4/z_index = 0
 5/name = "map_tiles.png 5"
-5/texture = SubResource( 3 )
+5/texture = SubResource( 2 )
 5/tex_offset = Vector2( 0, 0 )
 5/modulate = Color( 1, 1, 1, 1 )
 5/region = Rect2( 40, 0, 8, 8 )
@@ -180,7 +181,7 @@ load_path = "res://.import/map_tiles.png-fb33fc12e26f87764b3d47e9fe951075.stex"
 5/shapes = [  ]
 5/z_index = 0
 12/name = "map_tiles.png 12"
-12/texture = SubResource( 3 )
+12/texture = SubResource( 2 )
 12/tex_offset = Vector2( 0, 0 )
 12/modulate = Color( 1, 1, 1, 1 )
 12/region = Rect2( 56, 0, 8, 8 )
@@ -194,7 +195,7 @@ load_path = "res://.import/map_tiles.png-fb33fc12e26f87764b3d47e9fe951075.stex"
 12/shapes = [  ]
 12/z_index = 0
 13/name = "map_tiles.png 13"
-13/texture = SubResource( 3 )
+13/texture = SubResource( 2 )
 13/tex_offset = Vector2( 0, 0 )
 13/modulate = Color( 1, 1, 1, 1 )
 13/region = Rect2( 48, 0, 8, 8 )
@@ -207,6 +208,14 @@ load_path = "res://.import/map_tiles.png-fb33fc12e26f87764b3d47e9fe951075.stex"
 13/shape_one_way_margin = 0.0
 13/shapes = [  ]
 13/z_index = 0
+
+[sub_resource type="SpriteFrames" id=4]
+animations = [ {
+"frames": [ ExtResource( 4 ), null ],
+"loop": true,
+"name": "default",
+"speed": 4.0
+} ]
 
 [node name="Map" type="CanvasLayer"]
 pause_mode = 2
@@ -308,7 +317,7 @@ cell_custom_transform = Transform2D( 8, 0, 0, 8, 0, 0 )
 format = 1
 
 [node name="Walls" type="TileMap" parent="Control/Tourian"]
-tile_set = SubResource( 2 )
+tile_set = SubResource( 3 )
 cell_size = Vector2( 8, 8 )
 cell_quadrant_size = 8
 cell_custom_transform = Transform2D( 8, 0, 0, 8, 0, 0 )
@@ -339,7 +348,7 @@ cell_custom_transform = Transform2D( 8, 0, 0, 8, 0, 0 )
 format = 1
 
 [node name="Walls" type="TileMap" parent="Control/Norfair"]
-tile_set = SubResource( 2 )
+tile_set = SubResource( 3 )
 cell_size = Vector2( 8, 8 )
 cell_quadrant_size = 8
 cell_custom_transform = Transform2D( 8, 0, 0, 8, 0, 0 )
@@ -370,7 +379,7 @@ cell_custom_transform = Transform2D( 8, 0, 0, 8, 0, 0 )
 format = 1
 
 [node name="Walls" type="TileMap" parent="Control/RidleysHideout"]
-tile_set = SubResource( 2 )
+tile_set = SubResource( 3 )
 cell_size = Vector2( 8, 8 )
 cell_quadrant_size = 8
 cell_custom_transform = Transform2D( 8, 0, 0, 8, 0, 0 )
@@ -401,19 +410,14 @@ cell_custom_transform = Transform2D( 8, 0, 0, 8, 0, 0 )
 format = 1
 
 [node name="Walls" type="TileMap" parent="Control/KraidsLair"]
-tile_set = SubResource( 2 )
+tile_set = SubResource( 3 )
 cell_size = Vector2( 8, 8 )
 cell_quadrant_size = 8
 cell_custom_transform = Transform2D( 8, 0, 0, 8, 0, 0 )
 format = 1
 tile_data = PoolIntArray( 1310744, 1610612749, 0, 1310745, 1610612749, 0, 1310746, 1610612749, 0, 1310747, 2, 0, 1376280, 1610612749, 0, 1376281, 1610612749, 0, 1376282, 1610612749, 0, 1376283, -1073741823, 0, 1441816, 1610612749, 0, 1441817, 1610612749, 0, 1441818, 1610612749, 0, 1441819, -1073741823, 0, 1507351, 1610612749, 0, 1507355, -1073741823, 0, 1572882, 1610612749, 0, 1572883, 1610612749, 0, 1572884, 1610612749, 0, 1572885, 1610612749, 0, 1572886, 1610612749, 0, 1572887, 1610612749, 0, 1572888, 1610612737, 0, 1572889, 1610612737, 0, 1572890, 1610612737, 0, 1572891, -1610612734, 0, 1638418, 1610612749, 0, 1638419, 1610612749, 0, 1638420, 1610612749, 0, 1638421, 1610612749, 0, 1638422, 1610612749, 0, 1638423, 1610612749, 0, 1638424, 1610612749, 0, 1638425, 1610612749, 0, 1638426, 1610612749, 0, 1703954, 1610612749, 0, 1703959, 1610612749, 0, 1769490, 1610612749, 0, 1769492, 1610612749, 0, 1769493, 1610612749, 0, 1769494, 1610612749, 0, 1769495, 1610612749, 0, 1769496, 1610612749, 0, 1769497, 1610612749, 0, 1769498, 1610612749, 0, 1769499, 1610612749, 0, 1835026, 1610612749, 0, 1835028, 1610612749, 0, 1835031, 1610612749, 0, 1835034, 1610612749, 0, 1835035, 1610612749, 0, 1900562, 1610612749, 0, 1900563, 1610612749, 0, 1900564, 1610612749, 0, 1900565, 1610612749, 0, 1900566, 1610612749, 0, 1900567, 1610612749, 0, 1900568, 1610612749, 0, 1900569, 1610612749, 0, 1900571, 1610612749, 0, 1966100, 1610612749, 0, 1966101, 1610612749, 0, 1966102, 1610612749, 0, 1966103, 1610612749, 0, 1966104, 1610612749, 0, 1966105, 1610612749, 0, 1966106, 1610612749, 0, 1966107, 1610612749, 0, 2031639, 1610612749, 0, 2031640, 1610612749, 0, 2031641, 1610612749, 0, 2031642, 1610612749, 0, 2031643, 1610612749, 0 )
 
-[node name="current" type="ColorRect" parent="."]
-margin_left = 168.0
-margin_top = 111.0
-margin_right = 176.0
-margin_bottom = 119.0
-color = Color( 0.74902, 0.431373, 0.0627451, 0.901961 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="current" type="AnimatedSprite" parent="."]
+frames = SubResource( 4 )
+playing = true
+centered = false
