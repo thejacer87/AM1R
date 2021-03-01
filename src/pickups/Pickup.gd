@@ -3,7 +3,8 @@ extends Area2D
 
 
 func _ready():
-	pass
+	for area in Globals.GameMap.get_node("Areas").get_children():
+		connect("item_collected", area, "_on_item_collected")
 
 
 func _on_PickUp_body_entered(samus: Samus) -> void:

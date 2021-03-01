@@ -10,6 +10,7 @@ func _on_PowerUp_body_entered(samus: Samus) -> void:
 	samus.collect_powerup("long_beam")
 	samus.add_missiles(999)
 	print("collected justin bailey")
+	emit_signal("item_collected", global_position)
 	# change to longer time to match the jingle
 	# play jingle and show something
 	queue_free()

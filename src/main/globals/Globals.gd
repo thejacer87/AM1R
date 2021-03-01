@@ -15,6 +15,7 @@ var UI
 var GameplayUI
 var GameViewport
 var GameState
+var GameMap
 var GameMusic
 var GameSFX
 var bit_masks := { "samus": 1 }

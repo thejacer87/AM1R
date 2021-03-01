@@ -14,6 +14,7 @@ var collected_powerups = []
 var _morph_blockers := 0
 var _black_screen
 var _test
+var _map
 
 onready var label = $RichTextLabel
 onready var camera = $MainCamera
@@ -21,14 +22,13 @@ onready var mode_label = $mode
 onready var gameplay_ui := preload("res://src/interface/GameplayUI.tscn")
 onready var animation_tree = $AnimationTree
 onready var black_screen_scene := preload("res://src/areas/BlackScreen.tscn")
-onready var map := preload("res://src/map/Map.tscn")
 onready var motion_state_machine = $MotionStateMachine
 onready var morph_state_machine = $MorphStateMachine
 
 
 func _ready() -> void:
 	Globals.Samus = self
-	var ui = load("res://src/interface/GameplayUI.tscn").instance()
+	var ui = gameplay_ui.instance()
 	Globals.UI.add_child(ui)
 	energy_count_ui = Globals.GameplayUI.get_node("VBoxContainer/Energy/EnergyCount")
 	missile_ui = Globals.GameplayUI.get_node("VBoxContainer/Missiles")
@@ -43,10 +43,6 @@ func _physics_process(_delta: float) -> void:
 		missile_ui.show()
 		missile_count_ui.text = String(missile_count)
 	energy_count_ui.text = String(energy)
-
-	if Input.is_action_just_pressed("start"):
-		get_tree().paused = true
-		get_tree().get_root().add_child(map.instance())
 
 
 func bind_camera_limits() -> void:

@@ -223,6 +223,7 @@ Globals="*res://src/main/globals/Globals.gd"
 GameMusic="*res://src/main/globals/GameMusic.tscn"
 GameSFX="*res://src/main/globals/GameSFX.tscn"
 AreaTransition="*res://src/main/globals/AreaTransition.gd"
+Map="*res://src/map/Map.tscn"
 UI="*res://src/interface/UI.tscn"
 
 [display]

@@ -39,9 +39,9 @@ margin_bottom = 14.0
 text = "99"
 
 [node name="Missiles" type="HBoxContainer" parent="VBoxContainer"]
-margin_top = 18.0
+margin_top = 12.0
 margin_right = 496.0
-margin_bottom = 32.0
+margin_bottom = 26.0
 
 [node name="Sprite" type="Sprite" parent="VBoxContainer/Missiles"]
 position = Vector2( 8, 8 )
