@@ -1,12 +1,22 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://src/interface/GameplayUI.gd" type="Script" id=1]
 [ext_resource path="res://assets/sprites/missile.png" type="Texture" id=2]
+[ext_resource path="res://src/map/MapContainer.tscn" type="PackedScene" id=3]
 
 [node name="GameplayUI" type="Control"]
+pause_mode = 2
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_right = 512.0
+margin_bottom = 32.0
+color = Color( 0, 0, 0, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -39,9 +49,9 @@ margin_bottom = 14.0
 text = "99"
 
 [node name="Missiles" type="HBoxContainer" parent="VBoxContainer"]
-margin_top = 12.0
+margin_top = 18.0
 margin_right = 496.0
-margin_bottom = 26.0
+margin_bottom = 32.0
 
 [node name="Sprite" type="Sprite" parent="VBoxContainer/Missiles"]
 position = Vector2( 8, 8 )
@@ -62,3 +72,5 @@ text = "0"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="MapContainer" parent="." instance=ExtResource( 3 )]

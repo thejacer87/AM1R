@@ -2,8 +2,6 @@ extends CanvasLayer
 
 signal visited_room(room)
 
-export var mini := false
-
 const SPEED := -256
 const ROOM_SIZE := 8
 const OFFSET_MINI := Vector2(28, 8)
@@ -12,19 +10,24 @@ const SCALE_MINI := Vector2(1, 1)
 const SCALE_ZOOMED := Vector2(4, 4)
 const SCALE_DEFAULT := Vector2(1, 1)
 
-var _zoomed := true
+var mini := true
+var zoomed := true
+
 var _room_coord
 var _samus
 
 onready var areas := $Areas
 onready var camera := $Camera2D
+onready var viewport := get_parent()
+onready var container := viewport.get_parent()
 
 
 func _ready() -> void:
 	Globals.GameMap = self
-	scale = SCALE_ZOOMED
+	scale = SCALE_MINI
 	_update_current_room()
 	offset = _room_coord
+	_zoom_and_offset()
 	for area in areas.get_children():
 		connect("visited_room", area, "_on_visited_room")
 
@@ -36,16 +39,10 @@ func _physics_process(_delta: float) -> void:
 	if mini:
 		scale = SCALE_MINI
 		offset = -_convert_to_map_position() + OFFSET_MINI
-	elif Input.is_action_just_pressed("start"):
-		if get_tree().paused:
-			hide_map()
-		else:
-			show_map()
-		get_tree().paused = not get_tree().paused
 
 
 func _process(delta: float) -> void:
-	if _zoomed and not mini:
+	if zoomed and not mini:
 		var input_direction = Vector2(
 			Input.get_action_strength("right") - Input.get_action_strength("left"),
 			Input.get_action_strength("down") - Input.get_action_strength("up")
@@ -61,13 +58,15 @@ func _input(event: InputEvent) -> void:
 
 
 func show_map():
-	_zoomed = false
+	zoomed = false
+	mini = false
 	_zoom_and_offset()
-	layer = 1
 
 
 func hide_map():
-	layer = -10
+	zoomed = false
+	mini = true
+	_zoom_and_offset()
 
 
 func _update_current_room() -> void:
@@ -90,10 +89,10 @@ func _convert_to_map_position() -> Vector2:
 
 
 func _zoom_and_offset(default := true) -> void:
-	if _zoomed:
+	if zoomed:
 		scale = SCALE_DEFAULT
 		offset = OFFSET_ZOOM_OUT
 	else:
 		scale = SCALE_ZOOMED
 		offset = _room_coord
-	_zoomed = not _zoomed
+	zoomed = not zoomed

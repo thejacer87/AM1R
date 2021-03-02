@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://src/map/MapContainer.gd" type="Script" id=1]
+[ext_resource path="res://src/map/Map.tscn" type="PackedScene" id=2]
+
+[node name="MapContainer" type="ViewportContainer"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -68.0
+margin_top = 4.0
+margin_right = -4.0
+margin_bottom = 28.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Viewport" type="Viewport" parent="."]
+size = Vector2( 64, 24 )
+size_override_stretch = true
+handle_input_locally = false
+render_target_update_mode = 3
+
+[node name="Map" parent="Viewport" instance=ExtResource( 2 )]

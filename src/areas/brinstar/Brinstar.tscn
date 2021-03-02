@@ -22,7 +22,7 @@ centered = false
 [node name="RoomBrinstarA" parent="Rooms" instance=ExtResource( 5 )]
 
 [node name="JustinBailey" parent="Rooms/RoomBrinstarA" instance=ExtResource( 3 )]
-position = Vector2( 128, 192 )
+position = Vector2( 152, 168 )
 
 [node name="JustinBailey2" parent="Rooms/RoomBrinstarA" instance=ExtResource( 3 )]
 position = Vector2( 632, 192 )

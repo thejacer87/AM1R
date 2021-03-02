@@ -7,9 +7,9 @@ var _new_game := {
 		"filename": "res://src/samus/Samus.tscn",
 		"missile_count": 0,
 		"collected_powerups": [],
-		"current_room_path": "../Rooms/A",
-		"pos_x": 480,
-		"pos_y": 176,
+		"current_room_path": "/root/Game/GameViewportContainer/Viewport/Brinstar/Rooms/RoomBrinstarA",
+		"pos_x": 0,
+		"pos_y": 0,
 	},
 	"area": {
 		"filename": "res://src/areas/brinstar/Brinstar.tscn",
@@ -55,6 +55,9 @@ func _load_game() -> void:
 	else:
 		_data = parse_json(text)
 
+
+	var gameplay_ui = preload("res://src/interface/GameplayUI.tscn").instance()
+	Globals.UI.add_child(gameplay_ui)
 	var samus = load(_data.samus.filename).instance()
 	var area = load(_data.area.filename).instance()
 	game_viewport.add_child(area)
