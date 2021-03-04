@@ -6,10 +6,10 @@
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 20, 16 )
 
-[sub_resource type="RectangleShape2D" id=2]
+[sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 25, 32 )
 
-[sub_resource type="RectangleShape2D" id=3]
+[sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 16, 8 )
 
 [node name="SaveStation" type="Node2D"]
@@ -19,7 +19,7 @@ script = ExtResource( 1 )
 collision_layer = 4
 
 [node name="Bottom" type="Sprite" parent="Bottom"]
-position = Vector2( -8.89283, 0 )
+position = Vector2( -8, 0 )
 texture = ExtResource( 2 )
 vframes = 2
 hframes = 2
@@ -40,14 +40,14 @@ hframes = 2
 
 [node name="TopCollision" type="CollisionShape2D" parent="Top"]
 position = Vector2( -1, -88 )
-shape = SubResource( 2 )
+shape = SubResource( 3 )
 
 [node name="SaveArea" type="Area2D" parent="."]
 collision_layer = 2
 
 [node name="SaveAreaCollision" type="CollisionShape2D" parent="SaveArea"]
 modulate = Color( 0.717647, 0.815686, 0.0392157, 1 )
-shape = SubResource( 3 )
+shape = SubResource( 4 )
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 2.0

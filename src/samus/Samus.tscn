@@ -1297,7 +1297,7 @@ radius = 9.0
 height = 18.0
 
 [node name="Samus" type="KinematicBody2D" groups=[
-"persist",
+"PERSIST",
 ]]
 collision_mask = 4
 script = ExtResource( 2 )

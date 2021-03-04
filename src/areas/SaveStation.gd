@@ -6,7 +6,8 @@ var _samus
 func _save_game() -> void:
 	var save_game = File.new()
 	save_game.open("user://savegame.save", File.WRITE)
-	var save_nodes = get_tree().get_nodes_in_group("persist")
+	var save_nodes = get_tree().get_nodes_in_group("PERSIST")
+	var data = {}
 	for node in save_nodes:
 		# Check the node is an instanced scene so it can be instanced again during load.
 		if node.filename.empty():
@@ -19,10 +20,10 @@ func _save_game() -> void:
 			continue
 
 		# Call the node's save function.
-		var node_data = node.call("save", global_position)
+		data[node.call("save_name")] = node.call("save")
 
-		# Store the save dictionary as a new line in the save file.
-		save_game.store_line(to_json(node_data))
+	# Store the save dictionary as a new line in the save file.
+	save_game.store_line(to_json(data))
 	save_game.close()
 
 

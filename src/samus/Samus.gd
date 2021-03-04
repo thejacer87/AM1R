@@ -86,17 +86,21 @@ func collect_powerup(powerup: String) -> void:
 		collected_powerups.push_back(powerup)
 
 
-func save(load_position) -> Dictionary:
+func save_name() -> String:
+	return "Samus"
+
+
+func save() -> Dictionary:
 	var save = {
-		"samus": {
+		"properties": {
 			"filename": get_filename(),
 			"missile_count": missile_count,
 			"collected_powerups": collected_powerups,
-			"pos_x": load_position.x,
-			"pos_y": load_position.y,
+			"pos_x": global_position.x,
+			"pos_y": global_position.y,
 			"current_room_path": current_room_path,
 		},
-		"area": {
+		"current_area": {
 			"filename": get_parent().get_filename(),
 		},
 	}

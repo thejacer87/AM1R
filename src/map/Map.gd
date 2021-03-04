@@ -96,3 +96,14 @@ func _zoom_and_offset(default := true) -> void:
 		scale = SCALE_ZOOMED
 		offset = _room_coord
 	zoomed = not zoomed
+
+
+func save_name() -> String:
+	return "Map"
+
+
+func save() -> Dictionary:
+	var data = {}
+	for area in areas.get_children():
+		data[area.call("save_name")] = area.call("save")
+	return data

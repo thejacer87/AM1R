@@ -1,0 +1,19 @@
+{
+    "Samus": {
+        "properties": {
+            "filename": "res://src/samus/Samus.tscn",
+            "missile_count": 0,
+            "collected_powerups": [],
+            "current_room_path": "/root/Game/GameViewportContainer/Viewport/Brinstar/Rooms/RoomBrinstarA",
+            "pos_x": 375,
+            "pos_y": 176,
+        },
+        "current_area": {
+            "filename": "res://src/areas/brinstar/Brinstar.tscn",
+        },
+    },
+    "Map": {
+        "filename": "res://src/map/Map.tscn",
+        "Brinstar": {},
+    }
+}
