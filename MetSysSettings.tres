@@ -1,11 +1,11 @@
 [gd_resource type="Resource" load_steps=3 format=3 uid="uid://crifk1mb8sj8y"]
 
 [ext_resource type="Script" path="res://addons/MetroidvaniaSystem/Scripts/Settings.gd" id="1_jt82d"]
-[ext_resource type="Resource" uid="uid://bt6s3nd8xo6b" path="res://addons/MetroidvaniaSystem/Themes/Exquisite/Theme.tres" id="2_5k30v"]
+[ext_resource type="Resource" uid="uid://cua5dfmrbmlho" path="res://addons/MetroidvaniaSystem/Themes/MF/Theme.tres" id="2_mptpj"]
 
 [resource]
 script = ExtResource("1_jt82d")
-theme = ExtResource("2_5k30v")
+theme = ExtResource("2_mptpj")
 map_root_folder = "res://"
 scene_template = ""
 in_game_cell_size = Vector2(1152, 648)
