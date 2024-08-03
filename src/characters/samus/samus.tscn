@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://coakemqp8riuo"]
+
+[ext_resource type="Script" path="res://src/characters/samus/samus.gd" id="1_mtwip"]
+[ext_resource type="Texture2D" uid="uid://dm1hwxdqrsd20" path="res://src/characters/samus/sprites/Samus.png" id="1_n4fq1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_exoca"]
+atlas = ExtResource("1_n4fq1")
+region = Rect2(350, 134, 29, 41)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vl3mn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_exoca")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Samus" type="CharacterBody2D"]
+script = ExtResource("1_mtwip")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_vl3mn")
