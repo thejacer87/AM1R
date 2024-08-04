@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dm1hwxdqrsd20"
-path="res://.godot/imported/Samus.png-25eaad95c6357719ce76a21b81f7f2f6.ctex"
+uid="uid://c4jd1ox4tkqm3"
+path="res://.godot/imported/Samus.png-2a4d14caaf9a9e6ce02eb8516c0d262c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://src/characters/samus/sprites/Samus.png"
-dest_files=["res://.godot/imported/Samus.png-25eaad95c6357719ce76a21b81f7f2f6.ctex"]
+source_file="res://src/entities/characters/samus/sprites/Samus.png"
+dest_files=["res://.godot/imported/Samus.png-2a4d14caaf9a9e6ce02eb8516c0d262c.ctex"]
 
 [params]
 

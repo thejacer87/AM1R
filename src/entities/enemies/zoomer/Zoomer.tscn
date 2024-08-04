@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dqgu6qrj4drn6"]
+
+[ext_resource type="Script" path="res://src/entities/enemies/zoomer/Zoomer.gd" id="1_q2g1m"]
+
+[node name="Zoomer" type="Node2D"]
+script = ExtResource("1_q2g1m")
