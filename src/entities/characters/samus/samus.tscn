@@ -1,9 +1,8 @@
-[gd_scene load_steps=43 format=3 uid="uid://coakemqp8riuo"]
+[gd_scene load_steps=47 format=3 uid="uid://coakemqp8riuo"]
 
-[ext_resource type="Script" path="res://src/entities/characters/samus/Samus.gd" id="1_2ke1f"]
+[ext_resource type="Script" path="res://src/entities/characters/samus/samus.gd" id="1_2ke1f"]
 [ext_resource type="Texture2D" uid="uid://b1jeaajdj48om" path="res://src/entities/characters/samus/sprites/power_suit/idle/sIdleLeft_0.png" id="2_ba8mi"]
 [ext_resource type="Texture2D" uid="uid://bknk81hdekays" path="res://src/entities/characters/samus/sprites/power_suit/run/runRight_0.png" id="3_5cg1e"]
-[ext_resource type="PackedScene" uid="uid://d4bpvy0pb13c2" path="res://src/utilities/hitboxes/Hurtbox.tscn" id="3_ecn0v"]
 [ext_resource type="Texture2D" uid="uid://b3psrq4w5bxbp" path="res://src/entities/characters/samus/sprites/power_suit/idle/sIdleRight_0.png" id="3_so4nd"]
 [ext_resource type="Texture2D" uid="uid://bsu5e57u0ic7d" path="res://src/entities/characters/samus/sprites/power_suit/run/runLeft_0.png" id="3_yic6e"]
 [ext_resource type="Texture2D" uid="uid://nfsjqequw4yl" path="res://src/entities/characters/samus/sprites/power_suit/jump/sJumpLeft_0.png" id="4_4x57h"]
@@ -40,6 +39,11 @@
 [ext_resource type="Texture2D" uid="uid://b37gtvttxkk2m" path="res://src/entities/characters/samus/sprites/power_suit/jump/sJumpRight_5.png" id="17_wbwgc"]
 [ext_resource type="Texture2D" uid="uid://cwd3pfbnoneuk" path="res://src/entities/characters/samus/sprites/power_suit/jump/sJumpRight_6.png" id="18_d25n1"]
 [ext_resource type="Texture2D" uid="uid://d00lj5cgq8hns" path="res://src/entities/characters/samus/sprites/power_suit/jump/sJumpRight_7.png" id="19_xy3h7"]
+[ext_resource type="Script" path="res://src/entities/characters/samus/states/movement/idle.gd" id="41_tqnvv"]
+[ext_resource type="Script" path="res://src/utilities/state_machine/state_machine.gd" id="42_lehlf"]
+[ext_resource type="Script" path="res://src/entities/characters/samus/states/movement/running.gd" id="42_rq4op"]
+[ext_resource type="Script" path="res://src/entities/characters/samus/states/movement/jumping.gd" id="43_q6071"]
+[ext_resource type="Script" path="res://src/entities/characters/samus/states/movement/falling.gd" id="44_6lpt8"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_vl3mn"]
 animations = [{
@@ -198,14 +202,36 @@ metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_vl3mn")
-animation = &"jump_spin_right"
+animation = &"run_left"
 autoplay = "idle_right"
 frame = 7
-frame_progress = 0.31934
+frame_progress = 0.920315
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
 position = Vector2(0, 2)
 shape = SubResource("RectangleShape2D_3vt5w")
 
-[node name="Hurtbox" parent="." instance=ExtResource("3_ecn0v")]
+[node name="Label" type="Label" parent="."]
+offset_left = -56.0
+offset_top = -48.0
+offset_right = 8.0
+offset_bottom = -23.0
+theme_override_font_sizes/font_size = 7
+text = "rst
+rst"
+
+[node name="StateMachine" type="Node" parent="."]
+script = ExtResource("42_lehlf")
+
+[node name="Idle" type="Node" parent="StateMachine"]
+script = ExtResource("41_tqnvv")
+
+[node name="Running" type="Node" parent="StateMachine"]
+script = ExtResource("42_rq4op")
+
+[node name="Jumping" type="Node" parent="StateMachine"]
+script = ExtResource("43_q6071")
+
+[node name="Falling" type="Node" parent="StateMachine"]
+script = ExtResource("44_6lpt8")

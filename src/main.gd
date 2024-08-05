@@ -7,15 +7,11 @@ extends Node2D
 
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
-	input_label.text = "Input: " + str(Input.get_joy_name(0))
+	for index in Input.get_connected_joypads():
+		input_label.text += "Player " + str(index + 1) + ": " + str(Input.get_joy_name(index)) + "\n"
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	label.text = "Energy: " + str(samus.energy)
 	pass
 	
-
-func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("fire"):
-		samus.damage(3)
