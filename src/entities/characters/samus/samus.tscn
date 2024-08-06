@@ -1,14 +1,18 @@
-[gd_scene load_steps=47 format=3 uid="uid://coakemqp8riuo"]
+[gd_scene load_steps=63 format=3 uid="uid://coakemqp8riuo"]
 
 [ext_resource type="Script" path="res://src/entities/characters/samus/samus.gd" id="1_2ke1f"]
 [ext_resource type="Texture2D" uid="uid://b1jeaajdj48om" path="res://src/entities/characters/samus/sprites/power_suit/idle/sIdleLeft_0.png" id="2_ba8mi"]
+[ext_resource type="Texture2D" uid="uid://v4f0ieta6lhr" path="res://src/entities/characters/samus/sprites/power_suit/crouching/sCrouch_0.png" id="2_ugkbs"]
 [ext_resource type="Texture2D" uid="uid://bknk81hdekays" path="res://src/entities/characters/samus/sprites/power_suit/run/runRight_0.png" id="3_5cg1e"]
+[ext_resource type="Texture2D" uid="uid://0uwfcmgia2rp" path="res://src/entities/characters/samus/sprites/power_suit/crouching/sCrouch_1.png" id="3_sbbp4"]
 [ext_resource type="Texture2D" uid="uid://b3psrq4w5bxbp" path="res://src/entities/characters/samus/sprites/power_suit/idle/sIdleRight_0.png" id="3_so4nd"]
 [ext_resource type="Texture2D" uid="uid://bsu5e57u0ic7d" path="res://src/entities/characters/samus/sprites/power_suit/run/runLeft_0.png" id="3_yic6e"]
 [ext_resource type="Texture2D" uid="uid://nfsjqequw4yl" path="res://src/entities/characters/samus/sprites/power_suit/jump/sJumpLeft_0.png" id="4_4x57h"]
+[ext_resource type="Texture2D" uid="uid://5ma6icm25wvn" path="res://src/entities/characters/samus/sprites/power_suit/crouching/sCrouch_2.png" id="4_d4agh"]
 [ext_resource type="Texture2D" uid="uid://d1qsw0bdkyu5b" path="res://src/entities/characters/samus/sprites/power_suit/run/runRight_1.png" id="4_niowv"]
 [ext_resource type="Texture2D" uid="uid://w78lclbx2h5s" path="res://src/entities/characters/samus/sprites/power_suit/run/runLeft_1.png" id="4_rgn0g"]
 [ext_resource type="Texture2D" uid="uid://cc74li1ukcn8w" path="res://src/entities/characters/samus/sprites/power_suit/jump/sJumpLeft_1.png" id="5_6qy3b"]
+[ext_resource type="Texture2D" uid="uid://dc605py6veukf" path="res://src/entities/characters/samus/sprites/power_suit/crouching/sCrouch_3.png" id="5_an8qs"]
 [ext_resource type="Texture2D" uid="uid://deq7caokbtjpa" path="res://src/entities/characters/samus/sprites/power_suit/run/runRight_2.png" id="5_k7bwp"]
 [ext_resource type="Texture2D" uid="uid://dqxttacwgkejl" path="res://src/entities/characters/samus/sprites/power_suit/run/runLeft_2.png" id="5_ow1vr"]
 [ext_resource type="Texture2D" uid="uid://binuwmtief021" path="res://src/entities/characters/samus/sprites/power_suit/jump/sJumpLeft_2.png" id="6_1doq6"]
@@ -39,14 +43,41 @@
 [ext_resource type="Texture2D" uid="uid://b37gtvttxkk2m" path="res://src/entities/characters/samus/sprites/power_suit/jump/sJumpRight_5.png" id="17_wbwgc"]
 [ext_resource type="Texture2D" uid="uid://cwd3pfbnoneuk" path="res://src/entities/characters/samus/sprites/power_suit/jump/sJumpRight_6.png" id="18_d25n1"]
 [ext_resource type="Texture2D" uid="uid://d00lj5cgq8hns" path="res://src/entities/characters/samus/sprites/power_suit/jump/sJumpRight_7.png" id="19_xy3h7"]
+[ext_resource type="Texture2D" uid="uid://ccmdocu10ftfh" path="res://src/entities/characters/samus/sprites/power_suit/morph_ball/sMorphBall_0.png" id="20_kk0y1"]
+[ext_resource type="Texture2D" uid="uid://nbt6lp688uct" path="res://src/entities/characters/samus/sprites/power_suit/morph_ball/sMorphBall_1.png" id="21_y812o"]
+[ext_resource type="Texture2D" uid="uid://cp15t4q0tko6e" path="res://src/entities/characters/samus/sprites/power_suit/morph_ball/sMorphBall_2.png" id="22_jufja"]
+[ext_resource type="Texture2D" uid="uid://bh3irx3w4vjsw" path="res://src/entities/characters/samus/sprites/power_suit/morph_ball/sMorphBall_3.png" id="23_5kqqc"]
+[ext_resource type="Texture2D" uid="uid://byitb81cjiey0" path="res://src/entities/characters/samus/sprites/power_suit/morph_ball/sMorphBall_4.png" id="24_46hx7"]
+[ext_resource type="Texture2D" uid="uid://bdyy117pht7l6" path="res://src/entities/characters/samus/sprites/power_suit/morph_ball/sMorphBall_5.png" id="25_6taa1"]
+[ext_resource type="Texture2D" uid="uid://dk8wgwp64lcvq" path="res://src/entities/characters/samus/sprites/power_suit/morph_ball/sMorphBall_6.png" id="26_vwc8h"]
+[ext_resource type="Texture2D" uid="uid://dalppu6l6m6yo" path="res://src/entities/characters/samus/sprites/power_suit/morph_ball/sMorphBall_7.png" id="27_3kh0e"]
 [ext_resource type="Script" path="res://src/entities/characters/samus/states/movement/idle.gd" id="41_tqnvv"]
 [ext_resource type="Script" path="res://src/utilities/state_machine/state_machine.gd" id="42_lehlf"]
 [ext_resource type="Script" path="res://src/entities/characters/samus/states/movement/running.gd" id="42_rq4op"]
 [ext_resource type="Script" path="res://src/entities/characters/samus/states/movement/jumping.gd" id="43_q6071"]
 [ext_resource type="Script" path="res://src/entities/characters/samus/states/movement/falling.gd" id="44_6lpt8"]
+[ext_resource type="Script" path="res://src/entities/characters/samus/states/morphing.gd" id="50_sea8p"]
+[ext_resource type="Script" path="res://src/entities/characters/samus/states/crouching.gd" id="51_ja74r"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_vl3mn"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_ugkbs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_sbbp4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_d4agh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_an8qs")
+}],
+"loop": true,
+"name": &"crouch",
+"speed": 4.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("2_ba8mi")
@@ -123,6 +154,35 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("20_kk0y1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_y812o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_jufja")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_5kqqc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_46hx7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_6taa1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_vwc8h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_3kh0e")
+}],
+"loop": true,
+"name": &"morph_ball",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": ExtResource("3_yic6e")
 }, {
 "duration": 1.0,
@@ -195,37 +255,55 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3vt5w"]
 size = Vector2(16, 32)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_04w8e"]
+size = Vector2(14, 15)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p6dhi"]
+size = Vector2(16, 23)
+
 [node name="Samus" type="CharacterBody2D"]
 collision_mask = 4
 script = ExtResource("1_2ke1f")
-metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_vl3mn")
-animation = &"run_left"
+animation = &"idle_left"
 autoplay = "idle_right"
-frame = 7
-frame_progress = 0.920315
+frame_progress = 0.2093
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
-position = Vector2(0, 2)
+[node name="StandingCollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-4, 2)
 shape = SubResource("RectangleShape2D_3vt5w")
+
+[node name="MorphBallCollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_04w8e")
+disabled = true
+
+[node name="CrouchingCollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -4.5)
+shape = SubResource("RectangleShape2D_p6dhi")
+disabled = true
 
 [node name="Label" type="Label" parent="."]
 offset_left = -56.0
 offset_top = -48.0
 offset_right = 8.0
 offset_bottom = -23.0
-theme_override_font_sizes/font_size = 7
-text = "rst
-rst"
+theme_override_font_sizes/font_size = 10
+text = "Input"
 
 [node name="StateMachine" type="Node" parent="."]
 script = ExtResource("42_lehlf")
 
 [node name="Idle" type="Node" parent="StateMachine"]
 script = ExtResource("41_tqnvv")
+
+[node name="Morphing" type="Node" parent="StateMachine"]
+script = ExtResource("50_sea8p")
+
+[node name="Crouching" type="Node" parent="StateMachine"]
+script = ExtResource("51_ja74r")
 
 [node name="Running" type="Node" parent="StateMachine"]
 script = ExtResource("42_rq4op")

@@ -4,23 +4,38 @@ extends CharacterBody2D
 enum look_directions {LEFT = -1, RIGHT = 1}
 
 const SPEED := 200.0
-const JUMP_VELOCITY := -275.0
-
+const MAX_FALL_SPEED := 275.0
 
 @export var energy := 99
-@export var GRAVITY := 400.0
+@export var GRAVITY : float
+@export var MAX_JUMP_VELOCITY: float
+@export var MIN_JUMP_VELOCITY: float
 @export var player_index: int = 0
 
 @onready var fsm := $StateMachine as StateMachine
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var label: Label = $Label
+@onready var morph_ball_collision_shape_2d: CollisionShape2D = $MorphBallCollisionShape2D
+@onready var standing_collision_shape_2d: CollisionShape2D = $StandingCollisionShape2D
+@onready var crouching_collision_shape_2d: CollisionShape2D = $CrouchingCollisionShape2D
 
 var looking := look_directions.RIGHT
+var jump_duration := 0.66667
+var max_jump_height : float = 10.5 * Globals.UNIT_SIZE
+var min_jump_height : float = 4 * Globals.UNIT_SIZE
+
+
+func _ready() -> void:
+	GRAVITY = 2 * max_jump_height / pow(jump_duration, 2)
+	MAX_JUMP_VELOCITY = -sqrt(2 * GRAVITY * max_jump_height)
+	MIN_JUMP_VELOCITY = -sqrt(2 * GRAVITY * min_jump_height)
+
 
 func _process(_delta: float) -> void:
 	label.text = fsm.state.name
 	label.text += "\nLooking: " + str(looking)
 	animated_sprite_2d.flip_h = looking == look_directions.LEFT
+	
 	
 func damage(base_damage: int) -> void:
 	energy -= base_damage

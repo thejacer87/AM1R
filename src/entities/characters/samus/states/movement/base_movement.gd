@@ -2,12 +2,14 @@ class_name BaseMovement
 extends State
 
 const IDLE = "Idle"
+const MORPHING = "Morphing"
+const CROUCHING = "Crouching"
 const RUNNING = "Running"
 const JUMPING = "Jumping"
 const FALLING = "Falling"
 
 var samus: Samus
-var look_direction : String
+@onready var look_direction := "right" 
 
 
 func _ready() -> void:
@@ -17,6 +19,7 @@ func _ready() -> void:
 
 		
 func enter(previous_state_path: String, data := {}) -> void:
+	print("Entering: " + name)
 	if data.has("look_direction"):
 		look_direction = data.look_direction
 	elif Input.is_action_pressed("left_" + str(samus.player_index)):
@@ -28,9 +31,29 @@ func enter(previous_state_path: String, data := {}) -> void:
 		
 
 func physics_update(delta: float) -> void:
+	samus.velocity.y = min(samus.velocity.y + samus.GRAVITY * delta, samus.MAX_FALL_SPEED)
 	if Input.is_action_pressed("left_" + str(samus.player_index)):
 		samus.looking = samus.look_directions.LEFT
 		look_direction = "left"
 	if Input.is_action_pressed("right_" + str(samus.player_index)):
 		samus.looking = samus.look_directions.RIGHT
 		look_direction = "right"
+		
+
+func exit() -> void:
+	print("Exiting: " + name)
+	
+
+func update_collisions(collision_to_enable: String) -> void:
+	if collision_to_enable == "crouch":
+		samus.crouching_collision_shape_2d.disabled = false
+		samus.morph_ball_collision_shape_2d.disabled = true
+		samus.standing_collision_shape_2d.disabled = true
+	elif collision_to_enable == "morph":
+		samus.morph_ball_collision_shape_2d.disabled = false
+		samus.standing_collision_shape_2d.disabled = true
+		samus.crouching_collision_shape_2d.disabled = true
+	else:
+		samus.standing_collision_shape_2d.disabled = false
+		samus.morph_ball_collision_shape_2d.disabled = true
+		samus.crouching_collision_shape_2d.disabled = true
