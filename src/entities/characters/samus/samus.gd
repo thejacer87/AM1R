@@ -3,8 +3,8 @@ extends CharacterBody2D
 
 enum look_directions {LEFT = -1, RIGHT = 1}
 
-const SPEED := 200.0
-const MAX_FALL_SPEED := 275.0
+const SPEED := 115.0
+const MAX_FALL_SPEED := 250.0
 
 @export var energy := 99
 @export var GRAVITY : float
@@ -20,7 +20,7 @@ const MAX_FALL_SPEED := 275.0
 @onready var crouching_collision_shape_2d: CollisionShape2D = $CrouchingCollisionShape2D
 
 var looking := look_directions.RIGHT
-var jump_duration := 0.66667
+var jump_duration := 0.70
 var max_jump_height : float = 10.5 * Globals.UNIT_SIZE
 var min_jump_height : float = 4 * Globals.UNIT_SIZE
 

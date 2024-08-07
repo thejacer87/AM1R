@@ -1,4 +1,4 @@
-[gd_scene load_steps=63 format=3 uid="uid://coakemqp8riuo"]
+[gd_scene load_steps=70 format=3 uid="uid://coakemqp8riuo"]
 
 [ext_resource type="Script" path="res://src/entities/characters/samus/samus.gd" id="1_2ke1f"]
 [ext_resource type="Texture2D" uid="uid://b1jeaajdj48om" path="res://src/entities/characters/samus/sprites/power_suit/idle/sIdleLeft_0.png" id="2_ba8mi"]
@@ -24,15 +24,20 @@
 [ext_resource type="Texture2D" uid="uid://ve7nopqkxj2d" path="res://src/entities/characters/samus/sprites/power_suit/run/runLeft_5.png" id="8_2sc2i"]
 [ext_resource type="Texture2D" uid="uid://dnh0q64jl1b0b" path="res://src/entities/characters/samus/sprites/power_suit/run/runRight_5.png" id="8_16q03"]
 [ext_resource type="Texture2D" uid="uid://b5k5as7h7qu47" path="res://src/entities/characters/samus/sprites/power_suit/jump/sJumpLeft_4.png" id="8_gu8vs"]
+[ext_resource type="Texture2D" uid="uid://b0jg0756c8ql5" path="res://src/entities/characters/samus/sprites/power_suit/jump/sVjump_0.png" id="8_mqale"]
+[ext_resource type="Texture2D" uid="uid://bmqmudtua13o7" path="res://src/entities/characters/samus/sprites/power_suit/jump/sVjump_1.png" id="9_0bthh"]
 [ext_resource type="Texture2D" uid="uid://gdgpkej80yhh" path="res://src/entities/characters/samus/sprites/power_suit/jump/sJumpLeft_5.png" id="9_qhyrk"]
 [ext_resource type="Texture2D" uid="uid://5vp0yaam54m" path="res://src/entities/characters/samus/sprites/power_suit/run/runRight_6.png" id="9_wd65n"]
 [ext_resource type="Texture2D" uid="uid://ceql2yli7s3d4" path="res://src/entities/characters/samus/sprites/power_suit/run/runLeft_6.png" id="9_ykla8"]
 [ext_resource type="Texture2D" uid="uid://cvtyl7412s7k7" path="res://src/entities/characters/samus/sprites/power_suit/run/runRight_7.png" id="10_hy25d"]
+[ext_resource type="Texture2D" uid="uid://g4hexeu5d0cq" path="res://src/entities/characters/samus/sprites/power_suit/jump/sVjump_2.png" id="10_jbw3w"]
 [ext_resource type="Texture2D" uid="uid://1jjohck8376j" path="res://src/entities/characters/samus/sprites/power_suit/jump/sJumpLeft_6.png" id="10_ryonj"]
 [ext_resource type="Texture2D" uid="uid://bgsfnlugvd6ho" path="res://src/entities/characters/samus/sprites/power_suit/run/runLeft_7.png" id="10_vgs11"]
+[ext_resource type="Texture2D" uid="uid://ct537p40vi2c1" path="res://src/entities/characters/samus/sprites/power_suit/jump/sVjump_3.png" id="11_7qyc1"]
 [ext_resource type="Texture2D" uid="uid://b8nqmbbnhfaa5" path="res://src/entities/characters/samus/sprites/power_suit/run/runRight_8.png" id="11_afyfs"]
 [ext_resource type="Texture2D" uid="uid://7sloc1y1uu54" path="res://src/entities/characters/samus/sprites/power_suit/run/runLeft_8.png" id="11_i3ngo"]
 [ext_resource type="Texture2D" uid="uid://rnlvbb7ccve0" path="res://src/entities/characters/samus/sprites/power_suit/jump/sJumpLeft_7.png" id="11_kw2i2"]
+[ext_resource type="Texture2D" uid="uid://c2n6f54ffd4v7" path="res://src/entities/characters/samus/sprites/power_suit/jump/sVjump_4.png" id="12_32ys5"]
 [ext_resource type="Texture2D" uid="uid://bh1eb5hinj7r7" path="res://src/entities/characters/samus/sprites/power_suit/jump/sJumpRight_0.png" id="12_a0vih"]
 [ext_resource type="Texture2D" uid="uid://cbhtsc5g5nago" path="res://src/entities/characters/samus/sprites/power_suit/run/runLeft_9.png" id="12_pb3ru"]
 [ext_resource type="Texture2D" uid="uid://cdetwi8lv4xq1" path="res://src/entities/characters/samus/sprites/power_suit/run/runRight_9.png" id="12_q2vhc"]
@@ -58,6 +63,8 @@
 [ext_resource type="Script" path="res://src/entities/characters/samus/states/movement/falling.gd" id="44_6lpt8"]
 [ext_resource type="Script" path="res://src/entities/characters/samus/states/morphing.gd" id="50_sea8p"]
 [ext_resource type="Script" path="res://src/entities/characters/samus/states/crouching.gd" id="51_ja74r"]
+[ext_resource type="Script" path="res://src/entities/characters/samus/states/spin_jumping.gd" id="58_oqehy"]
+[ext_resource type="Script" path="res://src/entities/characters/samus/states/spin_falling.gd" id="60_v3vhy"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_vl3mn"]
 animations = [{
@@ -80,6 +87,22 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("12_32ys5")
+}],
+"loop": true,
+"name": &"fall_left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_32ys5")
+}],
+"loop": true,
+"name": &"fall_right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": ExtResource("2_ba8mi")
 }],
 "loop": true,
@@ -93,6 +116,46 @@ animations = [{
 "loop": true,
 "name": &"idle_right",
 "speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_mqale")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_0bthh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_jbw3w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_7qyc1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_32ys5")
+}],
+"loop": false,
+"name": &"jump_left",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_mqale")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_0bthh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_jbw3w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_7qyc1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_32ys5")
+}],
+"loop": false,
+"name": &"jump_right",
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -121,7 +184,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"jump_spin_left",
-"speed": 16.0
+"speed": 24.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -150,7 +213,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"jump_spin_right",
-"speed": 16.0
+"speed": 24.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -214,7 +277,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"run_left",
-"speed": 5.0
+"speed": 25.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -249,7 +312,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"run_right",
-"speed": 15.0
+"speed": 20.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3vt5w"]
@@ -269,10 +332,10 @@ script = ExtResource("1_2ke1f")
 sprite_frames = SubResource("SpriteFrames_vl3mn")
 animation = &"idle_left"
 autoplay = "idle_right"
-frame_progress = 0.2093
+frame_progress = 0.469932
 
 [node name="StandingCollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-4, 2)
+position = Vector2(0, 2)
 shape = SubResource("RectangleShape2D_3vt5w")
 
 [node name="MorphBallCollisionShape2D" type="CollisionShape2D" parent="."]
@@ -313,3 +376,9 @@ script = ExtResource("43_q6071")
 
 [node name="Falling" type="Node" parent="StateMachine"]
 script = ExtResource("44_6lpt8")
+
+[node name="SpinJumping" type="Node" parent="StateMachine"]
+script = ExtResource("58_oqehy")
+
+[node name="SpinFalling" type="Node" parent="StateMachine"]
+script = ExtResource("60_v3vhy")

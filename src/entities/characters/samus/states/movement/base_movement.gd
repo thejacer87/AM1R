@@ -6,7 +6,9 @@ const MORPHING = "Morphing"
 const CROUCHING = "Crouching"
 const RUNNING = "Running"
 const JUMPING = "Jumping"
+const SPIN_JUMPING = "SpinJumping"
 const FALLING = "Falling"
+const SPIN_FALLING = "SpinFalling"
 
 var samus: Samus
 @onready var look_direction := "right" 

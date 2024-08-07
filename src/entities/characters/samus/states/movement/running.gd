@@ -12,9 +12,13 @@ func physics_update(delta: float) -> void:
 	var input_direction_x := Input.get_axis("left_" + str(samus.player_index), "right_" + str(samus.player_index))
 	samus.velocity.x = samus.SPEED * input_direction_x
 	samus.move_and_slide()
+	
+	if samus.velocity.x == 0:
+		var animation := "idle_" + look_direction
+		samus.animated_sprite_2d.play(animation)
 
 	if Input.is_action_just_pressed("jump_" + str(samus.player_index)):
-		finished.emit(JUMPING)
+		finished.emit(SPIN_JUMPING)
 	elif Input.is_action_just_pressed("morph_" + str(samus.player_index)):
 		finished.emit(MORPHING)
 	elif is_equal_approx(input_direction_x, 0.0):
