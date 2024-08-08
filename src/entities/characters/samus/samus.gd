@@ -27,7 +27,7 @@ var min_jump_height : float = 4 * Globals.UNIT_SIZE
 
 func _ready() -> void:
 	GRAVITY = 2 * max_jump_height / pow(jump_duration, 2)
-	MAX_JUMP_VELOCITY = -sqrt(2 * GRAVITY * max_jump_height)
+	MAX_JUMP_VELOCITY = -sqrt(2 * GRAVITY * max_jump_height) # for highjump* 1.4
 	MIN_JUMP_VELOCITY = -sqrt(2 * GRAVITY * min_jump_height)
 
 

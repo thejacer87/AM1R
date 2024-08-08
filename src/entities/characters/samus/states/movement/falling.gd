@@ -12,11 +12,12 @@ func physics_update(delta: float) -> void:
 	samus.velocity.x = samus.SPEED * input_direction_x * 0.6667
 	samus.move_and_slide()
 
-
 	if Input.is_action_just_pressed("morph_" + str(samus.player_index)):
 		finished.emit(MORPHING)
 
 	if Input.is_action_just_pressed("jump_" + str(samus.player_index)):
+		samus.velocity.x = 100 * samus.looking
+		samus.velocity.y = 66.667
 		finished.emit(SPIN_FALLING)
 
 	if samus.is_on_floor():
