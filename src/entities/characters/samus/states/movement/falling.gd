@@ -3,7 +3,7 @@ extends BaseMovement
 
 func enter(previous_state_path: String, data := {}) -> void:
 	super.enter(previous_state_path, data)
-	samus.animated_sprite_2d.play("fall_" + look_direction)
+	samus.animation_player.play("fall_" + look_direction)
 
 
 func physics_update(delta: float) -> void:

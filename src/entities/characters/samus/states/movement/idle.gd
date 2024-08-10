@@ -5,8 +5,8 @@ extends BaseMovement
 func enter(previous_state_path: String, data := {}) -> void:
 	super.enter(previous_state_path, data)
 	samus.velocity.x = 0.0
-	var animation := "idle_" + look_direction
-	samus.animated_sprite_2d.play(animation)
+	var animation := "stand_" + look_direction
+	samus.animation_player.play(animation)
 
 
 func physics_update(delta: float) -> void:

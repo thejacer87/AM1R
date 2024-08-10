@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://ckntmrju7p0hb"
+path="res://.godot/imported/samus.aseprite-e04de2baeedf905ecca046da8a1b9fb7.res"
+
+[deps]
+
+source_file="res://src/entities/characters/samus/sprites/power_suit/samus.aseprite"
+dest_files=["res://.godot/imported/samus.aseprite-e04de2baeedf905ecca046da8a1b9fb7.res"]
+
+[params]
+

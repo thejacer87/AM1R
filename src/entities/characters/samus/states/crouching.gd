@@ -5,7 +5,7 @@ func enter(previous_state_path: String, data := {}) -> void:
 	super.enter(previous_state_path, data)
 	super.update_collisions("crouch")
 	samus.velocity.x = 0.0
-	samus.animated_sprite_2d.play("crouch")
+	samus.animation_player.play("crouch")
 
 
 func physics_update(delta: float) -> void:

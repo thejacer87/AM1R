@@ -5,7 +5,7 @@ extends BaseMovement
 func enter(previous_state_path: String, data := {}) -> void:
 	super.enter(previous_state_path, data)
 	samus.velocity.y = samus.MAX_JUMP_VELOCITY
-	samus.animated_sprite_2d.play("jump_spin_" + look_direction)
+	samus.animation_player.play("jump_" + look_direction)
 
 
 func physics_update(delta: float) -> void:
@@ -30,7 +30,7 @@ func physics_update(delta: float) -> void:
 		finished.emit(FALLING)
 		
 	if Input.is_action_just_released("jump_" + str(samus.player_index)):
-		print("stopping jump")
+		# This isn't really working... would like the min jump to be two units high.
 		if samus.velocity.y < samus.MIN_JUMP_VELOCITY:
 			samus.velocity.y = 0     
 		else: 

@@ -4,7 +4,7 @@ extends BaseMovement
 func enter(previous_state_path: String, data := {}) -> void:
 	super.enter(previous_state_path, data)
 	var animation := "run_" + look_direction
-	samus.animated_sprite_2d.play(animation)
+	samus.animation_player.play(animation)
 
 
 func physics_update(delta: float) -> void:
@@ -14,8 +14,8 @@ func physics_update(delta: float) -> void:
 	samus.move_and_slide()
 	
 	if samus.velocity.x == 0:
-		var animation := "idle_" + look_direction
-		samus.animated_sprite_2d.play(animation)
+		var animation := "stand_" + look_direction
+		samus.animation_player.play(animation)
 
 	if Input.is_action_just_pressed("jump_" + str(samus.player_index)):
 		finished.emit(SPIN_JUMPING)

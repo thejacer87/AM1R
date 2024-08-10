@@ -6,7 +6,7 @@ extends BaseMovement
 func enter(previous_state_path: String, data := {}) -> void:
 	super.enter(previous_state_path, data)
 	samus.velocity.y = samus.MAX_JUMP_VELOCITY
-	samus.animated_sprite_2d.play("jump_" + look_direction)
+	samus.animation_player.play("jump_up_" + look_direction)
 
 
 func physics_update(delta: float) -> void:
