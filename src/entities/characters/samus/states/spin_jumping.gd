@@ -23,15 +23,20 @@ func physics_update(delta: float) -> void:
 		
 	if Input.is_action_just_pressed("up_" + str(samus.player_index)):
 		samus.velocity.x = 0
-		finished.emit(FALLING)
+		finished.emit(FALLING)	
 		
 	if Input.is_action_just_pressed("down_" + str(samus.player_index)):
 		samus.velocity.x = 0
-		finished.emit(FALLING)
-		
+		finished.emit(FALLING)	
+	
+	if Input.is_action_just_pressed("fire_" + str(samus.player_index)):
+		samus.velocity = Vector2.ZERO
+		finished.emit(FALLING)	
+ 			
 	if Input.is_action_just_released("jump_" + str(samus.player_index)):
 		# This isn't really working... would like the min jump to be two units high.
 		if samus.velocity.y < samus.MIN_JUMP_VELOCITY:
 			samus.velocity.y = 0     
 		else: 
-			samus.velocity.y = 0
+			samus.velocity.y = 0    
+			 

@@ -21,6 +21,11 @@ const WALL_JUMP_SPEED := 66.66667
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var sprite_2d: Sprite2D = $Sprite2D
 @onready var wall_stick_timer: Timer = $WallStickTimer
+@onready var crouch_run_timer: Timer = $CrouchRunTimer
+@onready var wall_jump_timer: Timer = $WallJumpTimer
+@onready var idle_timer: Timer = $IdleTimer
+@onready var cannon: Marker2D = $Cannon
+@onready var beam := preload("res://src/entities/weapons/beams/beam.tscn")
 
 
 var looking := look_directions.RIGHT
@@ -39,8 +44,45 @@ func _process(_delta: float) -> void:
 	label.text = fsm.state.name
 	label.text += "\nLooking: " + str(looking)
 	label.text += "\nWall Jump timer: " + str(wall_stick_timer.time_left)
-	sprite_2d.flip_h = looking == look_directions.LEFT
+	if looking == look_directions.LEFT:
+		sprite_2d.flip_h = true
+		cannon.position.x = -17
+	else:
+		sprite_2d.flip_h = false
+		cannon.position.x = 17
+		
+	
+	
+func _physics_process(delta: float) -> void:
+	if Input.is_action_just_pressed("fire_" + str(player_index)):
+		shoot()
+	
+	
+func wall_jump(wall_direction: int) -> void:
+	print("Samus.gd: wall jump")
+	looking = -looking
+	velocity.x = 1.75 * -wall_direction * WALL_JUMP_SPEED
+	velocity.y = MAX_JUMP_VELOCITY * 0.8
+	
+	
+func shoot() -> void:
+	print("Shooting")
+	idle_timer.stop()
+	var bullet := beam.instantiate() as Beam
+	bullet.position = cannon.global_position
+	bullet.direction = Vector2(looking, 0)
+	get_tree().get_root().add_child(bullet)
 	
 	
 func damage(base_damage: int) -> void:
 	energy -= base_damage
+
+
+func _on_animation_player_animation_finished(anim_name: StringName) -> void:
+	if anim_name == "idle_left":
+		animation_player.play("stand_left")
+
+	if anim_name == "idle_right":
+		animation_player.play("stand_right")
+		
+	idle_timer.start()

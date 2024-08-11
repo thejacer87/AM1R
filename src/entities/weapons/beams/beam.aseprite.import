@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://dx3n163ldscjg"
+path="res://.godot/imported/beam.aseprite-fe238779025806c2ad624ff2c3fcb8a1.res"
+
+[deps]
+
+source_file="res://src/entities/weapons/beams/beam.aseprite"
+dest_files=["res://.godot/imported/beam.aseprite-fe238779025806c2ad624ff2c3fcb8a1.res"]
+
+[params]
+

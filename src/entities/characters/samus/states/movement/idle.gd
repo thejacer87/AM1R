@@ -7,11 +7,14 @@ func enter(previous_state_path: String, data := {}) -> void:
 	samus.velocity.x = 0.0
 	var animation := "stand_" + look_direction
 	samus.animation_player.play(animation)
+	samus.idle_timer.start()
 
 
 func physics_update(delta: float) -> void:
 	super.physics_update(delta)
-	samus.move_and_slide()
+	#samus.move_and_slide()
+	#if samus.idle_timer.time_left == 0:
+		#samus.animation_player.play("idle_" + look_direction)
 
 	if Input.is_action_just_pressed("down_" + str(samus.player_index)):
 		finished.emit(CROUCHING)
@@ -26,3 +29,7 @@ func physics_update(delta: float) -> void:
 		
 	if not samus.is_on_floor():
 		finished.emit(FALLING)
+
+
+func exit() -> void:
+	samus.idle_timer.stop()

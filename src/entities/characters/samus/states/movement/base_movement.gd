@@ -45,7 +45,7 @@ func physics_update(delta: float) -> void:
 func exit() -> void:
 	print("Exiting: " + name)
 	
-
+	
 func update_collisions(collision_to_enable: String) -> void:
 	if collision_to_enable == "crouch":
 		samus.crouching_collision_shape_2d.disabled = false
