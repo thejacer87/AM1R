@@ -309,7 +309,6 @@ script = ExtResource("1_ab5rb")
 position = Vector2(680, 262)
 
 [node name="Camera2D" type="Camera2D" parent="Samus"]
-zoom = Vector2(0.5, 0.5)
 limit_left = 0
 limit_top = -1295
 limit_right = 1500

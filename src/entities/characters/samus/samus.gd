@@ -20,12 +20,13 @@ const WALL_JUMP_SPEED := 66.66667
 @onready var crouching_collision_shape_2d: CollisionShape2D = $CrouchingCollisionShape2D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var sprite_2d: Sprite2D = $Sprite2D
-@onready var wall_stick_timer: Timer = $WallStickTimer
 @onready var crouch_run_timer: Timer = $CrouchRunTimer
+@onready var aim_timer: Timer = $AimTimer
 @onready var wall_jump_timer: Timer = $WallJumpTimer
 @onready var idle_timer: Timer = $IdleTimer
 @onready var cannon: Marker2D = $Cannon
 @onready var beam := preload("res://src/entities/weapons/beams/beam.tscn")
+@onready var is_aiming := false
 
 
 var looking := look_directions.RIGHT
@@ -43,7 +44,7 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	label.text = fsm.state.name
 	label.text += "\nLooking: " + str(looking)
-	label.text += "\nWall Jump timer: " + str(wall_stick_timer.time_left)
+	label.text += "\nAim Timer: " + str(aim_timer.time_left)
 	if looking == look_directions.LEFT:
 		sprite_2d.flip_h = true
 		cannon.position.x = -17
@@ -67,6 +68,8 @@ func wall_jump(wall_direction: int) -> void:
 	
 func shoot() -> void:
 	print("Shooting")
+	is_aiming = true
+	aim_timer.start()
 	idle_timer.stop()
 	var bullet := beam.instantiate() as Beam
 	bullet.position = cannon.global_position
@@ -86,3 +89,7 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 		animation_player.play("stand_right")
 		
 	idle_timer.start()
+
+
+func _on_aim_timer_timeout() -> void:
+	is_aiming = false
