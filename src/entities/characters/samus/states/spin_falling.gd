@@ -7,7 +7,7 @@ func enter(previous_state_path: String, data := {}) -> void:
 	super.enter(previous_state_path, data)
 	var current_animation := samus.animation_player.current_animation
 	
-	samus.animation_player.play("jump_" + look_direction)
+	samus.animation_player.play("jump_" + samus.look_direction)
 
 
 func physics_update(delta: float) -> void:
@@ -32,7 +32,7 @@ func physics_update(delta: float) -> void:
 		
 	if samus.is_on_floor():
 		if is_equal_approx(samus.velocity.x, 0.0):
-			finished.emit(IDLE, {"look_direction": look_direction})
+			finished.emit(IDLE, {"look_direction": samus.look_direction})
 		else:
 			finished.emit(RUNNING)
 

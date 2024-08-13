@@ -11,9 +11,6 @@ const FALLING = "Falling"
 const SPIN_FALLING = "SpinFalling"
 
 var samus: Samus
-@onready var look_direction := "right" 
-@onready var aiming_down := false
-
 
 func _ready() -> void:
 	await owner.ready
@@ -24,23 +21,23 @@ func _ready() -> void:
 func enter(previous_state_path: String, data := {}) -> void:
 	print("Entering State: " + name)
 	if data.has("look_direction"):
-		look_direction = data.look_direction
+		samus.look_direction = data.look_direction
 	elif Input.is_action_pressed("left_" + str(samus.player_index)):
 		samus.looking = samus.look_directions.LEFT
-		look_direction = "left"
+		samus.look_direction = "left"
 	elif Input.is_action_pressed("right_" + str(samus.player_index)):
 		samus.looking = samus.look_directions.RIGHT
-		look_direction = "right"
+		samus.look_direction = "right"
 		
 
 func physics_update(delta: float) -> void:
 	samus.velocity.y = min(samus.velocity.y + samus.GRAVITY * delta, samus.MAX_FALL_SPEED)
 	if Input.is_action_pressed("left_" + str(samus.player_index)):
 		samus.looking = samus.look_directions.LEFT
-		look_direction = "left"
+		samus.look_direction = "left"
 	if Input.is_action_pressed("right_" + str(samus.player_index)):
 		samus.looking = samus.look_directions.RIGHT
-		look_direction = "right"
+		samus.look_direction = "right"
 		
 
 func exit() -> void:
@@ -49,10 +46,10 @@ func exit() -> void:
 	
 func handle_diagonal_aiming(state: String) -> void:
 	if Input.is_action_pressed("down_" + str(samus.player_index)):
-		aiming_down = true
+		samus.aiming_down = true
 	if Input.is_action_pressed("up_" + str(samus.player_index)):
-		aiming_down = false
-	var animation := state + "_aim_diag_" + ("down_" if aiming_down else "up_") + look_direction
+		samus.aiming_down = false
+	var animation := state + "_aim_diag_" + ("down_" if samus.aiming_down else "up_") + samus.look_direction
 	samus.is_aiming = true
 	samus.animation_player.play(animation)
 	

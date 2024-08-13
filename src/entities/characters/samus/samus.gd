@@ -27,6 +27,8 @@ const WALL_JUMP_SPEED := 66.66667
 @onready var cannon: Marker2D = $Cannon
 @onready var beam := preload("res://src/entities/weapons/beams/beam.tscn")
 @onready var is_aiming := false
+@onready var aiming_down := false
+@onready var look_direction := "right"
 
 
 var looking := look_directions.RIGHT
