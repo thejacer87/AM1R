@@ -24,8 +24,7 @@ const WALL_JUMP_SPEED := 66.66667
 @onready var aim_timer: Timer = $AimTimer
 @onready var wall_jump_timer: Timer = $WallJumpTimer
 @onready var idle_timer: Timer = $IdleTimer
-@onready var cannon: Marker2D = $Cannon
-@onready var beam := preload("res://src/entities/weapons/beams/beam.tscn")
+@onready var arm_cannon: ArmCannon = $ArmCannon
 @onready var is_aiming := false
 @onready var aiming_down := false
 @onready var look_direction := "right"
@@ -49,10 +48,8 @@ func _process(_delta: float) -> void:
 	label.text += "\nAim Timer: " + str(aim_timer.time_left)
 	if looking == look_directions.LEFT:
 		sprite_2d.flip_h = true
-		cannon.position.x = -17
 	else:
 		sprite_2d.flip_h = false
-		cannon.position.x = 17
 		
 	
 	
@@ -73,10 +70,7 @@ func shoot() -> void:
 	is_aiming = true
 	aim_timer.start()
 	idle_timer.stop()
-	var bullet := beam.instantiate() as Beam
-	bullet.position = cannon.global_position
-	bullet.direction = Vector2(looking, 0)
-	get_tree().get_root().add_child(bullet)
+	arm_cannon.shoot()
 	
 	
 func damage(base_damage: int) -> void:
