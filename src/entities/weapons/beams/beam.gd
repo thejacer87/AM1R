@@ -4,6 +4,7 @@ extends Area2D
 @export var direction: Vector2
 
 @onready var sprite_2d: Sprite2D = $Sprite2D
+@onready var flash_sprite_2d: Sprite2D = $FlashSprite2D
 
 func _ready() -> void:
 	pass

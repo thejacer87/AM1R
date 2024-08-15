@@ -46,6 +46,7 @@ func _process(_delta: float) -> void:
 	label.text = fsm.state.name
 	label.text += "\nLooking: " + str(looking)
 	label.text += "\nAim Timer: " + str(aim_timer.time_left)
+	label.text += "\nAim Timer: " + str(animation_player.current_animation)
 	if looking == look_directions.LEFT:
 		sprite_2d.flip_h = true
 	else:
@@ -66,7 +67,6 @@ func wall_jump(wall_direction: int) -> void:
 	
 	
 func shoot() -> void:
-	print("Shooting")
 	is_aiming = true
 	aim_timer.start()
 	idle_timer.stop()
