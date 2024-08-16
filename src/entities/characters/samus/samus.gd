@@ -63,7 +63,7 @@ func _physics_process(delta: float) -> void:
 			drop_bomb()
 		else:
 			shoot()
-	
+
 	
 func wall_jump(wall_direction: int) -> void:
 	print("Samus.gd: wall jump")
