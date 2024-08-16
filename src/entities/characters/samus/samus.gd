@@ -18,7 +18,7 @@ const WALL_JUMP_SPEED := 66.66667
 @onready var morph_ball_collision_shape_2d: CollisionShape2D = $MorphBallCollisionShape2D
 @onready var standing_collision_shape_2d: CollisionShape2D = $StandingCollisionShape2D
 @onready var crouching_collision_shape_2d: CollisionShape2D = $CrouchingCollisionShape2D
-@onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var animation_player: AnimationPlayer = $Sprite2D/AnimationPlayer
 @onready var sprite_2d: Sprite2D = $Sprite2D
 @onready var crouch_run_timer: Timer = $CrouchRunTimer
 @onready var aim_timer: Timer = $AimTimer
@@ -28,6 +28,9 @@ const WALL_JUMP_SPEED := 66.66667
 @onready var is_aiming := false
 @onready var aiming_down := false
 @onready var look_direction := "right"
+@onready var state_machine: StateMachine = $StateMachine
+@onready var bomb_scene := preload("res://src/entities/weapons/bombs/bomb.tscn")
+@onready var bomb_drop_marker: Marker2D = $BombDropMarker
 
 
 var looking := look_directions.RIGHT
@@ -51,12 +54,15 @@ func _process(_delta: float) -> void:
 		sprite_2d.flip_h = true
 	else:
 		sprite_2d.flip_h = false
-		
 	
 	
 func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("fire_" + str(player_index)):
-		shoot()
+		print("current state: " + str(state_machine.state.name))
+		if str(state_machine.state.name) == BaseMovement.MORPHING:
+			drop_bomb()
+		else:
+			shoot()
 	
 	
 func wall_jump(wall_direction: int) -> void:
@@ -75,6 +81,17 @@ func shoot() -> void:
 	
 func damage(base_damage: int) -> void:
 	energy -= base_damage
+
+
+func drop_bomb() -> void:
+	print("drop_bomb")
+	var bomb := bomb_scene.instantiate() as Bomb
+	bomb.global_position = bomb_drop_marker.global_position
+	get_tree().get_root().add_child(bomb)
+	
+
+func bombed() -> void:
+	velocity.y = -200
 
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
