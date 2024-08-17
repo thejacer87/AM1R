@@ -31,6 +31,7 @@ const WALL_JUMP_SPEED := 66.66667
 @onready var state_machine: StateMachine = $StateMachine
 @onready var bomb_scene := preload("res://src/entities/weapons/bombs/bomb.tscn")
 @onready var bomb_drop_marker: Marker2D = $BombDropMarker
+@onready var is_missile_armed := false
 
 
 var looking := look_directions.RIGHT
@@ -49,7 +50,8 @@ func _process(_delta: float) -> void:
 	label.text = fsm.state.name
 	label.text += "\nLooking: " + str(looking)
 	label.text += "\nAim Timer: " + str(aim_timer.time_left)
-	label.text += "\nAim Timer: " + str(animation_player.current_animation)
+	label.text += "\nAnimation: " + str(animation_player.current_animation)
+	label.text += "\nMissile: " + str("Armed" if is_missile_armed else "Nope")
 	if looking == look_directions.LEFT:
 		sprite_2d.flip_h = true
 	else:
@@ -57,13 +59,18 @@ func _process(_delta: float) -> void:
 	
 	
 func _physics_process(delta: float) -> void:
+	if Input.is_action_pressed("arm_weapon_" + str(player_index)):
+		is_missile_armed = true
+			
+	if Input.is_action_just_released("arm_weapon_" + str(player_index)):
+		is_missile_armed = false
+
 	if Input.is_action_just_pressed("fire_" + str(player_index)):
 		print("current state: " + str(state_machine.state.name))
 		if str(state_machine.state.name) == BaseMovement.MORPHING:
 			drop_bomb()
 		else:
 			shoot()
-	
 	
 func wall_jump(wall_direction: int) -> void:
 	print("Samus.gd: wall jump")
@@ -91,7 +98,7 @@ func drop_bomb() -> void:
 	
 
 func bombed() -> void:
-	velocity.y = -200
+	velocity.y = -190
 
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
@@ -106,3 +113,5 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 
 func _on_aim_timer_timeout() -> void:
 	is_aiming = false
+	
+	

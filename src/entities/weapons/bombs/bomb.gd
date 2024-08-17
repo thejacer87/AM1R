@@ -14,5 +14,7 @@ func _process(delta: float) -> void:
 
 
 func _on_body_entered(body: Node2D) -> void:
-	if body.has_method("bombed"):
-		(body as Samus).bombed()
+	if body is Samus:
+		var samus := body as Samus
+		if samus.state_machine.state.name == BaseMovement.MORPHING:
+			samus.bombed()

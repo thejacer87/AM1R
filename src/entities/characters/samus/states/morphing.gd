@@ -4,7 +4,8 @@ extends BaseMovement
 func enter(previous_state_path: String, data := {}) -> void:
 	super.enter(previous_state_path, data)
 	super.update_collisions("morph")
-	samus.animation_player.play("morph_ball")
+	samus.animation_player.play("morphing")
+	samus.animation_player.queue("morph_ball")
 
 
 func physics_update(delta: float) -> void:

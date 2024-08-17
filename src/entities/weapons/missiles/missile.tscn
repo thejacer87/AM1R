@@ -1,0 +1,173 @@
+[gd_scene load_steps=13 format=3 uid="uid://dqatwq4k5bqky"]
+
+[ext_resource type="Script" path="res://src/entities/weapons/missiles/missile.gd" id="1_tcepk"]
+[ext_resource type="AudioStream" uid="uid://cxyt4m7ud15da" path="res://src/entities/weapons/missiles/sndFireMissile.wav" id="2_qb3q2"]
+[ext_resource type="Texture2D" uid="uid://tb0bqkkc1brx" path="res://src/entities/weapons/missiles/missile.png" id="4_halu4"]
+[ext_resource type="Texture2D" uid="uid://tb0bqkkc1brx" path="res://src/entities/weapons/missiles/missile.png" id="4_rbpfx"]
+
+[sub_resource type="Animation" id="Animation_im7pi"]
+length = 0.332
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = false
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.083, 0.166, 0.249),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_o3ybc"]
+length = 0.166
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = false
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.083),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [4, 5]
+}
+
+[sub_resource type="Animation" id="Animation_8wbqp"]
+length = 0.581
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = false
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.083, 0.166, 0.249, 0.332, 0.415, 0.498),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [6, 7, 8, 9, 10, 11, 12]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8ffnv"]
+_data = {
+"explode": SubResource("Animation_8wbqp"),
+"flame": SubResource("Animation_o3ybc"),
+"missile": SubResource("Animation_im7pi")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4rowb"]
+size = Vector2(20, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_22dgh"]
+atlas = ExtResource("4_rbpfx")
+region = Rect2(0, 40, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x7jn8"]
+atlas = ExtResource("4_rbpfx")
+region = Rect2(40, 40, 40, 40)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_j41hl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_22dgh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x7jn8")
+}],
+"loop": true,
+"name": &"default",
+"speed": 20.0
+}]
+
+[node name="Missile" type="Area2D"]
+collision_layer = 2
+collision_mask = 12
+script = ExtResource("1_tcepk")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("4_halu4")
+hframes = 4
+vframes = 4
+metadata/_aseprite_wizard_config_ = {
+"i_mode": -1,
+"keep_anim_length": false,
+"layer": "",
+"o_ex_p": "",
+"o_folder": "res://src/entities/weapons/missiles/",
+"o_name": "missile",
+"only_visible": false,
+"player": "Sprite2D/AnimationPlayer",
+"slice": "",
+"source": "res://src/entities/weapons/missiles/missile.aseprite"
+}
+metadata/_aseprite_wizard_interface_config_ = {
+"animation_section": true,
+"layer_section": false,
+"output_section": true
+}
+metadata/_aseprite_wizard_source_file_hash_ = "f098cf4c66d7a824b847a2ce9e6b86cb"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_8ffnv")
+}
+autoplay = "missile"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_qb3q2")
+volume_db = -15.634
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_4rowb")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-11, 0)
+sprite_frames = SubResource("SpriteFrames_j41hl")
+autoplay = "default"
+frame_progress = 0.492373
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
