@@ -1,12 +1,11 @@
-[gd_scene load_steps=13 format=3 uid="uid://dqatwq4k5bqky"]
+[gd_scene load_steps=12 format=3 uid="uid://dqatwq4k5bqky"]
 
 [ext_resource type="Script" path="res://src/entities/weapons/missiles/missile.gd" id="1_tcepk"]
 [ext_resource type="AudioStream" uid="uid://cxyt4m7ud15da" path="res://src/entities/weapons/missiles/sndFireMissile.wav" id="2_qb3q2"]
 [ext_resource type="Texture2D" uid="uid://tb0bqkkc1brx" path="res://src/entities/weapons/missiles/missile.png" id="4_halu4"]
-[ext_resource type="Texture2D" uid="uid://tb0bqkkc1brx" path="res://src/entities/weapons/missiles/missile.png" id="4_rbpfx"]
 
-[sub_resource type="Animation" id="Animation_im7pi"]
-length = 0.332
+[sub_resource type="Animation" id="Animation_8wbqp"]
+length = 0.581
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -27,10 +26,10 @@ tracks/1/path = NodePath(".:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = false
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.083, 0.166, 0.249),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.083, 0.166, 0.249, 0.332, 0.415, 0.498),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [0, 1, 2, 3]
+"values": [6, 7, 8, 9, 10, 11, 12]
 }
 
 [sub_resource type="Animation" id="Animation_o3ybc"]
@@ -61,8 +60,8 @@ tracks/1/keys = {
 "values": [4, 5]
 }
 
-[sub_resource type="Animation" id="Animation_8wbqp"]
-length = 0.581
+[sub_resource type="Animation" id="Animation_im7pi"]
+length = 0.332
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -83,10 +82,10 @@ tracks/1/path = NodePath(".:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = false
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.083, 0.166, 0.249, 0.332, 0.415, 0.498),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.083, 0.166, 0.249),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [6, 7, 8, 9, 10, 11, 12]
+"values": [0, 1, 2, 3]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_8ffnv"]
@@ -100,11 +99,11 @@ _data = {
 size = Vector2(20, 10)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_22dgh"]
-atlas = ExtResource("4_rbpfx")
+atlas = ExtResource("4_halu4")
 region = Rect2(0, 40, 40, 40)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_x7jn8"]
-atlas = ExtResource("4_rbpfx")
+atlas = ExtResource("4_halu4")
 region = Rect2(40, 40, 40, 40)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_j41hl"]

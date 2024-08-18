@@ -11,8 +11,8 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
-	position.x += 500 * delta * direction.x
-	position.y += 500 * delta * direction.y
+	position.x += 300 * delta * direction.x
+	position.y += 300 * delta * direction.y
 
 
 func _on_area_entered(area: Area2D) -> void:
