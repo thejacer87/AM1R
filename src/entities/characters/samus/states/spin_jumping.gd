@@ -14,9 +14,14 @@ func physics_update(delta: float) -> void:
 	if not input_direction_x == 0:
 		samus.velocity.x = samus.SPEED * input_direction_x
 	samus.move_and_slide()
+	
+	if Input.is_action_just_pressed("left_" + str(samus.player_index)):
+		samus.animation_player.play("jump_" + samus.look_direction)
+	if Input.is_action_just_pressed("right_" + str(samus.player_index)):
+		samus.animation_player.play("jump_" + samus.look_direction)
 
 	if samus.velocity.y >= 0:
-		finished.emit(SPIN_FALLING) # Only difference with Jumping
+		finished.emit(SPIN_FALLING)
 
 	if Input.is_action_just_pressed("morph_" + str(samus.player_index)):
 		finished.emit(MORPHING)

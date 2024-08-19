@@ -63,9 +63,7 @@ func exit() -> void:
 
 
 func turn_around(direction: String) -> void:
-	print("turn around: " + direction)
 	samus.looking = -samus.looking
-	samus.look_direction = direction
 	var animation := "crouch_"
 	if samus.is_aiming and Input.is_action_pressed("diagonal_aim_" + str(samus.player_index)):
 		animation += "aim_diag_" + ("down_" if samus.aiming_down else "up_")

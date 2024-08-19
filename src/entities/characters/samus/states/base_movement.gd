@@ -20,24 +20,18 @@ func _ready() -> void:
 		
 func enter(previous_state_path: String, data := {}) -> void:
 	print("Entering State: " + name)
-	if data.has("look_direction"):
-		samus.look_direction = data.look_direction
-	elif Input.is_action_pressed("left_" + str(samus.player_index)):
+	if Input.is_action_pressed("left_" + str(samus.player_index)):
 		samus.looking = samus.look_directions.LEFT
-		samus.look_direction = "left"
 	elif Input.is_action_pressed("right_" + str(samus.player_index)):
 		samus.looking = samus.look_directions.RIGHT
-		samus.look_direction = "right"
 		
 
 func physics_update(delta: float) -> void:
 	samus.velocity.y = min(samus.velocity.y + samus.GRAVITY * delta, samus.MAX_FALL_SPEED)
 	if Input.is_action_pressed("left_" + str(samus.player_index)):
 		samus.looking = samus.look_directions.LEFT
-		samus.look_direction = "left"
 	if Input.is_action_pressed("right_" + str(samus.player_index)):
 		samus.looking = samus.look_directions.RIGHT
-		samus.look_direction = "right"
 		
 
 func exit() -> void:

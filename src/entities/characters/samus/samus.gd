@@ -5,7 +5,7 @@ enum look_directions {LEFT = -1, RIGHT = 1}
 
 const SPEED := 115.0
 const MAX_FALL_SPEED := 250.0
-const WALL_JUMP_SPEED := 66.66667
+const WALL_JUMP_SPEED := 66.667
 
 @export var energy := 99
 @export var GRAVITY : float
@@ -22,12 +22,14 @@ const WALL_JUMP_SPEED := 66.66667
 @onready var sprite_2d: Sprite2D = $Sprite2D
 @onready var crouch_run_timer: Timer = $CrouchRunTimer
 @onready var aim_timer: Timer = $AimTimer
-@onready var wall_jump_timer: Timer = $WallJumpTimer
 @onready var idle_timer: Timer = $IdleTimer
+@onready var wall_jump_timer: Timer = $WallJumpTimer
 @onready var arm_cannon: ArmCannon = $ArmCannon
 @onready var is_aiming := false
 @onready var aiming_down := false
-@onready var look_direction := "right"
+@onready var look_direction := "right":
+	get:
+		return "left" if looking == look_directions.LEFT else "right"
 @onready var state_machine: StateMachine = $StateMachine
 @onready var bomb_scene := preload("res://src/entities/weapons/bombs/bomb.tscn")
 @onready var bomb_drop_marker: Marker2D = $BombDropMarker
@@ -50,6 +52,7 @@ func _process(_delta: float) -> void:
 	label.text = fsm.state.name
 	label.text += "\nLooking: " + str(looking)
 	label.text += "\nAim Timer: " + str(aim_timer.time_left)
+	label.text += "\nWall Jump Timer: " + str(wall_jump_timer.time_left)
 	label.text += "\nAnimation: " + str(animation_player.current_animation)
 	label.text += "\nMissile: " + str("Armed" if is_missile_armed else "Nope")
 	if looking == look_directions.LEFT:
@@ -72,11 +75,11 @@ func _physics_process(delta: float) -> void:
 		else:
 			shoot()
 	
+	
 func wall_jump(wall_direction: int) -> void:
-	print("Samus.gd: wall jump")
-	looking = -looking
+	looking = -wall_direction
 	velocity.x = 1.75 * -wall_direction * WALL_JUMP_SPEED
-	velocity.y = MAX_JUMP_VELOCITY * 0.8
+	velocity.y = MAX_JUMP_VELOCITY * 0.85
 	
 	
 func shoot() -> void:
