@@ -18,6 +18,7 @@ const WALL_JUMP_SPEED := 66.667
 @onready var morph_ball_collision_shape_2d: CollisionShape2D = $MorphBallCollisionShape2D
 @onready var standing_collision_shape_2d: CollisionShape2D = $StandingCollisionShape2D
 @onready var crouching_collision_shape_2d: CollisionShape2D = $CrouchingCollisionShape2D
+@onready var spin_collision_shape_2d: CollisionShape2D = $SpinCollisionShape2D
 @onready var animation_player: AnimationPlayer = $Sprite2D/AnimationPlayer
 @onready var sprite_2d: Sprite2D = $Sprite2D
 @onready var crouch_run_timer: Timer = $CrouchRunTimer
@@ -34,6 +35,8 @@ const WALL_JUMP_SPEED := 66.667
 @onready var bomb_scene := preload("res://src/entities/weapons/bombs/bomb.tscn")
 @onready var bomb_drop_marker: Marker2D = $BombDropMarker
 @onready var is_missile_armed := false
+@onready var wall_check_top: RayCast2D = %WallCheckTop
+@onready var wall_check_bottom: RayCast2D = %WallCheckBottom
 
 
 var looking := look_directions.RIGHT
@@ -57,8 +60,12 @@ func _process(_delta: float) -> void:
 	label.text += "\nMissile: " + str("Armed" if is_missile_armed else "Nope")
 	if looking == look_directions.LEFT:
 		sprite_2d.flip_h = true
+		wall_check_top.scale = Vector2(-1, -1)
+		wall_check_bottom.scale = Vector2(-1, -1)
 	else:
 		sprite_2d.flip_h = false
+		wall_check_top.scale = Vector2(1, 1)
+		wall_check_bottom.scale = Vector2(1, 1)
 	
 	
 func _physics_process(delta: float) -> void:
@@ -77,6 +84,7 @@ func _physics_process(delta: float) -> void:
 	
 	
 func wall_jump(wall_direction: int) -> void:
+	wall_jump_timer.stop()
 	looking = -wall_direction
 	velocity.x = 1.75 * -wall_direction * WALL_JUMP_SPEED
 	velocity.y = MAX_JUMP_VELOCITY * 0.85

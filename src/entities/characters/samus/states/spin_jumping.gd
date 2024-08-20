@@ -4,6 +4,8 @@ extends BaseMovement
 
 func enter(previous_state_path: String, data := {}) -> void:
 	super.enter(previous_state_path, data)
+	super.update_collisions("spin")
+	samus.sprite_2d.position.y = 0.0
 	samus.velocity.y = samus.MAX_JUMP_VELOCITY
 	samus.animation_player.play("jump_" + samus.look_direction)
 
@@ -45,3 +47,8 @@ func physics_update(delta: float) -> void:
 		else:
 			samus.velocity.y = 0
 			 
+
+func exit() -> void:
+	super.exit()
+	samus.sprite_2d.position.y = -8.0
+	super.update_collisions("")

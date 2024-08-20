@@ -5,6 +5,8 @@ var wall_direction := 0
 
 func enter(previous_state_path: String, data := {}) -> void:
 	super.enter(previous_state_path, data)
+	super.update_collisions("spin")
+	samus.sprite_2d.position.y = 0.0
 	var current_animation := samus.animation_player.current_animation
 	
 	samus.animation_player.play("jump_" + samus.look_direction)
@@ -12,31 +14,39 @@ func enter(previous_state_path: String, data := {}) -> void:
 
 func physics_update(delta: float) -> void:
 #	Check wall direction first before super has a chance to change the looking direction. 
-	if samus.is_on_wall():
+	
+	if samus.wall_check_top.is_colliding() or samus.wall_check_bottom.is_colliding():
+		print("is colliding")
 		wall_direction = samus.looking
-		if Input.is_action_just_pressed("jump_" + str(samus.player_index)):
-			print('wall jumped!')
+		print("wall dirction:" + str(wall_direction))
+		if wall_direction == samus.look_directions.LEFT and Input.is_action_just_pressed("right_" + str(samus.player_index)):
+			print("wall left pressed right")
 			samus.wall_jump_timer.start()
-			samus.wall_jump(wall_direction)
-			samus.animation_player.play("jump_" + samus.look_direction)
+		elif wall_direction == samus.look_directions.RIGHT and Input.is_action_just_pressed("left_" + str(samus.player_index)):
+			samus.wall_jump_timer.start()
 			
-	samus.velocity.y = min(samus.velocity.y + samus.GRAVITY * delta, samus.MAX_FALL_SPEED)
+	super.physics_update(delta)
+	if samus.wall_jump_timer.time_left > 0 and Input.is_action_just_pressed("jump_" + str(samus.player_index)):
+		print('wall jumped!')
+		samus.wall_jump(wall_direction)
+		samus.animation_player.play("jump_" + samus.look_direction)
 
 	var input_direction_x := Input.get_axis("left_" + str(samus.player_index), "right_" + str(samus.player_index))
-	
+	if not input_direction_x == 0:
+		samus.velocity.x = samus.SPEED * input_direction_x
 	samus.move_and_slide()
 	
-	if samus.wall_jump_timer.time_left <= 0:
-		print("checking left right")
+	if Input.is_action_just_pressed("left_" + str(samus.player_index)):
+		samus.animation_player.play("jump_" + samus.look_direction)
+	if Input.is_action_just_pressed("right_" + str(samus.player_index)):
+		samus.animation_player.play("jump_" + samus.look_direction)
 		
-		if not input_direction_x == 0:
-			samus.velocity.x = samus.SPEED * input_direction_x
-		if Input.is_action_pressed("left_" + str(samus.player_index)):
-			samus.looking = samus.look_directions.LEFT
-			samus.animation_player.play("jump_" + samus.look_direction)
-		if Input.is_action_pressed("right_" + str(samus.player_index)):
-			samus.looking = samus.look_directions.RIGHT
-			samus.animation_player.play("jump_" + samus.look_direction)
+		#if Input.is_action_pressed("left_" + str(samus.player_index)):
+			#samus.looking = samus.look_directions.LEFT
+			#samus.animation_player.play("jump_" + samus.look_direction)
+		#if Input.is_action_pressed("right_" + str(samus.player_index)):
+			#samus.looking = samus.look_directions.RIGHT
+			#samus.animation_player.play("jump_" + samus.look_direction)
 		
 	if Input.is_action_just_pressed("morph_" + str(samus.player_index)):
 		finished.emit(MORPHING)
@@ -50,3 +60,9 @@ func physics_update(delta: float) -> void:
 			finished.emit(IDLE, {"look_direction": samus.look_direction})
 		else:
 			finished.emit(RUNNING)
+
+
+func exit() -> void:
+	super.exit()
+	samus.sprite_2d.position.y = -8.0
+	super.update_collisions("")

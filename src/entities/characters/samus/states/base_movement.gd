@@ -53,11 +53,19 @@ func update_collisions(collision_to_enable: String) -> void:
 		samus.crouching_collision_shape_2d.disabled = false
 		samus.morph_ball_collision_shape_2d.disabled = true
 		samus.standing_collision_shape_2d.disabled = true
+		samus.spin_collision_shape_2d.disabled = true
+	elif collision_to_enable == "spin":
+		samus.morph_ball_collision_shape_2d.disabled = true
+		samus.standing_collision_shape_2d.disabled = true
+		samus.crouching_collision_shape_2d.disabled = true
+		samus.spin_collision_shape_2d.disabled = false
 	elif collision_to_enable == "morph":
 		samus.morph_ball_collision_shape_2d.disabled = false
 		samus.standing_collision_shape_2d.disabled = true
 		samus.crouching_collision_shape_2d.disabled = true
+		samus.spin_collision_shape_2d.disabled = true
 	else:
 		samus.standing_collision_shape_2d.disabled = false
 		samus.morph_ball_collision_shape_2d.disabled = true
 		samus.crouching_collision_shape_2d.disabled = true
+		samus.spin_collision_shape_2d.disabled = true
