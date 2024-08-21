@@ -39,6 +39,10 @@ const WALL_JUMP_SPEED := 66.667
 @onready var wall_check_bottom: RayCast2D = %WallCheckBottom
 
 
+var power_ups: PowerUps:
+	set(value):
+		power_ups = value
+		set_physics_process(power_ups != null)
 var looking := look_directions.RIGHT
 var jump_duration := 0.70
 var max_jump_height : float = 10.5 * Globals.UNIT_SIZE
@@ -46,6 +50,7 @@ var min_jump_height : float = 4 * Globals.UNIT_SIZE
 
 
 func _ready() -> void:
+	set_physics_process(false)
 	GRAVITY = 2 * max_jump_height / pow(jump_duration, 2)
 	MAX_JUMP_VELOCITY = -sqrt(2 * GRAVITY * max_jump_height) # for highjump* 1.4
 	MIN_JUMP_VELOCITY = -sqrt(2 * GRAVITY * min_jump_height)
@@ -53,6 +58,7 @@ func _ready() -> void:
 
 func _process(_delta: float) -> void:
 	label.text = fsm.state.name
+	label.text += "\nEnergy: " + str(energy)
 	label.text += "\nLooking: " + str(looking)
 	label.text += "\nAim Timer: " + str(aim_timer.time_left)
 	label.text += "\nWall Jump Timer: " + str(wall_jump_timer.time_left)
@@ -125,4 +131,13 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 func _on_aim_timer_timeout() -> void:
 	is_aiming = false
 	
+
+func is_colliding_with_wall() -> bool:
+	return wall_check_top.is_colliding() or wall_check_bottom.is_colliding()
 	
+
+
+func _on_hurtbox_area_entered(area: Area2D) -> void:
+	if area is Hitbox:
+		var hitbox := area as Hitbox
+		damage(hitbox.damage)

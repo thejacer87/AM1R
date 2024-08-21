@@ -315,11 +315,14 @@ fire_1={
 
 [layer_names]
 
-2d_physics/layer_1="Player"
-2d_physics/layer_2="Weapon"
-2d_physics/layer_3="World"
-2d_physics/layer_4="Enemy"
-2d_physics/layer_5="Enemy Projectile"
+2d_physics/layer_1="player"
+2d_physics/layer_2="enemy"
+2d_physics/layer_3="terrain"
+2d_physics/layer_4="door_lock"
+2d_physics/layer_5="item"
+2d_physics/layer_6="beam"
+2d_physics/layer_7="missile"
+2d_physics/layer_8="bomb"
 
 [rendering]
 

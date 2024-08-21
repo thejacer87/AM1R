@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://d1g0axrrrsg5g"]
+
+[ext_resource type="Script" path="res://src/entities/enemies/enemy.gd" id="1_653rv"]
+[ext_resource type="PackedScene" uid="uid://bp61p1vf75fg1" path="res://src/entities/hitboxes/hurtbox.tscn" id="2_pc6iq"]
+[ext_resource type="PackedScene" uid="uid://dv2rtg1exmstp" path="res://src/entities/hitboxes/hitbox.tscn" id="3_6o8pb"]
+
+[node name="Enemy" type="CharacterBody2D"]
+script = ExtResource("1_653rv")
+
+[node name="Hitbox" parent="." instance=ExtResource("3_6o8pb")]
+
+[node name="Hurtbox" parent="." instance=ExtResource("2_pc6iq")]
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
+[connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenEnabler2D" to="." method="_on_visible_on_screen_enabler_2d_screen_exited"]

@@ -4,9 +4,11 @@ extends Node2D
 @onready var label: Label = $Label
 @onready var input_label: Label = $InputLabel
 
+var _save: SaveGame
 
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+	create_or_load_save()
 	for index in Input.get_connected_joypads():
 		input_label.text += "Player " + str(index + 1) + ": " + str(Input.get_joy_name(index)) + "\n"
 
@@ -15,3 +17,12 @@ func _process(delta: float) -> void:
 	label.text = "Energy: " + str(samus.energy)
 	pass
 	
+
+func create_or_load_save() -> void:
+	if SaveGame.save_exists():
+		_save = SaveGame.load_save_game() as SaveGame
+	else:
+		_save = SaveGame.new()
+		_save.write_save_game()
+		
+	samus.power_ups = _save.power_ups

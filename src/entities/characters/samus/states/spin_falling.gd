@@ -15,19 +15,15 @@ func enter(previous_state_path: String, data := {}) -> void:
 func physics_update(delta: float) -> void:
 #	Check wall direction first before super has a chance to change the looking direction. 
 	
-	if samus.wall_check_top.is_colliding() or samus.wall_check_bottom.is_colliding():
-		print("is colliding")
+	if samus.is_colliding_with_wall():
 		wall_direction = samus.looking
-		print("wall dirction:" + str(wall_direction))
 		if wall_direction == samus.look_directions.LEFT and Input.is_action_just_pressed("right_" + str(samus.player_index)):
-			print("wall left pressed right")
 			samus.wall_jump_timer.start()
 		elif wall_direction == samus.look_directions.RIGHT and Input.is_action_just_pressed("left_" + str(samus.player_index)):
 			samus.wall_jump_timer.start()
 			
 	super.physics_update(delta)
 	if samus.wall_jump_timer.time_left > 0 and Input.is_action_just_pressed("jump_" + str(samus.player_index)):
-		print('wall jumped!')
 		samus.wall_jump(wall_direction)
 		samus.animation_player.play("jump_" + samus.look_direction)
 
@@ -40,13 +36,6 @@ func physics_update(delta: float) -> void:
 		samus.animation_player.play("jump_" + samus.look_direction)
 	if Input.is_action_just_pressed("right_" + str(samus.player_index)):
 		samus.animation_player.play("jump_" + samus.look_direction)
-		
-		#if Input.is_action_pressed("left_" + str(samus.player_index)):
-			#samus.looking = samus.look_directions.LEFT
-			#samus.animation_player.play("jump_" + samus.look_direction)
-		#if Input.is_action_pressed("right_" + str(samus.player_index)):
-			#samus.looking = samus.look_directions.RIGHT
-			#samus.animation_player.play("jump_" + samus.look_direction)
 		
 	if Input.is_action_just_pressed("morph_" + str(samus.player_index)):
 		finished.emit(MORPHING)

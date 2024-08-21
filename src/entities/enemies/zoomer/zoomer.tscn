@@ -1,6 +1,102 @@
-[gd_scene load_steps=2 format=3 uid="uid://dqgu6qrj4drn6"]
+[gd_scene load_steps=14 format=3 uid="uid://ddpn1n1umck07"]
 
+[ext_resource type="PackedScene" uid="uid://d1g0axrrrsg5g" path="res://src/entities/enemies/enemy.tscn" id="1_2nofm"]
 [ext_resource type="Script" path="res://src/entities/enemies/zoomer/zoomer.gd" id="1_q2g1m"]
+[ext_resource type="Texture2D" uid="uid://biuvlp1kregcr" path="res://src/entities/enemies/zoomer/zoomer.png" id="4_ijo1r"]
 
-[node name="Zoomer" type="Node2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k4x26"]
+size = Vector2(16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4lwnc"]
+size = Vector2(18, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j54we"]
+atlas = ExtResource("4_ijo1r")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k6ijk"]
+atlas = ExtResource("4_ijo1r")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oytuw"]
+atlas = ExtResource("4_ijo1r")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hukul"]
+atlas = ExtResource("4_ijo1r")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1ljvv"]
+atlas = ExtResource("4_ijo1r")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vpxmh"]
+atlas = ExtResource("4_ijo1r")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7a2dd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j54we")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k6ijk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oytuw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hukul")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1ljvv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vpxmh")
+}],
+"loop": true,
+"name": &"default",
+"speed": 6.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_x0fwb"]
+radius = 7.5
+
+[node name="Zoomer" instance=ExtResource("1_2nofm")]
+collision_layer = 2
+collision_mask = 4
 script = ExtResource("1_q2g1m")
+metadata/_edit_group_ = true
+
+[node name="Hitbox" parent="." index="0"]
+collision_layer = 2
+collision_mask = 1
+damage = 5
+
+[node name="CollisionShape2D" parent="Hitbox" index="0"]
+shape = SubResource("RectangleShape2D_k4x26")
+
+[node name="Hurtbox" parent="." index="1"]
+collision_layer = 2
+collision_mask = 224
+
+[node name="CollisionShape2D" parent="Hurtbox" index="0"]
+shape = SubResource("RectangleShape2D_4lwnc")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="2"]
+sprite_frames = SubResource("SpriteFrames_7a2dd")
+
+[node name="Label" type="Label" parent="." index="4"]
+offset_left = 20.0
+offset_top = -30.0
+offset_right = 60.0
+offset_bottom = -7.0
+text = "HP: 
+"
+
+[node name="CollisionShape2D" parent="." index="5"]
+shape = SubResource("CircleShape2D_x0fwb")
+
+[editable path="Hitbox"]
+[editable path="Hurtbox"]

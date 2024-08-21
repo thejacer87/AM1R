@@ -197,3 +197,5 @@ libraries = {
 "": SubResource("AnimationLibrary_wsr3u")
 }
 autoplay = "flash"
+
+[node name="MiissileSprite2D" type="Sprite2D" parent="."]

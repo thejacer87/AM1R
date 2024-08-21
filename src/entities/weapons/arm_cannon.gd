@@ -30,6 +30,7 @@ func shoot() -> void:
 		get_tree().get_root().add_child(shot)
 	else:
 		var beam := beam.instantiate() as Beam
+		beam.power_ups = samus.power_ups
 	#	This makes the flash not rotate.
 		flash_sprite_2d.rotation = -rotation
 		flash_animation_player.play("flash")
