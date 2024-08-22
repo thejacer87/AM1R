@@ -6,6 +6,7 @@
 
 [node name="Enemy" type="CharacterBody2D"]
 script = ExtResource("1_653rv")
+starting_hp = 20
 
 [node name="Hitbox" parent="." instance=ExtResource("3_6o8pb")]
 

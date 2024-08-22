@@ -75,6 +75,7 @@ func _process(_delta: float) -> void:
 	
 	
 func _physics_process(delta: float) -> void:
+#	TODO: these don't work for players 2-4
 	if Input.is_action_pressed("arm_weapon_" + str(player_index)):
 		is_missile_armed = true
 			

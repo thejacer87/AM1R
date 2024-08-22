@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://cqnbktnidly7t"
+path="res://.godot/imported/skree.aseprite-c00491eb9e33de690d320148fb34240f.res"
+
+[deps]
+
+source_file="res://src/entities/enemies/skree/skree.aseprite"
+dest_files=["res://.godot/imported/skree.aseprite-c00491eb9e33de690d320148fb34240f.res"]
+
+[params]
+

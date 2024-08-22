@@ -67,12 +67,13 @@ radius = 7.5
 collision_layer = 2
 collision_mask = 4
 script = ExtResource("1_q2g1m")
+move = Vector2(1, 0)
 metadata/_edit_group_ = true
 
 [node name="Hitbox" parent="." index="0"]
 collision_layer = 2
 collision_mask = 1
-damage = 5
+damage = 8
 
 [node name="CollisionShape2D" parent="Hitbox" index="0"]
 shape = SubResource("RectangleShape2D_k4x26")
@@ -86,8 +87,11 @@ shape = SubResource("RectangleShape2D_4lwnc")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="2"]
 sprite_frames = SubResource("SpriteFrames_7a2dd")
+autoplay = "default"
+frame_progress = 0.991663
 
 [node name="Label" type="Label" parent="." index="4"]
+visible = false
 offset_left = 20.0
 offset_top = -30.0
 offset_right = 60.0
