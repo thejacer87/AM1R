@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://byw41mobrma5v"]
+[gd_scene load_steps=12 format=3 uid="uid://byw41mobrma5v"]
 
 [ext_resource type="Texture2D" uid="uid://dsxgiafgywlet" path="res://src/entities/weapons/bombs/bombs.png" id="1_2nwyr"]
 [ext_resource type="Script" path="res://src/entities/weapons/bombs/bomb.gd" id="1_ducys"]
 [ext_resource type="AudioStream" uid="uid://bl4705mi4lhu8" path="res://src/entities/weapons/bombs/sfx/sndBombExpl.wav" id="3_dcf0h"]
 [ext_resource type="AudioStream" uid="uid://byhvdgfao8ktv" path="res://src/entities/weapons/bombs/sfx/sndBombSet.wav" id="4_fc5nm"]
+[ext_resource type="PackedScene" uid="uid://dv2rtg1exmstp" path="res://src/entities/hitboxes/hitbox.tscn" id="5_jd25r"]
 
 [sub_resource type="Animation" id="Animation_c6odv"]
 length = 0.001
@@ -42,6 +43,18 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Hitbox/CollisionShape2D:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_por62"]
@@ -108,6 +121,18 @@ tracks/4/keys = {
 "update": 1,
 "values": [15, 14, 13, 12, 0, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1]
 }
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Hitbox/CollisionShape2D:disabled")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.0666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
 
 [sub_resource type="Animation" id="Animation_mmf7t"]
 length = 0.801
@@ -159,6 +184,18 @@ tracks/3/keys = {
 "update": 1,
 "values": [11, 20, 19, 18, 17, 11, 20, 16, 18]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Hitbox/CollisionShape2D:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_duseh"]
 _data = {
@@ -169,8 +206,10 @@ _data = {
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vwmhd"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_oexdk"]
+
 [node name="Bomb" type="Area2D"]
-collision_layer = 2
+collision_layer = 128
 collision_mask = 13
 script = ExtResource("1_ducys")
 
@@ -179,7 +218,7 @@ texture_filter = 1
 texture = ExtResource("1_2nwyr")
 hframes = 5
 vframes = 5
-frame = 11
+frame = 15
 metadata/_aseprite_wizard_config_ = {
 "i_mode": -1,
 "keep_anim_length": true,
@@ -218,4 +257,15 @@ volume_db = -15.0
 stream = ExtResource("4_fc5nm")
 volume_db = -15.0
 
+[node name="Hitbox" parent="." instance=ExtResource("5_jd25r")]
+collision_layer = 128
+collision_mask = 2
+damage = 30
+
+[node name="CollisionShape2D" parent="Hitbox" index="0"]
+shape = SubResource("CircleShape2D_oexdk")
+disabled = true
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+
+[editable path="Hitbox"]

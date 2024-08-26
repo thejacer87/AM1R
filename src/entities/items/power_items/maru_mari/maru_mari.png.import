@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://boicffbnd1vfr"
-path="res://.godot/imported/zoomer.png-2c2292b629ed8d895b8210ec1b09c4dd.ctex"
+uid="uid://bc8rsqja70xg"
+path="res://.godot/imported/maru_mari.png-2d4936787eb01f8bd95bbe0ccec06c08.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://src/entities/enemies/zoomer/zoomer.png"
-dest_files=["res://.godot/imported/zoomer.png-2c2292b629ed8d895b8210ec1b09c4dd.ctex"]
+source_file="res://src/entities/items/power_items/maru_mari/maru_mari.png"
+dest_files=["res://.godot/imported/maru_mari.png-2d4936787eb01f8bd95bbe0ccec06c08.ctex"]
 
 [params]
 

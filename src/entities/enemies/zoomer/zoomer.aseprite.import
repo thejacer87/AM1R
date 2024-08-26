@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://bmrs474kclstv"
+path="res://.godot/imported/zoomer.aseprite-1536be1cb738161a4a29b1acc0546f9d.res"
+
+[deps]
+
+source_file="res://src/entities/enemies/zoomer/zoomer.aseprite"
+dest_files=["res://.godot/imported/zoomer.aseprite-1536be1cb738161a4a29b1acc0546f9d.res"]
+
+[params]
+

@@ -5,7 +5,7 @@ extends BaseMovement
 
 func enter(previous_state_path: String, data := {}) -> void:
 	super.enter(previous_state_path, data)
-	samus.velocity.y = samus.MAX_JUMP_VELOCITY
+	samus.velocity.y = samus.MAX_JUMP_VELOCITY * (samus.HIGH_JUMP_MULTIPLIER if samus.has_power_item_activated("high_jump") else 1.0)
 	var animation := "jump_up_"
 	if samus.is_aiming and Input.is_action_pressed("diagonal_aim_" + str(samus.player_index)):
 			animation += "aim_diag_" + ("down_" if samus.aiming_down else "up_")

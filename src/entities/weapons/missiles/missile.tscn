@@ -1,7 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://dqatwq4k5bqky"]
+[gd_scene load_steps=14 format=3 uid="uid://dqatwq4k5bqky"]
 
 [ext_resource type="Script" path="res://src/entities/weapons/missiles/missile.gd" id="1_tcepk"]
 [ext_resource type="AudioStream" uid="uid://cxyt4m7ud15da" path="res://src/entities/weapons/missiles/sndFireMissile.wav" id="2_qb3q2"]
+[ext_resource type="PackedScene" uid="uid://dv2rtg1exmstp" path="res://src/entities/hitboxes/hitbox.tscn" id="4_4ks2x"]
 [ext_resource type="Texture2D" uid="uid://tb0bqkkc1brx" path="res://src/entities/weapons/missiles/missile.png" id="4_halu4"]
 
 [sub_resource type="Animation" id="Animation_8wbqp"]
@@ -95,8 +96,9 @@ _data = {
 "missile": SubResource("Animation_im7pi")
 }
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_4rowb"]
-size = Vector2(20, 10)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7ui1j"]
+radius = 3.5
+height = 15.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_22dgh"]
 atlas = ExtResource("4_halu4")
@@ -119,6 +121,9 @@ animations = [{
 "name": &"default",
 "speed": 20.0
 }]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3bru3"]
+size = Vector2(24.75, 11)
 
 [node name="Missile" type="Area2D"]
 collision_layer = 2
@@ -160,7 +165,8 @@ stream = ExtResource("2_qb3q2")
 volume_db = -15.634
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_4rowb")
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_7ui1j")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-11, 0)
@@ -168,5 +174,16 @@ sprite_frames = SubResource("SpriteFrames_j41hl")
 autoplay = "default"
 frame_progress = 0.492373
 
+[node name="Hitbox" parent="." instance=ExtResource("4_4ks2x")]
+collision_layer = 64
+collision_mask = 14
+damage = 30
+
+[node name="CollisionShape2D" parent="Hitbox" index="0"]
+position = Vector2(-3.625, 0)
+shape = SubResource("RectangleShape2D_3bru3")
+
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+
+[editable path="Hitbox"]

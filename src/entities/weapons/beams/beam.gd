@@ -2,7 +2,7 @@ class_name Beam
 extends Area2D
 
 @export var direction: Vector2
-@export var power_ups: PowerUps 
+@export var collectibles: Collectibles 
 
 @onready var sprite_2d: Sprite2D = $Sprite2D
 @onready var flash_sprite_2d: Sprite2D = $FlashSprite2D
@@ -15,7 +15,7 @@ var long_beam_distance := 1.5
 
 func _ready() -> void:
 	audio_stream_player.play()
-	timer.wait_time = long_beam_distance if power_ups.beams.long_beam.collected else beam_distance
+	timer.wait_time = long_beam_distance if collectibles.power_items.long_beam.collected else beam_distance
 	timer.start()
 
 
@@ -33,7 +33,7 @@ func _on_timer_timeout() -> void:
 
 
 func _on_hitbox_body_entered(body: Node2D) -> void:
-	if not power_ups.beams.wave_beam.enabled:
+	if not collectibles.power_items.wave_beam.enabled:
 #		Keep alive to finish audio? use global SFX player instead?
 		queue_free()
 

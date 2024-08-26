@@ -1,0 +1,54 @@
+[gd_scene load_steps=7 format=3 uid="uid://6ga1adkl21ij"]
+
+[ext_resource type="PackedScene" uid="uid://bvklw67nlkubk" path="res://src/entities/items/power_items/power_item.tscn" id="1_es37a"]
+[ext_resource type="Texture2D" uid="uid://bc8rsqja70xg" path="res://src/entities/items/power_items/maru_mari/maru_mari.png" id="2_dkwh4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p6ds4"]
+atlas = ExtResource("2_dkwh4")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_83ib2"]
+atlas = ExtResource("2_dkwh4")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kd8yf"]
+atlas = ExtResource("2_dkwh4")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3t1qk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p6ds4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_83ib2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kd8yf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_83ib2")
+}],
+"loop": true,
+"name": &"default",
+"speed": 7.0
+}]
+
+[node name="MaruMari" instance=ExtResource("1_es37a")]
+power_item_name = "maru_mari"
+
+[node name="AnimatedSprite2D" parent="." index="0"]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_3t1qk")
+frame_progress = 0.719227
+metadata/_aseprite_wizard_config_ = {
+"layer": "",
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"slice": "",
+"source": "res://src/entities/items/power_items/maru_mari/maru_mari.aseprite"
+}
+metadata/_aseprite_wizard_source_file_hash_ = "9cc0729e4af4d034fc729131e9341946"

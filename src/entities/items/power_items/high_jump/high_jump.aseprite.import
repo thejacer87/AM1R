@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://21i2ioiu13xv"
+path="res://.godot/imported/high_jump.aseprite-878795b22f5a6935025c07d10f82e279.res"
+
+[deps]
+
+source_file="res://src/entities/items/power_items/high_jump/high_jump.aseprite"
+dest_files=["res://.godot/imported/high_jump.aseprite-878795b22f5a6935025c07d10f82e279.res"]
+
+[params]
+

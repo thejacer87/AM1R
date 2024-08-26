@@ -1,7 +1,7 @@
-class_name PowerUps
+class_name Collectibles
 extends Resource
 
-@export var beams := {
+@export var power_items := {
 	"long_beam": {
 		"collected": false, "enabled": false,
 	},
@@ -13,11 +13,8 @@ extends Resource
 	},
 	"wave_beam": {
 		"collected": false, "enabled": false,
-	}
-}
-
-@export var suit := {
-	"morph_ball": {
+	},
+	"maru_mari": {
 		"collected": false, "enabled": false,
 	},
 	"bombs": {

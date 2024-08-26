@@ -1,0 +1,55 @@
+[gd_scene load_steps=7 format=3 uid="uid://b0tcjah0l1fkb"]
+
+[ext_resource type="PackedScene" uid="uid://bvklw67nlkubk" path="res://src/entities/items/power_items/power_item.tscn" id="1_kds6j"]
+[ext_resource type="Texture2D" uid="uid://bgroqu04sxc4m" path="res://src/entities/items/power_items/high_jump/high_jump.png" id="2_avmce"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8tfi6"]
+atlas = ExtResource("2_avmce")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qoy2v"]
+atlas = ExtResource("2_avmce")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_11o8i"]
+atlas = ExtResource("2_avmce")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_uc0gg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8tfi6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qoy2v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8tfi6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_11o8i")
+}],
+"loop": true,
+"name": &"default",
+"speed": 7.0
+}]
+
+[node name="HighJump" instance=ExtResource("1_kds6j")]
+power_item_name = "high_jump"
+
+[node name="AnimatedSprite2D" parent="." index="0"]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_uc0gg")
+autoplay = "default"
+frame_progress = 0.335446
+metadata/_aseprite_wizard_config_ = {
+"layer": "",
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"slice": "",
+"source": "res://src/entities/items/power_items/high_jump/high_jump.aseprite"
+}
+metadata/_aseprite_wizard_source_file_hash_ = "0353a2641599af7a9a1f935c04b57c62"

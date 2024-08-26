@@ -1,10 +1,13 @@
 extends Node2D
 
+
 @onready var samus: Samus = $Samus
+@onready var samus_2: Samus = $Samus2
 @onready var label: Label = $Label
 @onready var input_label: Label = $InputLabel
 
 var _save: SaveGame
+
 
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
@@ -16,7 +19,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	label.text = "Energy: " + str(samus.energy)
 	pass
-	
+
 
 func create_or_load_save() -> void:
 	if SaveGame.save_exists():
@@ -25,4 +28,5 @@ func create_or_load_save() -> void:
 		_save = SaveGame.new()
 		_save.write_save_game()
 		
-	samus.power_ups = _save.power_ups
+	samus.collectibles = _save.collectibles
+	samus_2.collectibles = _save.collectibles

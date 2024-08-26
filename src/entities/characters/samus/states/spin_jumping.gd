@@ -6,7 +6,7 @@ func enter(previous_state_path: String, data := {}) -> void:
 	super.enter(previous_state_path, data)
 	super.update_collisions("spin")
 	samus.sprite_2d.position.y = 0.0
-	samus.velocity.y = samus.MAX_JUMP_VELOCITY
+	samus.velocity.y = samus.MAX_JUMP_VELOCITY * (samus.HIGH_JUMP_MULTIPLIER if samus.has_power_item_activated("high_jump") else 1.0)
 	samus.animation_player.play("jump_" + samus.look_direction)
 
 

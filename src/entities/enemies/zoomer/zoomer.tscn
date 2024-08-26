@@ -1,8 +1,8 @@
-[gd_scene load_steps=14 format=3 uid="uid://ddpn1n1umck07"]
+[gd_scene load_steps=13 format=3 uid="uid://ddpn1n1umck07"]
 
 [ext_resource type="PackedScene" uid="uid://d1g0axrrrsg5g" path="res://src/entities/enemies/enemy.tscn" id="1_2nofm"]
 [ext_resource type="Script" path="res://src/entities/enemies/zoomer/zoomer.gd" id="1_q2g1m"]
-[ext_resource type="Texture2D" uid="uid://biuvlp1kregcr" path="res://src/entities/enemies/zoomer/zoomer.png" id="4_ijo1r"]
+[ext_resource type="Texture2D" uid="uid://boicffbnd1vfr" path="res://src/entities/enemies/zoomer/zoomer.png" id="4_ijo1r"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k4x26"]
 size = Vector2(16, 16)
@@ -10,54 +10,50 @@ size = Vector2(16, 16)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4lwnc"]
 size = Vector2(18, 18)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_j54we"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_mwdb1"]
 atlas = ExtResource("4_ijo1r")
 region = Rect2(0, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_k6ijk"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_v6ml1"]
 atlas = ExtResource("4_ijo1r")
 region = Rect2(32, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_oytuw"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_cc70t"]
 atlas = ExtResource("4_ijo1r")
 region = Rect2(64, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_hukul"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_1l8ad"]
 atlas = ExtResource("4_ijo1r")
-region = Rect2(96, 0, 32, 32)
+region = Rect2(0, 32, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_1ljvv"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_ss4dp"]
 atlas = ExtResource("4_ijo1r")
-region = Rect2(128, 0, 32, 32)
+region = Rect2(32, 32, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_vpxmh"]
-atlas = ExtResource("4_ijo1r")
-region = Rect2(160, 0, 32, 32)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_7a2dd"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_vl575"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_j54we")
+"texture": SubResource("AtlasTexture_mwdb1")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_k6ijk")
+"texture": SubResource("AtlasTexture_v6ml1")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_oytuw")
+"texture": SubResource("AtlasTexture_cc70t")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_hukul")
+"texture": SubResource("AtlasTexture_1l8ad")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_1ljvv")
+"texture": SubResource("AtlasTexture_ss4dp")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_vpxmh")
+"texture": SubResource("AtlasTexture_mwdb1")
 }],
 "loop": true,
-"name": &"default",
-"speed": 6.0
+"name": &"walk",
+"speed": 13.0
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_x0fwb"]
@@ -86,9 +82,28 @@ collision_mask = 224
 shape = SubResource("RectangleShape2D_4lwnc")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="2"]
-sprite_frames = SubResource("SpriteFrames_7a2dd")
-autoplay = "default"
-frame_progress = 0.991663
+texture_filter = 1
+position = Vector2(0, 1.5)
+sprite_frames = SubResource("SpriteFrames_vl575")
+animation = &"walk"
+autoplay = "walk"
+frame = 3
+frame_progress = 0.488574
+metadata/_aseprite_wizard_config_ = {
+"layer": "",
+"o_ex_p": "",
+"o_folder": "res://src/entities/enemies/zoomer/",
+"o_name": "zoomer",
+"only_visible": false,
+"slice": "",
+"source": "res://src/entities/enemies/zoomer/zoomer.aseprite"
+}
+metadata/_aseprite_wizard_interface_config_ = {
+"layer_section": true,
+"output_section": true,
+"slice_section": true
+}
+metadata/_aseprite_wizard_source_file_hash_ = "7d2eb487be6d47e32bae8690462c2eea"
 
 [node name="Label" type="Label" parent="." index="4"]
 visible = false

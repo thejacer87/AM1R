@@ -5,7 +5,7 @@ const SAVE_GAME_PATH := "user://save.tres"
 
 @export var version := 1
 
-@export var power_ups: PowerUps = PowerUps.new()
+@export var collectibles: Collectibles = Collectibles.new()
 
 
 func write_save_game() -> void:

@@ -1,17 +1,19 @@
 class_name Samus
 extends CharacterBody2D
 
+
 enum look_directions {LEFT = -1, RIGHT = 1}
 
 const SPEED := 115.0
 const MAX_FALL_SPEED := 250.0
 const WALL_JUMP_SPEED := 66.667
+const HIGH_JUMP_MULTIPLIER := 1.2
 
 @export var energy := 99
 @export var GRAVITY : float
 @export var MAX_JUMP_VELOCITY: float
 @export var MIN_JUMP_VELOCITY: float
-@export var player_index: int = 0
+@export var player_index: int
 
 @onready var fsm := $StateMachine as StateMachine
 @onready var label: Label = $Label
@@ -39,10 +41,7 @@ const WALL_JUMP_SPEED := 66.667
 @onready var wall_check_bottom: RayCast2D = %WallCheckBottom
 
 
-var power_ups: PowerUps:
-	set(value):
-		power_ups = value
-		set_physics_process(power_ups != null)
+var collectibles: Collectibles: set = set_collectibles
 var looking := look_directions.RIGHT
 var jump_duration := 0.70
 var max_jump_height : float = 10.5 * Globals.UNIT_SIZE
@@ -50,9 +49,10 @@ var min_jump_height : float = 4 * Globals.UNIT_SIZE
 
 
 func _ready() -> void:
+	print("ready player: " + str(player_index))
 	set_physics_process(false)
 	GRAVITY = 2 * max_jump_height / pow(jump_duration, 2)
-	MAX_JUMP_VELOCITY = -sqrt(2 * GRAVITY * max_jump_height) # for highjump* 1.4
+	MAX_JUMP_VELOCITY = -sqrt(2 * GRAVITY * max_jump_height)
 	MIN_JUMP_VELOCITY = -sqrt(2 * GRAVITY * min_jump_height)
 
 
@@ -75,7 +75,6 @@ func _process(_delta: float) -> void:
 	
 	
 func _physics_process(delta: float) -> void:
-#	TODO: these don't work for players 2-4
 	if Input.is_action_pressed("arm_weapon_" + str(player_index)):
 		is_missile_armed = true
 			
@@ -85,10 +84,15 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("fire_" + str(player_index)):
 		print("current state: " + str(state_machine.state.name))
 		if str(state_machine.state.name) == BaseMovement.MORPHING:
-			drop_bomb()
+			if has_power_item_activated("bombs"):
+				drop_bomb()
 		else:
 			shoot()
 	
+	
+func set_collectibles(new_collectibles: Collectibles) -> void:
+	collectibles = new_collectibles
+	set_physics_process(collectibles != null)
 	
 func wall_jump(wall_direction: int) -> void:
 	wall_jump_timer.stop()
@@ -136,6 +140,22 @@ func _on_aim_timer_timeout() -> void:
 func is_colliding_with_wall() -> bool:
 	return wall_check_top.is_colliding() or wall_check_bottom.is_colliding()
 	
+
+func _on_collected_power_item(power_item: String) -> void:
+	print("_on_collected: " + str(power_item))
+	print("collectible: " + str(collectibles.power_items[power_item]))
+	var c := collectibles
+	c.power_items[power_item].collected = true
+	c.power_items[power_item].enabled = true
+	collectibles = c
+	print("collectible, after: " + str(collectibles.power_items))
+
+
+func has_power_item_activated(power_item: String) -> bool:
+	print(str(power_item) + ": " + str(collectibles.power_items[power_item]))
+	print("collected " + str(power_item) + "?: " + str(collectibles.power_items[power_item].collected))
+	print("enabled " + str(power_item) + "?: " + str(collectibles.power_items[power_item].enabled))
+	return collectibles.power_items[power_item].collected and collectibles.power_items[power_item].enabled
 
 
 func _on_hurtbox_area_entered(area: Area2D) -> void:

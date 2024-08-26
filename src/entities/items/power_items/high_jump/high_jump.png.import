@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://boicffbnd1vfr"
-path="res://.godot/imported/zoomer.png-2c2292b629ed8d895b8210ec1b09c4dd.ctex"
+uid="uid://bgroqu04sxc4m"
+path="res://.godot/imported/high_jump.png-8645da62a3a4da7f2a142070a31dbc31.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://src/entities/enemies/zoomer/zoomer.png"
-dest_files=["res://.godot/imported/zoomer.png-2c2292b629ed8d895b8210ec1b09c4dd.ctex"]
+source_file="res://src/entities/items/power_items/high_jump/high_jump.png"
+dest_files=["res://.godot/imported/high_jump.png-8645da62a3a4da7f2a142070a31dbc31.ctex"]
 
 [params]
 

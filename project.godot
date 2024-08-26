@@ -57,7 +57,9 @@ enabled=PackedStringArray("res://addons/AsepriteWizard/plugin.cfg", "res://addon
 [file_customization]
 
 folder_colors={
-"res://src/utilities/hitboxes/": "red"
+"res://src/entities/characters/federation_trooper/": "gray",
+"res://src/entities/characters/samus/": "orange",
+"res://src/entities/hitboxes/": "red"
 }
 
 [input]
