@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://dyed4jwv6253r"
+path="res://.godot/imported/charge_beam.aseprite-3c462727cf90a21bf7b9e7d5afcda740.res"
+
+[deps]
+
+source_file="res://src/entities/items/power_items/charge_beam/charge_beam.aseprite"
+dest_files=["res://.godot/imported/charge_beam.aseprite-3c462727cf90a21bf7b9e7d5afcda740.res"]
+
+[params]
+

@@ -1,0 +1,79 @@
+[gd_scene load_steps=11 format=3 uid="uid://cqfhp6rrgigq8"]
+
+[ext_resource type="PackedScene" uid="uid://bvklw67nlkubk" path="res://src/entities/items/power_items/power_item.tscn" id="1_xejbo"]
+[ext_resource type="Texture2D" uid="uid://dye7p60r8gqw1" path="res://src/entities/items/power_items/varia/varia.png" id="2_61wt5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7ikup"]
+atlas = ExtResource("2_61wt5")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_26cli"]
+atlas = ExtResource("2_61wt5")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_laj3j"]
+atlas = ExtResource("2_61wt5")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4gx6y"]
+atlas = ExtResource("2_61wt5")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_do2gf"]
+atlas = ExtResource("2_61wt5")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d7cmp"]
+atlas = ExtResource("2_61wt5")
+region = Rect2(32, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_out8g"]
+atlas = ExtResource("2_61wt5")
+region = Rect2(0, 32, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nfvhh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7ikup")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_26cli")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_laj3j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4gx6y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_do2gf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d7cmp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_out8g")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="Varia" instance=ExtResource("1_xejbo")]
+power_item_name = "varia"
+
+[node name="AnimatedSprite2D" parent="." index="0"]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_nfvhh")
+autoplay = "default"
+metadata/_aseprite_wizard_config_ = {
+"layer": "",
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"slice": "",
+"source": "res://src/entities/items/power_items/varia/varia.aseprite"
+}
+metadata/_aseprite_wizard_source_file_hash_ = "3d2b9eccd2de25dc54a29d0ab1fcd83f"

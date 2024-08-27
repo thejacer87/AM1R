@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://dppwol8jg6lvy"]
+[gd_scene load_steps=4 format=3 uid="uid://dppwol8jg6lvy"]
 
 [ext_resource type="Script" path="res://src/areas/save_room/save_area.gd" id="1_rk4bi"]
+[ext_resource type="Texture2D" uid="uid://bifcoc1x23hv4" path="res://src/areas/save_room/save_station.png" id="2_2hj0u"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ax068"]
 size = Vector2(20, 40)
@@ -11,5 +12,22 @@ script = ExtResource("1_rk4bi")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_ax068")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("2_2hj0u")
+metadata/_aseprite_wizard_config_ = {
+"i_mode": 1,
+"keep_anim_length": false,
+"layer": "",
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"player": "",
+"slice": "",
+"source": "res://src/entities/save_station.aseprite"
+}
+metadata/_aseprite_wizard_source_file_hash_ = "f6e581abfcb042d63e3fb98f5a14e1e6"
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

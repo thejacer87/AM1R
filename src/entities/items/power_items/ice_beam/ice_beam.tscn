@@ -1,0 +1,54 @@
+[gd_scene load_steps=7 format=3 uid="uid://pt7titgpy0to"]
+
+[ext_resource type="PackedScene" uid="uid://bvklw67nlkubk" path="res://src/entities/items/power_items/power_item.tscn" id="1_3tfk3"]
+[ext_resource type="Texture2D" uid="uid://bb0lo2pxdrjq5" path="res://src/entities/items/power_items/ice_beam/ice_beam.png" id="2_35n41"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bxbs6"]
+atlas = ExtResource("2_35n41")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jelmm"]
+atlas = ExtResource("2_35n41")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hg1lh"]
+atlas = ExtResource("2_35n41")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fhxqb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bxbs6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jelmm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bxbs6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hg1lh")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="IceBeam" instance=ExtResource("1_3tfk3")]
+power_item_name = "ice_beam"
+
+[node name="AnimatedSprite2D" parent="." index="0"]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_fhxqb")
+autoplay = "default"
+metadata/_aseprite_wizard_config_ = {
+"layer": "",
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"slice": "",
+"source": "res://src/entities/items/power_items/ice_beam/ice_beam.aseprite"
+}
+metadata/_aseprite_wizard_source_file_hash_ = "6b486485ccbe7afd1936add7a6ab9315"

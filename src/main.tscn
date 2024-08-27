@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=4 uid="uid://djo1xojo4hhew"]
+[gd_scene load_steps=18 format=4 uid="uid://djo1xojo4hhew"]
 
 [ext_resource type="Script" path="res://src/main.gd" id="1_ab5rb"]
 [ext_resource type="PackedScene" uid="uid://coakemqp8riuo" path="res://src/entities/characters/samus/samus.tscn" id="2_3eyfh"]
@@ -7,7 +7,14 @@
 [ext_resource type="PackedScene" uid="uid://dqdbu1allxn27" path="res://src/entities/enemies/skree/skree.tscn" id="5_qclbp"]
 [ext_resource type="PackedScene" uid="uid://6ga1adkl21ij" path="res://src/entities/items/power_items/maru_mari/maru_mari.tscn" id="6_3evdr"]
 [ext_resource type="PackedScene" uid="uid://b0tcjah0l1fkb" path="res://src/entities/items/power_items/high_jump/high_jump.tscn" id="6_7kxks"]
+[ext_resource type="PackedScene" uid="uid://bnxspsskwyi2" path="res://src/entities/items/power_items/bomb/bomb.tscn" id="7_27uc2"]
 [ext_resource type="PackedScene" uid="uid://dppwol8jg6lvy" path="res://src/areas/save_room/save_area.tscn" id="8_r6akg"]
+[ext_resource type="PackedScene" uid="uid://cvarh8hkjuhnh" path="res://src/entities/items/power_items/charge_beam/charge_beam.tscn" id="8_ykxdt"]
+[ext_resource type="PackedScene" uid="uid://pt7titgpy0to" path="res://src/entities/items/power_items/ice_beam/ice_beam.tscn" id="10_21l0b"]
+[ext_resource type="PackedScene" uid="uid://cf5vl6o50sox8" path="res://src/entities/items/power_items/long_beam/long_beam.tscn" id="11_euglq"]
+[ext_resource type="PackedScene" uid="uid://d23gmtk3vektc" path="res://src/entities/items/power_items/screw_attack/screw_attack.tscn" id="13_4odt3"]
+[ext_resource type="PackedScene" uid="uid://cqfhp6rrgigq8" path="res://src/entities/items/power_items/varia/varia.tscn" id="14_82i83"]
+[ext_resource type="PackedScene" uid="uid://dj8v7p3fryt5s" path="res://src/entities/items/power_items/wave_beam/wave_beam.tscn" id="15_dqg7w"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6lc5q"]
 texture = ExtResource("3_0lk4c")
@@ -361,19 +368,35 @@ position = Vector2(990, 70)
 [node name="Skree3" parent="." instance=ExtResource("5_qclbp")]
 position = Vector2(830, 70)
 
-[node name="MaruMari" parent="." instance=ExtResource("6_3evdr")]
-position = Vector2(630, 254)
-
-[node name="bombs" parent="." instance=ExtResource("6_3evdr")]
-position = Vector2(680, 266)
-power_item_name = "bombs"
-
-[node name="HighJump" parent="." instance=ExtResource("6_7kxks")]
-position = Vector2(670, 240)
-
-[node name="Samus2" parent="." instance=ExtResource("2_3eyfh")]
-position = Vector2(653, 269)
-player_index = 1
-
 [node name="SaveArea" parent="." instance=ExtResource("8_r6akg")]
-position = Vector2(570, 246)
+position = Vector2(1150, 270)
+collision_layer = 4
+
+[node name="PowerItems" type="Node2D" parent="."]
+position = Vector2(800, 262)
+
+[node name="Bomb" parent="PowerItems" instance=ExtResource("7_27uc2")]
+position = Vector2(30, 0)
+
+[node name="ChargeBeam" parent="PowerItems" instance=ExtResource("8_ykxdt")]
+
+[node name="HighJump" parent="PowerItems" instance=ExtResource("6_7kxks")]
+position = Vector2(66, 0)
+
+[node name="IceBeam" parent="PowerItems" instance=ExtResource("10_21l0b")]
+position = Vector2(100, 0)
+
+[node name="LongBeam" parent="PowerItems" instance=ExtResource("11_euglq")]
+position = Vector2(130, 0)
+
+[node name="MaruMari" parent="PowerItems" instance=ExtResource("6_3evdr")]
+position = Vector2(-630, -42)
+
+[node name="ScrewAttack" parent="PowerItems" instance=ExtResource("13_4odt3")]
+position = Vector2(160, 0)
+
+[node name="Varia" parent="PowerItems" instance=ExtResource("14_82i83")]
+position = Vector2(190, 0)
+
+[node name="WaveBeam" parent="PowerItems" instance=ExtResource("15_dqg7w")]
+position = Vector2(220, 0)

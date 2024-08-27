@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://b2nvqrtihsnbs"
+path="res://.godot/imported/screw_attack.aseprite-fc52d54347b327a7b21839eae7d8d6f9.res"
+
+[deps]
+
+source_file="res://src/entities/items/power_items/screw_attack/screw_attack.aseprite"
+dest_files=["res://.godot/imported/screw_attack.aseprite-fc52d54347b327a7b21839eae7d8d6f9.res"]
+
+[params]
+

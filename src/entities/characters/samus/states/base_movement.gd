@@ -19,7 +19,8 @@ func _ready() -> void:
 
 		
 func enter(previous_state_path: String, data := {}) -> void:
-	print("Entering State: " + name)
+	print("Entering State: Previous - " + previous_state_path)			
+	print("Entering State: Next - " + name)
 	if Input.is_action_pressed("left_" + str(samus.player_index)):
 		samus.looking = samus.look_directions.LEFT
 	elif Input.is_action_pressed("right_" + str(samus.player_index)):

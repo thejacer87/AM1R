@@ -22,6 +22,7 @@ const HIGH_JUMP_MULTIPLIER := 1.2
 @onready var crouching_collision_shape_2d: CollisionShape2D = $CrouchingCollisionShape2D
 @onready var spin_collision_shape_2d: CollisionShape2D = $SpinCollisionShape2D
 @onready var animation_player: AnimationPlayer = $Sprite2D/AnimationPlayer
+@onready var screw_attack_animation_player: AnimationPlayer = $Sprite2D/ScrewAttackSprite2D/AnimationPlayer
 @onready var sprite_2d: Sprite2D = $Sprite2D
 @onready var crouch_run_timer: Timer = $CrouchRunTimer
 @onready var aim_timer: Timer = $AimTimer
@@ -84,7 +85,7 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("fire_" + str(player_index)):
 		print("current state: " + str(state_machine.state.name))
 		if str(state_machine.state.name) == BaseMovement.MORPHING:
-			if has_power_item_activated("bombs"):
+			if has_power_item_activated("bomb"):
 				drop_bomb()
 		else:
 			shoot()
@@ -152,10 +153,7 @@ func _on_collected_power_item(power_item: String) -> void:
 
 
 func has_power_item_activated(power_item: String) -> bool:
-	print(str(power_item) + ": " + str(collectibles.power_items[power_item]))
-	print("collected " + str(power_item) + "?: " + str(collectibles.power_items[power_item].collected))
-	print("enabled " + str(power_item) + "?: " + str(collectibles.power_items[power_item].enabled))
-	return collectibles.power_items[power_item].collected and collectibles.power_items[power_item].enabled
+	return collectibles.has_collected_power_item(power_item)
 
 
 func _on_hurtbox_area_entered(area: Area2D) -> void:

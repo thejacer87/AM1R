@@ -10,3 +10,4 @@ func _on_body_entered(body: Node2D) -> void:
 	var samus: Samus = body as Samus
 	self.collected_power_item.connect(samus._on_collected_power_item.bind(power_item_name))
 	collected_power_item.emit()
+	queue_free()

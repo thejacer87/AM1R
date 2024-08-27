@@ -1,0 +1,54 @@
+[gd_scene load_steps=7 format=3 uid="uid://dj8v7p3fryt5s"]
+
+[ext_resource type="PackedScene" uid="uid://bvklw67nlkubk" path="res://src/entities/items/power_items/power_item.tscn" id="1_dkxvq"]
+[ext_resource type="Texture2D" uid="uid://s4bsr4y6w24r" path="res://src/entities/items/power_items/wave_beam/wave_beam.png" id="2_n3ov3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ih1e4"]
+atlas = ExtResource("2_n3ov3")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0wi5g"]
+atlas = ExtResource("2_n3ov3")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lxbyf"]
+atlas = ExtResource("2_n3ov3")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mr4vw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ih1e4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0wi5g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ih1e4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lxbyf")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="WaveBeam" instance=ExtResource("1_dkxvq")]
+power_item_name = "wave_beam"
+
+[node name="AnimatedSprite2D" parent="." index="0"]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_mr4vw")
+autoplay = "default"
+metadata/_aseprite_wizard_config_ = {
+"layer": "",
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"slice": "",
+"source": "res://src/entities/items/power_items/wave_beam/wave_beam.aseprite"
+}
+metadata/_aseprite_wizard_source_file_hash_ = "6b51f6de1afaee8a7983554921d0ffe2"

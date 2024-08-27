@@ -1,0 +1,54 @@
+[gd_scene load_steps=7 format=3 uid="uid://d23gmtk3vektc"]
+
+[ext_resource type="PackedScene" uid="uid://bvklw67nlkubk" path="res://src/entities/items/power_items/power_item.tscn" id="1_mmjcf"]
+[ext_resource type="Texture2D" uid="uid://c6603o6del4uo" path="res://src/entities/items/power_items/screw_attack/screw_attack.png" id="2_l7vxs"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bmk46"]
+atlas = ExtResource("2_l7vxs")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lvjve"]
+atlas = ExtResource("2_l7vxs")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_emckr"]
+atlas = ExtResource("2_l7vxs")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5qdnv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bmk46")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lvjve")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bmk46")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_emckr")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="ScrewAttack" instance=ExtResource("1_mmjcf")]
+power_item_name = "screw_attack"
+
+[node name="AnimatedSprite2D" parent="." index="0"]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_5qdnv")
+autoplay = "default"
+metadata/_aseprite_wizard_config_ = {
+"layer": "",
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"slice": "",
+"source": "res://src/entities/items/power_items/screw_attack/screw_attack.aseprite"
+}
+metadata/_aseprite_wizard_source_file_hash_ = "ce2955e41eb46b1b1b01c37f01f6a18d"

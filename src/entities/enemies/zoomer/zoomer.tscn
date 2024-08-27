@@ -76,7 +76,7 @@ shape = SubResource("RectangleShape2D_k4x26")
 
 [node name="Hurtbox" parent="." index="1"]
 collision_layer = 2
-collision_mask = 224
+collision_mask = 225
 
 [node name="CollisionShape2D" parent="Hurtbox" index="0"]
 shape = SubResource("RectangleShape2D_4lwnc")

@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://d36c5pjfacicu"
+path="res://.godot/imported/save_station.aseprite-87689e7379f82dfdc53aeab27ff334a4.res"
+
+[deps]
+
+source_file="res://src/entities/save_station.aseprite"
+dest_files=["res://.godot/imported/save_station.aseprite-87689e7379f82dfdc53aeab27ff334a4.res"]
+
+[params]
+

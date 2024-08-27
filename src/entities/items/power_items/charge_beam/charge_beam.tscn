@@ -1,0 +1,54 @@
+[gd_scene load_steps=7 format=3 uid="uid://cvarh8hkjuhnh"]
+
+[ext_resource type="PackedScene" uid="uid://bvklw67nlkubk" path="res://src/entities/items/power_items/power_item.tscn" id="1_vywa3"]
+[ext_resource type="Texture2D" uid="uid://d10hbxja8bkwi" path="res://src/entities/items/power_items/charge_beam/charge_beam.png" id="2_kle2j"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k0nhv"]
+atlas = ExtResource("2_kle2j")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d0rpf"]
+atlas = ExtResource("2_kle2j")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uiglv"]
+atlas = ExtResource("2_kle2j")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_a2l70"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k0nhv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d0rpf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k0nhv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uiglv")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="ChargeBeam" instance=ExtResource("1_vywa3")]
+power_item_name = "charge_beam"
+
+[node name="AnimatedSprite2D" parent="." index="0"]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_a2l70")
+autoplay = "default"
+metadata/_aseprite_wizard_config_ = {
+"layer": "",
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"slice": "",
+"source": "res://src/entities/items/power_items/charge_beam/charge_beam.aseprite"
+}
+metadata/_aseprite_wizard_source_file_hash_ = "11bf1d72e4e69176d99c86dd6785504a"

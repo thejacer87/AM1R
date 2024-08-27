@@ -1,7 +1,9 @@
-[gd_scene load_steps=75 format=3 uid="uid://coakemqp8riuo"]
+[gd_scene load_steps=81 format=3 uid="uid://coakemqp8riuo"]
 
 [ext_resource type="Script" path="res://src/entities/characters/samus/samus.gd" id="1_2ke1f"]
+[ext_resource type="Texture2D" uid="uid://3113y8bbnuqo" path="res://src/entities/characters/samus/screw_spark.png" id="12_v2ktf"]
 [ext_resource type="PackedScene" uid="uid://bp61p1vf75fg1" path="res://src/entities/hitboxes/hurtbox.tscn" id="13_qutfg"]
+[ext_resource type="PackedScene" uid="uid://dv2rtg1exmstp" path="res://src/entities/hitboxes/hitbox.tscn" id="15_l3q8o"]
 [ext_resource type="Script" path="res://src/entities/characters/samus/states/idle.gd" id="41_tqnvv"]
 [ext_resource type="Script" path="res://src/utilities/state_machine/state_machine.gd" id="42_lehlf"]
 [ext_resource type="Script" path="res://src/entities/characters/samus/states/running.gd" id="42_rq4op"]
@@ -3209,8 +3211,96 @@ _data = {
 "walk_right": SubResource("Animation_g4f6v")
 }
 
+[sub_resource type="Animation" id="Animation_smd3j"]
+length = 0.3
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ScrewAttackSprite2D:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ScrewAttackSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = false
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 2]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ScrewAttackSprite2D:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 0, 0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../Hitbox/CollisionShape2D:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_egenx"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Hitbox/CollisionShape2D:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ScrewAttackSprite2D:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_n8wkb"]
+_data = {
+"RESET": SubResource("Animation_egenx"),
+"default": SubResource("Animation_smd3j")
+}
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_30jek"]
 size = Vector2(13, 34)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_j3whd"]
+radius = 20.025
 
 [node name="Samus" type="CharacterBody2D"]
 collision_mask = 4
@@ -3280,7 +3370,7 @@ position = Vector2(0, -8)
 texture = ExtResource("66_laq4w")
 hframes = 17
 vframes = 17
-frame = 185
+frame = 276
 metadata/_aseprite_wizard_config_ = {
 "i_mode": -1,
 "keep_anim_length": false,
@@ -3322,6 +3412,34 @@ rotation = -1.5708
 target_position = Vector2(0, 9)
 collision_mask = 4
 
+[node name="ScrewAttackSprite2D" type="Sprite2D" parent="Sprite2D"]
+visible = false
+modulate = Color(0.770883, 0.658518, 0.399806, 1)
+texture_filter = 1
+position = Vector2(1, 8)
+texture = ExtResource("12_v2ktf")
+hframes = 2
+vframes = 2
+metadata/_aseprite_wizard_config_ = {
+"i_mode": -1,
+"keep_anim_length": false,
+"layer": "",
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"player": "Sprite2D/ScrewAttackSprite2D/AnimationPlayer",
+"slice": "",
+"source": "res://src/entities/characters/samus/sprites/power_suit/screw_spark.aseprite"
+}
+metadata/_aseprite_wizard_source_file_hash_ = "2685bf5d4446f9ec883e1fcc21e4967a"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D/ScrewAttackSprite2D"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_n8wkb")
+}
+
 [node name="AimTimer" type="Timer" parent="."]
 one_shot = true
 
@@ -3352,8 +3470,18 @@ collision_mask = 2
 position = Vector2(-0.5, 3)
 shape = SubResource("RectangleShape2D_30jek")
 
+[node name="Hitbox" parent="." instance=ExtResource("15_l3q8o")]
+collision_layer = 1
+collision_mask = 2306
+damage = 250
+
+[node name="CollisionShape2D" parent="Hitbox" index="0"]
+shape = SubResource("CircleShape2D_j3whd")
+disabled = true
+
 [connection signal="animation_finished" from="Sprite2D/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="timeout" from="AimTimer" to="." method="_on_aim_timer_timeout"]
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
 
 [editable path="Hurtbox"]
+[editable path="Hitbox"]

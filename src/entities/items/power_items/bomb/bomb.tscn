@@ -1,0 +1,65 @@
+[gd_scene load_steps=9 format=3 uid="uid://bnxspsskwyi2"]
+
+[ext_resource type="PackedScene" uid="uid://bvklw67nlkubk" path="res://src/entities/items/power_items/power_item.tscn" id="1_ockbm"]
+[ext_resource type="Texture2D" uid="uid://cuvks8owr8twd" path="res://src/entities/items/power_items/bomb/bomb.png" id="2_ebno4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_byckm"]
+atlas = ExtResource("2_ebno4")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ui006"]
+atlas = ExtResource("2_ebno4")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nkiow"]
+atlas = ExtResource("2_ebno4")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qom1l"]
+atlas = ExtResource("2_ebno4")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_alits"]
+atlas = ExtResource("2_ebno4")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_d71tl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_byckm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ui006")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nkiow")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qom1l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_alits")
+}],
+"loop": true,
+"name": &"default",
+"speed": 7.0
+}]
+
+[node name="Bomb" instance=ExtResource("1_ockbm")]
+power_item_name = "bomb"
+
+[node name="AnimatedSprite2D" parent="." index="0"]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_d71tl")
+autoplay = "default"
+metadata/_aseprite_wizard_config_ = {
+"layer": "",
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"slice": "",
+"source": "res://src/entities/items/power_items/bomb/bomb.aseprite"
+}
+metadata/_aseprite_wizard_source_file_hash_ = "ff714409b9dfcf6caf6b52c7b1adc996"

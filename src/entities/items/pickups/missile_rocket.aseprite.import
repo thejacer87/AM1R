@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://d3fk0j0s7ahxl"
+path="res://.godot/imported/missile_rocket.aseprite-0a5825533c96db247697864e67dd9e23.res"
+
+[deps]
+
+source_file="res://src/entities/items/pickups/missile_rocket.aseprite"
+dest_files=["res://.godot/imported/missile_rocket.aseprite-0a5825533c96db247697864e67dd9e23.res"]
+
+[params]
+

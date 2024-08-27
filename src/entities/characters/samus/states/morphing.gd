@@ -4,6 +4,9 @@ var AIR_SPEED_MULTIPLIER := 0.95
 var GROUND_SPEED_MULTIPLIER := 1.2
 
 func enter(previous_state_path: String, data := {}) -> void:
+	if not samus.has_power_item_activated("maru_mari"):
+		finished.emit(previous_state_path)
+		return
 	super.enter(previous_state_path, data)
 	super.update_collisions("morph")
 	samus.animation_player.play("morphing")

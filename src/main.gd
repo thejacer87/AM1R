@@ -29,4 +29,4 @@ func create_or_load_save() -> void:
 		_save.write_save_game()
 		
 	samus.collectibles = _save.collectibles
-	samus_2.collectibles = _save.collectibles
+	#samus_2.collectibles = _save.collectibles

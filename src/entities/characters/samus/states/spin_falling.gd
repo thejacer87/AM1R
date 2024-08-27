@@ -9,6 +9,8 @@ func enter(previous_state_path: String, data := {}) -> void:
 	samus.sprite_2d.position.y = 0.0
 	var current_animation := samus.animation_player.current_animation
 	
+	if samus.has_power_item_activated("screw_attack"):
+		samus.screw_attack_animation_player.play("default")
 	samus.animation_player.play("jump_" + samus.look_direction)
 
 
@@ -54,4 +56,5 @@ func physics_update(delta: float) -> void:
 func exit() -> void:
 	super.exit()
 	samus.sprite_2d.position.y = -8.0
+	samus.screw_attack_animation_player.play("RESET")
 	super.update_collisions("")

@@ -17,7 +17,7 @@ extends Resource
 	"maru_mari": {
 		"collected": false, "enabled": false,
 	},
-	"bombs": {
+	"bomb": {
 		"collected": false, "enabled": false,
 	},
 	"varia": {
@@ -33,3 +33,10 @@ extends Resource
 
 @export var missiles_expansions := 0
 @export var energy_tanks := 0
+
+
+func has_collected_power_item(power_item: String) -> bool:
+	print(str(power_item) + ": " + str(power_items[power_item]))
+	print("collected " + str(power_item) + "?: " + str(power_items[power_item].collected))
+	print("enabled " + str(power_item) + "?: " + str(power_items[power_item].enabled))
+	return power_items[power_item].collected and power_items[power_item].enabled

@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://eq8472rtj2mi"
+path="res://.godot/imported/wave_beam.aseprite-db067ffa58ea280e52468de6ec2bd58b.res"
+
+[deps]
+
+source_file="res://src/entities/items/power_items/wave_beam/wave_beam.aseprite"
+dest_files=["res://.godot/imported/wave_beam.aseprite-db067ffa58ea280e52468de6ec2bd58b.res"]
+
+[params]
+
