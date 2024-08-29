@@ -1,7 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://cmo3g8plbny3t"]
+[gd_scene load_steps=15 format=3 uid="uid://cmo3g8plbny3t"]
 
 [ext_resource type="Script" path="res://src/entities/weapons/arm_cannon.gd" id="1_bbl4q"]
-[ext_resource type="Texture2D" uid="uid://ddqd85hvuqknr" path="res://src/entities/weapons/beam.png" id="2_q38cp"]
+[ext_resource type="Texture2D" uid="uid://b3mw7u6srn8pq" path="res://src/entities/weapons/beams/beam.png" id="2_usqvo"]
 
 [sub_resource type="Animation" id="Animation_lg3nb"]
 length = 0.001
@@ -15,7 +15,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [true]
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_elosf"]
@@ -71,7 +71,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [16, 15, 14, 13]
+"values": [29, 28, 27, 26]
 }
 
 [sub_resource type="Animation" id="Animation_idiio"]
@@ -126,11 +126,38 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.01, 0.04),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [12, 11, 10]
+"values": [25, 24, 23]
 }
 
 [sub_resource type="Animation" id="Animation_sydd5"]
-length = 0.25
+length = 0.35
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = false
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.25),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [11, 10, 23]
+}
+
+[sub_resource type="Animation" id="Animation_0x8k4"]
+length = 0.1
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -151,10 +178,122 @@ tracks/1/path = NodePath(".:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = false
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.05),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [15]
+}
+
+[sub_resource type="Animation" id="Animation_sn1gs"]
+length = 0.7
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = false
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [22, 21, 20, 19, 18, 17, 16]
+}
+
+[sub_resource type="Animation" id="Animation_puk3h"]
+length = 0.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = false
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [2, 1]
+"values": [0, 14]
+}
+
+[sub_resource type="Animation" id="Animation_r7q70"]
+length = 0.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = false
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [13, 12]
+}
+
+[sub_resource type="Animation" id="Animation_44wn5"]
+length = 0.7
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = false
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [7, 6, 5, 4, 3, 2, 1]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_wsr3u"]
@@ -164,6 +303,11 @@ _data = {
 "charge": SubResource("Animation_hqaiw"),
 "explode": SubResource("Animation_idiio"),
 "flash": SubResource("Animation_avma5"),
+"power_beam": SubResource("Animation_0x8k4"),
+"power_explode": SubResource("Animation_sn1gs"),
+"wave_beam": SubResource("Animation_puk3h"),
+"wave_beam_charge": SubResource("Animation_r7q70"),
+"wave_explode": SubResource("Animation_44wn5"),
 "wave_flash": SubResource("Animation_sydd5")
 }
 
@@ -173,24 +317,28 @@ script = ExtResource("1_bbl4q")
 [node name="ProjectileMarker" type="Marker2D" parent="."]
 
 [node name="FlashSprite2D" type="Sprite2D" parent="."]
+visible = false
 texture_filter = 1
-texture = ExtResource("2_q38cp")
-hframes = 5
-vframes = 4
-frame = 11
+texture = ExtResource("2_usqvo")
+hframes = 6
+vframes = 5
+frame = 23
 metadata/_aseprite_wizard_config_ = {
 "i_mode": -1,
 "keep_anim_length": false,
 "layer": "",
 "o_ex_p": "",
-"o_folder": "",
+"o_folder": "res://src/entities/weapons/beams/",
 "o_name": "",
 "only_visible": false,
 "player": "FlashSprite2D/FlashAnimationPlayer",
 "slice": "",
 "source": "res://src/entities/weapons/beams/beam.aseprite"
 }
-metadata/_aseprite_wizard_source_file_hash_ = "4f2b49ce3ef321a2d158df7d5703aea4"
+metadata/_aseprite_wizard_source_file_hash_ = "01beacff997481be52635f7d9c2014cf"
+metadata/_aseprite_wizard_interface_config_ = {
+"output_section": true
+}
 
 [node name="FlashAnimationPlayer" type="AnimationPlayer" parent="FlashSprite2D"]
 libraries = {

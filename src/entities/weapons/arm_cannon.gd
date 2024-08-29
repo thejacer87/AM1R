@@ -2,8 +2,8 @@ class_name ArmCannon
 extends Node2D
 
 @onready var projectile_marker: Marker2D = $ProjectileMarker
-@onready var beam := preload("res://src/entities/weapons/beams/beam.tscn")
-@onready var missile := preload("res://src/entities/weapons/missiles/missile.tscn")
+@onready var beam_scene := preload("res://src/entities/weapons/beams/beam.tscn")
+@onready var missile_scene := preload("res://src/entities/weapons/missiles/missile.tscn")
 @onready var flash_sprite_2d: Sprite2D = $FlashSprite2D
 @onready var flash_animation_player: AnimationPlayer = $FlashSprite2D/FlashAnimationPlayer
 
@@ -22,18 +22,19 @@ func _process(delta: float) -> void:
 
 func shoot() -> void:
 	if samus.is_missile_armed:
-		var shot := missile.instantiate() as Missile
-		shot.direction = (Vector2.RIGHT * scale).rotated(rotation).normalized()
-		shot.position = global_position
-		shot.rotation = rotation
-		shot.scale = scale
-		get_tree().get_root().add_child(shot)
+		var missile := missile_scene.instantiate() as Missile
+		missile.direction = (Vector2.RIGHT * scale).rotated(rotation).normalized()
+		missile.position = global_position
+		missile.rotation = rotation
+		missile.scale = scale
+		get_tree().get_root().add_child(missile)
 	else:
-		var beam := beam.instantiate() as Beam
+		var beam := beam_scene.instantiate() as Beam
 		beam.collectibles = samus.collectibles
-	#	This makes the flash not rotate.
+		# This makes the flash not rotate.
 		flash_sprite_2d.rotation = -rotation
 		flash_animation_player.play("flash")
+		# Start the beam rotated and placed at the tip of the arm cannon.
 		beam.direction = (Vector2.RIGHT * scale).rotated(rotation).normalized()
 		beam.position = global_position
 		beam.rotation = rotation

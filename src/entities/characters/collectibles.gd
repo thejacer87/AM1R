@@ -36,7 +36,4 @@ extends Resource
 
 
 func has_collected_power_item(power_item: String) -> bool:
-	print(str(power_item) + ": " + str(power_items[power_item]))
-	print("collected " + str(power_item) + "?: " + str(power_items[power_item].collected))
-	print("enabled " + str(power_item) + "?: " + str(power_items[power_item].enabled))
 	return power_items[power_item].collected and power_items[power_item].enabled

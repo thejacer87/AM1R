@@ -110,7 +110,7 @@ func shoot() -> void:
 	
 	
 func damage(base_damage: int) -> void:
-	energy -= base_damage
+	energy -= base_damage * (1.0 if not has_power_item_activated("varia") else 0.5)
 
 
 func drop_bomb() -> void:
