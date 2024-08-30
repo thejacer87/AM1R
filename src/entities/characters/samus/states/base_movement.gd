@@ -19,8 +19,7 @@ func _ready() -> void:
 
 		
 func enter(previous_state_path: String, data := {}) -> void:
-	print("Entering State: Previous - " + previous_state_path)			
-	print("Entering State: Next - " + name)
+	print("Entering State: " + name)
 	if Input.is_action_pressed("left_" + str(samus.player_index)):
 		samus.looking = samus.look_directions.LEFT
 	elif Input.is_action_pressed("right_" + str(samus.player_index)):
@@ -50,23 +49,32 @@ func handle_diagonal_aiming(state: String) -> void:
 	
 	
 func update_collisions(collision_to_enable: String) -> void:
+	var col := samus.get_node("Hurtbox/CollisionShape2D") as CollisionShape2D
 	if collision_to_enable == "crouch":
 		samus.crouching_collision_shape_2d.disabled = false
 		samus.morph_ball_collision_shape_2d.disabled = true
 		samus.standing_collision_shape_2d.disabled = true
 		samus.spin_collision_shape_2d.disabled = true
+		col.shape = samus.crouching_collision_shape_2d.shape
+		col.position = samus.crouching_collision_shape_2d.position
 	elif collision_to_enable == "spin":
+		samus.spin_collision_shape_2d.disabled = false
 		samus.morph_ball_collision_shape_2d.disabled = true
 		samus.standing_collision_shape_2d.disabled = true
 		samus.crouching_collision_shape_2d.disabled = true
-		samus.spin_collision_shape_2d.disabled = false
+		col.shape = samus.spin_collision_shape_2d.shape
+		col.position = samus.spin_collision_shape_2d.position
 	elif collision_to_enable == "morph":
 		samus.morph_ball_collision_shape_2d.disabled = false
 		samus.standing_collision_shape_2d.disabled = true
 		samus.crouching_collision_shape_2d.disabled = true
 		samus.spin_collision_shape_2d.disabled = true
+		col.shape = samus.morph_ball_collision_shape_2d.shape
+		col.position = samus.morph_ball_collision_shape_2d.position
 	else:
 		samus.standing_collision_shape_2d.disabled = false
 		samus.morph_ball_collision_shape_2d.disabled = true
 		samus.crouching_collision_shape_2d.disabled = true
 		samus.spin_collision_shape_2d.disabled = true
+		col.shape = samus.standing_collision_shape_2d.shape
+		col.position = samus.standing_collision_shape_2d.position

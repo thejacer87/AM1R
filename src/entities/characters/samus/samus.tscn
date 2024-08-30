@@ -3307,18 +3307,15 @@ collision_mask = 4
 script = ExtResource("1_2ke1f")
 
 [node name="StandingCollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2(0, 4)
 shape = SubResource("RectangleShape2D_3vt5w")
 
 [node name="MorphBallCollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2(0, 12)
 shape = SubResource("CircleShape2D_ivtrj")
 disabled = true
 
 [node name="CrouchingCollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2(0, 8)
 shape = SubResource("RectangleShape2D_p6dhi")
 disabled = true
@@ -3471,7 +3468,7 @@ position = Vector2(-0.5, 3)
 shape = SubResource("RectangleShape2D_30jek")
 
 [node name="Hitbox" parent="." instance=ExtResource("15_l3q8o")]
-collision_layer = 1
+collision_layer = 32768
 collision_mask = 2306
 damage = 250
 

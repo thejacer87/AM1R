@@ -1,94 +1,11 @@
-[gd_scene load_steps=17 format=3 uid="uid://ti6sf7xmbjfg"]
+[gd_scene load_steps=21 format=3 uid="uid://ti6sf7xmbjfg"]
 
 [ext_resource type="Script" path="res://src/entities/weapons/beams/beam.gd" id="1_itk22"]
 [ext_resource type="AudioStream" uid="uid://dpks0s450mpnh" path="res://src/entities/weapons/beams/sfx/sndFireBeam.wav" id="3_0cr4w"]
 [ext_resource type="Texture2D" uid="uid://b3mw7u6srn8pq" path="res://src/entities/weapons/beams/beam.png" id="3_o3l8v"]
 [ext_resource type="PackedScene" uid="uid://dv2rtg1exmstp" path="res://src/entities/hitboxes/hitbox.tscn" id="4_mxro7"]
 
-[sub_resource type="Animation" id="Animation_i3e07"]
-length = 0.4
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = false
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = false
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [29, 28, 27, 26]
-}
-
-[sub_resource type="Animation" id="Animation_jfc2u"]
-length = 0.7
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = false
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = false
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [0, 8, 7, 6, 5, 4, 3]
-}
-
-[sub_resource type="Animation" id="Animation_hu13j"]
-length = 0.041
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = false
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = false
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.01, 0.04),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [25, 24, 23]
-}
-
-[sub_resource type="Animation" id="Animation_r2h0f"]
+[sub_resource type="Animation" id="Animation_ays4q"]
 length = 0.1
 loop_mode = 1
 tracks/0/type = "value"
@@ -113,38 +30,10 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [15]
+"values": [36]
 }
 
-[sub_resource type="Animation" id="Animation_sp8dc"]
-length = 0.7
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = false
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = false
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [22, 21, 20, 19, 18, 17, 16]
-}
-
-[sub_resource type="Animation" id="Animation_bskq7"]
+[sub_resource type="Animation" id="Animation_fbk1f"]
 length = 0.2
 loop_mode = 1
 tracks/0/type = "value"
@@ -169,12 +58,11 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [0, 14]
+"values": [9, 10]
 }
 
-[sub_resource type="Animation" id="Animation_7n3af"]
-length = 0.2
-loop_mode = 1
+[sub_resource type="Animation" id="Animation_tvodx"]
+length = 0.041
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -194,13 +82,13 @@ tracks/1/path = NodePath(".:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = false
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 0.01, 0.04),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [13, 12]
+"values": [30, 31, 25]
 }
 
-[sub_resource type="Animation" id="Animation_ujml8"]
+[sub_resource type="Animation" id="Animation_l7qtk"]
 length = 0.7
 loop_mode = 1
 tracks/0/type = "value"
@@ -225,10 +113,66 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [7, 6, 5, 4, 3, 2, 1]
+"values": [32, 33, 34, 35, 24, 37, 38]
 }
 
-[sub_resource type="Animation" id="Animation_36avv"]
+[sub_resource type="Animation" id="Animation_vkxnp"]
+length = 0.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = false
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [39, 40]
+}
+
+[sub_resource type="Animation" id="Animation_xcr75"]
+length = 0.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = false
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [41, 42]
+}
+
+[sub_resource type="Animation" id="Animation_3wyia"]
 length = 0.35
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -252,20 +196,192 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.05, 0.25),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [11, 10, 23]
+"values": [43, 44, 25]
+}
+
+[sub_resource type="Animation" id="Animation_xvavm"]
+length = 0.7
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = false
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [47, 12, 1, 2, 3, 4, 5]
+}
+
+[sub_resource type="Animation" id="Animation_sosq3"]
+length = 0.3
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = false
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [6, 7, 8]
+}
+
+[sub_resource type="Animation" id="Animation_d2nqc"]
+length = 0.7
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = false
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [11, 0, 13, 14, 15, 16, 17]
+}
+
+[sub_resource type="Animation" id="Animation_3pmpq"]
+length = 0.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = false
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [18, 19]
+}
+
+[sub_resource type="Animation" id="Animation_hovck"]
+length = 0.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = false
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [20, 21]
+}
+
+[sub_resource type="Animation" id="Animation_tqax1"]
+length = 0.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = false
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [22, 23]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_h1qcv"]
 _data = {
-"charge": SubResource("Animation_i3e07"),
-"explode": SubResource("Animation_jfc2u"),
-"flash": SubResource("Animation_hu13j"),
-"power_beam": SubResource("Animation_r2h0f"),
-"power_explode": SubResource("Animation_sp8dc"),
-"wave_beam": SubResource("Animation_bskq7"),
-"wave_beam_charge": SubResource("Animation_7n3af"),
-"wave_explode": SubResource("Animation_ujml8"),
-"wave_flash": SubResource("Animation_36avv")
+"beam": SubResource("Animation_ays4q"),
+"beam_charge": SubResource("Animation_fbk1f"),
+"beam_ice": SubResource("Animation_sosq3"),
+"beam_ice_wave": SubResource("Animation_hovck"),
+"beam_ice_wave_charge": SubResource("Animation_tqax1"),
+"beam_wave": SubResource("Animation_vkxnp"),
+"beam_wave_charge": SubResource("Animation_xcr75"),
+"flash": SubResource("Animation_tvodx"),
+"ice_explode": SubResource("Animation_d2nqc"),
+"ice_flash": SubResource("Animation_3pmpq"),
+"power_explode": SubResource("Animation_l7qtk"),
+"wave_explode": SubResource("Animation_xvavm"),
+"wave_flash": SubResource("Animation_3wyia")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_div6x"]
@@ -282,9 +398,9 @@ script = ExtResource("1_itk22")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
 texture = ExtResource("3_o3l8v")
-hframes = 6
-vframes = 5
-frame = 15
+hframes = 7
+vframes = 7
+frame = 22
 metadata/_aseprite_wizard_config_ = {
 "i_mode": -1,
 "keep_anim_length": false,
@@ -297,7 +413,7 @@ metadata/_aseprite_wizard_config_ = {
 "slice": "",
 "source": "res://src/entities/weapons/beams/beam.aseprite"
 }
-metadata/_aseprite_wizard_source_file_hash_ = "01beacff997481be52635f7d9c2014cf"
+metadata/_aseprite_wizard_source_file_hash_ = "deb2a6b5d762cf3830e422246bfebd51"
 metadata/_aseprite_wizard_interface_config_ = {
 "layer_section": false,
 "output_section": true
@@ -307,7 +423,7 @@ metadata/_aseprite_wizard_interface_config_ = {
 libraries = {
 "": SubResource("AnimationLibrary_h1qcv")
 }
-autoplay = "power_beam"
+autoplay = "beam"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_0cr4w")

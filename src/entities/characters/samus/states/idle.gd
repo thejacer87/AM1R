@@ -14,10 +14,9 @@ func enter(previous_state_path: String, data := {}) -> void:
 
 func physics_update(delta: float) -> void:
 	super.physics_update(delta)
-	#samus.move_and_slide()
+	samus.move_and_slide()
 	#if samus.idle_timer.time_left == 0:
 		#samus.animation_player.play("idle_" + samus.look_direction)
-	# Handle aiming first.
 	
 	if Input.is_action_just_pressed("morph_" + str(samus.player_index)):
 		finished.emit(MORPHING)

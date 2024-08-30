@@ -35,5 +35,5 @@ extends Resource
 @export var energy_tanks := 0
 
 
-func has_collected_power_item(power_item: String) -> bool:
+func power_item_enabled(power_item: String) -> bool:
 	return power_items[power_item].collected and power_items[power_item].enabled

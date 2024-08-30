@@ -22,8 +22,6 @@ func _process(delta: float) -> void:
 	
 	
 func _physics_process(delta: float) -> void:
-	if (hp <= 0):
-		die()
 	if is_dead:
 		hide_sprite()
 	if _attacking:
@@ -34,7 +32,7 @@ func _physics_process(delta: float) -> void:
 		_detect(raycast_right.get_collider() as Samus)
 
 
-func die(drop_item := true) -> void:
+func _die(drop_item := true) -> void:
 	timer.stop()
 	_attacking = false
 	animation_player.play("idle")
@@ -87,6 +85,14 @@ func _enable_raycasts() -> void:
 	raycast_right.enabled = true
 
 
+func _pause_animations() -> void:
+	print("skree pause")
+
+
+func _play_animations() -> void:
+	print("skree play")
+	
+
 func hide_sprite() -> void:
 	animation_player.pause()
 	animation_player.stop()
@@ -117,4 +123,4 @@ func _regenerate() -> void:
 
 func _on_timer_timeout() -> void:
 	print("explode")
-	die(false)
+	_die(false)

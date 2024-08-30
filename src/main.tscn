@@ -324,7 +324,6 @@ tile_set = SubResource("TileSet_tqjt1")
 
 [node name="Samus" parent="." instance=ExtResource("2_3eyfh")]
 position = Vector2(520, 250)
-player_index = 0
 
 [node name="Camera2D" type="Camera2D" parent="Samus"]
 limit_left = 0
@@ -377,27 +376,28 @@ collision_layer = 4
 position = Vector2(800, 262)
 
 [node name="Bomb" parent="PowerItems" instance=ExtResource("7_27uc2")]
-position = Vector2(-580, -52)
+position = Vector2(-400, -44)
 
 [node name="ChargeBeam" parent="PowerItems" instance=ExtResource("8_ykxdt")]
+position = Vector2(-150, -4)
 
 [node name="HighJump" parent="PowerItems" instance=ExtResource("6_7kxks")]
-position = Vector2(-610, -82)
+position = Vector2(-430, -74)
 
 [node name="IceBeam" parent="PowerItems" instance=ExtResource("10_21l0b")]
-position = Vector2(100, 0)
+position = Vector2(-170, -42)
 
 [node name="LongBeam" parent="PowerItems" instance=ExtResource("11_euglq")]
-position = Vector2(-602, -30)
+position = Vector2(-422, -22)
 
 [node name="MaruMari" parent="PowerItems" instance=ExtResource("6_3evdr")]
-position = Vector2(-630, -42)
+position = Vector2(-340, -8)
 
 [node name="ScrewAttack" parent="PowerItems" instance=ExtResource("13_4odt3")]
-position = Vector2(-590, -112)
+position = Vector2(-410, -104)
 
 [node name="Varia" parent="PowerItems" instance=ExtResource("14_82i83")]
-position = Vector2(-560, -30)
+position = Vector2(-380, -22)
 
 [node name="WaveBeam" parent="PowerItems" instance=ExtResource("15_dqg7w")]
-position = Vector2(220, 0)
+position = Vector2(-360, 14)

@@ -339,6 +339,7 @@ fire_3={
 2d_physics/layer_10="bomb_block"
 2d_physics/layer_11="missile_block"
 2d_physics/layer_12="screw_attack_block"
+2d_physics/layer_16="screw_attack"
 
 [rendering]
 

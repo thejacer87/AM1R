@@ -5,16 +5,26 @@
 [ext_resource type="PackedScene" uid="uid://dv2rtg1exmstp" path="res://src/entities/hitboxes/hitbox.tscn" id="3_6o8pb"]
 
 [node name="Enemy" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 0
 script = ExtResource("1_653rv")
 starting_hp = 20
 
 [node name="Hitbox" parent="." instance=ExtResource("3_6o8pb")]
+collision_layer = 2
 
 [node name="Hurtbox" parent="." instance=ExtResource("2_pc6iq")]
+collision_layer = 2
+collision_mask = 32992
 
 [node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 
+[node name="FreezeTimer" type="Timer" parent="."]
+wait_time = 7.0
+one_shot = true
+
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
 [connection signal="screen_exited" from="VisibleOnScreenEnabler2D" to="." method="_on_visible_on_screen_enabler_2d_screen_exited"]
+[connection signal="timeout" from="FreezeTimer" to="." method="_on_freeze_timer_timeout"]

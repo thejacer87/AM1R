@@ -153,7 +153,7 @@ func _on_collected_power_item(power_item: String) -> void:
 
 
 func has_power_item_activated(power_item: String) -> bool:
-	return collectibles.has_collected_power_item(power_item)
+	return collectibles.power_item_enabled(power_item)
 
 
 func _on_hurtbox_area_entered(area: Area2D) -> void:
