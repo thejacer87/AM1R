@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dqdbu1allxn27"]
+[gd_scene load_steps=13 format=3 uid="uid://dqdbu1allxn27"]
 
 [ext_resource type="Script" path="res://src/entities/enemies/skree/skree.gd" id="1_04ucv"]
 [ext_resource type="PackedScene" uid="uid://d1g0axrrrsg5g" path="res://src/entities/enemies/enemy.tscn" id="1_06vfm"]
@@ -84,10 +84,68 @@ tracks/1/keys = {
 "values": [0, 1, 2, 3, 4]
 }
 
+[sub_resource type="Animation" id="Animation_r0wdw"]
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = false
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [7, 8, 9, 10, 11]
+}
+
+[sub_resource type="Animation" id="Animation_ocweq"]
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = false
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [7, 12, 13, 12]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_kh2kh"]
 _data = {
 "detected": SubResource("Animation_r4myj"),
-"idle": SubResource("Animation_fh5mx")
+"detected_red": SubResource("Animation_ocweq"),
+"idle": SubResource("Animation_fh5mx"),
+"idle_red": SubResource("Animation_r0wdw")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qttwl"]
@@ -114,8 +172,8 @@ shape = SubResource("RectangleShape2D_lh3yt")
 [node name="Sprite2D" type="Sprite2D" parent="." index="4"]
 texture_filter = 1
 texture = ExtResource("3_vkgyq")
-hframes = 3
-vframes = 3
+hframes = 4
+vframes = 4
 metadata/_aseprite_wizard_config_ = {
 "i_mode": -1,
 "keep_anim_length": false,
@@ -131,7 +189,7 @@ metadata/_aseprite_wizard_config_ = {
 metadata/_aseprite_wizard_interface_config_ = {
 "output_section": true
 }
-metadata/_aseprite_wizard_source_file_hash_ = "8e3bd9ee857b0b30bc518ca0edf59e39"
+metadata/_aseprite_wizard_source_file_hash_ = "0babd2c5ac5f6270dd64de10a533df19"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D" index="0"]
 unique_name_in_owner = true
