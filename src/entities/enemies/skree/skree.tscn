@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dqdbu1allxn27"]
+[gd_scene load_steps=11 format=3 uid="uid://dqdbu1allxn27"]
 
 [ext_resource type="Script" path="res://src/entities/enemies/skree/skree.gd" id="1_04ucv"]
 [ext_resource type="PackedScene" uid="uid://d1g0axrrrsg5g" path="res://src/entities/enemies/enemy.tscn" id="1_06vfm"]
@@ -9,43 +9,20 @@ radius = 6.0
 height = 12.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ketto"]
-height = 24.0
+radius = 15.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lh3yt"]
 
 [sub_resource type="Animation" id="Animation_r4myj"]
 length = 0.4
-tracks/0/type = "value"
+loop_mode = 1
+tracks/0/type = "method"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:visible")
+tracks/0/path = NodePath("..")
 tracks/0/interp = 1
-tracks/0/loop_wrap = false
+tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = false
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [0, 4, 0, 4]
-}
-tracks/2/type = "method"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("..")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
 "times": PackedFloat32Array(0.333333),
 "transitions": PackedFloat32Array(1),
 "values": [{
@@ -53,10 +30,34 @@ tracks/2/keys = {
 "method": &"detected"
 }]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = false
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = false
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 5, 6, 5]
+}
 
 [sub_resource type="Animation" id="Animation_fh5mx"]
 resource_name = "idle"
-length = 0.4
+length = 0.5
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -77,10 +78,10 @@ tracks/1/path = NodePath(".:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = false
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 1,
-"values": [0, 1, 2, 3]
+"values": [0, 1, 2, 3, 4]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_kh2kh"]
@@ -88,6 +89,9 @@ _data = {
 "detected": SubResource("Animation_r4myj"),
 "idle": SubResource("Animation_fh5mx")
 }
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qttwl"]
+size = Vector2(80, 270)
 
 [node name="Skree" instance=ExtResource("1_06vfm")]
 collision_mask = 4
@@ -111,7 +115,7 @@ shape = SubResource("RectangleShape2D_lh3yt")
 texture_filter = 1
 texture = ExtResource("3_vkgyq")
 hframes = 3
-vframes = 2
+vframes = 3
 metadata/_aseprite_wizard_config_ = {
 "i_mode": -1,
 "keep_anim_length": false,
@@ -127,7 +131,7 @@ metadata/_aseprite_wizard_config_ = {
 metadata/_aseprite_wizard_interface_config_ = {
 "output_section": true
 }
-metadata/_aseprite_wizard_source_file_hash_ = "69c2d531f6b345e0576e02a029e4f38c"
+metadata/_aseprite_wizard_source_file_hash_ = "8e3bd9ee857b0b30bc518ca0edf59e39"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D" index="0"]
 unique_name_in_owner = true
@@ -136,19 +140,18 @@ libraries = {
 }
 autoplay = "idle"
 
-[node name="LeftRayCast2D" type="RayCast2D" parent="." index="5"]
-position = Vector2(-40, 0)
-target_position = Vector2(0, 250)
+[node name="DetectionArea2D" type="Area2D" parent="." index="5"]
+collision_layer = 0
 
-[node name="RightRayCast2D" type="RayCast2D" parent="." index="6"]
-position = Vector2(40, 0)
-target_position = Vector2(0, 250)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea2D" index="0"]
+position = Vector2(0, 125)
+shape = SubResource("RectangleShape2D_qttwl")
 
-[node name="Timer" type="Timer" parent="." index="7"]
+[node name="Timer" type="Timer" parent="." index="6"]
 wait_time = 2.0
 one_shot = true
 
-[node name="Label" type="Label" parent="." index="8"]
+[node name="Label" type="Label" parent="." index="7"]
 offset_left = 20.0
 offset_top = -30.0
 offset_right = 60.0
@@ -156,6 +159,7 @@ offset_bottom = -7.0
 text = "HP: 
 "
 
+[connection signal="body_entered" from="DetectionArea2D" to="." method="_on_detection_area_2d_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 
 [editable path="Hitbox"]

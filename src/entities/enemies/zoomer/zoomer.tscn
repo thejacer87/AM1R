@@ -100,6 +100,7 @@ metadata/_aseprite_wizard_interface_config_ = {
 metadata/_aseprite_wizard_source_file_hash_ = "7d2eb487be6d47e32bae8690462c2eea"
 
 [node name="Label" type="Label" parent="." index="4"]
+visible = false
 offset_left = 20.0
 offset_top = -30.0
 offset_right = 60.0

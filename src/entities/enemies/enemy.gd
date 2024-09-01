@@ -23,8 +23,12 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
-	_move(delta)
-	
+	if not is_frozen:
+		_move(delta)
+	if (hp <= 0):
+		_die()
+
+
 
 func _move(delta: float) -> void:
 	pass
@@ -33,6 +37,8 @@ func _move(delta: float) -> void:
 func _regenerate() -> void:
 	hp = starting_hp
 	is_dead = false
+	if is_frozen:
+		unfreeze()
 	_enable_collisions()
 	_show_sprite()
 	set_physics_process(true)
@@ -42,8 +48,6 @@ func damage(amount: int) -> void:
 	if is_dead:
 		return
 	hp -= amount
-	if (hp <= 0):
-		_die()
 
 
 func _die(drop_item := true) -> void:
@@ -64,7 +68,6 @@ func freeze() -> void:
 	is_frozen = true
 	freeze_timer.start()
 	_pause_animations()
-	set_physics_process(false)
 	_disable_hitboxes()
 	set_collision_layer_value(3, true)
 	modulate = Color.DARK_CYAN
@@ -73,7 +76,6 @@ func freeze() -> void:
 func unfreeze() -> void:
 	is_frozen = false
 	_play_animations()
-	set_physics_process(true)
 	_enable_hitboxes()
 	set_collision_layer_value(3, false)
 	modulate = Color.WHITE
@@ -128,7 +130,7 @@ func _on_hurtbox_area_entered(area: Area2D) -> void:
 
 
 func _on_visible_on_screen_enabler_2d_screen_exited() -> void:
-	if is_dead:
+	if is_dead: 
 		_regenerate()
 
 

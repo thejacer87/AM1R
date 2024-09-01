@@ -27,7 +27,7 @@ func _move(delta: float) -> void:
 	var col := move_and_collide(move * speed * delta * direction)
 	if col and col.get_normal().rotated(PI / 2).dot(move) < 0.5:
 		rotating = 4
-		move = col.get_normal().rotated(PI / 2)
+		move = col.get_normal().rotated(PI / 2)	
 		return
 
 	var pos := position

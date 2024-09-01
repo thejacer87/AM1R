@@ -13,7 +13,7 @@ func enter(previous_state_path: String, data := {}) -> void:
 
 
 func physics_update(delta: float) -> void:
-	#super.physics_update(delta)
+	#todo when a frozen enemy unfreezes while samus is crouching on it, samus stays floating. that was seemingly fixed in idle.gd by adding move_and_slide(), but not here. might be moot since when the enemy unfreezes samus, it should hurt her, sending her into a hurt state, then fall
 	if Input.is_action_just_pressed("jump_" + str(samus.player_index)):
 		finished.emit(JUMPING)
 	elif Input.is_action_just_pressed("morph_" + str(samus.player_index)):
