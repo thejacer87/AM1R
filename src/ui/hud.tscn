@@ -1,0 +1,107 @@
+[gd_scene load_steps=5 format=3 uid="uid://btax8amm0y77m"]
+
+[ext_resource type="Script" path="res://src/ui/hud.gd" id="1_318vl"]
+[ext_resource type="Texture2D" uid="uid://dm8nf3olnf3hn" path="res://src/ui/sMissile_0.png" id="1_kgty2"]
+[ext_resource type="Theme" uid="uid://lwlw7jart1pl" path="res://src/ui/zero_mission.tres" id="2_tfmfo"]
+[ext_resource type="PackedScene" uid="uid://dhganh88od213" path="res://src/ui/mini_map.tscn" id="4_8mbai"]
+
+[node name="HUD" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_318vl")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 23.0
+grow_horizontal = 2
+
+[node name="EnergyLabel" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_tfmfo")
+text = "99
+"
+
+[node name="Missiles" type="Control" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="HBoxContainer"]
+custom_minimum_size = Vector2(3, 16)
+layout_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+columns = 8
+
+[node name="ColorRect2" type="ColorRect" parent="HBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+color = Color(0.458824, 0.160784, 0.823529, 1)
+
+[node name="ColorRect3" type="ColorRect" parent="HBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+color = Color(0.458824, 0.160784, 0.823529, 1)
+
+[node name="ColorRect5" type="ColorRect" parent="HBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+color = Color(0.458824, 0.160784, 0.823529, 1)
+
+[node name="ColorRect8" type="ColorRect" parent="HBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+color = Color(0.458824, 0.160784, 0.823529, 1)
+
+[node name="ColorRect9" type="ColorRect" parent="HBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+color = Color(0.458824, 0.160784, 0.823529, 1)
+
+[node name="ColorRect6" type="ColorRect" parent="HBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+color = Color(0.458824, 0.160784, 0.823529, 1)
+
+[node name="ColorRect7" type="ColorRect" parent="HBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+color = Color(0.458824, 0.160784, 0.823529, 1)
+
+[node name="ColorRect4" type="ColorRect" parent="HBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+color = Color(0.458824, 0.160784, 0.823529, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="HBoxContainer"]
+custom_minimum_size = Vector2(3, 16)
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+texture = ExtResource("1_kgty2")
+flip_h = true
+
+[node name="EnergyLabel2" type="Label" parent="HBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_tfmfo")
+text = "105
+"
+
+[node name="VSeparator" type="VSeparator" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MiniMap" parent="HBoxContainer" instance=ExtResource("4_8mbai")]
+layout_mode = 2

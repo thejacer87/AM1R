@@ -1,7 +1,8 @@
-[gd_scene load_steps=18 format=4 uid="uid://djo1xojo4hhew"]
+[gd_scene load_steps=19 format=4 uid="uid://djo1xojo4hhew"]
 
 [ext_resource type="Script" path="res://src/main.gd" id="1_ab5rb"]
 [ext_resource type="PackedScene" uid="uid://coakemqp8riuo" path="res://src/entities/characters/samus/samus.tscn" id="2_3eyfh"]
+[ext_resource type="PackedScene" uid="uid://btax8amm0y77m" path="res://src/ui/hud.tscn" id="2_uoype"]
 [ext_resource type="Texture2D" uid="uid://dhrvo51tsh66a" path="res://icon.svg" id="3_0lk4c"]
 [ext_resource type="PackedScene" uid="uid://ddpn1n1umck07" path="res://src/entities/enemies/zoomer/zoomer.tscn" id="4_3wago"]
 [ext_resource type="PackedScene" uid="uid://dqdbu1allxn27" path="res://src/entities/enemies/skree/skree.tscn" id="5_qclbp"]
@@ -324,7 +325,6 @@ tile_set = SubResource("TileSet_tqjt1")
 
 [node name="Samus" parent="." instance=ExtResource("2_3eyfh")]
 position = Vector2(520, 250)
-player_index = 1
 
 [node name="Camera2D" type="Camera2D" parent="Samus"]
 limit_left = 0
@@ -333,12 +333,6 @@ limit_right = 1420
 limit_bottom = 330
 position_smoothing_enabled = true
 drag_horizontal_enabled = true
-
-[node name="Label" type="Label" parent="."]
-offset_left = 1.0
-offset_right = 63.0
-offset_bottom = 23.0
-text = "Energy: "
 
 [node name="InputLabel" type="Label" parent="."]
 offset_top = 23.0
@@ -402,3 +396,8 @@ position = Vector2(-380, -22)
 
 [node name="WaveBeam" parent="PowerItems" instance=ExtResource("15_dqg7w")]
 position = Vector2(-360, 14)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HUD" parent="CanvasLayer" instance=ExtResource("2_uoype")]
+unique_name_in_owner = true

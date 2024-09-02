@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://dhganh88od213"]
+
+[node name="MiniMap" type="Control"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 3
+anchors_preset = 0
+size_flags_horizontal = 8
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+color = Color(7.03912e-07, 0.329689, 0, 1)
