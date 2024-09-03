@@ -22,12 +22,14 @@ func _process(delta: float) -> void:
 
 func shoot() -> void:
 	if samus.is_missile_armed:
-		var missile := missile_scene.instantiate() as Missile
-		missile.direction = (Vector2.RIGHT * scale).rotated(rotation).normalized()
-		missile.position = global_position
-		missile.rotation = rotation
-		missile.scale = scale
-		get_tree().get_root().add_child(missile)
+		if samus.missile_count > 0:
+			var missile := missile_scene.instantiate() as Missile
+			missile.direction = (Vector2.RIGHT * scale).rotated(rotation).normalized()
+			missile.position = global_position
+			missile.rotation = rotation
+			missile.scale = scale
+			get_tree().get_root().add_child(missile)
+			samus.missile_count -= 1
 	else:
 		var beam := beam_scene.instantiate() as Beam
 		beam.collectibles = samus.collectibles

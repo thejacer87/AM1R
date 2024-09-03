@@ -31,8 +31,8 @@ extends Resource
 	}
 }
 
-@export var missiles_expansions := 0
-@export var energy_tanks := 0
+@export var missile_rocket := 0
+@export var energy_tank := 0
 
 
 func power_item_enabled(power_item: String) -> bool:

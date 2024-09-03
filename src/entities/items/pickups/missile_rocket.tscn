@@ -1,0 +1,60 @@
+[gd_scene load_steps=7 format=3 uid="uid://0fsfsmkissu3"]
+
+[ext_resource type="PackedScene" uid="uid://bsp8nf6soffbb" path="res://src/entities/items/pickups/pickup.tscn" id="1_xpqp6"]
+[ext_resource type="Texture2D" uid="uid://4q8w4pcadpsn" path="res://src/entities/items/pickups/missile_rocket.png" id="2_qystf"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y5d2k"]
+atlas = ExtResource("2_qystf")
+region = Rect2(0, 0, 16, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y4mkx"]
+atlas = ExtResource("2_qystf")
+region = Rect2(16, 0, 16, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ethb7"]
+atlas = ExtResource("2_qystf")
+region = Rect2(0, 15, 16, 15)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1etma"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y5d2k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y4mkx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ethb7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y4mkx")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="MissileRocket" instance=ExtResource("1_xpqp6")]
+pickup_name = "missile_rocket"
+
+[node name="AnimatedSprite2D" parent="." index="0"]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_1etma")
+autoplay = "default"
+frame_progress = 0.659914
+metadata/_aseprite_wizard_config_ = {
+"layer": "",
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "missile_rocket",
+"only_visible": false,
+"slice": "",
+"source": "res://src/entities/items/pickups/missile_rocket.aseprite"
+}
+metadata/_aseprite_wizard_source_file_hash_ = "a3df0c3df5c168d64b18834ddfd075fd"
+metadata/_aseprite_wizard_interface_config_ = {
+"layer_section": true,
+"output_section": true,
+"slice_section": true
+}

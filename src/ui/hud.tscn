@@ -22,84 +22,45 @@ offset_bottom = 23.0
 grow_horizontal = 2
 
 [node name="EnergyLabel" type="Label" parent="HBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 theme = ExtResource("2_tfmfo")
 text = "99
 "
 
-[node name="Missiles" type="Control" parent="HBoxContainer"]
-layout_mode = 2
-
 [node name="ColorRect" type="ColorRect" parent="HBoxContainer"]
 custom_minimum_size = Vector2(3, 16)
 layout_mode = 2
 
-[node name="GridContainer" type="GridContainer" parent="HBoxContainer"]
+[node name="ETankGridContainer" type="GridContainer" parent="HBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 columns = 8
 
-[node name="ColorRect2" type="ColorRect" parent="HBoxContainer/GridContainer"]
-custom_minimum_size = Vector2(16, 16)
-layout_mode = 2
-color = Color(0.458824, 0.160784, 0.823529, 1)
-
-[node name="ColorRect3" type="ColorRect" parent="HBoxContainer/GridContainer"]
-custom_minimum_size = Vector2(16, 16)
-layout_mode = 2
-color = Color(0.458824, 0.160784, 0.823529, 1)
-
-[node name="ColorRect5" type="ColorRect" parent="HBoxContainer/GridContainer"]
-custom_minimum_size = Vector2(16, 16)
-layout_mode = 2
-color = Color(0.458824, 0.160784, 0.823529, 1)
-
-[node name="ColorRect8" type="ColorRect" parent="HBoxContainer/GridContainer"]
-custom_minimum_size = Vector2(16, 16)
-layout_mode = 2
-color = Color(0.458824, 0.160784, 0.823529, 1)
-
-[node name="ColorRect9" type="ColorRect" parent="HBoxContainer/GridContainer"]
-custom_minimum_size = Vector2(16, 16)
-layout_mode = 2
-color = Color(0.458824, 0.160784, 0.823529, 1)
-
-[node name="ColorRect6" type="ColorRect" parent="HBoxContainer/GridContainer"]
-custom_minimum_size = Vector2(16, 16)
-layout_mode = 2
-color = Color(0.458824, 0.160784, 0.823529, 1)
-
-[node name="ColorRect7" type="ColorRect" parent="HBoxContainer/GridContainer"]
-custom_minimum_size = Vector2(16, 16)
-layout_mode = 2
-color = Color(0.458824, 0.160784, 0.823529, 1)
-
-[node name="ColorRect4" type="ColorRect" parent="HBoxContainer/GridContainer"]
-custom_minimum_size = Vector2(16, 16)
-layout_mode = 2
-color = Color(0.458824, 0.160784, 0.823529, 1)
-
 [node name="ColorRect2" type="ColorRect" parent="HBoxContainer"]
 custom_minimum_size = Vector2(3, 16)
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer"]
+[node name="MissileContainer" type="HBoxContainer" parent="HBoxContainer"]
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="HBoxContainer/HBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/MissileContainer"]
 layout_mode = 2
 size_flags_vertical = 4
 texture = ExtResource("1_kgty2")
 flip_h = true
 
-[node name="EnergyLabel2" type="Label" parent="HBoxContainer/HBoxContainer"]
+[node name="MissileLabel" type="Label" parent="HBoxContainer/MissileContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 theme = ExtResource("2_tfmfo")
 text = "105
 "
 
 [node name="VSeparator" type="VSeparator" parent="HBoxContainer"]
+modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 

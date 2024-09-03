@@ -1,6 +1,9 @@
 class_name Samus
 extends CharacterBody2D
 
+signal missile_count_updated
+signal energy_updated
+signal etanks_updated
 
 enum look_directions {LEFT = -1, RIGHT = 1}
 
@@ -9,12 +12,22 @@ const MAX_FALL_SPEED := 250.0
 const WALL_JUMP_SPEED := 66.667
 const HIGH_JUMP_MULTIPLIER := 1.2
 
-@export var energy := 99
+@export var energy := 99:
+	set(value):
+		energy = value
+		emit_signal("energy_updated", value)
+@export var etanks := 0:
+	set(value):
+		etanks = value
+		emit_signal("etanks_updated", value)
+@export var missile_count := 0:
+	set(value):
+		missile_count = value
+		emit_signal("missile_count_updated", value)
 @export var GRAVITY : float
 @export var MAX_JUMP_VELOCITY: float
 @export var MIN_JUMP_VELOCITY: float
 @export var player_index: int
-
 @onready var fsm := $StateMachine as StateMachine
 @onready var label: Label = $Label
 @onready var morph_ball_collision_shape_2d: CollisionShape2D = $MorphBallCollisionShape2D
@@ -65,6 +78,7 @@ func _process(_delta: float) -> void:
 	label.text += "\nWall Jump Timer: " + str(wall_jump_timer.time_left)
 	label.text += "\nAnimation: " + str(animation_player.current_animation)
 	label.text += "\nMissile: " + str("Armed" if is_missile_armed else "Nope")
+	label.text += "\nMissiles: " + str(missile_count)
 	if looking == look_directions.LEFT:
 		sprite_2d.flip_h = true
 		wall_check_top.scale = Vector2(-1, -1)
@@ -93,7 +107,12 @@ func _physics_process(delta: float) -> void:
 	
 func set_collectibles(new_collectibles: Collectibles) -> void:
 	collectibles = new_collectibles
+	if not is_physics_processing():
+		missile_count = collectibles.missile_rocket * 5
+		etanks = collectibles.energy_tank
+		energy = etanks * 100 + 99
 	set_physics_process(collectibles != null)
+	
 	
 func wall_jump(wall_direction: int) -> void:
 	wall_jump_timer.stop()
@@ -114,13 +133,13 @@ func damage(base_damage: int) -> void:
 
 
 func drop_bomb() -> void:
-	print("drop_bomb")
 	var bomb := bomb_scene.instantiate() as Bomb
 	bomb.global_position = bomb_drop_marker.global_position
 	get_tree().get_root().add_child(bomb)
 	
 
 func bombed() -> void:
+	# todo move horizontally too
 	velocity.y = -190
 
 
@@ -143,13 +162,21 @@ func is_colliding_with_wall() -> bool:
 	
 
 func _on_collected_power_item(power_item: String) -> void:
-	print("_on_collected: " + str(power_item))
-	print("collectible: " + str(collectibles.power_items[power_item]))
 	var c := collectibles
 	c.power_items[power_item].collected = true
 	c.power_items[power_item].enabled = true
 	collectibles = c
-	print("collectible, after: " + str(collectibles.power_items))
+	
+
+func _on_collected_pickup(pickup: String) -> void:
+	var c := collectibles
+	c[pickup] += 1
+	collectibles = c
+	if pickup == "energy_tank":
+		etanks = c.energy_tank
+		energy = c.energy_tank * 100 + 99
+	if pickup == "missile_rocket":
+		missile_count += 5
 
 
 func has_power_item_activated(power_item: String) -> bool:
