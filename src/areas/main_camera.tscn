@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://wqoe0hxsjxgq"]
+
+[ext_resource type="Script" path="res://src/areas/main_camera.gd" id="1_ptuma"]
+
+[node name="MainCamera" type="Camera2D"]
+script = ExtResource("1_ptuma")

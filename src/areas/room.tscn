@@ -1,0 +1,22 @@
+[gd_scene load_steps=2 format=3 uid="uid://cqdi0sqnith7p"]
+
+[ext_resource type="Script" path="res://src/areas/room.gd" id="1_5npu4"]
+
+[node name="Room" type="Node2D" groups=["Room"]]
+script = ExtResource("1_5npu4")
+
+[node name="CameraBounds" type="Node2D" parent="."]
+
+[node name="Top" type="Marker2D" parent="CameraBounds"]
+position = Vector2(256, 0)
+
+[node name="Bottom" type="Marker2D" parent="CameraBounds"]
+position = Vector2(256, 320)
+
+[node name="Left" type="Marker2D" parent="CameraBounds"]
+position = Vector2(0, 160)
+
+[node name="Right" type="Marker2D" parent="CameraBounds"]
+position = Vector2(480, 160)
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]

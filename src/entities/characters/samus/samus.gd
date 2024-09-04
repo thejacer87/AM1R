@@ -10,7 +10,7 @@ enum look_directions {LEFT = -1, RIGHT = 1}
 const SPEED := 115.0
 const MAX_FALL_SPEED := 250.0
 const WALL_JUMP_SPEED := 66.667
-const HIGH_JUMP_MULTIPLIER := 1.2
+const HIGH_JUMP_MULTIPLIER := 1.175
 
 @export var energy := 99:
 	set(value):
@@ -30,6 +30,7 @@ const HIGH_JUMP_MULTIPLIER := 1.2
 @export var player_index: int
 @onready var fsm := $StateMachine as StateMachine
 @onready var label: Label = $Label
+@onready var camera: MainCamera = $MainCamera
 @onready var morph_ball_collision_shape_2d: CollisionShape2D = $MorphBallCollisionShape2D
 @onready var standing_collision_shape_2d: CollisionShape2D = $StandingCollisionShape2D
 @onready var crouching_collision_shape_2d: CollisionShape2D = $CrouchingCollisionShape2D
@@ -58,8 +59,8 @@ const HIGH_JUMP_MULTIPLIER := 1.2
 var collectibles: Collectibles: set = set_collectibles
 var looking := look_directions.RIGHT
 var jump_duration := 0.70
-var max_jump_height : float = 10.5 * Globals.UNIT_SIZE
-var min_jump_height : float = 4 * Globals.UNIT_SIZE
+var max_jump_height : float = 5.25 * Globals.UNIT_SIZE
+var min_jump_height : float = 1 * Globals.UNIT_SIZE
 
 
 func _ready() -> void:
@@ -183,6 +184,9 @@ func has_power_item_activated(power_item: String) -> bool:
 	return collectibles.power_item_enabled(power_item)
 
 
+func bind_camera_limits(room: Room) -> void:
+	camera.set_camera_bounds(room)
+	
 func _on_hurtbox_area_entered(area: Area2D) -> void:
 	if area is Hitbox:
 		var hitbox := area as Hitbox

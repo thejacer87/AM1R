@@ -3,32 +3,32 @@
 [ext_resource type="PackedScene" uid="uid://bsp8nf6soffbb" path="res://src/entities/items/pickups/pickup.tscn" id="1_xpqp6"]
 [ext_resource type="Texture2D" uid="uid://4q8w4pcadpsn" path="res://src/entities/items/pickups/missile_rocket.png" id="2_qystf"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_y5d2k"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_ooqbb"]
 atlas = ExtResource("2_qystf")
 region = Rect2(0, 0, 16, 15)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_y4mkx"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_6jeas"]
 atlas = ExtResource("2_qystf")
 region = Rect2(16, 0, 16, 15)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ethb7"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_k16mj"]
 atlas = ExtResource("2_qystf")
 region = Rect2(0, 15, 16, 15)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_1etma"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_m83je"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_y5d2k")
+"texture": SubResource("AtlasTexture_ooqbb")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_y4mkx")
+"texture": SubResource("AtlasTexture_6jeas")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ethb7")
+"texture": SubResource("AtlasTexture_k16mj")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_y4mkx")
+"texture": SubResource("AtlasTexture_6jeas")
 }],
 "loop": true,
 "name": &"default",
@@ -40,9 +40,10 @@ pickup_name = "missile_rocket"
 
 [node name="AnimatedSprite2D" parent="." index="0"]
 texture_filter = 1
-sprite_frames = SubResource("SpriteFrames_1etma")
+sprite_frames = SubResource("SpriteFrames_m83je")
 autoplay = "default"
-frame_progress = 0.659914
+frame = 2
+frame_progress = 0.929408
 metadata/_aseprite_wizard_config_ = {
 "layer": "",
 "o_ex_p": "",

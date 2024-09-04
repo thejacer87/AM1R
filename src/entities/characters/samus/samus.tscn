@@ -1,6 +1,7 @@
-[gd_scene load_steps=81 format=3 uid="uid://coakemqp8riuo"]
+[gd_scene load_steps=82 format=3 uid="uid://coakemqp8riuo"]
 
 [ext_resource type="Script" path="res://src/entities/characters/samus/samus.gd" id="1_2ke1f"]
+[ext_resource type="PackedScene" uid="uid://wqoe0hxsjxgq" path="res://src/areas/main_camera.tscn" id="2_k305h"]
 [ext_resource type="Texture2D" uid="uid://3113y8bbnuqo" path="res://src/entities/characters/samus/screw_spark.png" id="12_v2ktf"]
 [ext_resource type="PackedScene" uid="uid://bp61p1vf75fg1" path="res://src/entities/hitboxes/hurtbox.tscn" id="13_qutfg"]
 [ext_resource type="PackedScene" uid="uid://dv2rtg1exmstp" path="res://src/entities/hitboxes/hitbox.tscn" id="15_l3q8o"]
@@ -17,13 +18,13 @@
 [ext_resource type="PackedScene" uid="uid://cmo3g8plbny3t" path="res://src/entities/weapons/arm_cannon.tscn" id="67_j3jex"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3vt5w"]
-size = Vector2(16, 32)
+size = Vector2(16, 30)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ivtrj"]
-radius = 8.0
+radius = 7.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p6dhi"]
-size = Vector2(16, 24)
+size = Vector2(16, 20)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pufh2"]
 size = Vector2(16, 20)
@@ -3297,7 +3298,7 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_30jek"]
-size = Vector2(13, 34)
+size = Vector2(13, 29)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_j3whd"]
 radius = 20.025
@@ -3306,21 +3307,28 @@ radius = 20.025
 collision_mask = 4
 script = ExtResource("1_2ke1f")
 
+[node name="MainCamera" parent="." instance=ExtResource("2_k305h")]
+position_smoothing_enabled = true
+position_smoothing_speed = 15.0
+
 [node name="StandingCollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 4)
+visible = false
+position = Vector2(0, 5)
 shape = SubResource("RectangleShape2D_3vt5w")
 
 [node name="MorphBallCollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 12)
+position = Vector2(0, 13)
 shape = SubResource("CircleShape2D_ivtrj")
 disabled = true
 
 [node name="CrouchingCollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 8)
+visible = false
+position = Vector2(0, 10)
 shape = SubResource("RectangleShape2D_p6dhi")
 disabled = true
 
 [node name="SpinCollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(0, 10)
 shape = SubResource("RectangleShape2D_pufh2")
 disabled = true
@@ -3363,12 +3371,13 @@ script = ExtResource("58_oqehy")
 script = ExtResource("60_v3vhy")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
 texture_filter = 1
 position = Vector2(0, -8)
 texture = ExtResource("66_laq4w")
 hframes = 17
 vframes = 17
-frame = 276
+frame = 9
 metadata/_aseprite_wizard_config_ = {
 "i_mode": -1,
 "keep_anim_length": false,
@@ -3465,7 +3474,8 @@ collision_layer = 1
 collision_mask = 2
 
 [node name="CollisionShape2D" parent="Hurtbox" index="0"]
-position = Vector2(-0.5, 3)
+visible = false
+position = Vector2(-0.5, 5.5)
 shape = SubResource("RectangleShape2D_30jek")
 
 [node name="Hitbox" parent="." instance=ExtResource("15_l3q8o")]
@@ -3474,6 +3484,7 @@ collision_mask = 2306
 damage = 250
 
 [node name="CollisionShape2D" parent="Hitbox" index="0"]
+visible = false
 shape = SubResource("CircleShape2D_j3whd")
 disabled = true
 
