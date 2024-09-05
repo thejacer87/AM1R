@@ -5,6 +5,7 @@ extends Node2D
 @onready var samus_2: Samus = $Samus2
 @onready var input_label: Label = $InputLabel
 @onready var hud: HUD = %HUD
+@onready var b1: Room = $"B-1"
 
 
 var _save: SaveGame
@@ -32,5 +33,7 @@ func create_or_load_save() -> void:
 		_save.write_save_game()
 		
 	samus.collectibles = _save.collectibles
-	samus.bind_camera_limits($"B-1" as Room)
+	samus.bind_camera_limits(b1)
+	for exit: RoomExit in b1.exits:
+		exit.enable_collisions()
 	#samus_2.collectibles = _save.collectibles

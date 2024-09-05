@@ -1,14 +1,36 @@
-[gd_scene load_steps=5 format=3 uid="uid://djo1xojo4hhew"]
+[gd_scene load_steps=7 format=3 uid="uid://djo1xojo4hhew"]
 
 [ext_resource type="Script" path="res://src/main.gd" id="1_ab5rb"]
 [ext_resource type="PackedScene" uid="uid://coakemqp8riuo" path="res://src/entities/characters/samus/samus.tscn" id="2_3eyfh"]
 [ext_resource type="PackedScene" uid="uid://btax8amm0y77m" path="res://src/ui/hud.tscn" id="2_uoype"]
+[ext_resource type="PackedScene" uid="uid://cpy11obloi4i3" path="res://src/areas/brinstar/b_2.tscn" id="3_ev3iy"]
+[ext_resource type="PackedScene" uid="uid://syd7bknrndkj" path="res://src/areas/brinstar/b_3.tscn" id="4_73kii"]
 [ext_resource type="PackedScene" uid="uid://jeo6jugm3xvf" path="res://src/areas/brinstar/b_1.tscn" id="19_07ah2"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_ab5rb")
 
 [node name="B-1" parent="." instance=ExtResource("19_07ah2")]
+
+[node name="RoomExit" parent="B-1" index="12" node_paths=PackedStringArray("next_room")]
+next_room = NodePath("../../B-2")
+
+[node name="B-2" parent="." instance=ExtResource("3_ev3iy")]
+position = Vector2(976, 0)
+
+[node name="RoomExit" parent="B-2" index="3" node_paths=PackedStringArray("next_room")]
+next_room = NodePath("../../B-1")
+
+[node name="RoomExit2" parent="B-2" index="4" node_paths=PackedStringArray("next_room")]
+position = Vector2(390, 185)
+next_room = NodePath("../../B-3")
+
+[node name="B-3" parent="." instance=ExtResource("4_73kii")]
+position = Vector2(1360, 0)
+
+[node name="RoomExit" parent="B-3" index="8" node_paths=PackedStringArray("next_room")]
+position = Vector2(0, 184)
+next_room = NodePath("../../B-2")
 
 [node name="Samus" parent="." instance=ExtResource("2_3eyfh")]
 position = Vector2(480, 254)
@@ -22,3 +44,7 @@ offset_bottom = 46.0
 
 [node name="HUD" parent="CanvasLayer" instance=ExtResource("2_uoype")]
 unique_name_in_owner = true
+
+[editable path="B-1"]
+[editable path="B-2"]
+[editable path="B-3"]

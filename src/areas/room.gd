@@ -5,7 +5,13 @@ extends Node2D
 @export var grid_size := Vector2.ONE
 @export var pickups : Array[RoomCollectible] = []
 @export var power_items : Array[RoomCollectible] = []
-@export var exits : Array[Marker2D] = []
+@export var exits : Array[RoomExit] = []:
+	get:
+		var carry: Array[RoomExit] = []
+		for child in self.find_children("*"):
+			if child.is_in_group("room_exit"):
+				carry.append(child)
+		return carry
 
 
 @onready var camera_bounds: Node2D = $CameraBounds
