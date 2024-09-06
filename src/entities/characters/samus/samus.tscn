@@ -3334,7 +3334,6 @@ shape = SubResource("RectangleShape2D_pufh2")
 disabled = true
 
 [node name="Label" type="Label" parent="."]
-visible = false
 z_index = 11
 offset_left = -97.0
 offset_top = -117.0

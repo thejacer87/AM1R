@@ -14,6 +14,7 @@ var _save: SaveGame
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	samus.etanks_updated.connect(hud._on_energy_tanks_updated)
+	samus.missile_armed.connect(hud._on_missile_armed)
 	samus.energy_updated.connect(hud._on_energy_updated)
 	samus.missile_count_updated.connect(hud._on_missile_count_updated)
 	create_or_load_save()

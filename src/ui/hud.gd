@@ -64,3 +64,8 @@ func _on_energy_updated(e: int) -> void:
 func _on_missile_count_updated(c: int) -> void:
 	missile_count = c
 	
+
+func _on_missile_armed(player_index: int, value: bool) -> void:
+	print("Player: " + str(player_index))
+	print("Value: " + str(value))
+	pass
