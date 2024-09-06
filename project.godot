@@ -37,12 +37,13 @@ gdscript/warnings/unsafe_call_argument=2
 [display]
 
 window/size/viewport_width=480
-window/size/viewport_height=320
+window/size/viewport_height=270
 window/size/initial_position_type=2
+window/size/borderless=true
 window/size/always_on_top=true
 window/size/transparent=true
 window/size/window_width_override=1440
-window/size/window_height_override=960
+window/size/window_height_override=810
 window/stretch/mode="viewport"
 
 [editor]

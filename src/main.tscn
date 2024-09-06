@@ -16,24 +16,22 @@ script = ExtResource("1_ab5rb")
 next_room = NodePath("../../B-2")
 
 [node name="B-2" parent="." instance=ExtResource("3_ev3iy")]
-position = Vector2(976, 0)
+position = Vector2(992, 0)
 
 [node name="RoomExit" parent="B-2" index="3" node_paths=PackedStringArray("next_room")]
 next_room = NodePath("../../B-1")
 
 [node name="RoomExit2" parent="B-2" index="4" node_paths=PackedStringArray("next_room")]
-position = Vector2(390, 185)
 next_room = NodePath("../../B-3")
 
 [node name="B-3" parent="." instance=ExtResource("4_73kii")]
-position = Vector2(1360, 0)
+position = Vector2(1344, 0)
 
 [node name="RoomExit" parent="B-3" index="8" node_paths=PackedStringArray("next_room")]
-position = Vector2(0, 184)
 next_room = NodePath("../../B-2")
 
 [node name="Samus" parent="." instance=ExtResource("2_3eyfh")]
-position = Vector2(480, 254)
+position = Vector2(460, 165)
 
 [node name="InputLabel" type="Label" parent="."]
 offset_top = 23.0
