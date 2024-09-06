@@ -20,6 +20,8 @@ extends Control
 @onready var e_tank_scene := load("res://src/ui/energy_tank.tscn") as PackedScene
 @onready var e_tank_grid_container: GridContainer = %ETankGridContainer
 @onready var missile_container: HBoxContainer = $HBoxContainer/MissileContainer
+@onready var p1_missile_bg: ColorRect = %P1MissileBG
+@onready var p2_missile_bg: ColorRect = %P2MissileBG
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -56,7 +58,7 @@ func show_missiles() -> void:
 func _on_energy_tanks_updated(et: int) -> void:
 	energy_tanks = et
 	
-	
+
 func _on_energy_updated(e: int) -> void:
 	energy = e
 	
@@ -66,6 +68,17 @@ func _on_missile_count_updated(c: int) -> void:
 	
 
 func _on_missile_armed(player_index: int, value: bool) -> void:
+	match player_index:
+		0:
+			if value:
+				p1_missile_bg.color = Color.GREEN
+			else:
+				p1_missile_bg.color = Color.BLACK
+		1:
+			if value:
+				p2_missile_bg.color = Color.GREEN
+			else:
+				p2_missile_bg.color = Color.BLACK
 	print("Player: " + str(player_index))
 	print("Value: " + str(value))
 	pass

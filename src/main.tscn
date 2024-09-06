@@ -32,8 +32,13 @@ next_room = NodePath("../../B-2")
 
 [node name="Samus" parent="." instance=ExtResource("2_3eyfh")]
 position = Vector2(460, 165)
+player_index = 1
+
+[node name="Samus2" parent="." instance=ExtResource("2_3eyfh")]
+position = Vector2(373, 185)
 
 [node name="InputLabel" type="Label" parent="."]
+visible = false
 offset_top = 23.0
 offset_right = 62.0
 offset_bottom = 46.0

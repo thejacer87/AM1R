@@ -115,14 +115,15 @@ size_flags_vertical = 4
 texture = ExtResource("1_kgty2")
 flip_h = true
 
-[node name="ColorRect2" type="ColorRect" parent="MarginContainer/HBoxContainer/P1HBoxContainer/MissileContainer"]
+[node name="P1MissileBG" type="ColorRect" parent="MarginContainer/HBoxContainer/P1HBoxContainer/MissileContainer"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(25, 10)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 color = Color(0, 0, 0, 1)
 
-[node name="MissileLabel" type="Label" parent="MarginContainer/HBoxContainer/P1HBoxContainer/MissileContainer/ColorRect2"]
+[node name="MissileLabel" type="Label" parent="MarginContainer/HBoxContainer/P1HBoxContainer/MissileContainer/P1MissileBG"]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 6
@@ -165,6 +166,8 @@ size_flags_vertical = 4
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+theme_override_constants/h_separation = 2
+theme_override_constants/v_separation = 2
 columns = 3
 
 [node name="EnergyTank" parent="MarginContainer/HBoxContainer/P1HBoxContainer2/ETankGridContainer" instance=ExtResource("3_hl8df")]
@@ -214,210 +217,15 @@ size_flags_vertical = 4
 texture = ExtResource("1_kgty2")
 flip_h = true
 
-[node name="ColorRect2" type="ColorRect" parent="MarginContainer/HBoxContainer/P1HBoxContainer2/MissileContainer"]
+[node name="P2MissileBG" type="ColorRect" parent="MarginContainer/HBoxContainer/P1HBoxContainer2/MissileContainer"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(25, 10)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 color = Color(0, 0, 0, 1)
 
-[node name="MissileLabel" type="Label" parent="MarginContainer/HBoxContainer/P1HBoxContainer2/MissileContainer/ColorRect2"]
-layout_mode = 1
-anchors_preset = 6
-anchor_left = 1.0
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = -8.0
-offset_top = -4.5
-offset_bottom = 4.5
-grow_horizontal = 0
-grow_vertical = 2
-theme = ExtResource("2_tfmfo")
-theme_override_font_sizes/font_size = 8
-text = "5
-"
-
-[node name="P1HBoxContainer3" type="HBoxContainer" parent="MarginContainer/HBoxContainer"]
-layout_mode = 2
-
-[node name="ColorRect3" type="ColorRect" parent="MarginContainer/HBoxContainer/P1HBoxContainer3"]
-custom_minimum_size = Vector2(2, 16)
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 4
-color = Color(1, 1, 0, 1)
-
-[node name="EnergyLabel" type="Label" parent="MarginContainer/HBoxContainer/P1HBoxContainer3"]
-layout_mode = 2
-theme = ExtResource("2_tfmfo")
-text = "99
-"
-
-[node name="ColorRect" type="ColorRect" parent="MarginContainer/HBoxContainer/P1HBoxContainer3"]
-custom_minimum_size = Vector2(1, 8)
-layout_mode = 2
-size_flags_vertical = 4
-
-[node name="ETankGridContainer" type="GridContainer" parent="MarginContainer/HBoxContainer/P1HBoxContainer3"]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-columns = 3
-
-[node name="EnergyTank" parent="MarginContainer/HBoxContainer/P1HBoxContainer3/ETankGridContainer" instance=ExtResource("3_hl8df")]
-layout_mode = 2
-
-[node name="EnergyTank2" parent="MarginContainer/HBoxContainer/P1HBoxContainer3/ETankGridContainer" instance=ExtResource("3_hl8df")]
-layout_mode = 2
-
-[node name="EnergyTank5" parent="MarginContainer/HBoxContainer/P1HBoxContainer3/ETankGridContainer" instance=ExtResource("3_hl8df")]
-layout_mode = 2
-
-[node name="EnergyTank6" parent="MarginContainer/HBoxContainer/P1HBoxContainer3/ETankGridContainer" instance=ExtResource("3_hl8df")]
-layout_mode = 2
-
-[node name="EnergyTank7" parent="MarginContainer/HBoxContainer/P1HBoxContainer3/ETankGridContainer" instance=ExtResource("3_hl8df")]
-layout_mode = 2
-
-[node name="ColorRect2" type="ColorRect" parent="MarginContainer/HBoxContainer/P1HBoxContainer3"]
-custom_minimum_size = Vector2(1, 8)
-layout_mode = 2
-size_flags_vertical = 4
-
-[node name="MissileContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/P1HBoxContainer3"]
-layout_mode = 2
-theme_override_constants/separation = 0
-
-[node name="ColorRect" type="ColorRect" parent="MarginContainer/HBoxContainer/P1HBoxContainer3/MissileContainer"]
-custom_minimum_size = Vector2(14, 10)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-color = Color(0, 1, 0, 1)
-
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/P1HBoxContainer3/MissileContainer/ColorRect"]
-layout_mode = 1
-anchors_preset = 6
-anchor_left = 1.0
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = -13.0
-offset_top = -4.0
-offset_bottom = 4.0
-grow_horizontal = 0
-grow_vertical = 2
-size_flags_vertical = 4
-texture = ExtResource("1_kgty2")
-flip_h = true
-
-[node name="ColorRect2" type="ColorRect" parent="MarginContainer/HBoxContainer/P1HBoxContainer3/MissileContainer"]
-custom_minimum_size = Vector2(25, 10)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-color = Color(0, 0, 0, 1)
-
-[node name="MissileLabel" type="Label" parent="MarginContainer/HBoxContainer/P1HBoxContainer3/MissileContainer/ColorRect2"]
-layout_mode = 1
-anchors_preset = 6
-anchor_left = 1.0
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = -8.0
-offset_top = -4.5
-offset_bottom = 4.5
-grow_horizontal = 0
-grow_vertical = 2
-theme = ExtResource("2_tfmfo")
-theme_override_font_sizes/font_size = 8
-text = "5
-"
-
-[node name="P1HBoxContainer4" type="HBoxContainer" parent="MarginContainer/HBoxContainer"]
-layout_mode = 2
-
-[node name="ColorRect3" type="ColorRect" parent="MarginContainer/HBoxContainer/P1HBoxContainer4"]
-custom_minimum_size = Vector2(2, 16)
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 4
-color = Color(0, 1, 0, 1)
-
-[node name="EnergyLabel" type="Label" parent="MarginContainer/HBoxContainer/P1HBoxContainer4"]
-layout_mode = 2
-theme = ExtResource("2_tfmfo")
-text = "99
-"
-
-[node name="ColorRect" type="ColorRect" parent="MarginContainer/HBoxContainer/P1HBoxContainer4"]
-custom_minimum_size = Vector2(1, 8)
-layout_mode = 2
-size_flags_vertical = 4
-
-[node name="ETankGridContainer" type="GridContainer" parent="MarginContainer/HBoxContainer/P1HBoxContainer4"]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-columns = 3
-
-[node name="EnergyTank" parent="MarginContainer/HBoxContainer/P1HBoxContainer4/ETankGridContainer" instance=ExtResource("3_hl8df")]
-layout_mode = 2
-
-[node name="EnergyTank2" parent="MarginContainer/HBoxContainer/P1HBoxContainer4/ETankGridContainer" instance=ExtResource("3_hl8df")]
-layout_mode = 2
-
-[node name="EnergyTank5" parent="MarginContainer/HBoxContainer/P1HBoxContainer4/ETankGridContainer" instance=ExtResource("3_hl8df")]
-layout_mode = 2
-
-[node name="EnergyTank6" parent="MarginContainer/HBoxContainer/P1HBoxContainer4/ETankGridContainer" instance=ExtResource("3_hl8df")]
-layout_mode = 2
-
-[node name="EnergyTank7" parent="MarginContainer/HBoxContainer/P1HBoxContainer4/ETankGridContainer" instance=ExtResource("3_hl8df")]
-layout_mode = 2
-
-[node name="ColorRect2" type="ColorRect" parent="MarginContainer/HBoxContainer/P1HBoxContainer4"]
-custom_minimum_size = Vector2(1, 8)
-layout_mode = 2
-size_flags_vertical = 4
-
-[node name="MissileContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/P1HBoxContainer4"]
-layout_mode = 2
-theme_override_constants/separation = 0
-
-[node name="ColorRect" type="ColorRect" parent="MarginContainer/HBoxContainer/P1HBoxContainer4/MissileContainer"]
-custom_minimum_size = Vector2(14, 10)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-color = Color(0, 1, 0, 1)
-
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/P1HBoxContainer4/MissileContainer/ColorRect"]
-layout_mode = 1
-anchors_preset = 6
-anchor_left = 1.0
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = -13.0
-offset_top = -4.0
-offset_bottom = 4.0
-grow_horizontal = 0
-grow_vertical = 2
-size_flags_vertical = 4
-texture = ExtResource("1_kgty2")
-flip_h = true
-
-[node name="ColorRect2" type="ColorRect" parent="MarginContainer/HBoxContainer/P1HBoxContainer4/MissileContainer"]
-custom_minimum_size = Vector2(25, 10)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-color = Color(0, 0, 0, 1)
-
-[node name="MissileLabel" type="Label" parent="MarginContainer/HBoxContainer/P1HBoxContainer4/MissileContainer/ColorRect2"]
+[node name="MissileLabel" type="Label" parent="MarginContainer/HBoxContainer/P1HBoxContainer2/MissileContainer/P2MissileBG"]
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0

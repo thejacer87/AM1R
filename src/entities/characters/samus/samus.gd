@@ -4,6 +4,7 @@ extends CharacterBody2D
 signal missile_count_updated
 signal energy_updated
 signal etanks_updated
+signal missile_armed(player_index: int, value: bool)
 
 enum look_directions {LEFT = -1, RIGHT = 1}
 
@@ -51,7 +52,10 @@ const HIGH_JUMP_MULTIPLIER := 1.175
 @onready var state_machine: StateMachine = $StateMachine
 @onready var bomb_scene := preload("res://src/entities/weapons/bombs/bomb.tscn")
 @onready var bomb_drop_marker: Marker2D = $BombDropMarker
-@onready var is_missile_armed := false
+@onready var is_missile_armed := false:
+	set(value):
+		is_missile_armed = value
+		missile_armed.emit(player_index, value)
 @onready var wall_check_top: RayCast2D = %WallCheckTop
 @onready var wall_check_bottom: RayCast2D = %WallCheckBottom
 
@@ -91,8 +95,9 @@ func _process(_delta: float) -> void:
 	
 	
 func _physics_process(delta: float) -> void:
-	if Input.is_action_pressed("arm_weapon_" + str(player_index)):
-		is_missile_armed = true
+	if Input.is_action_just_pressed("arm_weapon_" + str(player_index)):
+		if not is_missile_armed:
+			is_missile_armed = true
 			
 	if Input.is_action_just_released("arm_weapon_" + str(player_index)):
 		is_missile_armed = false

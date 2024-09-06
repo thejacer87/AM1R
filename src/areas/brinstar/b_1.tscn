@@ -31,31 +31,31 @@ tile_map_data = PackedByteArray("AAAAAAAAAQAAAAAAAAAAAAEAAQAAAAAAAAAAAAIAAQAAAAA
 tile_set = ExtResource("5_jthsy")
 
 [node name="Zoomer" parent="." index="3" instance=ExtResource("6_f0dic")]
-position = Vector2(140, 197)
+position = Vector2(140, 201)
 
 [node name="Zoomer2" parent="." index="4" instance=ExtResource("6_f0dic")]
-position = Vector2(430, 67)
+position = Vector2(430, 71)
 
 [node name="Zoomer3" parent="." index="5" instance=ExtResource("6_f0dic")]
-position = Vector2(530, 67)
+position = Vector2(530, 71)
 
 [node name="Zoomer4" parent="." index="6" instance=ExtResource("6_f0dic")]
-position = Vector2(940, 227)
+position = Vector2(940, 231)
 
 [node name="Zoomer5" parent="." index="7" instance=ExtResource("6_f0dic")]
-position = Vector2(1010, 147)
+position = Vector2(1010, 151)
 
 [node name="Skree" parent="." index="8" instance=ExtResource("7_dhd2y")]
-position = Vector2(670, 60)
+position = Vector2(670, 64)
 
 [node name="Skree2" parent="." index="9" instance=ExtResource("7_dhd2y")]
-position = Vector2(730, 90)
+position = Vector2(730, 94)
 
 [node name="Skree3" parent="." index="10" instance=ExtResource("7_dhd2y")]
-position = Vector2(820, 74)
+position = Vector2(820, 78)
 
 [node name="Marker2D" type="Marker2D" parent="." index="11"]
-position = Vector2(184, 177)
+position = Vector2(184, 181)
 
 [node name="RoomExit" parent="." index="12" instance=ExtResource("8_isyg1")]
-position = Vector2(1114, 132)
+position = Vector2(1114, 136)
