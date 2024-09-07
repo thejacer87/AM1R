@@ -1,10 +1,11 @@
 class_name Samus
 extends CharacterBody2D
 
-signal missile_count_updated
-signal energy_updated
-signal etanks_updated
+signal missile_count_updated(player_index: int, value: bool)
+signal energy_updated(player_index: int, value: bool)
 signal missile_armed(player_index: int, value: bool)
+signal etanks_updated(value: bool)
+signal missile_rockets_updated(value: bool)
 
 enum look_directions {LEFT = -1, RIGHT = 1}
 
@@ -16,15 +17,19 @@ const HIGH_JUMP_MULTIPLIER := 1.175
 @export var energy := 99:
 	set(value):
 		energy = value
-		emit_signal("energy_updated", value)
+		energy_updated.emit(player_index, value)
 @export var etanks := 0:
 	set(value):
 		etanks = value
-		emit_signal("etanks_updated", value)
+		etanks_updated.emit(value)
 @export var missile_count := 0:
 	set(value):
 		missile_count = value
-		emit_signal("missile_count_updated", value)
+		missile_count_updated.emit(player_index, value)
+@export var missile_rockets := 0:
+	set(value):
+		missile_rockets = value
+		missile_rockets_updated.emit(value)
 @export var GRAVITY : float
 @export var MAX_JUMP_VELOCITY: float
 @export var MIN_JUMP_VELOCITY: float
@@ -183,6 +188,7 @@ func _on_collected_pickup(pickup: String) -> void:
 		energy = c.energy_tank * 100 + 99
 	if pickup == "missile_rocket":
 		missile_count += 5
+		missile_rockets += 1
 
 
 func has_power_item_activated(power_item: String) -> bool:
@@ -191,7 +197,17 @@ func has_power_item_activated(power_item: String) -> bool:
 
 func bind_camera_limits(room: Room) -> void:
 	camera.set_camera_bounds(room)
-	
+
+
+func connect_hud(hud: HUD) -> void:
+	hud.add_player(self)
+	missile_armed.connect(hud._on_missile_armed)
+	energy_updated.connect(hud._on_energy_updated)
+	missile_count_updated.connect(hud._on_missile_count_updated)
+	etanks_updated.connect(hud._on_energy_tanks_updated)
+	missile_rockets_updated.connect(hud._on_missile_rockets_updated)
+
+
 func _on_hurtbox_area_entered(area: Area2D) -> void:
 	if area is Hitbox:
 		var hitbox := area as Hitbox

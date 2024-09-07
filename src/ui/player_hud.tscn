@@ -1,0 +1,126 @@
+[gd_scene load_steps=5 format=3 uid="uid://dff6qu8cc6kb1"]
+
+[ext_resource type="Theme" uid="uid://lwlw7jart1pl" path="res://src/ui/zero_mission.tres" id="1_0qp7e"]
+[ext_resource type="Script" path="res://src/ui/player_hud.gd" id="1_c2v6i"]
+[ext_resource type="PackedScene" uid="uid://ddykmrnryffdm" path="res://src/ui/energy_tank.tscn" id="2_8b54l"]
+[ext_resource type="Texture2D" uid="uid://dm8nf3olnf3hn" path="res://src/ui/sMissile_0.png" id="3_bfypy"]
+
+[node name="PlayerHUD" type="HBoxContainer" groups=["player_hud"]]
+script = ExtResource("1_c2v6i")
+
+[node name="PlayerColorIndicator" type="ColorRect" parent="."]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(2, 16)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+
+[node name="EnergyLabel" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("1_0qp7e")
+theme_override_colors/font_outline_color = Color(0.160784, 0.223529, 0.54902, 1)
+theme_override_constants/outline_size = 5
+text = "99
+"
+
+[node name="ETankContainer" type="HBoxContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 2
+
+[node name="ColorRect" type="ColorRect" parent="ETankContainer"]
+custom_minimum_size = Vector2(1, 8)
+layout_mode = 2
+size_flags_vertical = 4
+color = Color(1, 1, 1, 0.501961)
+
+[node name="ETankGridContainer" type="GridContainer" parent="ETankContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/h_separation = 2
+theme_override_constants/v_separation = 2
+columns = 3
+
+[node name="EnergyTank" parent="ETankContainer/ETankGridContainer" instance=ExtResource("2_8b54l")]
+layout_mode = 2
+
+[node name="EnergyTank2" parent="ETankContainer/ETankGridContainer" instance=ExtResource("2_8b54l")]
+layout_mode = 2
+
+[node name="EnergyTank3" parent="ETankContainer/ETankGridContainer" instance=ExtResource("2_8b54l")]
+layout_mode = 2
+
+[node name="EnergyTank4" parent="ETankContainer/ETankGridContainer" instance=ExtResource("2_8b54l")]
+layout_mode = 2
+
+[node name="EnergyTank5" parent="ETankContainer/ETankGridContainer" instance=ExtResource("2_8b54l")]
+layout_mode = 2
+
+[node name="EnergyTank6" parent="ETankContainer/ETankGridContainer" instance=ExtResource("2_8b54l")]
+layout_mode = 2
+
+[node name="ColorRect2" type="ColorRect" parent="ETankContainer"]
+custom_minimum_size = Vector2(1, 8)
+layout_mode = 2
+size_flags_vertical = 4
+color = Color(1, 1, 1, 0.501961)
+
+[node name="MissileContainer" type="HBoxContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="ColorRect" type="ColorRect" parent="MissileContainer"]
+custom_minimum_size = Vector2(14, 10)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+color = Color(0.290196, 0.678431, 0.223529, 1)
+
+[node name="TextureRect" type="TextureRect" parent="MissileContainer/ColorRect"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -13.0
+offset_top = -4.0
+offset_bottom = 4.0
+grow_horizontal = 0
+grow_vertical = 2
+size_flags_vertical = 4
+texture = ExtResource("3_bfypy")
+flip_h = true
+
+[node name="MissileBG" type="ColorRect" parent="MissileContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(25, 10)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+color = Color(0.45098, 0.290196, 0.321569, 1)
+
+[node name="MissileLabel" type="Label" parent="MissileContainer/MissileBG"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -8.0
+offset_top = -4.5
+offset_bottom = 4.5
+grow_horizontal = 0
+grow_vertical = 2
+theme = ExtResource("1_0qp7e")
+text = "255
+"
+
+[node name="VSeparator" type="VSeparator" parent="."]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2

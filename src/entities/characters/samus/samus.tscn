@@ -18,16 +18,16 @@
 [ext_resource type="PackedScene" uid="uid://cmo3g8plbny3t" path="res://src/entities/weapons/arm_cannon.tscn" id="67_j3jex"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3vt5w"]
-size = Vector2(16, 30)
+size = Vector2(15, 30)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ivtrj"]
 radius = 7.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p6dhi"]
-size = Vector2(16, 20)
+size = Vector2(15, 20)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pufh2"]
-size = Vector2(16, 20)
+size = Vector2(15, 20)
 
 [sub_resource type="Animation" id="Animation_jrd7f"]
 length = 0.001
@@ -3322,7 +3322,6 @@ position_smoothing_enabled = true
 position_smoothing_speed = 15.0
 
 [node name="StandingCollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2(0, 5)
 shape = SubResource("RectangleShape2D_3vt5w")
 
@@ -3332,13 +3331,11 @@ shape = SubResource("CircleShape2D_ivtrj")
 disabled = true
 
 [node name="CrouchingCollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2(0, 10)
 shape = SubResource("RectangleShape2D_p6dhi")
 disabled = true
 
-[node name="SpinCollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
+[node name="SpinCollisionShape2D" type="CollisionShape2D" parent="." groups=["Player"]]
 position = Vector2(0, 10)
 shape = SubResource("RectangleShape2D_pufh2")
 disabled = true

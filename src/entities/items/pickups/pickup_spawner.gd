@@ -1,7 +1,7 @@
 extends Node2D
 
-#@onready var energy_scene = preload("res://src/pickups/Energy.tscn")
-#@onready var missile_scene = preload("res://src/pickups/Missile.tscn")
+@onready var energy_scene := preload("res://src/entities/items/pickups/energy_tank.tscn")
+@onready var missile_scene := preload("res://src/entities/items/pickups/missile_rocket.tscn")
 
 
 func _ready() -> void:
@@ -17,7 +17,7 @@ func _ready() -> void:
 
 func _drop_energy(small: bool = true) -> void:
 	print("drop energy")
-	#var energy = energy_scene.instantiate()
+	#var energy := energy_scene.instantiate() as Ener
 	#get_tree().get_root().add_child(energy)
 	#energy.small = small
 	#if not small:
@@ -28,7 +28,8 @@ func _drop_energy(small: bool = true) -> void:
 
 func _drop_missile() -> void:
 	print("drop missile")
-	#var missile = missile_scene.instantiate()
-	#get_tree().get_root().add_child(missile)
-	#missile.global_position = global_position
-	#queue_free()
+	# todo make proper drops
+	var missile := missile_scene.instantiate() as Pickup
+	get_tree().get_root().add_child(missile)
+	missile.global_position = global_position
+	queue_free()

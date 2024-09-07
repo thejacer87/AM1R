@@ -2,4 +2,4 @@
 
 [node name="EnergyTank" type="ColorRect"]
 custom_minimum_size = Vector2(4, 4)
-color = Color(0.458824, 0.160784, 0.823529, 1)
+color = Color(0.870588, 0.223529, 0.580392, 1)
