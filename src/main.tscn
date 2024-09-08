@@ -37,14 +37,6 @@ position = Vector2(460, 165)
 position = Vector2(373, 185)
 player_index = 1
 
-[node name="Samus3" parent="." instance=ExtResource("2_3eyfh")]
-position = Vector2(329, 122)
-player_index = 2
-
-[node name="Samus4" parent="." instance=ExtResource("2_3eyfh")]
-position = Vector2(547, 200)
-player_index = 3
-
 [node name="InputLabel" type="Label" parent="."]
 visible = false
 offset_top = 23.0

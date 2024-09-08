@@ -3303,7 +3303,7 @@ size = Vector2(13, 29)
 [sub_resource type="CircleShape2D" id="CircleShape2D_j3whd"]
 radius = 20.025
 
-[node name="Samus" type="CharacterBody2D"]
+[node name="Samus" type="CharacterBody2D" groups=["player"]]
 collision_mask = 4
 script = ExtResource("1_2ke1f")
 
@@ -3335,7 +3335,7 @@ position = Vector2(0, 10)
 shape = SubResource("RectangleShape2D_p6dhi")
 disabled = true
 
-[node name="SpinCollisionShape2D" type="CollisionShape2D" parent="." groups=["Player"]]
+[node name="SpinCollisionShape2D" type="CollisionShape2D" parent="." groups=["player"]]
 position = Vector2(0, 10)
 shape = SubResource("RectangleShape2D_pufh2")
 disabled = true

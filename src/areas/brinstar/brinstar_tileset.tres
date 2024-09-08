@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://bk0nkwvjv85ab" path="res://src/areas/brinstar/brinstar.png" id="1_gjt0e"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_je745"]
+resource_name = "Brinstar"
 texture = ExtResource("1_gjt0e")
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
@@ -12,6 +13,7 @@ texture = ExtResource("1_gjt0e")
 2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 3:0/0 = 0
 3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+4:0/next_alternative_id = 2
 4:0/0 = 0
 4:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 5:0/0 = 0

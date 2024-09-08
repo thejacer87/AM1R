@@ -1,11 +1,7 @@
 extends Node2D
 
 
-@onready var samus: Samus = $Samus
-@onready var samus_2: Samus = $Samus2
-@onready var samus_3: Samus = $Samus3
-@onready var samus_4: Samus = $Samus4
-@onready var input_label: Label = $InputLabel
+@onready var input_label: Label = $InputLabel as Label
 @onready var hud: HUD = %HUD
 @onready var b1: Room = $"B-1"
 
@@ -31,11 +27,12 @@ func create_or_load_save() -> void:
 		_save = SaveGame.new()
 		_save.write_save_game()
 	
-	for player: Samus in [samus, samus_2, samus_3, samus_4]:
+	# Find all players for initialization.
+	for player: Samus in self.find_children("*", "Samus", false):
 		player.connect_hud(hud)
 		player.collectibles = _save.collectibles
-
-	samus.bind_camera_limits(b1)
+		if player.player_index == 0:
+			player.bind_camera_limits(b1)
 
 	for exit: RoomExit in b1.exits:
 		exit.enable_collisions()
