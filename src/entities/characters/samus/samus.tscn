@@ -3318,8 +3318,11 @@ theme_override_font_sizes/font_size = 10
 text = "Input"
 
 [node name="MainCamera" parent="." instance=ExtResource("2_k305h")]
+unique_name_in_owner = true
 position_smoothing_enabled = true
 position_smoothing_speed = 15.0
+
+[node name="SubViewport" type="SubViewport" parent="."]
 
 [node name="StandingCollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 5)

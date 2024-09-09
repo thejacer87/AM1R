@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://djo1xojo4hhew"]
 
-[ext_resource type="Script" path="res://src/main.gd" id="1_ab5rb"]
+[ext_resource type="Script" path="res://src/main/main.gd" id="1_ab5rb"]
 [ext_resource type="PackedScene" uid="uid://coakemqp8riuo" path="res://src/entities/characters/samus/samus.tscn" id="2_3eyfh"]
 [ext_resource type="PackedScene" uid="uid://btax8amm0y77m" path="res://src/ui/hud.tscn" id="2_uoype"]
 [ext_resource type="PackedScene" uid="uid://cpy11obloi4i3" path="res://src/areas/brinstar/b_2.tscn" id="3_ev3iy"]

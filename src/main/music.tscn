@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://ctqwft3juyynu"]
+
+[ext_resource type="Script" path="res://src/main/music.gd" id="1_xgta5"]
+
+[node name="Music" type="Node"]
+script = ExtResource("1_xgta5")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+volume_db = -25.0

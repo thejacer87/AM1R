@@ -36,7 +36,7 @@ const HIGH_JUMP_MULTIPLIER := 1.175
 @export var player_index: int
 @onready var fsm := $StateMachine as StateMachine
 @onready var label: Label = $Label
-@onready var camera: MainCamera = $MainCamera
+@onready var camera: MainCamera = %MainCamera
 @onready var morph_ball_collision_shape_2d: CollisionShape2D = $MorphBallCollisionShape2D
 @onready var standing_collision_shape_2d: CollisionShape2D = $StandingCollisionShape2D
 @onready var crouching_collision_shape_2d: CollisionShape2D = $CrouchingCollisionShape2D

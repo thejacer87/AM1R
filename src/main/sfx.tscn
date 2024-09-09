@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://ckypwupsqlbmb"]
+
+[ext_resource type="Script" path="res://src/main/sfx.gd" id="1_glt40"]
+
+[node name="SFX" type="Node"]
+script = ExtResource("1_glt40")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+volume_db = -20.0
