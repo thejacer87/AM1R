@@ -4,10 +4,9 @@ extends Area2D
 @export var direction: Vector2
 
 @onready var sprite_2d: Sprite2D = $Sprite2D
-@onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
 
 func _ready() -> void:
-	audio_stream_player.play()
+	Globals.SFXPlayer.play(Globals.SFXPlayer.sfx.missile as String)
 
 
 func _physics_process(delta: float) -> void:

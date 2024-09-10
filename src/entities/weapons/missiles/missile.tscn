@@ -1,7 +1,6 @@
-[gd_scene load_steps=14 format=3 uid="uid://dqatwq4k5bqky"]
+[gd_scene load_steps=13 format=3 uid="uid://dqatwq4k5bqky"]
 
 [ext_resource type="Script" path="res://src/entities/weapons/missiles/missile.gd" id="1_tcepk"]
-[ext_resource type="AudioStream" uid="uid://cxyt4m7ud15da" path="res://src/entities/weapons/missiles/sndFireMissile.wav" id="2_qb3q2"]
 [ext_resource type="PackedScene" uid="uid://dv2rtg1exmstp" path="res://src/entities/hitboxes/hitbox.tscn" id="4_4ks2x"]
 [ext_resource type="Texture2D" uid="uid://tb0bqkkc1brx" path="res://src/entities/weapons/missiles/missile.png" id="4_halu4"]
 
@@ -159,10 +158,6 @@ libraries = {
 "": SubResource("AnimationLibrary_8ffnv")
 }
 autoplay = "missile"
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("2_qb3q2")
-volume_db = -15.634
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = 1.5708

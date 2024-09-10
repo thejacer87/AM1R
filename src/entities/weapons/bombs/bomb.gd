@@ -18,3 +18,12 @@ func _on_body_entered(body: Node2D) -> void:
 		var samus := body as Samus
 		if samus.state_machine.state.name == BaseMovement.MORPHING:
 			samus.bombed()
+			
+
+func _play_drop_audio() -> void:
+	Globals.SFXPlayer.play(Globals.SFXPlayer.sfx.bomb_drop as String)
+
+
+func _play_explode_audio() -> void:
+	print(Globals.SFXPlayer.sfx.bomb_explode as String)
+	Globals.SFXPlayer.play(Globals.SFXPlayer.sfx.bomb_explode as String)

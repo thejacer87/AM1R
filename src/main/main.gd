@@ -15,7 +15,7 @@ func _ready() -> void:
 	for index in Input.get_connected_joypads():
 		input_label.text += "Player " + str(index + 1) + ": " + str(Input.get_joy_name(index)) + "\n"
 	
-	Globals.music.play("res://src/audio/music/musArea2A.ogg")
+	Globals.MusicPlayer.play("res://src/audio/music/musArea2A.ogg")
 
 
 func _process(delta: float) -> void:

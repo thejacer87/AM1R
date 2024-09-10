@@ -1,7 +1,6 @@
-[gd_scene load_steps=21 format=3 uid="uid://ti6sf7xmbjfg"]
+[gd_scene load_steps=20 format=3 uid="uid://ti6sf7xmbjfg"]
 
 [ext_resource type="Script" path="res://src/entities/weapons/beams/beam.gd" id="1_itk22"]
-[ext_resource type="AudioStream" uid="uid://dpks0s450mpnh" path="res://src/entities/weapons/beams/sfx/sndFireBeam.wav" id="3_0cr4w"]
 [ext_resource type="Texture2D" uid="uid://b3mw7u6srn8pq" path="res://src/entities/weapons/beams/beam.png" id="3_o3l8v"]
 [ext_resource type="PackedScene" uid="uid://dv2rtg1exmstp" path="res://src/entities/hitboxes/hitbox.tscn" id="4_mxro7"]
 
@@ -424,10 +423,6 @@ libraries = {
 "": SubResource("AnimationLibrary_h1qcv")
 }
 autoplay = "beam"
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3_0cr4w")
-volume_db = -30.0
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 

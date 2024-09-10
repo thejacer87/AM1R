@@ -4,7 +4,7 @@ extends Node
 
 
 func _ready() -> void:
-	Globals.music = self
+	Globals.MusicPlayer = self
 
 
 func update_volume(vol: int) -> void:

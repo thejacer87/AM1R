@@ -6,7 +6,6 @@ extends Area2D
 
 
 @onready var sprite_2d: Sprite2D = $Sprite2D
-@onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
 @onready var animation_player: AnimationPlayer = $Sprite2D/AnimationPlayer
 @onready var timer: Timer = $Timer
 @onready var hitbox: Hitbox = $Hitbox
@@ -32,7 +31,7 @@ var time := 0.0
 func _ready() -> void:
 	if collectibles.power_item_enabled("wave_beam"):
 		hitbox.damage *= 2
-	audio_stream_player.play()
+	Globals.SFXPlayer.play(Globals.SFXPlayer.sfx['beam'] as String)
 	animation_player.play(animation)
 	timer.wait_time = beam_distance
 	timer.start()
