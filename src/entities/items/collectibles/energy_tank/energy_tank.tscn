@@ -1,0 +1,58 @@
+[gd_scene load_steps=7 format=3 uid="uid://dnm4ktt0k2lt1"]
+
+[ext_resource type="PackedScene" uid="uid://3321otmas7m" path="res://src/entities/items/collectibles/collectible.tscn" id="1_k6bte"]
+[ext_resource type="Texture2D" uid="uid://cpx6polybklbj" path="res://src/entities/items/collectibles/energy_tank/energy_tank.png" id="2_k6myb"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2sgxb"]
+atlas = ExtResource("2_k6myb")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o0hb7"]
+atlas = ExtResource("2_k6myb")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kdm1h"]
+atlas = ExtResource("2_k6myb")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_grspm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2sgxb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o0hb7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kdm1h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o0hb7")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="EnergyTank" instance=ExtResource("1_k6bte")]
+collectible_name = "energy_tank"
+
+[node name="AnimatedSprite2D" parent="." index="0"]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_grspm")
+autoplay = "default"
+metadata/_aseprite_wizard_config_ = {
+"layer": "",
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"slice": "",
+"source": "res://src/entities/items/collectibles/energy_tank/energy_tank.aseprite"
+}
+metadata/_aseprite_wizard_source_file_hash_ = "baf000aa7e540038738d3c469d970262"
+metadata/_aseprite_wizard_interface_config_ = {
+"layer_section": true,
+"output_section": true
+}

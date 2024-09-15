@@ -70,6 +70,12 @@ var looking := look_directions.RIGHT
 var jump_duration := 0.70
 var max_jump_height : float = 5.25 * Globals.UNIT_SIZE
 var min_jump_height : float = 1 * Globals.UNIT_SIZE
+var max_energy: int :
+	get:
+		return etanks * 100 + 99 
+var max_missile_count: int :
+	get:
+		return missile_rockets * 5 
 
 
 func _ready() -> void:
@@ -120,6 +126,7 @@ func set_collectibles(new_collectibles: Collectibles) -> void:
 	collectibles = new_collectibles
 	if not is_physics_processing():
 		missile_count = collectibles.missile_rocket * 5
+		missile_rockets = collectibles.missile_rocket
 		etanks = collectibles.energy_tank
 		energy = etanks * 100 + 99
 	set_physics_process(collectibles != null)
@@ -179,16 +186,27 @@ func _on_collected_power_item(power_item: String) -> void:
 	collectibles = c
 	
 
-func _on_collected_pickup(pickup: String) -> void:
+func _on_collected_collectible(collectible: Collectible) -> void:
 	var c := collectibles
-	c[pickup] += 1
+	var collectible_name := collectible.collectible_name
+	c[collectible_name] += 1
 	collectibles = c
-	if pickup == "energy_tank":
+	if collectible_name == "energy_tank":
 		etanks = c.energy_tank
 		energy = c.energy_tank * 100 + 99
-	if pickup == "missile_rocket":
+	if collectible_name == "missile_rocket":
 		missile_count += 5
 		missile_rockets += 1
+	
+	
+func _on_collected_pickup(pickup: Pickup) -> void:
+	var pickup_name := pickup.pickup_name
+	if pickup_name == 'energy_capsule':
+		var ec := pickup as EnergyCapsule
+		energy = min(energy + ec.size, max_energy)
+	if pickup_name == 'missile_ammo':
+		var ma := pickup as MissileAmmo
+		missile_count = min(missile_count + ma.amount, max_missile_count)
 
 
 func has_power_item_activated(power_item: String) -> bool:

@@ -1,0 +1,151 @@
+[gd_scene load_steps=21 format=3 uid="uid://nsvb2nqydp8e"]
+
+[ext_resource type="PackedScene" uid="uid://bsp8nf6soffbb" path="res://src/entities/items/pickups/pickup.tscn" id="1_m1trx"]
+[ext_resource type="Texture2D" uid="uid://dn03o6j50rikl" path="res://src/entities/items/pickups/energy_capsule/energy_capsule.png" id="2_d7pv4"]
+[ext_resource type="Script" path="res://src/entities/items/pickups/energy_capsule/energy_capsule.gd" id="2_v5rla"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_61oyr"]
+atlas = ExtResource("2_d7pv4")
+region = Rect2(0, 24, 12, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_unelu"]
+atlas = ExtResource("2_d7pv4")
+region = Rect2(12, 24, 12, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m17k2"]
+atlas = ExtResource("2_d7pv4")
+region = Rect2(24, 24, 12, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8q67d"]
+atlas = ExtResource("2_d7pv4")
+region = Rect2(36, 24, 12, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gca8i"]
+atlas = ExtResource("2_d7pv4")
+region = Rect2(0, 36, 12, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kb4nq"]
+atlas = ExtResource("2_d7pv4")
+region = Rect2(12, 36, 12, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_twrkp"]
+atlas = ExtResource("2_d7pv4")
+region = Rect2(24, 36, 12, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bv4h3"]
+atlas = ExtResource("2_d7pv4")
+region = Rect2(36, 36, 12, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8g71v"]
+atlas = ExtResource("2_d7pv4")
+region = Rect2(0, 0, 12, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bbxcw"]
+atlas = ExtResource("2_d7pv4")
+region = Rect2(12, 0, 12, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d4oni"]
+atlas = ExtResource("2_d7pv4")
+region = Rect2(24, 0, 12, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mdhbm"]
+atlas = ExtResource("2_d7pv4")
+region = Rect2(36, 0, 12, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bkki8"]
+atlas = ExtResource("2_d7pv4")
+region = Rect2(0, 12, 12, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3fsch"]
+atlas = ExtResource("2_d7pv4")
+region = Rect2(12, 12, 12, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bk5h4"]
+atlas = ExtResource("2_d7pv4")
+region = Rect2(24, 12, 12, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5xon4"]
+atlas = ExtResource("2_d7pv4")
+region = Rect2(36, 12, 12, 12)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_eb25m"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_61oyr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_unelu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m17k2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8q67d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gca8i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kb4nq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_twrkp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bv4h3")
+}],
+"loop": true,
+"name": &"large",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8g71v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bbxcw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d4oni")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mdhbm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bkki8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3fsch")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bk5h4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5xon4")
+}],
+"loop": true,
+"name": &"small",
+"speed": 10.0
+}]
+
+[node name="EnergyCapsule" instance=ExtResource("1_m1trx")]
+script = ExtResource("2_v5rla")
+size = 5
+pickup_name = "energy_capsule"
+
+[node name="AnimatedSprite2D" parent="." index="0"]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_eb25m")
+animation = &"small"
+autoplay = "small"
+metadata/_aseprite_wizard_config_ = {
+"layer": "",
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"slice": "",
+"source": "res://src/entities/items/pickups/energy_capsule/energy_capsule.aseprite"
+}
+metadata/_aseprite_wizard_source_file_hash_ = "933fa3cd2c1b0379f944a0202a9ee470"

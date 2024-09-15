@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://dp55cd1f0drqh"
+path="res://.godot/imported/energy_tank.aseprite-8f5d46e1c7916898839f5f4dc2e63ab2.res"
+
+[deps]
+
+source_file="res://src/entities/items/collectibles/energy_tank/energy_tank.aseprite"
+dest_files=["res://.godot/imported/energy_tank.aseprite-8f5d46e1c7916898839f5f4dc2e63ab2.res"]
+
+[params]
+

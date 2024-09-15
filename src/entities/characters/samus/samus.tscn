@@ -3306,6 +3306,14 @@ radius = 20.025
 [node name="Samus" type="CharacterBody2D" groups=["player"]]
 collision_mask = 4
 script = ExtResource("1_2ke1f")
+energy = null
+etanks = null
+missile_count = null
+missile_rockets = null
+GRAVITY = null
+MAX_JUMP_VELOCITY = null
+MIN_JUMP_VELOCITY = null
+player_index = null
 
 [node name="Label" type="Label" parent="."]
 visible = false

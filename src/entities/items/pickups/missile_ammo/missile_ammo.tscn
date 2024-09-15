@@ -1,0 +1,66 @@
+[gd_scene load_steps=9 format=3 uid="uid://dautqc58u03pi"]
+
+[ext_resource type="PackedScene" uid="uid://bsp8nf6soffbb" path="res://src/entities/items/pickups/pickup.tscn" id="1_2bhtg"]
+[ext_resource type="Texture2D" uid="uid://eh0cvix4lvsr" path="res://src/entities/items/pickups/missile_ammo/missile_ammo.png" id="2_je2d6"]
+[ext_resource type="Script" path="res://src/entities/items/pickups/missile_ammo/missile_ammo.gd" id="2_v3l87"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y0qb0"]
+atlas = ExtResource("2_je2d6")
+region = Rect2(0, 0, 8, 13)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1g6b7"]
+atlas = ExtResource("2_je2d6")
+region = Rect2(8, 0, 8, 13)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1pqj4"]
+atlas = ExtResource("2_je2d6")
+region = Rect2(0, 13, 8, 13)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xp8r1"]
+atlas = ExtResource("2_je2d6")
+region = Rect2(8, 13, 8, 13)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pkthd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y0qb0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1g6b7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1pqj4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xp8r1")
+}],
+"loop": true,
+"name": &"default",
+"speed": 7.0
+}]
+
+[node name="MissileAmmo" instance=ExtResource("1_2bhtg")]
+script = ExtResource("2_v3l87")
+pickup_name = "missile_ammo"
+amount = 2
+
+[node name="AnimatedSprite2D" parent="." index="0"]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_pkthd")
+autoplay = "default"
+metadata/_aseprite_wizard_config_ = {
+"layer": "",
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"slice": "",
+"source": "res://src/entities/items/pickups/missile_ammo/missile_ammo.aseprite"
+}
+metadata/_aseprite_wizard_source_file_hash_ = "b3899104d0495ff1373ceb9fc8b20fd0"
+metadata/_aseprite_wizard_interface_config_ = {
+"layer_section": true,
+"output_section": true,
+"slice_section": true
+}
