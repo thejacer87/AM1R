@@ -20,12 +20,10 @@ func enter(previous_state_path: String, data := {}) -> void:
 
 func physics_update(delta: float) -> void:
 	super.physics_update(delta)
-	#var input_direction := Input.get_vector("left_" + str(samus.player_index), "right_" + str(samus.player_index) , "up_" + str(samus.player_index), "down_" + str(samus.player_index))
-	#var input_direction_x := input_direction.x
-	#var input_direction_y := input_direction.y
 	var input_direction_x := Input.get_axis("left_" + str(samus.player_index), "right_" + str(samus.player_index))
 	var input_direction_y := Input.get_axis("up_" + str(samus.player_index), "down_" + str(samus.player_index))
-	samus.velocity.x = samus.SPEED * input_direction_x
+	# Using signf() to get 1.0 or -1.0 so joysticks act like dpads.
+	samus.velocity.x = samus.SPEED * signf(input_direction_x)
 	samus.move_and_slide()
 		
 	

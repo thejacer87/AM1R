@@ -20,7 +20,7 @@ func physics_update(delta: float) -> void:
 
 	var input_direction_x := Input.get_axis("left_" + str(samus.player_index), "right_" + str(samus.player_index))
 	var input_direction_y := Input.get_axis("up_" + str(samus.player_index), "down_" + str(samus.player_index))
-	samus.velocity.x = samus.SPEED * input_direction_x * 0.6667   
+	samus.velocity.x = samus.SPEED * signf(input_direction_x) * 0.6667   
 	samus.move_and_slide()
 		
 	if Input.is_action_just_pressed("left_" + str(samus.player_index)):

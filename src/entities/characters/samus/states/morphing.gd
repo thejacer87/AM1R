@@ -17,7 +17,7 @@ func physics_update(delta: float) -> void:
 	super.physics_update(delta)
 	var input_direction_x := Input.get_axis("left_" + str(samus.player_index), "right_" + str(samus.player_index))
 	
-	samus.velocity.x = samus.SPEED * input_direction_x * (GROUND_SPEED_MULTIPLIER if samus.is_on_floor() else AIR_SPEED_MULTIPLIER)
+	samus.velocity.x = samus.SPEED * signf(input_direction_x) * (GROUND_SPEED_MULTIPLIER if samus.is_on_floor() else AIR_SPEED_MULTIPLIER)
 	samus.move_and_slide()
 
 	if Input.is_action_just_pressed("morph_" + str(samus.player_index)) or Input.is_action_just_pressed("up_" + str(samus.player_index)):

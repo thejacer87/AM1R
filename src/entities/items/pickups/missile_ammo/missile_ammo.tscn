@@ -42,8 +42,8 @@ animations = [{
 
 [node name="MissileAmmo" instance=ExtResource("1_2bhtg")]
 script = ExtResource("2_v3l87")
-pickup_name = "missile_ammo"
 amount = 2
+pickup_name = "missile_ammo"
 
 [node name="AnimatedSprite2D" parent="." index="0"]
 texture_filter = 1
