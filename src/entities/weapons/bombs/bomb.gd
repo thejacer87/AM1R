@@ -17,7 +17,7 @@ func _on_body_entered(body: Node2D) -> void:
 	if body is Samus:
 		var samus := body as Samus
 		if samus.state_machine.state.name == BaseMovement.MORPHING:
-			samus.bombed()
+			samus.bombed(self)
 			
 
 func _play_drop_audio() -> void:

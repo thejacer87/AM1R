@@ -34,6 +34,9 @@ const HIGH_JUMP_MULTIPLIER := 1.175
 @export var MAX_JUMP_VELOCITY: float
 @export var MIN_JUMP_VELOCITY: float
 @export var player_index: int
+@export var can_move_aerial_in_morph := true
+
+
 @onready var fsm := $StateMachine as StateMachine
 @onready var label: Label = $Label
 @onready var camera: MainCamera = %MainCamera
@@ -45,6 +48,7 @@ const HIGH_JUMP_MULTIPLIER := 1.175
 @onready var screw_attack_animation_player: AnimationPlayer = $Sprite2D/ScrewAttackSprite2D/AnimationPlayer
 @onready var sprite_2d: Sprite2D = $Sprite2D
 @onready var crouch_run_timer: Timer = $CrouchRunTimer
+@onready var bomb_movement_timer: Timer = $BombMovementTimer
 @onready var aim_timer: Timer = $AimTimer
 @onready var idle_timer: Timer = $IdleTimer
 @onready var wall_jump_timer: Timer = $WallJumpTimer
@@ -92,6 +96,7 @@ func _process(_delta: float) -> void:
 	label.text += "\nLooking: " + str(looking)
 	label.text += "\nAim Timer: " + str(aim_timer.time_left)
 	label.text += "\nWall Jump Timer: " + str(wall_jump_timer.time_left)
+	label.text += "\nBombMove: " + str(can_move_aerial_in_morph)
 	label.text += "\nAnimation: " + str(animation_player.current_animation)
 	label.text += "\nMissile: " + str("Armed" if is_missile_armed else "Nope")
 	label.text += "\nMissiles: " + str(missile_count)
@@ -156,9 +161,14 @@ func drop_bomb() -> void:
 	get_tree().get_root().add_child(bomb)
 	
 
-func bombed() -> void:
-	# todo move horizontally too
-	velocity.y = -190
+func bombed(bomb: Bomb) -> void:
+	can_move_aerial_in_morph = false
+	bomb_movement_timer.start()
+	var diff : float = global_position.x - bomb.global_position.x
+	var repulsion := Vector2(0, -190)
+	if abs(diff) > 4:
+		repulsion.x = 75 * sign(diff)
+	velocity = repulsion
 
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
@@ -230,3 +240,7 @@ func _on_hurtbox_area_entered(area: Area2D) -> void:
 	if area is Hitbox:
 		var hitbox := area as Hitbox
 		damage(hitbox.damage)
+
+
+func _on_bomb_movement_timer_timeout() -> void:
+	can_move_aerial_in_morph = true

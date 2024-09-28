@@ -3306,17 +3306,8 @@ radius = 20.025
 [node name="Samus" type="CharacterBody2D" groups=["player"]]
 collision_mask = 4
 script = ExtResource("1_2ke1f")
-energy = null
-etanks = null
-missile_count = null
-missile_rockets = null
-GRAVITY = null
-MAX_JUMP_VELOCITY = null
-MIN_JUMP_VELOCITY = null
-player_index = null
 
 [node name="Label" type="Label" parent="."]
-visible = false
 z_index = 11
 offset_left = -97.0
 offset_top = -117.0
@@ -3469,6 +3460,10 @@ one_shot = true
 wait_time = 5.0
 one_shot = true
 
+[node name="BombMovementTimer" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+
 [node name="CrouchRunTimer" type="Timer" parent="."]
 wait_time = 0.2
 one_shot = true
@@ -3498,6 +3493,7 @@ disabled = true
 
 [connection signal="animation_finished" from="Sprite2D/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="timeout" from="AimTimer" to="." method="_on_aim_timer_timeout"]
+[connection signal="timeout" from="BombMovementTimer" to="." method="_on_bomb_movement_timer_timeout"]
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
 
 [editable path="Hurtbox"]
