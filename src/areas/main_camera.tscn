@@ -4,4 +4,5 @@
 
 [node name="MainCamera" type="Camera2D"]
 position_smoothing_speed = 1.525
+drag_vertical_offset = -0.5
 script = ExtResource("1_ptuma")
