@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=3 uid="uid://ccgn8fj4uco0m"]
+
+[ext_resource type="Script" path="res://src/areas/room_transition_control.gd" id="1_1c8el"]
+
+[node name="RoomTransitionControl" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_1c8el")
+
+[node name="FadeoutColorRect" type="ColorRect" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = -10000.0
+offset_top = -10000.0
+offset_right = 10000.0
+offset_bottom = 10000.0
+color = Color(0, 0, 0, 0)

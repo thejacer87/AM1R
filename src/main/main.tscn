@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://djo1xojo4hhew"]
+[gd_scene load_steps=10 format=3 uid="uid://djo1xojo4hhew"]
 
 [ext_resource type="Script" path="res://src/main/main.gd" id="1_ab5rb"]
 [ext_resource type="PackedScene" uid="uid://coakemqp8riuo" path="res://src/entities/characters/samus/samus.tscn" id="2_3eyfh"]
 [ext_resource type="PackedScene" uid="uid://btax8amm0y77m" path="res://src/ui/hud.tscn" id="2_uoype"]
 [ext_resource type="PackedScene" uid="uid://cpy11obloi4i3" path="res://src/areas/brinstar/b_2.tscn" id="3_ev3iy"]
+[ext_resource type="PackedScene" uid="uid://ccgn8fj4uco0m" path="res://src/areas/room_transition_control.tscn" id="3_ny34l"]
 [ext_resource type="PackedScene" uid="uid://syd7bknrndkj" path="res://src/areas/brinstar/b_3.tscn" id="4_73kii"]
 [ext_resource type="PackedScene" uid="uid://dnm4ktt0k2lt1" path="res://src/entities/items/collectibles/energy_tank/energy_tank.tscn" id="7_4gye3"]
 [ext_resource type="PackedScene" uid="uid://85w1wr8r72fw" path="res://src/entities/items/collectibles/missile_rocket/missile_rocket.tscn" id="8_mnlkd"]
@@ -12,58 +13,61 @@
 [node name="Main" type="Node2D"]
 script = ExtResource("1_ab5rb")
 
+[node name="BackgroundLayer" type="CanvasLayer" parent="."]
+layer = -10
+
+[node name="Black BG" type="ColorRect" parent="BackgroundLayer"]
+offset_left = -10000.0
+offset_top = -10000.0
+offset_right = 10000.0
+offset_bottom = 10000.0
+color = Color(0, 0, 0, 1)
+
+[node name="ForegroundLayer" type="CanvasLayer" parent="."]
+layer = 10
+
+[node name="HUD" parent="ForegroundLayer" instance=ExtResource("2_uoype")]
+unique_name_in_owner = true
+
+[node name="RoomTransitionControl" parent="ForegroundLayer" instance=ExtResource("3_ny34l")]
+
 [node name="B-1" parent="." instance=ExtResource("19_07ah2")]
 
-[node name="RoomExit" parent="B-1" index="12" node_paths=PackedStringArray("next_room")]
-next_room = NodePath("../../B-2")
+[node name="Door" parent="B-1" index="11" node_paths=PackedStringArray("next_door")]
+next_door = NodePath("../../B-2/Door")
 
 [node name="B-2" parent="." instance=ExtResource("3_ev3iy")]
 position = Vector2(992, 0)
 
-[node name="RoomExit" parent="B-2" index="3" node_paths=PackedStringArray("next_room")]
-next_room = NodePath("../../B-1")
+[node name="Door" parent="B-2" index="2" node_paths=PackedStringArray("next_door")]
+next_door = NodePath("../../B-1/Door")
 
-[node name="RoomExit2" parent="B-2" index="4" node_paths=PackedStringArray("next_room")]
-next_room = NodePath("../../B-3")
+[node name="Door2" parent="B-2" index="3" node_paths=PackedStringArray("next_door")]
+next_door = NodePath("../../B-3/Door")
+
+[node name="Door3" parent="B-2" index="4" node_paths=PackedStringArray("next_door")]
+next_door = NodePath("../../B-3/Door")
 
 [node name="B-3" parent="." instance=ExtResource("4_73kii")]
 position = Vector2(1344, 0)
 
-[node name="RoomExit" parent="B-3" index="8" node_paths=PackedStringArray("next_room")]
-next_room = NodePath("../../B-2")
+[node name="Door" parent="B-3" index="7" node_paths=PackedStringArray("next_door")]
+next_door = NodePath("../../B-2/Door2")
 
 [node name="Samus" parent="." instance=ExtResource("2_3eyfh")]
-position = Vector2(460, 165)
-energy = 99
-etanks = 0
-missile_count = 0
-missile_rockets = 0
-GRAVITY = 0.0
-MAX_JUMP_VELOCITY = 0.0
-MIN_JUMP_VELOCITY = 0.0
-player_index = 0
+position = Vector2(1050, 129)
+
+[node name="InputLabel" type="Label" parent="Samus"]
+unique_name_in_owner = true
+visible = false
+offset_left = -240.0
+offset_top = -115.0
+offset_right = -178.0
+offset_bottom = -92.0
 
 [node name="Samus2" parent="." instance=ExtResource("2_3eyfh")]
 position = Vector2(373, 185)
-energy = 99
-etanks = 0
-missile_count = 0
-missile_rockets = 0
-GRAVITY = 0.0
-MAX_JUMP_VELOCITY = 0.0
-MIN_JUMP_VELOCITY = 0.0
 player_index = 1
-
-[node name="InputLabel" type="Label" parent="."]
-visible = false
-offset_top = 23.0
-offset_right = 62.0
-offset_bottom = 46.0
-
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="HUD" parent="CanvasLayer" instance=ExtResource("2_uoype")]
-unique_name_in_owner = true
 
 [node name="EnergyTank" parent="." instance=ExtResource("7_4gye3")]
 position = Vector2(580, 195)

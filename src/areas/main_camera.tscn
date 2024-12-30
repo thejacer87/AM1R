@@ -3,4 +3,5 @@
 [ext_resource type="Script" path="res://src/areas/main_camera.gd" id="1_ptuma"]
 
 [node name="MainCamera" type="Camera2D"]
+position_smoothing_speed = 1.525
 script = ExtResource("1_ptuma")

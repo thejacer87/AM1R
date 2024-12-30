@@ -23,10 +23,10 @@ config/icon="res://icon.svg"
 [autoload]
 
 MetSys="*res://addons/MetroidvaniaSystem/Nodes/Singleton.tscn"
-EventBus="*res://src/utilities/event_bus.gd"
 Globals="*res://src/main/globals.gd"
 MusicPlayer="*res://src/main/music.tscn"
 SFXPlayer="*res://src/main/sfx.tscn"
+EventBus="*res://src/utilities/event_bus.gd"
 
 [debug]
 
@@ -64,6 +64,10 @@ folder_colors={
 "res://src/entities/characters/samus/": "orange",
 "res://src/entities/hitboxes/": "red"
 }
+
+[global_group]
+
+door="Doors"
 
 [input]
 

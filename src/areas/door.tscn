@@ -1,0 +1,236 @@
+[gd_scene load_steps=20 format=3 uid="uid://ccp3fwd2wmm8s"]
+
+[ext_resource type="Script" path="res://src/areas/doors/door.gd" id="1_1ihn6"]
+[ext_resource type="Texture2D" uid="uid://bk0nkwvjv85ab" path="res://src/areas/brinstar/brinstar.png" id="1_c5tt0"]
+[ext_resource type="Texture2D" uid="uid://ciyogf2kyvh7i" path="res://src/areas/door.png" id="2_vkcsv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uug85"]
+size = Vector2(16, 48)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t1tbi"]
+size = Vector2(16, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qdvls"]
+atlas = ExtResource("2_vkcsv")
+region = Rect2(0, 0, 8, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wjno0"]
+atlas = ExtResource("2_vkcsv")
+region = Rect2(24, 128, 8, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wbdmb"]
+atlas = ExtResource("2_vkcsv")
+region = Rect2(16, 128, 8, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ksmi0"]
+atlas = ExtResource("2_vkcsv")
+region = Rect2(8, 128, 8, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cxxh0"]
+atlas = ExtResource("2_vkcsv")
+region = Rect2(0, 128, 8, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t840o"]
+atlas = ExtResource("2_vkcsv")
+region = Rect2(24, 64, 8, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7ybwd"]
+atlas = ExtResource("2_vkcsv")
+region = Rect2(16, 64, 8, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_85aov"]
+atlas = ExtResource("2_vkcsv")
+region = Rect2(0, 64, 8, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rxkbv"]
+atlas = ExtResource("2_vkcsv")
+region = Rect2(8, 64, 8, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w0k70"]
+atlas = ExtResource("2_vkcsv")
+region = Rect2(16, 0, 8, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gwain"]
+atlas = ExtResource("2_vkcsv")
+region = Rect2(8, 0, 8, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p7n5y"]
+atlas = ExtResource("2_vkcsv")
+region = Rect2(24, 0, 8, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jmi8i"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qdvls")
+}],
+"loop": false,
+"name": &"blue",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_wjno0")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_wbdmb")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_ksmi0")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_cxxh0")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_t840o")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_7ybwd")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_85aov")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_rxkbv")
+}],
+"loop": false,
+"name": &"close",
+"speed": 32.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w0k70")
+}],
+"loop": false,
+"name": &"green",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_85aov")
+}],
+"loop": false,
+"name": &"grey",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_rxkbv")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_85aov")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_7ybwd")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_t840o")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_cxxh0")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_ksmi0")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_wbdmb")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_wjno0")
+}],
+"loop": false,
+"name": &"open",
+"speed": 32.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gwain")
+}],
+"loop": false,
+"name": &"red",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p7n5y")
+}],
+"loop": false,
+"name": &"yellow",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6wui8"]
+size = Vector2(16, 48)
+
+[node name="Door" type="StaticBody2D" groups=["door"]]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("1_1ihn6")
+
+[node name="RoomExit" type="Area2D" parent="." groups=["room_exit"]]
+position = Vector2(16, 0)
+collision_layer = 0
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RoomExit"]
+position = Vector2(-8, 0)
+shape = SubResource("RectangleShape2D_uug85")
+
+[node name="ExitMarker" type="Marker2D" parent="RoomExit"]
+unique_name_in_owner = true
+position = Vector2(24, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("RectangleShape2D_t1tbi")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_c5tt0")
+hframes = 7
+vframes = 2
+frame = 13
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(0, 16)
+texture = ExtResource("1_c5tt0")
+hframes = 7
+vframes = 2
+frame = 13
+
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+position = Vector2(0, -16)
+texture = ExtResource("1_c5tt0")
+hframes = 7
+vframes = 2
+frame = 13
+
+[node name="DoorAnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+process_mode = 3
+texture_filter = 1
+position = Vector2(-12, 0)
+scale = Vector2(-1, -0.745768)
+sprite_frames = SubResource("SpriteFrames_jmi8i")
+animation = &"open"
+metadata/_aseprite_wizard_config_ = {
+"layer": "",
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"slice": "",
+"source": "res://src/areas/doors/door.aseprite"
+}
+metadata/_aseprite_wizard_source_file_hash_ = "da548088fb19cf5ba008e03e518e97fc"
+
+[node name="Gate" type="Area2D" parent="."]
+visible = false
+collision_layer = 8
+collision_mask = 224
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Gate"]
+position = Vector2(-8, 0)
+rotation = 3.14159
+shape = SubResource("RectangleShape2D_6wui8")
+
+[connection signal="body_entered" from="RoomExit" to="." method="_on_room_exit_body_entered"]
+[connection signal="area_entered" from="Gate" to="." method="_on_gate_area_entered"]

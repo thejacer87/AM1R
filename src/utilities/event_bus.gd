@@ -1,11 +1,11 @@
 extends Node
 
+signal room_transition_started(player: Samus, door: Door, next_door: Door)
+signal room_transition_finished(room: Room)
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	print("Event Bus Ready")
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass

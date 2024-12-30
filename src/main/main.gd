@@ -1,7 +1,7 @@
 extends Node2D
 
 
-@onready var input_label: Label = $InputLabel
+@onready var input_label: Label = %InputLabel
 @onready var hud: HUD = %HUD
 @onready var b1: Room = $"B-1"
 
@@ -36,5 +36,5 @@ func create_or_load_save() -> void:
 		if player.player_index == 0:
 			player.bind_camera_limits(b1)
 
-	for exit: RoomExit in b1.exits:
-		exit.enable_collisions()
+	for door: Door in b1.doors:
+		door.enable_collisions()
