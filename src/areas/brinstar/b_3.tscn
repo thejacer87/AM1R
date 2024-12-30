@@ -8,6 +8,9 @@
 
 [node name="B-3" instance=ExtResource("1_b66ke")]
 
+[node name="Left" parent="CameraBounds" index="2"]
+position = Vector2(16, 135)
+
 [node name="Right" parent="CameraBounds" index="3"]
 position = Vector2(850, 135)
 

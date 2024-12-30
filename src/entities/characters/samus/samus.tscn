@@ -3370,13 +3370,12 @@ script = ExtResource("58_oqehy")
 script = ExtResource("60_v3vhy")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-visible = false
 texture_filter = 1
 position = Vector2(0, -8)
 texture = ExtResource("66_laq4w")
 hframes = 17
 vframes = 17
-frame = 9
+frame = 19
 metadata/_aseprite_wizard_config_ = {
 "i_mode": -1,
 "keep_anim_length": false,

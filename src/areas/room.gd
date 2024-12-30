@@ -34,7 +34,11 @@ func _ready() -> void:
 		item.position = power_item.position
 		add_child(item)
 
-func enable_exits(room: Room) -> void:
+
+func enable_exits(player: Samus, room: Room) -> void:
 	if room == self:
-		print("enable Exits")
-	pass
+		print("enable Exits for ", get_path())
+		for door in doors:
+			door.enable_collisions()
+		get_tree().paused = false
+		player.collision_layer = Globals.COLLISION_PLAYER

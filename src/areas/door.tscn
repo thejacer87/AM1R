@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://ciyogf2kyvh7i" path="res://src/areas/door.png" id="2_vkcsv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uug85"]
-size = Vector2(16, 48)
+size = Vector2(8, 48)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t1tbi"]
 size = Vector2(16, 48)
@@ -173,7 +173,7 @@ collision_layer = 0
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RoomExit"]
-position = Vector2(-8, 0)
+position = Vector2(-20, 0)
 shape = SubResource("RectangleShape2D_uug85")
 
 [node name="ExitMarker" type="Marker2D" parent="RoomExit"]

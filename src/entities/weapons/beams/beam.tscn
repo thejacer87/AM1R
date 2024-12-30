@@ -383,11 +383,11 @@ _data = {
 "wave_flash": SubResource("Animation_3wyia")
 }
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_div6x"]
-size = Vector2(21, 10)
-
 [sub_resource type="CircleShape2D" id="CircleShape2D_5mdc4"]
 radius = 4.12311
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_div6x"]
+size = Vector2(21, 10)
 
 [node name="Beam" type="Area2D"]
 collision_layer = 32
@@ -426,6 +426,10 @@ autoplay = "beam"
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(8, 2)
+shape = SubResource("CircleShape2D_5mdc4")
+
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
 
@@ -437,10 +441,6 @@ damage = 10
 [node name="CollisionShape2D" parent="Hitbox" index="0"]
 position = Vector2(3.5, 0)
 shape = SubResource("RectangleShape2D_div6x")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(8, 0)
-shape = SubResource("CircleShape2D_5mdc4")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -15,7 +15,6 @@ signal door_unlocked
 @onready var gate: Area2D = $Gate
 
 func _ready() -> void:
-	EventBus.connect("room_transition_finished", resume_game)
 	door_animated_sprite_2d.play(door_lock)
 	disable_collisions()
 
@@ -32,13 +31,6 @@ func _on_gate_area_entered(area: Area2D) -> void:
 	open_door()
 
 
-func resume_game(room: Room) -> void: 
-	if room == self.get_parent():
-		print("disabling")
-		disable_collisions()
-	get_tree().paused = false
-
-
 func open_door() -> void:
 	if not door_animated_sprite_2d.is_playing():
 		door_animated_sprite_2d.play("open")
@@ -51,7 +43,6 @@ func open_door() -> void:
 
 
 func close_door() -> void:
-	door_animated_sprite_2d.play("reset")
 	door_animated_sprite_2d.play("close")
 	await door_animated_sprite_2d.animation_finished
 	door_animated_sprite_2d.play("blue")
@@ -59,7 +50,6 @@ func close_door() -> void:
 	collision_mask = 0
 	gate.collision_layer = Globals.COLLISION_DOOR_LOCK
 	gate.collision_mask = Globals.COLLISION_BOMB + Globals.COLLISION_BEAM + Globals.COLLISION_MISSILE
-	enable_collisions()
 	door_locked.emit()
 
 
@@ -74,8 +64,5 @@ func disable_collisions() -> void:
 
 
 func _on_room_exit_body_entered(body: Node2D) -> void:
-	print(body.get_path(), " entered ", get_path())
-	print("pausing execution")
 	get_tree().paused = true
-	var player := body as Samus
-	EventBus.emit_signal("room_transition_started", player, self, next_door)
+	EventBus.emit_signal("room_transition_started", body as Samus, self, next_door)
