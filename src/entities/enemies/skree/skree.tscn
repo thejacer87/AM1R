@@ -208,6 +208,7 @@ libraries = {
 autoplay = "idle"
 
 [node name="DetectionArea2D" type="Area2D" parent="." index="6"]
+visible = false
 collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea2D" index="0"]

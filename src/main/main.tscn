@@ -49,9 +49,9 @@ next_door = NodePath("../../B-3/Door")
 next_door = NodePath("../../B-3/Door")
 
 [node name="B-3" parent="." instance=ExtResource("4_73kii")]
-position = Vector2(1344, 0)
+position = Vector2(1361, 0)
 
-[node name="Door" parent="B-3" index="7" node_paths=PackedStringArray("next_door")]
+[node name="Door" parent="B-3" index="10" node_paths=PackedStringArray("next_door")]
 next_door = NodePath("../../B-2/Door2")
 
 [node name="Samus" parent="." instance=ExtResource("2_3eyfh")]
