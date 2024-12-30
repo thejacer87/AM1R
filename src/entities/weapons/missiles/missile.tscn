@@ -95,9 +95,8 @@ _data = {
 "missile": SubResource("Animation_im7pi")
 }
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7ui1j"]
-radius = 3.5
-height = 15.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_00qcx"]
+radius = 2.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_22dgh"]
 atlas = ExtResource("4_halu4")
@@ -160,9 +159,9 @@ libraries = {
 autoplay = "missile"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 2)
+position = Vector2(4, 0)
 rotation = 1.5708
-shape = SubResource("CapsuleShape2D_7ui1j")
+shape = SubResource("CircleShape2D_00qcx")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-11, 0)

@@ -384,7 +384,7 @@ _data = {
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5mdc4"]
-radius = 4.12311
+radius = 2.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_div6x"]
 size = Vector2(21, 10)
@@ -427,7 +427,7 @@ autoplay = "beam"
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(8, 2)
+position = Vector2(8, 0)
 shape = SubResource("CircleShape2D_5mdc4")
 
 [node name="Timer" type="Timer" parent="."]

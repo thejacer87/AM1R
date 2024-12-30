@@ -65,10 +65,6 @@ offset_top = -115.0
 offset_right = -178.0
 offset_bottom = -92.0
 
-[node name="Samus2" parent="." instance=ExtResource("2_3eyfh")]
-position = Vector2(373, 185)
-player_index = 1
-
 [node name="EnergyTank" parent="." instance=ExtResource("7_4gye3")]
 position = Vector2(580, 195)
 
