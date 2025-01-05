@@ -35,9 +35,13 @@ func physics_update(delta: float) -> void:
 		samus.animation_player.play("fall_aim_down_" + samus.look_direction)
 
 	if Input.is_action_just_pressed("jump_" + str(samus.player_index)):
-		samus.velocity.x = 100 * samus.looking
-		samus.velocity.y = 66.667
-		finished.emit(SPIN_FALLING)
+		if not samus.morph_jump_timer.is_stopped():
+			print("unmorph jump")
+			finished.emit(JUMPING)
+		else:
+			samus.velocity.x = 100 * samus.looking
+			samus.velocity.y = 66.667
+			finished.emit(SPIN_FALLING)
 
 	if samus.is_on_floor():
 		if is_equal_approx(samus.velocity.x, 0.0):

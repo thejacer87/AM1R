@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://src/areas/room.gd" id="1_5npu4"]
 
-[node name="Room" type="Node2D" groups=["Room"]]
+[node name="Room" type="Node2D" groups=["room"]]
 script = ExtResource("1_5npu4")
 
 [node name="CameraBounds" type="Node2D" parent="."]

@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://ccp3fwd2wmm8s" path="res://src/areas/door.tscn" id="6_122lc"]
 
 [node name="B-2" instance=ExtResource("1_us5jx")]
+room_offset = 104
 
 [node name="Bottom" parent="CameraBounds" index="1"]
 position = Vector2(240, 1303)
@@ -17,6 +18,7 @@ tile_set = ExtResource("2_qfcwe")
 [node name="Door" parent="." index="2" instance=ExtResource("6_122lc")]
 position = Vector2(120, 134)
 scale = Vector2(-1, 1)
+direction = "left"
 
 [node name="Door2" parent="." index="3" instance=ExtResource("6_122lc")]
 position = Vector2(361, 134)

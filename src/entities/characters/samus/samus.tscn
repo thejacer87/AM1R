@@ -3317,6 +3317,14 @@ offset_bottom = -92.0
 theme_override_font_sizes/font_size = 10
 text = "Input"
 
+[node name="InputLabel" type="Label" parent="."]
+z_index = 11
+offset_left = -97.0
+offset_top = -117.0
+offset_right = -33.0
+offset_bottom = -92.0
+theme_override_font_sizes/font_size = 10
+
 [node name="MainCamera" parent="." instance=ExtResource("2_k305h")]
 unique_name_in_owner = true
 position_smoothing_speed = 15.0
@@ -3459,6 +3467,9 @@ one_shot = true
 wait_time = 5.0
 one_shot = true
 
+[node name="MorphJumpTimer" type="Timer" parent="."]
+one_shot = true
+
 [node name="BombMovementTimer" type="Timer" parent="."]
 wait_time = 0.2
 one_shot = true
@@ -3490,6 +3501,7 @@ visible = false
 shape = SubResource("CircleShape2D_j3whd")
 disabled = true
 
+[connection signal="tree_exiting" from="." to="." method="_on_tree_exiting"]
 [connection signal="animation_finished" from="Sprite2D/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="timeout" from="AimTimer" to="." method="_on_aim_timer_timeout"]
 [connection signal="timeout" from="BombMovementTimer" to="." method="_on_bomb_movement_timer_timeout"]

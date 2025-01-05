@@ -1,9 +1,7 @@
 extends Node2D
 
-
-@onready var input_label: Label = %InputLabel
 @onready var hud: HUD = %HUD
-@onready var b1: Room = $"B-1"
+@onready var brinstar := preload("res://src/areas/brinstar/brinstar.tscn").instantiate()
 
 
 var _save: SaveGame
@@ -11,11 +9,11 @@ var _save: SaveGame
 
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
-	create_or_load_save()
-	for index in Input.get_connected_joypads():
-		input_label.text += "Player " + str(index + 1) + ": " + str(Input.get_joy_name(index)) + "\n"
+	# load and add all areas
+	add_child(brinstar)
 	
 	Globals.MusicPlayer.play("res://src/audio/music/musArea2A.ogg")
+	create_or_load_save()
 
 
 func _process(delta: float) -> void:
@@ -28,13 +26,19 @@ func create_or_load_save() -> void:
 	else:
 		_save = SaveGame.new()
 		_save.write_save_game()
-	
+		
+	var room : Room
+	for child in brinstar.get_children():
+		if child.is_in_group("room"):
+			room = child
+			break
 	# Find all players for initialization.
-	for player: Samus in self.find_children("*", "Samus", false):
+	for index in Input.get_connected_joypads():
+		var player: Samus = preload("res://src/entities/characters/samus/samus.tscn").instantiate() as Samus
+		player.position = Vector2(1040, 130)
+		player.player_index = index
+		add_child(player)
 		player.connect_hud(hud)
 		player.collectibles = _save.collectibles
-		if player.player_index == 0:
-			player.bind_camera_limits(b1)
-
-	for door: Door in b1.doors:
-		door.enable_collisions()
+		if index == 0:
+			player.bind_camera_limits(room)

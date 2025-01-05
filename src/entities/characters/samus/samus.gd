@@ -39,6 +39,7 @@ const HIGH_JUMP_MULTIPLIER := 1.175
 
 @onready var fsm := $StateMachine as StateMachine
 @onready var label: Label = $Label
+@onready var input_label: Label = $InputLabel
 @onready var camera: MainCamera = %MainCamera
 @onready var morph_ball_collision_shape_2d: CollisionShape2D = $MorphBallCollisionShape2D
 @onready var standing_collision_shape_2d: CollisionShape2D = $StandingCollisionShape2D
@@ -51,6 +52,7 @@ const HIGH_JUMP_MULTIPLIER := 1.175
 @onready var bomb_movement_timer: Timer = $BombMovementTimer
 @onready var aim_timer: Timer = $AimTimer
 @onready var idle_timer: Timer = $IdleTimer
+@onready var morph_jump_timer: Timer = $MorphJumpTimer
 @onready var wall_jump_timer: Timer = $WallJumpTimer
 @onready var arm_cannon: ArmCannon = $ArmCannon
 @onready var is_aiming := false
@@ -88,6 +90,8 @@ func _ready() -> void:
 	GRAVITY = 2 * max_jump_height / pow(jump_duration, 2)
 	MAX_JUMP_VELOCITY = -sqrt(2 * GRAVITY * max_jump_height)
 	MIN_JUMP_VELOCITY = -sqrt(2 * GRAVITY * min_jump_height)
+	for index in Input.get_connected_joypads():
+		input_label.text = "Player " + str(player_index + 1) + ": " + str(Input.get_joy_name(player_index)) + "\n"
 
 
 func _process(_delta: float) -> void:
@@ -111,6 +115,10 @@ func _process(_delta: float) -> void:
 	
 	
 func _physics_process(delta: float) -> void:
+	if Input.is_action_just_pressed("pause_menu_" + str(player_index)) and Input.is_action_pressed("map_screen_" + str(player_index)):
+		queue_free()
+			
+			
 	if Input.is_action_just_pressed("arm_weapon_" + str(player_index)):
 		if not is_missile_armed:
 			is_missile_armed = true
@@ -244,3 +252,9 @@ func _on_hurtbox_area_entered(area: Area2D) -> void:
 
 func _on_bomb_movement_timer_timeout() -> void:
 	can_move_aerial_in_morph = true
+
+
+func _on_tree_exiting() -> void:
+	# move hud to globals?
+	print("remove player from HUD", player_index)
+	#hud.remove_player(self)

@@ -6,6 +6,7 @@ signal door_unlocked
 
 @export var next_door: Door
 @export var door_lock: String = "blue"
+@export var direction: String = "right"
 
 @onready var door_animated_sprite_2d: AnimatedSprite2D = $DoorAnimatedSprite2D
 @onready var current_room: Room = get_parent()

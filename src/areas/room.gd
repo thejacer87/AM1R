@@ -4,6 +4,7 @@ extends Node2D
 
 @export var grid_size := Vector2.ONE
 @export var pickups : Array[RoomCollectible] = []
+@export var room_offset := 0
 @export var power_items : Array[RoomCollectible] = []
 @export var doors : Array[Door] = []:
 	get:

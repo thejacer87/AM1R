@@ -13,6 +13,11 @@ func add_player(player: Samus) -> void:
 	player_hud_container.add_child(player_hud)
 	
 	
+func remove_player(player: Samus) -> void:
+	print("remove player ", player.player_index)
+	pass
+	
+	
 func _on_energy_updated(player_index: int, e: int) -> void:
 	var node_path := "%PlayerHUDContainer/PlayerHUD" + str(player_index)
 	var player_hud: PlayerHUD = get_node(node_path)

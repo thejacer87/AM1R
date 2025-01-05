@@ -29,5 +29,6 @@ func physics_update(delta: float) -> void:
 
 
 func exit() -> void:
+	samus.morph_jump_timer.start()
 	super.exit()
 	super.update_collisions("")
