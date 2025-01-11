@@ -1,20 +1,24 @@
 class_name Main
-extends Node2D
-#extends "res://addons/MetroidvaniaSystem/Template/Scripts/MetSysGame.gd"
+extends "res://addons/MetroidvaniaSystem/Template/Scripts/MetSysGame.gd"
 
 @onready var hud: HUD = %HUD
 @onready var brinstar := preload("res://src/areas/brinstar/brinstar.tscn").instantiate()
 
 
+# The game starts in this map. Note that it's scene name only, just like MetSys refers to rooms.
+@export var starting_map: String
 var _save: SaveGame
 
 
 func _ready() -> void:
-	#MetSys.reset_state()
-	#MetSys.set_save_data()
+	MetSys.reset_state()
+	MetSys.set_save_data()
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	# load and add all areas
-	add_child(brinstar)
+	#add_child(brinstar)
+	# Initialize room when it changes.
+	room_loaded.connect(init_room, CONNECT_DEFERRED)
+	load_room(starting_map)
 	
 	Globals.MusicPlayer.play("res://src/audio/music/musArea2A.ogg")
 	create_or_load_save()
@@ -45,5 +49,9 @@ func create_or_load_save() -> void:
 		player.connect_hud(hud)
 		player.collectibles = _save.collectibles
 		if index == 0:
-			#set_player(player)
-			player.bind_camera_limits(room)
+			set_player(player)
+			#player.bind_camera_limits(room)
+
+func init_room() -> void:
+	var room := MetSys.get_current_room_instance().get_parent() as Room
+	(player as Samus).bind_camera_limits(room)

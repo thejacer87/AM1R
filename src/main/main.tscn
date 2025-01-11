@@ -6,6 +6,7 @@
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_ab5rb")
+starting_map = "brinstar/b_1.tscn"
 
 [node name="BackgroundLayer" type="CanvasLayer" parent="."]
 layer = -10

@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://btax8amm0y77m"]
+[gd_scene load_steps=3 format=3 uid="uid://btax8amm0y77m"]
 
 [ext_resource type="Script" path="res://src/ui/hud.gd" id="1_318vl"]
+[ext_resource type="PackedScene" uid="uid://dch8dyylb7526" path="res://addons/MetroidvaniaSystem/Template/Nodes/Minimap.tscn" id="2_qt8vy"]
 
 [node name="HUD" type="Control"]
 custom_minimum_size = Vector2(0, 30)
@@ -34,3 +35,8 @@ theme_override_constants/margin_bottom = 5
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/separation = 5
+
+[node name="Minimap" parent="." instance=ExtResource("2_qt8vy")]
+layout_mode = 2
+offset_left = 380.0
+offset_right = 508.0
