@@ -3,9 +3,7 @@ extends Node2D
 
 
 @export var grid_size := Vector2.ONE
-@export var pickups : Array[RoomCollectible] = []
 @export var room_offset := 0
-@export var power_items : Array[RoomCollectible] = []
 @export var doors : Array[Door] = []:
 	get:
 		var carry: Array[Door] = []
@@ -24,17 +22,6 @@ extends Node2D
 
 func _ready() -> void:
 	EventBus.connect("room_transition_finished", enable_exits)
-	for pickup in pickups:
-		var scene := pickup.item_scene
-		var item := scene.instantiate() as Pickup
-		item.position = pickup.position
-		add_child(item)
-	for power_item in power_items:
-		var scene := power_item.item_scene
-		var item := scene.instantiate() as PowerItem
-		item.position = power_item.position
-		add_child(item)
-
 
 func enable_exits(player: Samus, room: Room) -> void:
 	if room == self:
