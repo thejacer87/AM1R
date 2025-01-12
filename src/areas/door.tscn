@@ -163,6 +163,7 @@ animations = [{
 size = Vector2(16, 48)
 
 [node name="Door" type="StaticBody2D" groups=["door"]]
+process_mode = 4
 collision_layer = 4
 collision_mask = 0
 script = ExtResource("1_1ihn6")

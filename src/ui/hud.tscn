@@ -37,6 +37,11 @@ layout_mode = 2
 theme_override_constants/separation = 5
 
 [node name="Minimap" parent="." instance=ExtResource("2_qt8vy")]
-layout_mode = 2
-offset_left = 380.0
-offset_right = 508.0
+layout_mode = 0
+offset_left = 450.0
+offset_top = 2.58
+offset_right = 546.0
+offset_bottom = 98.58
+scale = Vector2(0.25, 0.25)
+smooth_scroll = false
+display_player_location = true

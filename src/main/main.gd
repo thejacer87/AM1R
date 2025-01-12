@@ -22,6 +22,9 @@ func _ready() -> void:
 	
 	Globals.MusicPlayer.play("res://src/audio/music/musArea2A.ogg")
 	create_or_load_save()
+	
+	# Add module for room transitions.
+	add_module("RoomTransitions.gd")
 
 
 func _process(delta: float) -> void:
@@ -43,7 +46,7 @@ func create_or_load_save() -> void:
 	# Find all players for initialization.
 	for index in Input.get_connected_joypads():
 		var player: Samus = preload("res://src/entities/characters/samus/samus.tscn").instantiate() as Samus
-		player.position = Vector2(128, 130)
+		player.position = Vector2(828, 130)
 		player.player_index = index
 		add_child(player)
 		player.connect_hud(hud)

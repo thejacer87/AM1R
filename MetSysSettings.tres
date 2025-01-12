@@ -13,6 +13,33 @@ in_game_cell_size = Vector2(256, 240)
 discover_whole_rooms = false
 collectible_list = Array[Dictionary]([{
 "element": "MaruMari",
-"icon": "res://addons/MetroidvaniaSystem/Themes/MF/Symbols/Item.png"
+"icon": "res://src/entities/items/power_items/maru_mari/maru_mari.png"
+}, {
+"element": "Bomb",
+"icon": "res://src/entities/items/power_items/bomb/bomb.png"
+}, {
+"element": "HighJump",
+"icon": "res://src/entities/items/power_items/high_jump/high_jump.png"
+}, {
+"element": "IceBeam",
+"icon": "res://src/entities/items/power_items/ice_beam/ice_beam.png"
+}, {
+"element": "LongBeam",
+"icon": "res://src/entities/items/power_items/long_beam/long_beam.png"
+}, {
+"element": "ScrewAttack",
+"icon": "res://src/entities/items/power_items/screw_attack/screw_attack.png"
+}, {
+"element": "Varia",
+"icon": "res://src/entities/items/power_items/varia/varia.png"
+}, {
+"element": "WaveBeam",
+"icon": "res://src/entities/items/power_items/wave_beam/wave_beam.png"
+}, {
+"element": "EnergyTank",
+"icon": "res://src/entities/items/collectibles/energy_tank/energy_tank.png"
+}, {
+"element": "MissileRocket",
+"icon": "res://src/entities/items/collectibles/missile_rocket/missile_rocket.png"
 }])
-assign_uid_to_rooms = false
+assign_uid_to_rooms = true
