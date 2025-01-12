@@ -8,7 +8,7 @@ signal collected_power_item(power_item: String)
 
 func _ready() -> void:
 	MetSys.register_storable_object_with_marker(self)
-	pass
+
 
 func _on_body_entered(body: Node2D) -> void:
 	var samus: Samus = body as Samus
