@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://ck5i3x00fn63a"]
-
-[ext_resource type="Script" path="res://src/areas/brinstar/brinstar.gd" id="1_xxxqj"]
-
-[node name="Brinstar" type="Node2D"]
-script = ExtResource("1_xxxqj")

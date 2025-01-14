@@ -1,12 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://djo1xojo4hhew"]
+[gd_scene load_steps=3 format=3 uid="uid://djo1xojo4hhew"]
 
 [ext_resource type="Script" path="res://src/main/main.gd" id="1_ab5rb"]
 [ext_resource type="PackedScene" uid="uid://btax8amm0y77m" path="res://src/ui/hud.tscn" id="2_uoype"]
-[ext_resource type="PackedScene" uid="uid://ccgn8fj4uco0m" path="res://src/areas/room_transition_control.tscn" id="3_ny34l"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_ab5rb")
-starting_map = "brinstar/b_1.tscn"
+starting_area = "brinstar/b_1.tscn"
 
 [node name="BackgroundLayer" type="CanvasLayer" parent="."]
 layer = -10
@@ -23,5 +22,3 @@ layer = 10
 
 [node name="HUD" parent="ForegroundLayer" instance=ExtResource("2_uoype")]
 unique_name_in_owner = true
-
-[node name="RoomTransitionControl" parent="ForegroundLayer" instance=ExtResource("3_ny34l")]
