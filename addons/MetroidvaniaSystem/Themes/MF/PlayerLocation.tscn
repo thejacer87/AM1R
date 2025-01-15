@@ -53,8 +53,8 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-autoplay = "new_animation"
-speed_scale = 4.0
 libraries = {
 "": SubResource("AnimationLibrary_d6kwd")
 }
+autoplay = "new_animation"
+speed_scale = 4.0

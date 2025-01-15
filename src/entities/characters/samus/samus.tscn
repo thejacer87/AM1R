@@ -3326,7 +3326,7 @@ offset_right = -33.0
 offset_bottom = -92.0
 theme_override_font_sizes/font_size = 10
 
-[node name="MainCamera" parent="." instance=ExtResource("2_k305h")]
+[node name="PlayerCamera" parent="." instance=ExtResource("2_k305h")]
 unique_name_in_owner = true
 position_smoothing_speed = 15.0
 

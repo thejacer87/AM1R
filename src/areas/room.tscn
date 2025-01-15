@@ -6,21 +6,7 @@
 [node name="Room" type="Node2D" groups=["room"]]
 script = ExtResource("1_5npu4")
 
-[node name="CameraBounds" type="Node2D" parent="."]
-
-[node name="Top" type="Marker2D" parent="CameraBounds"]
-position = Vector2(240, 0)
-
-[node name="Bottom" type="Marker2D" parent="CameraBounds"]
-position = Vector2(240, 270)
-
-[node name="Left" type="Marker2D" parent="CameraBounds"]
-position = Vector2(0, 135)
-
-[node name="Right" type="Marker2D" parent="CameraBounds"]
-position = Vector2(480, 135)
+[node name="RoomInstance" parent="." instance=ExtResource("2_fnaq3")]
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 position = Vector2(0, 30)
-
-[node name="RoomInstance" parent="." instance=ExtResource("2_fnaq3")]

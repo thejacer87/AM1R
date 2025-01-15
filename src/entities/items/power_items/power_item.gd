@@ -15,4 +15,5 @@ func _on_body_entered(body: Node2D) -> void:
 	self.collected_power_item.connect(samus._on_collected_power_item)
 	collected_power_item.emit(power_item_name)
 	MetSys.store_object(self)
+	MetSys.discover_cell_group(0)
 	queue_free()

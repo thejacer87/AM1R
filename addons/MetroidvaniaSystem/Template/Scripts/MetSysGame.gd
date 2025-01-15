@@ -24,6 +24,13 @@ func add_module(module_name: String):
 	module_name = "res://addons/MetroidvaniaSystem/Template/Scripts/Modules/".path_join(module_name)
 	var module: MetSysModule = load(module_name).new(self)
 	modules.append(module)
+	
+## Adds a custom module. [param module_name] refers to a file located in [code]Template/Scripts/Modules[/code]. The script must extend [code]MetSysModule.gd[/code].
+func add_custom_module(module_name: String):
+	var cmf = MetSys.settings.custom_module_folder
+	module_name = cmf.path_join(module_name)
+	var module: MetSysModule = load(module_name).new(self)
+	modules.append(module)
 
 func _physics_tick():
 	if can_process():

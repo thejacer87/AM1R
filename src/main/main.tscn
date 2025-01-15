@@ -1,14 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://djo1xojo4hhew"]
+[gd_scene load_steps=4 format=3 uid="uid://djo1xojo4hhew"]
 
 [ext_resource type="Script" path="res://src/main/main.gd" id="1_ab5rb"]
 [ext_resource type="PackedScene" uid="uid://btax8amm0y77m" path="res://src/ui/hud.tscn" id="2_uoype"]
+[ext_resource type="Script" path="res://src/ui/map_menu.gd" id="3_ahyca"]
 
-[node name="Main" type="Node2D"]
+[node name="Main" type="Node"]
 script = ExtResource("1_ab5rb")
-starting_area = "brinstar/b_1.tscn"
+starting_area_path = "res://src/areas/brinstar/b_1.tscn"
 
 [node name="BackgroundLayer" type="CanvasLayer" parent="."]
 layer = -10
+visible = false
 
 [node name="Black BG" type="ColorRect" parent="BackgroundLayer"]
 offset_left = -10000.0
@@ -22,3 +24,21 @@ layer = 10
 
 [node name="HUD" parent="ForegroundLayer" instance=ExtResource("2_uoype")]
 unique_name_in_owner = true
+
+[node name="PauseMenuLayer" type="CanvasLayer" parent="."]
+
+[node name="MapMenu" type="Control" parent="PauseMenuLayer"]
+unique_name_in_owner = true
+process_mode = 3
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 90.0
+offset_bottom = 70.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("3_ahyca")
