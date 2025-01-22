@@ -1,6 +1,6 @@
 extends "res://addons/MetroidvaniaSystem/Template/Scripts/MetSysModule.gd"
 
-const SCROLL_TIME = 5.5
+const SCROLL_TIME = 2.5
 
 var player: Node2D
 var prev_cell: Vector3i
@@ -30,7 +30,7 @@ func _on_room_changed(target_room: String) -> void:
 	
 	if prev_room_instance:
 		var offset := MetSys.get_current_room_instance().get_room_position_offset(prev_room_instance)
-		#var offset := Vector2(480,0)
+		
 		player.position -= offset
 		prev_room_instance.queue_free()
 		
@@ -47,6 +47,7 @@ func _on_room_changed(target_room: String) -> void:
 			
 			prev_map.queue_free()
 			game.get_tree().paused = false
+
 
 func _on_cell_changed(new_cell: Vector3i) -> void:
 	var change := new_cell - prev_cell

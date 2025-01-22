@@ -29,8 +29,9 @@ func _ready() -> void:
 	load_players()
 	
 	# Add module for room transitions.
-	#add_module("RoomTransitions.gd");
-	add_custom_module("ScrollingRoomTransitions.gd")
+	add_module("RoomTransitions.gd")
+	# TODO Create custom room transition with multiplayer support.
+	#add_module("res://src/scripts/metsys_modules/ScrollingRoomTransitions.gd")
 
 
 func _process(delta: float) -> void:

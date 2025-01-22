@@ -116,7 +116,9 @@ func _process(_delta: float) -> void:
 	
 func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("pause_menu_" + str(player_index)) and Input.is_action_pressed("map_screen_" + str(player_index)):
+		print("remove player")	
 		queue_free()
+
 			
 			
 	if Input.is_action_just_pressed("arm_weapon_" + str(player_index)):

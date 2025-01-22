@@ -7,7 +7,6 @@
 script = ExtResource("1_j1nmv")
 theme = ExtResource("2_rs8s2")
 map_root_folder = "res://src/areas/"
-custom_module_folder = "res://src/scripts/metsys_modules/"
 map_extents = 100
 scene_template = ""
 in_game_cell_size = Vector2(480, 240)
