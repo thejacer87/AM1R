@@ -16,7 +16,7 @@ metroidvania_system/settings_file="res://MetSysSettings.tres"
 
 config/name="AM1R"
 run/main_scene="res://src/main/main.tscn"
-config/features=PackedStringArray("4.3", "Forward Plus")
+config/features=PackedStringArray("4.4", "Forward Plus")
 run/max_fps=60
 config/icon="res://icon.svg"
 
