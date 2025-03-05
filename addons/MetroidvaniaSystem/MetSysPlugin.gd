@@ -8,6 +8,7 @@ enum { TAB_EDITOR, TAB_OVERVIEW, TAB_MANAGE }
 var main: Control
 var theme_scanner: Timer
 var prev_theme_state: Array
+var translation_list: Array[Translation]
 
 signal saved
 
@@ -31,6 +32,14 @@ func _enter_tree() -> void:
 	theme_scanner.wait_time = 0.6
 	add_child(theme_scanner)
 	theme_scanner.timeout.connect(check_theme)
+	
+	for file in DirAccess.get_files_at("res://addons/MetroidvaniaSystem/Translations"):
+		if file.get_extension() == "po":
+			translation_list.append(load("res://addons/MetroidvaniaSystem/Translations".path_join(file)))
+	
+	var editor_translation := TranslationServer.get_or_add_domain(&"godot.editor")
+	for translation in translation_list:
+		editor_translation.add_translation(translation)
 	
 	await get_tree().process_frame
 	if not get_singleton():
@@ -65,6 +74,10 @@ func _enter_tree() -> void:
 	get_singleton().settings.theme_changed.connect(func(): prev_theme_state.clear())
 
 func _exit_tree() -> void:
+	var editor_translation := TranslationServer.get_or_add_domain(&"godot.editor")
+	for translation in translation_list:
+		editor_translation.remove_translation(translation)
+	
 	main.queue_free()
 
 func _make_visible(visible: bool) -> void:
@@ -83,7 +96,7 @@ func _save_external_data() -> void:
 
 func _get_unsaved_status(for_scene: String) -> String:
 	if for_scene.is_empty() and main.tabs.get_child(0).is_unsaved():
-		return "MetSys map has been modified.\nDo you want to save?"
+		return tr("MetSys map has been modified.\nDo you want to save?")
 	return ""
 
 func get_singleton():# -> MetroidvaniaSystem:
@@ -94,3 +107,7 @@ func check_theme():
 	var changed := theme.check_for_changes(prev_theme_state)
 	if not changed.is_empty():
 		get_singleton().theme_modified.emit(changed)
+
+func POT_hack():
+	tr("Error!")
+	tr("MetSys restart failed, the singleton still can't be loaded. Make sure the \"MetroidvaniaSystem.gd\" script has no errors.\n\nCommon cause of errors are:\n- Using Godot version older than 4.4.\n- Name conflicts with one of the classes.\n\nThe plugin will be now disabled. Fix the errors and try again.")

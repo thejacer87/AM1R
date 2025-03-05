@@ -241,16 +241,20 @@ class CellOverride extends CellData:
 		var cell_coords := custom_cell_coords
 		custom_cell_coords = Vector3i.MAX
 		
+		MetSys.set_block_signals(true)
 		MetSys.remove_cell_override(cell_coords)
+		MetSys.set_block_signals(false)
 		MetSys.map_data.erase_cell(cell_coords)
 		MetSys.map_data.cell_overrides.erase(cell_coords)
-		MetSys.map_data.custom_cells.erase(self)
+		MetSys.map_data.custom_cells.erase(cell_coords)
 		
 		if assigned_scene != "/":
 			MetSys.map_data.assigned_scenes[assigned_scene].erase(cell_coords)
 		
 		if MetSys.save_data:
 			MetSys.save_data.discovered_cells.erase(cell_coords)
+		
+		MetSys.map_updated.emit()
 	
 	func _cleanup_assigned_scene() -> void:
 		if assigned_scene == "/":
@@ -278,15 +282,17 @@ class CustomElement:
 	var size: Vector2i
 	var data: String
 
-var cells: Dictionary#[Vector3i, CellData]
-var custom_cells: Dictionary#[Vector3i, CellData]
-var assigned_scenes: Dictionary#[String, Array[Vector3i]]
-var cell_groups: Dictionary#[int, Array[Vector3i]]
-var custom_elements: Dictionary#[Vector3i, CustomElement]
+var cells: Dictionary[Vector3i, CellData]
+var custom_cells: Dictionary[Vector3i, CellData]
+var assigned_scenes: Dictionary[String, Array]#[Vector3i]]
+var cell_groups: Dictionary[int, Array]#[Vector3i]]
+var custom_elements: Dictionary[Vector3i, CustomElement]
 
 var layer_names: PackedStringArray
-var cell_overrides: Dictionary#[Vector3i, CellOverride]
-var scene_overrides: Dictionary#[String, String]
+var cell_overrides: Dictionary[Vector3i, CellOverride]
+var scene_overrides: Dictionary[String, String]
+var group_names: PackedStringArray
+var group_cache: Dictionary[Vector3i, PackedInt32Array]
 
 var exporting_mode: bool
 signal saved
@@ -340,7 +346,7 @@ func load_data():
 			custom_elements[coords] = element
 		elif current_section == 0:
 			var group_data := line.split(":")
-			var group_id := group_data[0].to_int()
+			var group_id := group_data[0].get_slice(";", 0).to_int()
 			var rooms_in_group: Array
 			for j in range(1, group_data.size()):
 				var coords: Vector3i
@@ -350,6 +356,10 @@ func load_data():
 				rooms_in_group.append(coords)
 			
 			cell_groups[group_id] = rooms_in_group
+			if group_data[0].get_slice_count(";") > 1:
+				if group_names.size() < group_id + 1:
+					group_names.resize(group_id + 1)
+				group_names[group_id] = group_data[0].get_slice(";", 1)
 		
 		i += 1
 	
@@ -388,7 +398,11 @@ func save_data(backup := false):
 			continue
 		
 		var line: PackedStringArray
-		line.append(str(group))
+		if group < group_names.size() and not group_names[group].is_empty():
+			line.append(str(group, ";", group_names[group]))
+		else:
+			line.append(str(group))
+		
 		for coords in cell_groups[group]:
 			line.append("%s,%s,%s" % [coords.x, coords.y, coords.z])
 		
@@ -414,6 +428,14 @@ func save_data(backup := false):
 	
 	file.close()
 	saved.emit()
+
+func cache_groups():
+	for group in cell_groups:
+		for cell in cell_groups[group]:
+			if not cell in group_cache:
+				group_cache[cell] = PackedInt32Array()
+			
+			group_cache[cell].append(group)
 
 func get_cell_at(coords: Vector3i) -> CellData:
 	return cells.get(coords)

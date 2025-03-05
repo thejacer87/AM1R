@@ -1,6 +1,6 @@
 [gd_scene load_steps=14 format=3 uid="uid://dfbykrvyqnqr5"]
 
-[ext_resource type="Script" path="res://addons/MetroidvaniaSystem/Database/MapEditor.gd" id="1_i7yda"]
+[ext_resource type="Script" uid="uid://cmjsph053oe5d" path="res://addons/MetroidvaniaSystem/Database/MapEditor.gd" id="1_i7yda"]
 [ext_resource type="PackedScene" uid="uid://w34y4dyx84y8" path="res://addons/MetroidvaniaSystem/Nodes/LayerSelector.tscn" id="2_rinoa"]
 
 [sub_resource type="ButtonGroup" id="ButtonGroup_pv7fp"]
@@ -360,6 +360,7 @@ func _editor_init() -> void:
 	room_only_cursor = true
 	overlay_mode = true
 	cell_groups = MetSys.map_data.cell_groups
+	%CurrentGroup.value_changed.connect(redraw_overlay.unbind(1))
 
 func _update_theme():
 	theme_cache.group_color = get_theme_color(&\"group_color\", &\"MetSys\")
@@ -376,7 +377,8 @@ func _editor_draw(map_overlay: CanvasItem):
 	super(map_overlay)
 	
 	for p in cell_groups.get(%CurrentGroup.value as int, []):
-		map_overlay.draw_rect(Rect2(Vector2(p.x, p.y) * MetSys.CELL_SIZE, MetSys.CELL_SIZE), theme_cache.group_color)
+		if p.z == editor.current_layer:
+			map_overlay.draw_rect(Rect2(Vector2(p.x, p.y) * MetSys.CELL_SIZE, MetSys.CELL_SIZE), theme_cache.group_color)
 
 func modify_coords(coords: Vector3i, mode: int) -> bool:
 	var current_group: int = %CurrentGroup.value
@@ -531,7 +533,7 @@ func _editor_init() -> void:
 	use_cursor = false
 	overlay_mode = true
 	create_dialog.register_text_enter(scene_name)
-	assign_uid.set_pressed_no_signal(MetSys.settings.assign_uid_to_rooms)
+	assign_uid.set_pressed_no_signal(MetSys.settings._assign_uid_to_rooms)
 
 func _update_theme():
 	theme_cache.assigned_scene = get_theme_color(&\"assigned_scene\", &\"MetSys\")
@@ -733,7 +735,7 @@ func drop_data(at_position: Vector2, data) -> void:
 	on_map_selected(data[\"files\"][0])
 
 func _on_assign_uid_toggled(toggled_on: bool) -> void:
-	MetSys.settings.assign_uid_to_rooms = toggled_on
+	MetSys.settings._assign_uid_to_rooms = toggled_on
 "
 
 [sub_resource type="GDScript" id="GDScript_5yej3"]
@@ -750,8 +752,8 @@ func _ready() -> void:
 
 func _validate_property(property: Dictionary) -> void:
 	# Hack until Godot handles this properly.
-	if property.name == \"ok_button_text\" or property.name == \"title\":
-		property.usage = 0
+	if property[\"name\"] == \"ok_button_text\" or property[\"name\"] == \"title\":
+		property[\"usage\"] = 0
 "
 
 [sub_resource type="GDScript" id="GDScript_gb3rf"]
@@ -766,6 +768,7 @@ var custom_elements: Dictionary
 
 func _editor_init() -> void:
 	room_only_cursor = false
+	overlay_mode = true
 	custom_elements = MetSys.map_data.custom_elements
 	MetSys.settings.custom_elements_changed.connect(reload_custom_elements)
 	
@@ -845,10 +848,11 @@ func _editor_input(event: InputEvent):
 				if coords in MetSys.map_data.custom_elements:
 					undo_handle_element_remove(coords, MetSys.map_data.custom_elements[coords])
 					MetSys.map_data.custom_elements.erase(coords)
-					editor.current_map_view.update_custom_element_at(coords)
+					editor.current_map_view._update_element_at(coords)
+					undo_end_with_redraw()
 
 func add_element(rect: Rect2i):
-	var element: CustomElement
+	var element := CustomElement.new()
 	element.name = current_element
 	element.size = rect.size
 	element.data = %CustomData.text
@@ -857,7 +861,7 @@ func add_element(rect: Rect2i):
 	MetSys.map_data.custom_elements[coords] = element
 	
 	undo_handle_element_add(coords, element)
-	editor.current_map_view.update_custom_element_at(coords)
+	editor.current_map_view._update_element_at(coords)
 "
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xiyo8"]
@@ -869,6 +873,8 @@ bg_color = Color(0, 0, 0, 0.501961)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_right = 813.0
+offset_bottom = 448.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_i7yda")
@@ -882,6 +888,7 @@ layout_mode = 2
 [node name="ScrollContainer" type="ScrollContainer" parent="Sidebar"]
 layout_mode = 2
 horizontal_scroll_mode = 0
+vertical_scroll_mode = 4
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Sidebar/ScrollContainer"]
 layout_mode = 2
@@ -937,6 +944,7 @@ value = 1.0
 
 [node name="ZoomValue" type="Label" parent="Sidebar/ScrollContainer/VBoxContainer/Layer/HBoxContainer"]
 unique_name_in_owner = true
+auto_translate_mode = 2
 layout_mode = 2
 text = "x1.0"
 
@@ -1005,7 +1013,7 @@ script = SubResource("GDScript_p75ne")
 [node name="FileDialog" type="FileDialog" parent="Sidebar/ScrollContainer/VBoxContainer/Modes/SceneAssign"]
 size = Vector2i(600, 400)
 file_mode = 0
-filters = PackedStringArray("*.tscn", "*.scn")
+filters = PackedStringArray("*.tscn,*.scn;Scene File")
 script = SubResource("GDScript_5yej3")
 
 [node name="Button" type="Button" parent="Sidebar/ScrollContainer/VBoxContainer/Modes/SceneAssign/FileDialog"]
@@ -1047,6 +1055,7 @@ size_flags_horizontal = 3
 
 [node name="SceneExtension" type="OptionButton" parent="Sidebar/ScrollContainer/VBoxContainer/Modes/SceneAssign/CreateDialog/VBoxContainer/GridContainer/HBoxContainer"]
 unique_name_in_owner = true
+auto_translate_mode = 2
 layout_mode = 2
 selected = 0
 item_count = 2
@@ -1116,9 +1125,10 @@ layout_mode = 2
 text = "Group ID"
 horizontal_alignment = 1
 
-[node name="CurrentGroup" type="SpinBox" parent="Sidebar/ScrollContainer/VBoxContainer/EditControls/Groups"]
+[node name="CurrentGroup" parent="Sidebar/ScrollContainer/VBoxContainer/EditControls/Groups" instance=ExtResource("2_rinoa")]
 unique_name_in_owner = true
 layout_mode = 2
+mode = 1
 
 [node name="Colors" type="VBoxContainer" parent="Sidebar/ScrollContainer/VBoxContainer/EditControls"]
 unique_name_in_owner = true
@@ -1181,20 +1191,20 @@ layout_mode = 2
 [node name="ShortcutPick" type="Label" parent="Sidebar/ScrollContainer/VBoxContainer/EditControls/Shortcuts"]
 unique_name_in_owner = true
 layout_mode = 2
-text = "Ctrl+Click: pick from map"
+text = "Ctrl+Click: Pick from map"
 autowrap_mode = 2
 
 [node name="ShortcutDrag" type="Label" parent="Sidebar/ScrollContainer/VBoxContainer/EditControls/Shortcuts"]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
-text = "Shift+Drag: move rooms"
+text = "Shift+Drag: Move rooms"
 autowrap_mode = 2
 
 [node name="ShortcutWhole" type="Label" parent="Sidebar/ScrollContainer/VBoxContainer/EditControls/Shortcuts"]
 unique_name_in_owner = true
 layout_mode = 2
-text = "Shift+Click: set for the whole room"
+text = "Shift+Click: Set for the whole room"
 autowrap_mode = 2
 
 [node name="MapView" type="Control" parent="."]
@@ -1253,6 +1263,5 @@ vertical_alignment = 1
 [connection signal="pressed" from="Sidebar/ScrollContainer/VBoxContainer/Modes/SceneAssign/FileDialog/Button" to="Sidebar/ScrollContainer/VBoxContainer/Modes/SceneAssign" method="create_new_scene"]
 [connection signal="confirmed" from="Sidebar/ScrollContainer/VBoxContainer/Modes/SceneAssign/CreateDialog" to="Sidebar/ScrollContainer/VBoxContainer/Modes/SceneAssign" method="create_scene_confirm"]
 [connection signal="text_changed" from="Sidebar/ScrollContainer/VBoxContainer/Modes/SceneAssign/CreateDialog/VBoxContainer/GridContainer/HBoxContainer/SceneName" to="Sidebar/ScrollContainer/VBoxContainer/Modes/SceneAssign" method="validate_scene" unbinds=1]
-[connection signal="value_changed" from="Sidebar/ScrollContainer/VBoxContainer/EditControls/Groups/CurrentGroup" to="MapView" method="queue_redraw" unbinds=1]
 [connection signal="toggled" from="Sidebar/ScrollContainer/VBoxContainer/EditControls/SceneAssign/AssignUID" to="Sidebar/ScrollContainer/VBoxContainer/Modes/SceneAssign" method="_on_assign_uid_toggled"]
 [connection signal="draw" from="MapView/Grid" to="." method="_on_grid_draw"]

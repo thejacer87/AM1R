@@ -8,10 +8,6 @@
 
 config_version=5
 
-[addons]
-
-metroidvania_system/settings_file="res://MetSysSettings.tres"
-
 [application]
 
 config/name="AM1R"

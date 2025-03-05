@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://df5fuj4vjr11p"]
 
-[ext_resource type="Script" path="res://addons/MetroidvaniaSystem/Database/MapViewer.gd" id="1_s16ok"]
-[ext_resource type="Script" path="res://addons/MetroidvaniaSystem/Scripts/EditorIconButton.gd" id="2_tjngl"]
+[ext_resource type="Script" uid="uid://cdl44ebe6tc0h" path="res://addons/MetroidvaniaSystem/Database/MapViewer.gd" id="1_s16ok"]
+[ext_resource type="Script" uid="uid://celtpddhdfods" path="res://addons/MetroidvaniaSystem/Scripts/EditorIconButton.gd" id="2_tjngl"]
 [ext_resource type="PackedScene" uid="uid://w34y4dyx84y8" path="res://addons/MetroidvaniaSystem/Nodes/LayerSelector.tscn" id="2_yqo4d"]
 
 [sub_resource type="ButtonGroup" id="ButtonGroup_lmh17"]
@@ -24,7 +24,7 @@ func _ready() -> void:
 	_pressed()
 	
 	await get_tree().process_frame
-	for data in MetSys.settings.collectible_list:
+	for data in MetSys.settings._collectible_list:
 		var collectible := add_collectible()
 		collectible.set_data(data)
 
@@ -48,7 +48,7 @@ func save_collectible_list():
 	for collectible in %CollectibleList.get_children():
 		if not collectible.is_queued_for_deletion():
 			list.append(collectible.get_data())
-	MetSys.settings.collectible_list = list
+	MetSys.settings._collectible_list = list
 	ResourceSaver.save(MetSys.settings)
 "
 
@@ -265,6 +265,7 @@ size_flags_horizontal = 0
 [node name="ScrollContainer" type="ScrollContainer" parent="Sidebar"]
 layout_mode = 2
 horizontal_scroll_mode = 0
+vertical_scroll_mode = 4
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Sidebar/ScrollContainer"]
 layout_mode = 2
@@ -309,6 +310,7 @@ value = 1.0
 
 [node name="ZoomValue" type="Label" parent="Sidebar/ScrollContainer/VBoxContainer/Layer/HBoxContainer"]
 unique_name_in_owner = true
+auto_translate_mode = 2
 layout_mode = 2
 text = "x1.0"
 

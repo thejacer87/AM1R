@@ -48,8 +48,8 @@ var visible: bool:
 		RenderingServer.canvas_item_set_visible(_canvas_item, visible)
 
 var _canvas_item: RID
-var _cache: Dictionary#[Vector3i, CellView]
-var _custom_elements_cache: Dictionary#[Vector3i, CustomElementInstance]
+var _cache: Dictionary[Vector3i, CellView]
+var _custom_elements_cache: Dictionary[Vector3i, CustomElementInstance]
 var _update_queue: Array[RefCounted]
 
 var _force_mapped: bool
@@ -124,7 +124,7 @@ func move(offset: Vector2i, new_layer := layer):
 		return
 	
 	var shared_borders: bool = MetSys.settings.theme.use_shared_borders
-	var new_cache: Dictionary#[Vector3i, CellView]
+	var new_cache: Dictionary[Vector3i, CellView]
 	for y in size.y:
 		for x in size.x:
 			var coords := Vector3i(begin.x + x, begin.y + y, layer)
@@ -155,7 +155,7 @@ func move(offset: Vector2i, new_layer := layer):
 	
 	var rect := Rect2i(_begin, size)
 	var element_manager: MetroidvaniaSystem.CustomElementManager = MetSys.settings.custom_elements
-	var element_list: Dictionary = MetSys.map_data.custom_elements
+	var element_list: Dictionary[Vector3i, CustomElement] = MetSys.map_data.custom_elements
 	
 	var element_offset: Vector2 = Vector2(offset) * MetSys.CELL_SIZE
 	for coords in _custom_elements_cache.keys():
@@ -266,6 +266,14 @@ func _update_element(element: CustomElementInstance):
 	
 	if not element in _update_queue:
 		_update_queue.append(element)
+
+func _update_element_at(coords: Vector3i):
+	var element: CustomElement = MetSys.map_data.custom_elements.get(coords)
+	if element and not coords in _custom_elements_cache:
+		var instance := _make_custom_element_instance(coords, element)
+		_update_element(instance)
+	elif not element and coords in _custom_elements_cache:
+		_custom_elements_cache.erase(coords)
 
 func _update_queued():
 	for cell in _update_queue:

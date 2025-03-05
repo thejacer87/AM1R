@@ -56,17 +56,10 @@ func _enter_tree() -> void:
 	
 	if ProjectSettings.has_setting("addons/metroidvania_system/settings_file"):
 		settings_path = ProjectSettings.get_setting("addons/metroidvania_system/settings_file")
-	elif ProjectSettings.has_setting("metroidvania_system/settings_file"):
-		# Compatibility. Will be removed.
-		var legacy_settings_path: String = ProjectSettings.get_setting("metroidvania_system/settings_file")
-		if legacy_settings_path != settings_path:
-			push_warning("Detected MetSys settings path under \"metroidvania_system/settings_file\" project setting. Migrating it to the new setting: \"addons/metroidvania_system/settings_file\".")
-		
-		settings_path = legacy_settings_path
-		ProjectSettings.set_setting("addons/metroidvania_system/settings_file", settings_path)
 	else:
 		ProjectSettings.set_setting("addons/metroidvania_system/settings_file", settings_path)
 	
+	ProjectSettings.set_initial_value("addons/metroidvania_system/settings_file", "res://MetSysSettings.tres")
 	ProjectSettings.add_property_info({"name": "addons/metroidvania_system/settings_file", "type": TYPE_STRING, "hint": PROPERTY_HINT_FILE, "hint_string": "*.tres"})
 	
 	if ResourceLoader.exists(settings_path):
@@ -81,6 +74,12 @@ func _enter_tree() -> void:
 	
 	map_data = MapData.new()
 	map_data.load_data()
+	
+	if Engine.is_editor_hint():
+		return
+	
+	if settings.cache_group_reverse_lookup:
+		map_data.cache_groups()
 
 func _update_theme():
 	CELL_SIZE = settings.theme.center_texture.get_size()
@@ -108,6 +107,35 @@ func get_layer_by_name(layer: String) -> int:
 	if index == -1:
 		push_error("Layer \"%s\" does not exist." % layer)
 	return index
+
+## Returns name of a layer at the given index. Returns empty [String] if the layer with the given index is unnamed.
+func get_layer_name(idx: int) -> String:
+	if idx < 0:
+		push_error("Layer index can't be negative.")
+		return ""
+	
+	if idx >= map_data.layer_names.size():
+		return ""
+	
+	return map_data.layer_names[idx]
+
+## Returns index of a cell group with the given name. Returns [code]-1[/code] and error if group name does not exist.
+func get_group_by_name(group: String) -> int:
+	var index := map_data.group_names.find(group)
+	if index == -1:
+		push_error("Group \"%s\" does not exist." % group)
+	return index
+
+## Returns name of a cell group at the given index. Returns empty [String] if the group with the given index is unnamed.
+func get_group_name(idx: int) -> String:
+	if idx < 0:
+		push_error("Group index can't be negative.")
+		return ""
+	
+	if idx >= map_data.group_names.size():
+		return ""
+	
+	return map_data.group_names[idx]
 
 ## Returns a [Dictionary] containing the MetSys' runtime data, like discovered cells or stored objects. You need to serialize it yourself, e.g. using [method FileAccess.store_var].
 func get_save_data() -> Dictionary:
@@ -273,6 +301,18 @@ func get_object_coords(object: Object) -> Vector3i:
 		return coords
 	return Vector3i.MAX
 
+## Returns all cell groups assigned at the given coordinates. Make sure to enable [code]cache_group_reverse_lookup[/code] in MetSys settings if you want to call this method, otherwise it's very costly to use.
+func get_cell_groups(coords: Vector3i) -> PackedInt32Array:
+	if not map_data.group_cache.is_empty():
+		return map_data.group_cache.get(coords, PackedInt32Array())
+	
+	var groups: PackedInt32Array
+	for group in map_data.cell_groups:
+		if coords in map_data.cell_groups[group]:
+			groups.append(group)
+	
+	return groups
+
 ## Translates map coordinates to 2D pixel coordinates. Can be used for custom drawing on the map.
 ## [br][br][param relative] allows to specify precise position inside the cell, with [code](0.5, 0.5)[/code] being the cell's center. [param base_offset] is an additional offset in pixels.
 func get_cell_position(coords: Vector2i, relative := Vector2(0.5, 0.5), base_offset := Vector2()) -> Vector2:
@@ -303,7 +343,7 @@ func get_cell_override_from_group(group_id: int, auto_create := true) -> MapData
 ## Removes an override created with [method get_cell_override], reverting the cell to its original appearance, and emits [signal map_updated] signal. Does nothing if the override didn't exist.
 ## [br][br][b]Note:[/b] If the override was created with MapBuilder, use the [code]destroy()[/code] method instead.
 func remove_cell_override(coords: Vector3i):
-	var cell = map_data.get_cell_at(coords)
+	var cell := map_data.get_cell_at(coords)
 	assert(cell, "Can't remove override of non-existent cell")
 	if save_data.remove_cell_override(cell):
 		map_updated.emit()
